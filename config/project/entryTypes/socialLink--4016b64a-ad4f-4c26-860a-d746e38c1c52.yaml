@@ -14,10 +14,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: ce613e9c-1de8-4996-8e78-1b5e2a4f4db4 # Social Platform
             handle: null
-            includeInCards: true
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -31,10 +29,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: d6dbc3f7-e7b6-4589-8039-673a7f8bfbe3 # Link
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField

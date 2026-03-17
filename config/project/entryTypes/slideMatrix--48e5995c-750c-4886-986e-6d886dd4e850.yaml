@@ -12,10 +12,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 97a3b2ae-581c-4a96-bac9-554887f73578 # Slide
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -34,10 +32,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 91106ad6-75bd-4491-b0ee-b0a60f514c1a # Column Span
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -50,10 +46,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 451ebed9-368d-4404-a7f4-1c565c0dfc4a # Color
             handle: null
-            includeInCards: true
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -64,12 +58,10 @@ fieldLayouts:
           -
             dateAdded: '2024-12-19T20:09:42+00:00'
             elementCondition: null
-            fieldUid: bda53640-24b3-44f4-8c8b-ee991f1addba # Text Alignment
+            fieldUid: bda53640-24b3-44f4-8c8b-ee991f1addba
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField

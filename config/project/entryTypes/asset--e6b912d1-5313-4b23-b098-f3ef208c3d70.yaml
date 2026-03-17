@@ -12,10 +12,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: null
-            includeInCards: true
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -28,10 +26,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: assetMobile
-            includeInCards: false
             instructions: 'Display a different asset on smaller screen sizes.'
             label: 'Mobile Asset'
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -50,10 +46,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 929dd815-3f39-4a7a-a039-6c7ac68799b5 # Overlay
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -66,10 +60,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 8f0d2001-1c75-4b9a-8e74-b7e48dbc58bf # Loop Video
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField

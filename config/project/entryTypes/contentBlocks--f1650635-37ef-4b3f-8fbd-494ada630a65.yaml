@@ -1,6 +1,8 @@
 color: green
+description: null
 fieldLayouts:
   7c9a9ac0-f3ee-4626-bd42-59c125a4b23d:
+    cardThumbAlignment: end
     tabs:
       -
         elementCondition: null
@@ -11,10 +13,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 022ea0cc-0378-4208-8aa9-5d66cc4e3e20 # Content Blocks
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField

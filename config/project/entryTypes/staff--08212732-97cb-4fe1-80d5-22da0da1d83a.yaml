@@ -11,10 +11,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: d6e5e01f-8256-400c-b615-acd01b77798a # Exclude From Team Page
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -34,10 +32,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 54f615f9-cbc5-4080-8210-ef8cbb1d474d # Staff Category
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -51,10 +47,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -71,7 +65,6 @@ fieldLayouts:
             disabled: false
             elementCondition: null
             id: null
-            includeInCards: false
             inputType: null
             instructions: null
             label: Name
@@ -80,7 +73,6 @@ fieldLayouts:
             name: null
             orientation: null
             placeholder: null
-            providesThumbs: false
             readonly: false
             required: true
             size: null
@@ -98,10 +90,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
             handle: position
-            includeInCards: false
             instructions: null
             label: Position
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -115,10 +105,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: be73bd2f-9a80-4f67-a33c-79c036493434 # Email
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -132,10 +120,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: a13e25fc-5eb6-46ae-a677-3b785baa9288 # Phone Number
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -149,10 +135,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: bio
-            includeInCards: false
             instructions: null
             label: Bio
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField

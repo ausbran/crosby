@@ -23,7 +23,7 @@
 
         <!-- Text -->
         <div class="{{ hasBackground ? 'absolute' : 'static' }}
-        grid {{ slide.textAlignment }} content-between w-full h-full z-2 space-y-4 p-8 lg:p-10 bottom-0 text-{{ textColor }}">
+        grid content-between w-full h-full z-2 space-y-4 p-8 lg:p-10 bottom-0 text-{{ textColor }}">
             {% for block in slide.slideMatrix %}
                 {% switch block.type.handle %}
                     {% case 'text' %}

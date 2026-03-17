@@ -1,0 +1,99 @@
+color: null
+description: null
+fieldLayouts:
+  17cf20d3-fec3-4ea8-a8ba-8083c251187a:
+    cardThumbAlignment: end
+    cardView:
+      - 'layoutElement:344f7f6b-f17b-4ad5-983d-887b3239a6e8'
+      - 'layoutElement:99896c3c-43c7-46dd-9d51-5a8f991988b4'
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2026-01-09T18:56:02+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 566f7e7a-7a51-4713-822c-a63f6a9ba4a0
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-01-09T18:52:50+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 344f7f6b-f17b-4ad5-983d-887b3239a6e8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-01-09T20:04:30+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: faae6ca6-e8cf-48be-80f8-91f650590b04
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-01-09T20:01:13+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 1afc4390-d938-49a4-b4a4-798e68a2bc9d # Instruction Blocks
+            handle: subBlocks
+            instructions: 'Use these sub blocks to explain the inner processes.'
+            label: 'Sub Blocks'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 977dd538-d0f9-479f-85d5-78867cdc84e4
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 6518d6fc-008b-4708-9bdb-7c7ff4b2318b
+        userCondition: null
+handle: instructionBlock
+hasTitleField: true
+icon: null
+name: 'Instruction Block'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

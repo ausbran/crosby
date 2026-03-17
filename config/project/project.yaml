@@ -1,4 +1,4 @@
-dateModified: 1767899085
+dateModified: 1773769548
 elementSources:
   craft\elements\Asset:
     -
@@ -63,6 +63,7 @@ elementSources:
       type: native
     -
       heading: Global
+      key: 'heading:f9f6f832-2f6c-4d3a-9bd9-c0ed1d20c08f'
       type: heading
     -
       defaultSort:
@@ -97,6 +98,7 @@ elementSources:
       type: custom
     -
       heading: Content
+      key: 'heading:06f59c44-0da9-4343-8307-9ea8f549d451'
       type: heading
     -
       defaultSort:
@@ -139,6 +141,7 @@ elementSources:
       type: native
     -
       heading: Pages
+      key: 'heading:a7248779-b87a-4640-92b3-d38407c09be2'
       type: heading
     -
       condition:
@@ -218,6 +221,20 @@ elementSources:
         - expiryDate
         - link
       type: native
+    -
+      defaultSort:
+        - postDate
+        - desc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:eadae4dc-77ef-40d8-92ec-592dd259d2b6' # Instruction
+      tableAttributes:
+        - status
+        - postDate
+        - expiryDate
+        - authors
+        - link
+      type: native
   verbb\formie\elements\Form:
     -
       key: '*'
@@ -279,10 +296,10 @@ meta:
     0a106393-df03-4723-ab37-3ce915c46f99: New # New
     0e035fe3-0cf6-480e-82fe-d52cc928e650: Testimonial # Testimonial
     0eaaec4b-bbda-4300-8453-30f0be806169: Old # Old
+    1afc4390-d938-49a4-b4a4-798e68a2bc9d: 'Instruction Blocks' # Instruction Blocks
     2a474d4a-c4ce-4af9-8df0-20b69b317f1c: Button # Button
     2bb0df43-098d-4091-a1e0-967b00fdcb6c: Slides # Slides
     2e6345b3-c242-4919-be0a-11f0e6afc8c6: Company # Company
-    3a1a525d-c19c-461d-a2df-a414c169afb1: Banner # Banner
     3bf24d78-c1a3-4624-8a1e-72c045c6d425: 'Pull Quote Block' # Pull Quote Block
     4a008dd5-8e6c-4586-b246-d806c81021dd: Features # Features
     4a61545b-26f4-4008-8c2f-eb15c898b03f: 'Margin Bottom' # Margin Bottom
@@ -290,7 +307,6 @@ meta:
     4f214814-db96-4951-a3b1-03392ef7ef4d: Entries # Entries
     5e876e9e-c27f-47f3-ade9-0e2b65433348: Text # Text
     6c300891-384b-4ff0-a695-4d08ebcda74c: delete # delete
-    7bd4db79-e46a-4d73-aa79-6281a44a79a7: Office # Office
     7e4b4add-061e-4eab-92df-597242f18a90: 'Primary Links' # Primary Links
     7fe80a9d-2822-4ed3-8d83-f89f27f75731: Asset # Asset
     8b433bb6-cab9-45f3-bac0-0eecc02c1cd0: 'Navigation Link' # Navigation Link
@@ -300,13 +316,11 @@ meta:
     8eaea240-f35d-4b49-a8bf-c7b1ae70979a: 'Land Sales Listing' # Land Sales Listing
     8f0d2001-1c75-4b9a-8e74-b7e48dbc58bf: 'Loop Video' # Loop Video
     8fe7739e-242f-47ef-b231-4cc99361646c: Staff # Staff
-    9c2b25c2-13cb-44cf-8e74-612cb1025c01: Website # Website
     21db7ac8-7f8f-4c6d-a93b-52418c34492c: Year # Year
     022ea0cc-0378-4208-8aa9-5d66cc4e3e20: 'Content Blocks' # Content Blocks
     25c2456b-7cec-4383-a0bb-18ad14a40dc1: About # About
     26bea4ed-bac2-4732-9ac4-fb8cb523da52: Service # Service
     26fa7b55-e9e5-4fbb-a5e1-0cc31f223c1e: 'Button Link' # Button Link
-    29b40ffa-789b-4a79-92c0-9e36437ed3d8: 'Asset and Caption Slide' # Asset and Caption Slide
     29cb3264-eccf-4606-a645-a6951efb3d58: 'Real Estate' # Real Estate
     34eabfa9-2dfb-43ea-9fa1-466ad575a728: iFrame # iFrame
     42d902fc-110b-469b-9510-c2d1cebc50cc: 'Public Schema' # Public Schema
@@ -317,14 +331,15 @@ meta:
     62c3a695-96b4-43f5-ac43-eb27a6cfc3f9: Slides # Slides
     63e1ee5f-c534-4d68-b1ac-554acf74ae3b: 'Sticky Block' # Sticky Block
     65b7ac17-5b70-46b3-9aea-143443333ef1: 'Single Slide' # Single Slide
+    67e70fec-85ee-4243-b15c-4cd3d3915afd: Instruction # Instruction
     68cbee1c-920f-40db-8ed7-12382fc9e585: Staff # Staff
     70bbc0c6-ce4a-41e4-9b5c-b8726b5e1079: 'Land Blocks' # Land Blocks
     84b49fbd-67b9-4021-9790-4d862971a1fb: Text # Text
     092b44b6-4a5a-4487-af2a-9caa7dbff37d: 'Double Slide' # Double Slide
-    94cb9947-273b-4b08-994c-6ef6402b164b: 'Featured Project' # Featured Project
     97a3b2ae-581c-4a96-bac9-554887f73578: Slide # Slide
     252af2fe-e999-4c7a-beb2-9e62353de467: 'Land Sales' # Land Sales
     287c975f-b8da-4431-b851-9fdd69430935: History # History
+    444ba8fd-50b7-4dca-806f-b8bf4c61b841: 'Instruction Block' # Instruction Block
     451ebed9-368d-4404-a7f4-1c565c0dfc4a: Color # Color
     0524ce74-5809-4227-9995-c07e31fcd67f: General # General
     670d1ad6-74c9-4a63-9dd9-d855df46ac10: 'Contact Form' # Contact Form
@@ -332,7 +347,6 @@ meta:
     729b86ad-8f1d-4a29-ad6b-8ea218f8e048: 'Hunting Leases' # Hunting Leases
     776e3a6f-5f1d-4211-bfed-0be1880fbd45: Price # Price
     781f432d-abd0-4efa-aa62-831ca28d2d13: Banner # Banner
-    895f0ba6-d32c-45c5-825c-884326ca8672: Career # Career
     919a4551-b041-4591-8dc5-541e8024def6: Feature # Feature
     922da0f7-e1c5-45c4-8aa7-49850744589b: Crosby # Crosby
     929dd815-3f39-4a7a-a039-6c7ac68799b5: Overlay # Overlay
@@ -361,11 +375,12 @@ meta:
     a29a748c-48f5-4036-80ab-2ac52e338956: Footer # Footer
     a58c24ec-28f0-4f3c-a871-43df83c6185d: 'Header Block' # Header Block
     a76ef161-fb46-4a93-b50b-110ab2cee1b9: 'Land Block' # Land Block
-    a777c431-cdb1-4b6a-bb15-4ae76fbaf9a4: Blog # Blog
     ad3690bb-2435-4add-aeea-6a20d04193ff: Testimonials # Testimonials
     ae97b4e4-7938-4735-b734-84f98ec34af2: 'Banner Buttons' # Banner Buttons
+    af88040a-731e-477d-a5dd-08fe6bb71209: Hero # Hero
+    afb81678-6013-4956-aefe-1f7268b042d8: Contact # Contact
+    b7ffd7c2-cbba-4599-9727-6e5445ca0451: Instructions # Instructions
     b7977904-1581-4bf1-a440-242e4c34840a: 'Button Label' # Button Label
-    bda53640-24b3-44f4-8c8b-ee991f1addba: 'Text Alignment' # Text Alignment
     be73bd2f-9a80-4f67-a33c-79c036493434: Email # Email
     bf576820-9e89-40b9-a7c5-82be152e232e: Staff # Staff
     bfa64972-7662-4085-af34-bd1d5a310bbf: 'Hunting Leases' # Hunting Leases
@@ -377,14 +392,11 @@ meta:
     d6e5e01f-8256-400c-b615-acd01b77798a: 'Exclude From Team Page' # Exclude From Team Page
     d2831d4a-7a65-4757-bbf6-66a076fe5e3a: 'Sticky Blocks' # Sticky Blocks
     dce03ff5-5f57-481d-b25d-f0224620eb0d: Page # Page
-    dd5ac187-162a-4c1b-9441-4dd23d9184e3: Video # Video
     de8eaa2e-a42a-4ec2-8e1c-8c7162ec8f4e: Services # Services
-    e0af700b-4828-4cae-ad17-75056547e835: Banner # Banner
     e6b912d1-5313-4b23-b098-f3ef208c3d70: Asset # Asset
-    ea3fb6de-e06e-4078-a66e-62058977442f: Landing # Landing
+    eadae4dc-77ef-40d8-92ec-592dd259d2b6: Instruction # Instruction
     ebc5822f-5362-4f1c-a6b8-37a17ea08cf0: 'Shape Files' # Shape Files
     f0a5780c-9dd9-4a46-ad44-15d9c71ede25: 'Career Form' # Career Form
-    f0cae902-01a5-4303-b53a-94b99bdeec25: Simple # Simple
     f6c3037a-a389-45dc-a0cd-c448e9e6223e: 'Staff Contact' # Staff Contact
     f9c5fde4-c87c-45b1-8052-613600b09751: 'Land & Minerals' # Land & Minerals
     f51bd3ce-5a3a-4094-b3b0-9304dfe18b7d: Caption # Caption
@@ -396,7 +408,7 @@ plugins:
   ckeditor:
     edition: standard
     enabled: true
-    schemaVersion: 3.0.0.0
+    schemaVersion: 5.0.0.1
   dospaces:
     edition: standard
     enabled: true
@@ -716,5 +728,5 @@ system:
   live: true
   name: Crosby
   retryDuration: null
-  schemaVersion: 5.8.0.3
+  schemaVersion: 5.9.0.8
   timeZone: America/Denver

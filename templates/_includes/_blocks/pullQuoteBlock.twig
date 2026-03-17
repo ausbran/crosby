@@ -1,0 +1,11 @@
+{% set block = block ?? entry %}
+{% set color = block.color ?? 'white' %}
+
+<div class="page">
+	<blockquote class="rounded-xl border border-gray-300 bg-{{ color }} p-8 lg:p-12">
+		{% include '_includes/_blocks/text' with {
+			text: block.text,
+			pClass: 'col-span-12 text-2xl lg:text-3xl'
+		} %}
+	</blockquote>
+</div>

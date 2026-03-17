@@ -1,0 +1,38 @@
+{% set block = block ?? null %}
+{% set textColor = textColor ?? 'text-white' %}
+{% set showNumber = showNumber is defined ? showNumber : true %}
+
+{% if block %}
+	<!-- Text Container -->
+	<div class="grid col-span-12 lg:col-span-6 grid-cols-subgrid">
+		<div class="grid col-span-12 lg:col-span-6 grid-cols-subgrid {{ textColor }} self-center">
+			{% if showNumber %}
+				<span class="col-span-12 md:col-span-6 row-start-1 text-xl font-medium mb-2 tracking-tighter">
+					0{{ index ?? 1 }}
+				</span>
+			{% endif %}
+			<h2 class="col-span-12 md:col-span-8 lg:col-span-4 row-start-2 mb-4 lg:mb-8">
+				{{ block.title }}
+			</h2>
+			<h3 class="col-span-12 md:col-span-6 lg:col-span-5 xl:col-span-4 row-start-3 mb-4">
+				{{ block.subtitle }}
+			</h3>
+			<div class="col-span-12 md:col-span-8 lg:col-span-6 xl:col-span-5 row-start-4">
+
+				{{ block.text }}
+			</div>
+		</div>
+	</div>
+
+	<!-- Image Container -->
+	<div class="col-span-12 lg:col-span-6 static lg:sticky top-40 max-lg:mt-6 mb-16">
+		<div class="image-container rounded-xl overflow-hidden">
+			{% if block.asset|length %}
+				{% include '_includes/_blocks/asset' with {
+					ratio: '1:1',
+					asset: block.asset.one()
+				} %}
+			{% endif %}
+		</div>
+	</div>
+{% endif %}

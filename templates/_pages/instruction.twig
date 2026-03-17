@@ -1,0 +1,110 @@
+{% extends "index" %}
+{% set bodyClass = 'bg-texture' %}
+
+{% block content %}
+	{% set steps = entry.instructionBlocks is defined ? entry.instructionBlocks.all() : [] %}
+
+	<div class="page pt-32 lg:pt-[180px]">
+		<div class="grid grid-cols-12 gap-y-10 lg:gap-x-10">
+			<aside class="sticky top-12 col-span-12 lg:col-span-4 self-start">
+
+				<div class="rounded-xl border border-gray-300 bg-gray-50 px-6 py-6 max-h-[calc(100vh-7rem)] overflow-y-auto">
+					<h3 class="mb-6">Contents</h3>
+					<ul class="space-y-2">
+						{% for step in steps %}
+							{% set label = step.title ?? ('Step ' ~ loop.index) %}
+							{% set anchor = 'step-' ~ loop.index ~ '-' ~ (label|kebab) %}
+							{% set subBlocks = step.subBlocks is defined and step.subBlocks ? step.subBlocks.all() : [] %}
+							<li>
+								<a href="#{{ anchor }}" class="group flex items-center gap-3 rounded-md p-2 text-sm text-gray-700 hover:bg-white hover:text-gray-900 border border-transparent hover:border-gray-300">
+									<span class="text-[0.8rem] tracking-wider text-gray-400 group-hover:text-gray-700">{{ loop.index < 10 ? '0' ~ loop.index : loop.index }}</span>
+									<span class="leading-snug">{{ label }}</span>
+								</a>
+								{% if subBlocks|length %}
+									<ul class="ml-6 space-y-1 border-l border-gray-200 pl-3">
+										{% for subBlock in subBlocks %}
+											{% set subLabel = subBlock.title ?? ('subBlock ' ~ loop.index) %}
+											{% set subAnchor = anchor ~ '--' ~ loop.index ~ '-' ~ (subLabel|kebab) %}
+											<li>
+												<a href="#{{ subAnchor }}" class="group flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 hover:bg-white border border-transparent hover:border-gray-300">
+													<span class="leading-snug">{{ subLabel }}</span>
+												</a>
+											</li>
+										{% endfor %}
+									</ul>
+								{% endif %}
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</aside>
+
+			<div class="col-span-12 lg:col-span-8 space-y-8 lg:space-y-10 mb-10 border-b-gray-300 pb-16">
+				<h1 class="text-6xl mb-6 border-b-gray-300 border-b pb-4">{{ entry.title }}</h1>
+				{% if entry.text is defined and entry.text|length %}
+					<div class="grid grid-cols-12">
+						{% include '_includes/_blocks/text' with {
+								text: entry.text,
+								pClass: 'col-span-12 lg:col-span-10'
+							} %}
+					</div>
+				{% endif %}
+
+				{% for step in steps %}
+					{% set label = step.title ?? ('Step ' ~ loop.index) %}
+					{% set anchor = 'step-' ~ loop.index ~ '-' ~ (label|kebab) %}
+					{% set subBlocks = step.subBlocks is defined and step.subBlocks ? step.subBlocks.all() : [] %}
+					<section id="{{ anchor }}" class="scroll-mt-32 rounded-xl border border-gray-300 bg-gray-100 p-8 space-y-6">
+						<div class="flex items-center gap-3 border-b-gray-300 border-b pb-2">
+							<span class="text-[0.8rem] tracking-wider uppercase text-gray-500">0{{ loop.index }}</span>
+							<h2 class="text-xl lg:text-3xl text-gray-900">{{ label }}</h2>
+						</div>
+						{% if step.text is defined and step.text|length %}
+							{% include '_includes/_blocks/text' with {
+								text: step.text,
+								pClass: 'col-span-12 lg:col-span-9 text-[16px]'
+							} %}
+						{% endif %}
+						{% if step.asset is defined and step.asset|length %}
+							{% include '_includes/_blocks/asset' with {
+								asset: step.asset.one(),
+								class: 'rounded-xl overflow-hidden w-full border border-gray-300 bg-white mt-4',
+								mode: 'fit'
+							} %}
+						{% endif %}
+						{% if subBlocks|length %}
+							<div class="mt-4 space-y-4">
+								{% for subBlock in subBlocks %}
+									{% set subLabel = subBlock.title ?? ('subBlock ' ~ loop.index) %}
+									{% set subAnchor = anchor ~ '--' ~ loop.index ~ '-' ~ (subLabel|kebab) %}
+									<div id="{{ subAnchor }}" class="scroll-mt-32 rounded-xl border border-gray-300 bg-white p-6 space-y-4">
+										<div class="flex items-center gap-3 ">
+											<h3 class="text-lg text-gray-900">{{ subLabel }}</h3>
+										</div>
+										{% if subBlock.asset is defined and subBlock.asset|length %}
+											<div class="block">
+												{% include '_includes/_blocks/asset' with {
+												asset: subBlock.asset.one(),
+												class: 'rounded-lg overflow-hidden w-full border border-gray-300 bg-gray-50',
+												mode: 'fit'
+											} %}
+											</div>
+										{% endif %}
+
+										{% if subBlock.text is defined and subBlock.text|length %}
+											{% include '_includes/_blocks/text' with {
+												text: subBlock.text,
+												pClass: 'col-span-12 lg:col-span-9 text-[16px]',
+												ulClass: 'list-disc flex flex-col',
+											} %}
+										{% endif %}
+									</div>
+								{% endfor %}
+							</div>
+						{% endif %}
+					</section>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

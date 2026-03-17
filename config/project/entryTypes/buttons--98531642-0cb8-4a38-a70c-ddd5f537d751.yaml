@@ -10,10 +10,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: ae97b4e4-7938-4735-b734-84f98ec34af2 # Banner Buttons
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField

@@ -20,10 +20,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: null
-            includeInCards: true
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -37,10 +35,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: ae97b4e4-7938-4735-b734-84f98ec34af2 # Banner Buttons
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -54,10 +50,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -78,10 +72,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
             handle: sliderHeader
-            includeInCards: false
             instructions: null
             label: 'Slider Header'
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -95,10 +87,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: fixedSlideAsset
-            includeInCards: false
             instructions: null
             label: __blank__
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -112,10 +102,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 2bb0df43-098d-4091-a1e0-967b00fdcb6c # Slides
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -136,10 +124,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: middleAsset
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -160,10 +146,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
             handle: sliderHeader2
-            includeInCards: false
             instructions: null
             label: 'Slider Header'
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -186,10 +170,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 62c3a695-96b4-43f5-ac43-eb27a6cfc3f9 # Slides
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -210,10 +192,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: textBottom
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -227,10 +207,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 8c107cc9-2cb0-47b2-aa42-a82e26aadd14 # CTA Buttons
             handle: buttonsBottom
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -244,10 +222,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: assetBottom
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -267,10 +243,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 4561fe05-31a8-4fcd-86a8-cb4e675e6bb8 # Slide Time
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -282,12 +256,10 @@ fieldLayouts:
             dateAdded: '2024-08-21T23:18:05+00:00'
             editCondition: null
             elementCondition: null
-            fieldUid: bda53640-24b3-44f4-8c8b-ee991f1addba # Text Alignment
+            fieldUid: bda53640-24b3-44f4-8c8b-ee991f1addba
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField

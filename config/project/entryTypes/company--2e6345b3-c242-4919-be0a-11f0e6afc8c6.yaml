@@ -1,6 +1,8 @@
 color: null
+description: null
 fieldLayouts:
   df86e976-74ee-4e6a-87ef-b81d9ba7e9b3:
+    cardThumbAlignment: end
     tabs:
       -
         elementCondition: null
@@ -11,10 +13,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: f6c3037a-a389-45dc-a0cd-c448e9e6223e # Staff Contact
             handle: null
-            includeInCards: false
             instructions: 'Choose a Staff member to be the main point of contact.'
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -38,7 +38,6 @@ fieldLayouts:
             disabled: false
             elementCondition: null
             id: null
-            includeInCards: false
             inputType: null
             instructions: null
             label: null
@@ -47,7 +46,6 @@ fieldLayouts:
             name: null
             orientation: null
             placeholder: null
-            providesThumbs: false
             readonly: false
             required: true
             size: null
@@ -58,17 +56,15 @@ fieldLayouts:
             uid: 06365e39-2e91-4e8b-a2da-2d035a771b1c
             userCondition: null
             warning: null
-            width: 100
+            width: 50
           -
             dateAdded: '2024-08-08T21:05:02+00:00'
             editCondition: null
             elementCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -82,34 +78,30 @@ fieldLayouts:
             elementCondition: null
             fieldUid: ae97b4e4-7938-4735-b734-84f98ec34af2 # Banner Buttons
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 84f1c582-142f-4c4c-b955-f28d412a3c7c
             userCondition: null
             warning: null
-            width: 100
+            width: 50
           -
             dateAdded: '2024-11-26T00:49:55+00:00'
             editCondition: null
             elementCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 17f13d88-c24b-45ec-a9a8-b72e351a64e0
             userCondition: null
             warning: null
-            width: 100
+            width: 50
           -
             dateAdded: '2025-01-17T17:21:12+00:00'
             elementCondition: null
@@ -123,44 +115,38 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
             handle: servicesSubHead
-            includeInCards: false
             instructions: null
             label: 'Services Sub Head'
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 8616afc2-9abf-40f6-8ad4-bfecee158da8
             userCondition: null
             warning: null
-            width: 100
+            width: 50
           -
             dateAdded: '2024-11-26T05:51:55+00:00'
             editCondition: null
             elementCondition: null
             fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
             handle: servicesHead
-            includeInCards: false
             instructions: null
             label: 'Services Head'
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 7df86719-f2be-407a-aa55-d39fcfb4888d
             userCondition: null
             warning: null
-            width: 100
+            width: 50
           -
             dateAdded: '2024-11-26T05:51:55+00:00'
             editCondition: null
             elementCondition: null
             fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
             handle: servicesBody
-            includeInCards: false
             instructions: null
             label: 'Services Body'
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -174,10 +160,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: de8eaa2e-a42a-4ec2-8e1c-8c7162ec8f4e # Services
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -198,10 +182,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: ad3690bb-2435-4add-aeea-6a20d04193ff # Testimonials
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -221,10 +203,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 4a61545b-26f4-4008-8c2f-eb15c898b03f # Margin Bottom
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -238,10 +218,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: f4540b83-421e-4a47-b91d-c09c70b4e12a # Margin Top
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -255,10 +233,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 4986ae78-9ffa-41e9-ab3b-91e866576fd5 # Max Width
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -272,10 +248,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 451ebed9-368d-4404-a7f4-1c565c0dfc4a # Color
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField

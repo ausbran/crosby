@@ -1,0 +1,21 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 67e70fec-85ee-4243-b15c-4cd3d3915afd # Instruction
+handle: instruction
+maxAuthors: 1
+name: Instruction
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  6974ec26-6de3-4cbe-87a2-c5363298442b: # Crosby Resource Management
+    enabledByDefault: true
+    hasUrls: true
+    template: _pages/instruction.twig
+    uriFormat: instruction
+type: channel

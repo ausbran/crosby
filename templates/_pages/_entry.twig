@@ -52,14 +52,14 @@
                                     class: 'rounded-xl overflow-hidden'
                                 } %}
 							{% case 'banner' %}
-								{% include '_includes/_blocks/bannerSlides' with {
+								{% include '_includes/_blocks/bannerHero' with {
                             source: block,
                             block: block,
                             bannerBody: true
                         } %}
 
 							{% case 'hero' %}
-								{% include '_includes/_blocks/bannerSlides' with {
+								{% include '_includes/_blocks/bannerHero' with {
                             source: block,
                             block: block
                         } %}

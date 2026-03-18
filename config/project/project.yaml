@@ -1,4 +1,4 @@
-dateModified: 1773795637
+dateModified: 1773864567
 elementSources:
   craft\elements\Asset:
     -
@@ -282,6 +282,1616 @@ email:
     useAuthentication: '1'
     username: Info@crosbyresource.com
   transportType: craft\mail\transportadapters\Smtp
+fields:
+  0e6b323a-67f7-4ab5-bb66-d695ee1361af: # Slides
+    columnSuffix: null
+    handle: heroSlides
+    instructions: null
+    name: Slides
+    searchable: true
+    settings:
+      createButtonLabel: 'New Hero Slide'
+      defaultIndexViewMode: cards
+      enableVersioning: false
+      entryTypes:
+        -
+          __assoc__:
+            -
+              - uid
+              - 483d978e-3f21-40c1-a303-9c836d235fef # Hero Slide
+            -
+              - group
+              - General
+      includeTableView: false
+      maxEntries: null
+      minEntries: null
+      pageSize: 50
+      propagationKeyFormat: null
+      propagationMethod: all
+      showCardsInGrid: true
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  1afc4390-d938-49a4-b4a4-798e68a2bc9d: # Instruction Blocks
+    columnSuffix: null
+    handle: instructionBlocks
+    instructions: null
+    name: 'Instruction Blocks'
+    searchable: false
+    settings:
+      createButtonLabel: 'New block'
+      defaultIndexViewMode: cards
+      enableVersioning: false
+      entryTypes:
+        -
+          __assoc__:
+            -
+              - uid
+              - 444ba8fd-50b7-4dca-806f-b8bf4c61b841 # Instruction Block
+            -
+              - group
+              - General
+      includeTableView: false
+      maxEntries: null
+      minEntries: null
+      pageSize: 50
+      propagationKeyFormat: null
+      propagationMethod: all
+      showCardsInGrid: true
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  2bb0df43-098d-4091-a1e0-967b00fdcb6c: # Slides
+    columnSuffix: null
+    handle: slides
+    instructions: null
+    name: Slides
+    searchable: true
+    settings:
+      createButtonLabel: 'New Slide'
+      defaultIndexViewMode: cards
+      enableVersioning: false
+      entryTypes:
+        -
+          __assoc__:
+            -
+              - uid
+              - 48e5995c-750c-4886-986e-6d886dd4e850 # Slide
+      includeTableView: false
+      maxEntries: null
+      minEntries: null
+      pageSize: 50
+      propagationKeyFormat: null
+      propagationMethod: all
+      showCardsInGrid: true
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  4a008dd5-8e6c-4586-b246-d806c81021dd: # Features
+    columnSuffix: null
+    handle: features
+    instructions: "Add as many features as you'd like to the listing (Timber type, Soil type, Access, etc)"
+    name: Features
+    searchable: false
+    settings:
+      createButtonLabel: 'New feature'
+      defaultIndexViewMode: cards
+      enableVersioning: false
+      entryTypes:
+        -
+          __assoc__:
+            -
+              - uid
+              - 919a4551-b041-4591-8dc5-541e8024def6 # Feature
+      includeTableView: false
+      maxEntries: null
+      minEntries: null
+      pageSize: 50
+      propagationKeyFormat: null
+      propagationMethod: all
+      showCardsInGrid: true
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  4a61545b-26f4-4008-8c2f-eb15c898b03f: # Margin Bottom
+    columnSuffix: null
+    handle: marginBottom
+    instructions: null
+    name: 'Margin Bottom'
+    searchable: false
+    settings:
+      customOptions: false
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'Extra Small'
+            -
+              - value
+              - margin-bottom-xs
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Small
+            -
+              - value
+              - margin-bottom-sm
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Medium
+            -
+              - value
+              - margin-bottom-md
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Default
+            -
+              - value
+              - margin-bottom
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Large
+            -
+              - value
+              - margin-bottom-lg
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Extra Large'
+            -
+              - value
+              - margin-bottom-xl
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  4d1d0ace-6df5-4e05-91b0-1d1ce27d4f3b: # Social Links
+    columnSuffix: null
+    handle: socialLinks
+    instructions: 'Add social links.'
+    name: 'Social Links'
+    searchable: false
+    settings:
+      createButtonLabel: 'New Social Link'
+      defaultIndexViewMode: cards
+      enableVersioning: false
+      entryTypes:
+        -
+          __assoc__:
+            -
+              - uid
+              - 4016b64a-ad4f-4c26-860a-d746e38c1c52 # Social Link
+      includeTableView: false
+      maxEntries: null
+      minEntries: null
+      pageSize: 50
+      propagationKeyFormat: null
+      propagationMethod: all
+      showCardsInGrid: true
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  4f214814-db96-4951-a3b1-03392ef7ef4d: # Entries
+    columnSuffix: null
+    handle: entries
+    instructions: null
+    name: Entries
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      branchLimit: null
+      defaultPlacement: end
+      maintainHierarchy: false
+      maxRelations: 3
+      minRelations: 0
+      selectionLabel: null
+      showSearchInput: true
+      showSiteMenu: true
+      showUnpermittedEntries: true
+      showUnpermittedSections: true
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Entries
+  5e876e9e-c27f-47f3-ade9-0e2b65433348: # Text
+    columnSuffix: null
+    handle: text
+    instructions: null
+    name: Text
+    searchable: true
+    settings:
+      availableTransforms: ''
+      availableVolumes: '*'
+      characterLimit: null
+      css: ".ck.ck-content .h1 {\r\n    font-size: 6.25rem;\r\n}\r\n.ck.ck-content .h2 {\r\n    font-size: 2.5rem;\r\n}\r\n.ck.ck-content .h3 {\r\n    font-size: 1.875rem;\r\n}\r\n.ck.ck-content .h4 {\r\n    font-size: 1.375rem;\r\n}"
+      defaultTransform: null
+      defaultUploadLocationSubpath: null
+      defaultUploadLocationVolume: null
+      fullGraphqlData: false
+      headingLevels:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+      imageEntryTypeUid: null
+      imageFieldUid: null
+      imageMode: img
+      js: null
+      options:
+        __assoc__:
+          -
+            - alignment
+            -
+              __assoc__:
+                -
+                  - options
+                  -
+                    - left
+                    - center
+                    - right
+          -
+            - style
+            -
+              __assoc__:
+                -
+                  - definitions
+                  -
+                    -
+                      __assoc__:
+                        -
+                          - classes
+                          -
+                            - h1
+                        -
+                          - element
+                          - h1
+                        -
+                          - name
+                          - h1
+                    -
+                      __assoc__:
+                        -
+                          - classes
+                          -
+                            - h2
+                        -
+                          - element
+                          - h1
+                        -
+                          - name
+                          - h2
+                    -
+                      __assoc__:
+                        -
+                          - classes
+                          -
+                            - h3
+                        -
+                          - element
+                          - h1
+                        -
+                          - name
+                          - h3
+                    -
+                      __assoc__:
+                        -
+                          - classes
+                          -
+                            - h4
+                        -
+                          - element
+                          - h1
+                        -
+                          - name
+                          - h4
+                    -
+                      __assoc__:
+                        -
+                          - attributes
+                          -
+                            __assoc__:
+                              -
+                                - class
+                                - col-span-1
+                        -
+                          - element
+                          -
+                            - p
+                            - h1
+                            - h2
+                            - h3
+                            - h4
+                            - h5
+                            - h6
+                            - a
+                            - img
+                            - figure
+                        -
+                          - name
+                          - 'Column Span 1'
+      parseEmbeds: false
+      purifierConfig: null
+      purifyHtml: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      showWordCount: false
+      sourceEditingGroups:
+        - __ADMINS__
+      toolbar:
+        - heading
+        - '|'
+        - alignment
+        - bold
+        - underline
+        - italic
+        - fontColor
+        - link
+        - insertImage
+        - mediaEmbed
+        - bulletedList
+        - numberedList
+        - style
+      wordLimit: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\ckeditor\Field
+  7e4b4add-061e-4eab-92df-597242f18a90: # Primary Links
+    columnSuffix: null
+    handle: primaryLinks
+    instructions: null
+    name: 'Primary Links'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      branchLimit: null
+      defaultPlacement: end
+      maintainHierarchy: false
+      maxRelations: null
+      minRelations: null
+      selectionLabel: null
+      showSearchInput: true
+      showSiteMenu: false
+      showUnpermittedEntries: true
+      showUnpermittedSections: true
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Entries
+  7fe80a9d-2822-4ed3-8d83-f89f27f75731: # Asset
+    columnSuffix: null
+    handle: asset
+    instructions: null
+    name: Asset
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      allowSubfolders: false
+      allowUploads: true
+      allowedKinds:
+        - image
+        - video
+      branchLimit: null
+      defaultPlacement: end
+      defaultUploadLocationSource: 'volume:0524ce74-5809-4227-9995-c07e31fcd67f' # General
+      defaultUploadLocationSubpath: null
+      maintainHierarchy: false
+      maxRelations: null
+      minRelations: null
+      previewMode: full
+      restrictFiles: false
+      restrictLocation: false
+      restrictedDefaultUploadSubpath: null
+      restrictedLocationSource: 'volume:0524ce74-5809-4227-9995-c07e31fcd67f' # General
+      restrictedLocationSubpath: null
+      selectionLabel: null
+      showSearchInput: true
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Assets
+  8b656877-6f15-45aa-87d7-feb1d95ce5c2: # Plain Text
+    columnSuffix: null
+    handle: plainText
+    instructions: null
+    name: 'Plain Text'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      initialRows: 10
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  8c107cc9-2cb0-47b2-aa42-a82e26aadd14: # CTA Buttons
+    columnSuffix: null
+    handle: ctaButtons
+    instructions: null
+    name: 'CTA Buttons'
+    searchable: false
+    settings:
+      createButtonLabel: 'New Button'
+      defaultIndexViewMode: cards
+      enableVersioning: false
+      entryTypes:
+        -
+          __assoc__:
+            -
+              - uid
+              - 2a474d4a-c4ce-4af9-8df0-20b69b317f1c # Button
+      includeTableView: false
+      maxEntries: null
+      minEntries: null
+      pageSize: 50
+      propagationKeyFormat: null
+      propagationMethod: all
+      showCardsInGrid: true
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  8f0d2001-1c75-4b9a-8e74-b7e48dbc58bf: # Loop Video
+    columnSuffix: null
+    handle: loopVideo
+    instructions: null
+    name: 'Loop Video'
+    searchable: false
+    settings:
+      default: true
+      offLabel: 'No Loop'
+      onLabel: Loop
+      showLabelsInCards: false
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  21db7ac8-7f8f-4c6d-a93b-52418c34492c: # Year
+    columnSuffix: null
+    handle: year
+    instructions: null
+    name: Year
+    searchable: false
+    settings:
+      decimals: 0
+      defaultValue: null
+      max: null
+      min: 0
+      prefix: null
+      previewCurrency: null
+      previewFormat: decimal
+      size: null
+      step: null
+      suffix: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Number
+  022ea0cc-0378-4208-8aa9-5d66cc4e3e20: # Content Blocks
+    columnSuffix: null
+    handle: contentBlocks
+    instructions: null
+    name: 'Content Blocks'
+    searchable: false
+    settings:
+      createButtonLabel: 'New block'
+      defaultIndexViewMode: cards
+      enableVersioning: false
+      entryTypes:
+        -
+          __assoc__:
+            -
+              - uid
+              - 84b49fbd-67b9-4021-9790-4d862971a1fb # Text
+            -
+              - group
+              - General
+        -
+          __assoc__:
+            -
+              - uid
+              - e6b912d1-5313-4b23-b098-f3ef208c3d70 # Asset
+            -
+              - group
+              - General
+        -
+          __assoc__:
+            -
+              - uid
+              - 781f432d-abd0-4efa-aa62-831ca28d2d13 # Banner
+            -
+              - group
+              - General
+        -
+          __assoc__:
+            -
+              - uid
+              - 2629a8b4-6fe5-4a13-b19f-a62b671e8f95 # Slider Block
+            -
+              - name
+              - Slider
+            -
+              - group
+              - General
+        -
+          __assoc__:
+            -
+              - uid
+              - af88040a-731e-477d-a5dd-08fe6bb71209 # Hero
+            -
+              - group
+              - General
+        -
+          __assoc__:
+            -
+              - uid
+              - 34eabfa9-2dfb-43ea-9fa1-466ad575a728 # iFrame
+            -
+              - group
+              - General
+        -
+          __assoc__:
+            -
+              - uid
+              - 3bf24d78-c1a3-4624-8a1e-72c045c6d425 # Pull Quote Block
+            -
+              - name
+              - 'Pull Quote'
+            -
+              - group
+              - General
+        -
+          __assoc__:
+            -
+              - uid
+              - 63e1ee5f-c534-4d68-b1ac-554acf74ae3b # Sticky Block
+            -
+              - group
+              - General
+      includeTableView: false
+      maxEntries: null
+      minEntries: null
+      pageSize: null
+      propagationKeyFormat: null
+      propagationMethod: all
+      showCardsInGrid: false
+      viewMode: blocks
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  26fa7b55-e9e5-4fbb-a5e1-0cc31f223c1e: # Button Link
+    columnSuffix: null
+    handle: buttonLink
+    instructions: null
+    name: 'Button Link'
+    searchable: false
+    settings:
+      fullGraphqlData: false
+      maxLength: 255
+      showLabelField: false
+      typeSettings:
+        __assoc__:
+          -
+            - url
+            -
+              __assoc__:
+                -
+                  - allowRootRelativeUrls
+                  - '1'
+                -
+                  - allowAnchors
+                  - '1'
+          -
+            - entry
+            -
+              __assoc__:
+                -
+                  - sources
+                  - '*'
+      types:
+        - url
+        - entry
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Link
+  40c54676-e066-4929-8bb7-5fc4d400729b: # Video Stream
+    columnSuffix: null
+    handle: videoStream
+    instructions: null
+    name: 'Video Stream'
+    searchable: false
+    translationKeyFormat: null
+    translationMethod: none
+    type: deuxhuithuit\cfstream\fields\CloudflareVideoStreamField
+  48f6a218-2886-43f7-80cc-13633d3687a6: # History Blocks
+    columnSuffix: null
+    handle: historyBlocks
+    instructions: null
+    name: 'History Blocks'
+    searchable: true
+    settings:
+      createButtonLabel: 'Add a Block'
+      defaultIndexViewMode: cards
+      enableVersioning: false
+      entryTypes:
+        -
+          __assoc__:
+            -
+              - uid
+              - a58c24ec-28f0-4f3c-a871-43df83c6185d # Header Block
+        -
+          __assoc__:
+            -
+              - uid
+              - 2629a8b4-6fe5-4a13-b19f-a62b671e8f95 # Slider Block
+        -
+          __assoc__:
+            -
+              - uid
+              - 51a4a281-be82-4754-a5cb-d65d99aa9bfc # Large Image Block
+        -
+          __assoc__:
+            -
+              - uid
+              - 3bf24d78-c1a3-4624-8a1e-72c045c6d425 # Pull Quote Block
+        -
+          __assoc__:
+            -
+              - uid
+              - 6066368e-8c2a-4fe8-a305-75eeea82fe05 # Masonry Grid Block
+      includeTableView: false
+      maxEntries: null
+      minEntries: null
+      pageSize: 50
+      propagationKeyFormat: null
+      propagationMethod: all
+      showCardsInGrid: true
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  54f615f9-cbc5-4080-8210-ef8cbb1d474d: # Staff Category
+    columnSuffix: null
+    handle: staffCategory
+    instructions: 'Choose a category that the staff member belongs in.'
+    name: 'Staff Category'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      branchLimit: null
+      defaultPlacement: end
+      maintainHierarchy: false
+      maxRelations: null
+      minRelations: null
+      selectionLabel: null
+      showSearchInput: true
+      showSiteMenu: false
+      source: 'group:bf576820-9e89-40b9-a7c5-82be152e232e' # Staff
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: cards
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Categories
+  62c3a695-96b4-43f5-ac43-eb27a6cfc3f9: # Slides
+    columnSuffix: null
+    handle: slidesLand
+    instructions: null
+    name: Slides
+    searchable: true
+    settings:
+      createButtonLabel: 'New Slide'
+      defaultIndexViewMode: cards
+      enableVersioning: false
+      entryTypes:
+        -
+          __assoc__:
+            -
+              - uid
+              - 65b7ac17-5b70-46b3-9aea-143443333ef1 # Single Slide
+        -
+          __assoc__:
+            -
+              - uid
+              - 092b44b6-4a5a-4487-af2a-9caa7dbff37d # Double Slide
+      includeTableView: false
+      maxEntries: null
+      minEntries: null
+      pageSize: 50
+      propagationKeyFormat: null
+      propagationMethod: all
+      showCardsInGrid: true
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  70bbc0c6-ce4a-41e4-9b5c-b8726b5e1079: # Land Blocks
+    columnSuffix: null
+    handle: landBlocks
+    instructions: null
+    name: 'Land Blocks'
+    searchable: false
+    settings:
+      createButtonLabel: 'New block'
+      defaultIndexViewMode: cards
+      enableVersioning: false
+      entryTypes:
+        -
+          __assoc__:
+            -
+              - uid
+              - a76ef161-fb46-4a93-b50b-110ab2cee1b9 # Land Block
+      includeTableView: false
+      maxEntries: null
+      minEntries: null
+      pageSize: 50
+      propagationKeyFormat: null
+      propagationMethod: all
+      showCardsInGrid: true
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  97a3b2ae-581c-4a96-bac9-554887f73578: # Slide
+    columnSuffix: null
+    handle: slideMatrix
+    instructions: null
+    name: Slide
+    searchable: false
+    settings:
+      createButtonLabel: 'New block'
+      defaultIndexViewMode: cards
+      enableVersioning: false
+      entryTypes:
+        -
+          __assoc__:
+            -
+              - uid
+              - 84b49fbd-67b9-4021-9790-4d862971a1fb # Text
+        -
+          __assoc__:
+            -
+              - uid
+              - 98531642-0cb8-4a38-a70c-ddd5f537d751 # Buttons
+        -
+          __assoc__:
+            -
+              - uid
+              - e6b912d1-5313-4b23-b098-f3ef208c3d70 # Asset
+        -
+          __assoc__:
+            -
+              - uid
+              - f51bd3ce-5a3a-4094-b3b0-9304dfe18b7d # Caption
+      includeTableView: false
+      maxEntries: null
+      minEntries: null
+      pageSize: 50
+      propagationKeyFormat: null
+      propagationMethod: all
+      showCardsInGrid: true
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  451ebed9-368d-4404-a7f4-1c565c0dfc4a: # Color
+    columnSuffix: null
+    handle: color
+    instructions: null
+    name: Color
+    searchable: false
+    settings:
+      customOptions: false
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'CRM Red'
+            -
+              - value
+              - red
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - 'CCD Yellow'
+            -
+              - value
+              - yellow
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'CLR Orange'
+            -
+              - value
+              - orange
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Light Green'
+            -
+              - value
+              - green-light
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Green
+            -
+              - value
+              - green
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Dark Green'
+            -
+              - value
+              - green-dark
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Charcoal
+            -
+              - value
+              - charcoal
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - White
+            -
+              - value
+              - white
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  776e3a6f-5f1d-4211-bfed-0be1880fbd45: # Price
+    columnSuffix: null
+    handle: price
+    instructions: null
+    name: Price
+    searchable: false
+    settings:
+      decimals: 0
+      defaultValue: null
+      max: null
+      min: 0
+      prefix: null
+      previewCurrency: null
+      previewFormat: decimal
+      size: null
+      step: null
+      suffix: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Number
+  929dd815-3f39-4a7a-a039-6c7ac68799b5: # Overlay
+    columnSuffix: null
+    handle: overlay
+    instructions: 'Choose a number from 0 to 10 for overlay opacity.'
+    name: Overlay
+    searchable: false
+    settings:
+      decimals: 0
+      defaultValue: null
+      max: 10
+      min: 0
+      prefix: null
+      previewCurrency: null
+      previewFormat: decimal
+      size: null
+      step: null
+      suffix: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Number
+  4561fe05-31a8-4fcd-86a8-cb4e675e6bb8: # Slide Time
+    columnSuffix: null
+    handle: slideTime
+    instructions: 'Choose a length of seconds for each slide.'
+    name: 'Slide Time'
+    searchable: false
+    settings:
+      decimals: 0
+      defaultValue: 15
+      max: 30
+      min: 0
+      prefix: null
+      previewCurrency: null
+      previewFormat: decimal
+      size: null
+      step: null
+      suffix: Seconds
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Number
+  4986ae78-9ffa-41e9-ab3b-91e866576fd5: # Max Width
+    columnSuffix: null
+    handle: maxWidth
+    instructions: 'Define the maximum width for content.'
+    name: 'Max Width'
+    searchable: false
+    settings:
+      decimals: 0
+      defaultValue: null
+      max: null
+      min: 0
+      prefix: null
+      previewCurrency: null
+      previewFormat: decimal
+      size: null
+      step: null
+      suffix: px
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Number
+  5036f92c-afaa-4201-8e10-c51c87c5d237: # Shape File
+    columnSuffix: null
+    handle: shapeFile
+    instructions: 'Upload a .shp file to populate the map.'
+    name: 'Shape File'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowSubfolders: false
+      allowUploads: true
+      allowedKinds: null
+      branchLimit: null
+      defaultPlacement: end
+      defaultUploadLocationSource: 'volume:ebc5822f-5362-4f1c-a6b8-37a17ea08cf0' # Shape Files
+      defaultUploadLocationSubpath: null
+      maintainHierarchy: false
+      maxRelations: null
+      minRelations: null
+      previewMode: full
+      restrictFiles: false
+      restrictLocation: false
+      restrictedDefaultUploadSubpath: null
+      restrictedLocationSource: 'volume:0524ce74-5809-4227-9995-c07e31fcd67f' # General
+      restrictedLocationSubpath: null
+      selectionLabel: 'Add files'
+      showSearchInput: true
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      sources:
+        - 'volume:ebc5822f-5362-4f1c-a6b8-37a17ea08cf0' # Shape Files
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Assets
+  67515a2b-d3ca-4888-a7d9-b28bf87d8c44: # Address
+    columnSuffix: null
+    handle: address
+    instructions: null
+    name: Address
+    searchable: true
+    settings:
+      maxAddresses: 1
+      minAddresses: null
+      viewMode: cards
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Addresses
+  91106ad6-75bd-4491-b0ee-b0a60f514c1a: # Column Span
+    columnSuffix: null
+    handle: columnSpan
+    instructions: 'Define the number of columns the slide should span.'
+    name: 'Column Span'
+    searchable: false
+    settings:
+      decimals: 0
+      defaultValue: 6
+      max: 12
+      min: 0
+      prefix: 'Column Span'
+      previewCurrency: null
+      previewFormat: decimal
+      size: null
+      step: 1
+      suffix: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Number
+  a8f5f4f5-00ed-4701-a12b-eda576eb0326: # Date
+    columnSuffix: null
+    handle: date
+    instructions: null
+    name: Date
+    searchable: false
+    settings:
+      max: null
+      min: null
+      minuteIncrement: 30
+      showDate: true
+      showTime: false
+      showTimeZone: false
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Date
+  a13e25fc-5eb6-46ae-a677-3b785baa9288: # Phone Number
+    columnSuffix: null
+    handle: phone
+    instructions: null
+    name: 'Phone Number'
+    searchable: false
+    settings:
+      fullGraphqlData: false
+      maxLength: 255
+      showLabelField: false
+      types:
+        - tel
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Link
+  ad3690bb-2435-4add-aeea-6a20d04193ff: # Testimonials
+    columnSuffix: null
+    handle: testimonials
+    instructions: null
+    name: Testimonials
+    searchable: false
+    settings:
+      createButtonLabel: 'New Testimonial'
+      defaultIndexViewMode: cards
+      enableVersioning: false
+      entryTypes:
+        -
+          __assoc__:
+            -
+              - uid
+              - 0e035fe3-0cf6-480e-82fe-d52cc928e650 # Testimonial
+      includeTableView: false
+      maxEntries: null
+      minEntries: null
+      pageSize: 50
+      propagationKeyFormat: null
+      propagationMethod: all
+      showCardsInGrid: true
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  ae97b4e4-7938-4735-b734-84f98ec34af2: # Banner Buttons
+    columnSuffix: null
+    handle: buttons
+    instructions: null
+    name: 'Banner Buttons'
+    searchable: false
+    settings:
+      createButtonLabel: 'New Button'
+      defaultIndexViewMode: cards
+      enableVersioning: false
+      entryTypes:
+        -
+          __assoc__:
+            -
+              - uid
+              - 2a474d4a-c4ce-4af9-8df0-20b69b317f1c # Button
+      includeTableView: false
+      maxEntries: null
+      minEntries: null
+      pageSize: 50
+      propagationKeyFormat: null
+      propagationMethod: all
+      showCardsInGrid: true
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  b7977904-1581-4bf1-a440-242e4c34840a: # Button Label
+    columnSuffix: null
+    handle: buttonLabel
+    instructions: null
+    name: 'Button Label'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      initialRows: 4
+      multiline: false
+      placeholder: Button
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  be73bd2f-9a80-4f67-a33c-79c036493434: # Email
+    columnSuffix: null
+    handle: email
+    instructions: null
+    name: Email
+    searchable: false
+    settings:
+      placeholder: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Email
+  ce613e9c-1de8-4996-8e78-1b5e2a4f4db4: # Social Platform
+    columnSuffix: null
+    handle: socialPlatform
+    instructions: null
+    name: 'Social Platform'
+    searchable: false
+    settings:
+      customOptions: false
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Linkedin
+            -
+              - value
+              - linkedin
+            -
+              - icon
+              - linkedin
+            -
+              - color
+              - ''
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Instagram
+            -
+              - value
+              - instagram
+            -
+              - icon
+              - instagram
+            -
+              - color
+              - ''
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Facebook
+            -
+              - value
+              - facebook
+            -
+              - icon
+              - facebook
+            -
+              - color
+              - ''
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Youtube
+            -
+              - value
+              - youtube
+            -
+              - icon
+              - youtube
+            -
+              - color
+              - ''
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - X
+            -
+              - value
+              - x
+            -
+              - icon
+              - x-twitter
+            -
+              - color
+              - ''
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Spotify
+            -
+              - value
+              - spotify
+            -
+              - icon
+              - spotify
+            -
+              - color
+              - ''
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  d6dbc3f7-e7b6-4589-8039-673a7f8bfbe3: # Link
+    columnSuffix: null
+    handle: linkUrl
+    instructions: null
+    name: Link
+    searchable: false
+    settings:
+      fullGraphqlData: false
+      maxLength: 255
+      showLabelField: false
+      typeSettings:
+        __assoc__:
+          -
+            - entry
+            -
+              __assoc__:
+                -
+                  - sources
+                  - '*'
+          -
+            - url
+            -
+              __assoc__:
+                -
+                  - allowRootRelativeUrls
+                  - '1'
+                -
+                  - allowAnchors
+                  - ''
+      types:
+        - entry
+        - url
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Link
+  d6e5e01f-8256-400c-b615-acd01b77798a: # Exclude From Team Page
+    columnSuffix: null
+    handle: excludeFromTeamPage
+    instructions: 'Enable this field if you do not want this person to appear on the team page.'
+    name: 'Exclude From Team Page'
+    searchable: false
+    settings:
+      default: false
+      offLabel: null
+      onLabel: null
+      showLabelsInCards: false
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Lightswitch
+  d2831d4a-7a65-4757-bbf6-66a076fe5e3a: # Sticky Blocks
+    columnSuffix: null
+    handle: stickyBlocks
+    instructions: null
+    name: 'Sticky Blocks'
+    searchable: false
+    settings:
+      createButtonLabel: 'New Block'
+      defaultIndexViewMode: cards
+      enableVersioning: false
+      entryTypes:
+        -
+          __assoc__:
+            -
+              - uid
+              - 63e1ee5f-c534-4d68-b1ac-554acf74ae3b # Sticky Block
+      includeTableView: false
+      maxEntries: null
+      minEntries: null
+      pageSize: 50
+      propagationKeyFormat: null
+      propagationMethod: all
+      showCardsInGrid: true
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  de8eaa2e-a42a-4ec2-8e1c-8c7162ec8f4e: # Services
+    columnSuffix: null
+    handle: services
+    instructions: null
+    name: Services
+    searchable: false
+    settings:
+      createButtonLabel: 'New Service'
+      defaultIndexViewMode: cards
+      enableVersioning: false
+      entryTypes:
+        -
+          __assoc__:
+            -
+              - uid
+              - 26bea4ed-bac2-4732-9ac4-fb8cb523da52 # Service
+      includeTableView: false
+      maxEntries: null
+      minEntries: null
+      pageSize: 50
+      propagationKeyFormat: null
+      propagationMethod: all
+      showCardsInGrid: true
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix
+  f6c3037a-a389-45dc-a0cd-c448e9e6223e: # Staff Contact
+    columnSuffix: null
+    handle: staffContact
+    instructions: 'Choose a Staff member to be the main point of contact for this listing.'
+    name: 'Staff Contact'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      branchLimit: null
+      defaultPlacement: end
+      maintainHierarchy: false
+      maxRelations: null
+      minRelations: null
+      selectionLabel: 'Add a Staff Contact'
+      showSearchInput: true
+      showSiteMenu: true
+      showUnpermittedEntries: true
+      showUnpermittedSections: true
+      sources:
+        - 'section:68cbee1c-920f-40db-8ed7-12382fc9e585' # Staff
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: cards-grid
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Entries
+  f4540b83-421e-4a47-b91d-c09c70b4e12a: # Margin Top
+    columnSuffix: null
+    handle: marginTop
+    instructions: null
+    name: 'Margin Top'
+    searchable: false
+    settings:
+      customOptions: false
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'Extra Small'
+            -
+              - value
+              - margin-top-xs
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Small
+            -
+              - value
+              - margin-top-sm
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Medium
+            -
+              - value
+              - margin-top-md
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Default
+            -
+              - value
+              - margin-top
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Large
+            -
+              - value
+              - margin-top-lg
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Extra Large'
+            -
+              - value
+              - margin-top-xl
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  f6704256-c578-402a-ab33-5ac9687059bb: # Height
+    columnSuffix: null
+    handle: height
+    instructions: null
+    name: Height
+    searchable: false
+    settings:
+      customOptions: false
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Small
+            -
+              - value
+              - small
+            -
+              - icon
+              - ''
+            -
+              - color
+              - ''
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Medium
+            -
+              - value
+              - medium
+            -
+              - icon
+              - ''
+            -
+              - color
+              - ''
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Large
+            -
+              - value
+              - large
+            -
+              - icon
+              - ''
+            -
+              - color
+              - ''
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Original
+            -
+              - value
+              - original
+            -
+              - icon
+              - ''
+            -
+              - color
+              - ''
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  'videoStream--40c54676-e066-4929-8bb7-5fc4d400729b 2': # Video Stream
+    columnSuffix: null
+    handle: videoStream
+    instructions: null
+    name: 'Video Stream'
+    searchable: false
+    translationKeyFormat: null
+    translationMethod: none
+    type: deuxhuithuit\cfstream\fields\CloudflareVideoStreamField
 fs:
   uploads:
     hasUrls: true
@@ -302,6 +1912,7 @@ meta:
     0a3cb10d-1602-4ea7-9531-b28f3ed36991: 'Our Team' # Our Team
     0a106393-df03-4723-ab37-3ce915c46f99: New # New
     0e035fe3-0cf6-480e-82fe-d52cc928e650: Testimonial # Testimonial
+    0e6b323a-67f7-4ab5-bb66-d695ee1361af: Slides # Slides
     0eaaec4b-bbda-4300-8453-30f0be806169: Old # Old
     1afc4390-d938-49a4-b4a4-798e68a2bc9d: 'Instruction Blocks' # Instruction Blocks
     2a474d4a-c4ce-4af9-8df0-20b69b317f1c: Button # Button
@@ -349,6 +1960,7 @@ meta:
     287c975f-b8da-4431-b851-9fdd69430935: History # History
     444ba8fd-50b7-4dca-806f-b8bf4c61b841: 'Instruction Block' # Instruction Block
     451ebed9-368d-4404-a7f4-1c565c0dfc4a: Color # Color
+    483d978e-3f21-40c1-a303-9c836d235fef: 'Hero Slide' # Hero Slide
     0524ce74-5809-4227-9995-c07e31fcd67f: General # General
     670d1ad6-74c9-4a63-9dd9-d855df46ac10: 'Contact Form' # Contact Form
     715ee7ea-4843-403d-89ae-2933afef31f3: 'Land Sales' # Land Sales

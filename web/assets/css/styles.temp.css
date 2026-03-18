@@ -596,6 +596,114 @@ strong {
   @apply z-3 opacity-100;
 }
 
+.banner-hero {
+  width: 100%;
+  min-width: 100%;
+  justify-self: stretch;
+}
+.banner-hero__pagination-wrap {
+  @apply pointer-events-auto;
+}
+.banner-hero__pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(17, 17, 17, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.banner-hero__pagination-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 0.9rem;
+  height: 0.9rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: width 320ms ease, opacity 220ms ease, transform 220ms ease;
+}
+.banner-hero__pagination-button:hover, .banner-hero__pagination-button:focus-visible {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+.banner-hero__pagination-button.is-active {
+  width: 3.8rem;
+  opacity: 1;
+}
+.banner-hero__pagination-pill {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.96);
+}
+.banner-hero__pagination-progress {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: #eb2127;
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+.banner-hero__content-stack {
+  width: 100%;
+  min-width: 100%;
+}
+.banner-hero__content-item {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  width: 100%;
+  min-width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(1.5rem);
+  transition: opacity 420ms ease, transform 420ms ease, visibility 420ms ease;
+}
+.banner-hero__content-item.is-active {
+  max-height: none;
+  overflow: visible;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.banner-hero__text {
+  width: 100%;
+  min-width: 100%;
+}
+.banner-hero__buttons {
+  pointer-events: auto;
+  min-width: 100%;
+}
+.banner-hero__media-item {
+  transform: scale(1.035);
+  transition: opacity 700ms ease, transform 1400ms ease;
+}
+.banner-hero__media-item.active {
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .banner-hero__pagination {
+    gap: 0.6rem;
+    padding: 0.45rem 0.65rem;
+  }
+  .banner-hero__pagination-button.is-active {
+    width: 3rem;
+  }
+}
 #main-nav.scrolled {
   @apply -translate-y-[125px];
 }

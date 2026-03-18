@@ -3,4 +3,7 @@
 
 {% block content %}
 	{% include '_land/' ~ entry.type %}
+	{% if entry.type.handle == 'landServices' %}
+		{% include '_land/_partials/otherLandPages' %}
+	{% endif %}
 {% endblock %}

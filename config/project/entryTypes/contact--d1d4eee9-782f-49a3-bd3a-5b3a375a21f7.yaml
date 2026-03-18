@@ -56,6 +56,22 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 100
+          -
+            dateAdded: '2026-03-18T20:25:00+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 0e6b323a-67f7-4ab5-bb66-d695ee1361af # Slides
+            handle: null
+            instructions: 'Add slides here. Each slide contains its own text, buttons, and background asset.'
+            label: 'Hero Slides'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: dbf3e6c8-1179-45e7-81a5-8f37e44f646b
+            userCondition: null
+            warning: null
+            width: 100
         name: Content
         uid: e673e1d7-05a8-4eb2-bae4-bb60b18816e0
         userCondition: null

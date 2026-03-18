@@ -1,0 +1,140 @@
+{% extends '_includes/_blocks/bannerBase' %}
+
+{% set source = source ?? block ?? entry ?? null %}
+{% set sourceText = source and attribute(source, 'text') is defined ? source.text : null %}
+{% set assetRelation = source and attribute(source, 'asset') is defined ? source.asset : null %}
+{% set buttonRelation = source and attribute(source, 'buttons') is defined ? source.buttons : null %}
+{% set sourceSlideTime = source and attribute(source, 'slideTime') is defined ? source.slideTime : null %}
+{% set sourceHeroSlidesRelation = source and attribute(source, 'heroSlides') is defined ? source.heroSlides : null %}
+{% set heroSlidesRelation = slides is defined ? slides : (sourceHeroSlidesRelation ? sourceHeroSlidesRelation.all() : []) %}
+
+{% set slideTime = slideTime ?? sourceSlideTime ?? 8 %}
+{% set legacyText = text ?? sourceText %}
+{% set legacyAssets = assets is defined and assets is not null ? assets : (assetRelation ? assetRelation.all() : []) %}
+{% set legacyButtons = buttons is defined and buttons is not null ? buttons : (buttonRelation ? buttonRelation.all() : []) %}
+{% set legacyAsset = legacyAssets|length ? legacyAssets|first : null %}
+{% set resolvedSlides = [] %}
+
+{% if heroSlidesRelation|length %}
+	{% for slideEntry in heroSlidesRelation %}
+		{% set slideText = attribute(slideEntry, 'text') is defined ? slideEntry.text : null %}
+		{% set slideButtonsRelation = attribute(slideEntry, 'buttons') is defined ? slideEntry.buttons : null %}
+		{% set slideAssetRelation = attribute(slideEntry, 'asset') is defined ? slideEntry.asset : null %}
+		{% set slideMatrixRelation = attribute(slideEntry, 'slideMatrix') is defined ? slideEntry.slideMatrix : null %}
+		{% set slideAsset = slideAssetRelation ? slideAssetRelation.one() : null %}
+		{% set slideButtons = slideButtonsRelation ? slideButtonsRelation.all() : [] %}
+
+		{% if (not slideText or not slideAsset) and slideMatrixRelation %}
+			{% for slideBlock in slideMatrixRelation.all() %}
+				{% switch slideBlock.type.handle %}
+					{% case 'text' %}
+						{% if not slideText %}
+							{% set slideText = slideBlock.text %}
+						{% endif %}
+					{% case 'buttons' %}
+						{% if not slideButtons|length and slideBlock.buttons is defined and slideBlock.buttons %}
+							{% set slideButtons = slideBlock.buttons.all() %}
+						{% endif %}
+					{% case 'asset' %}
+						{% if not slideAsset and slideBlock.asset is defined and slideBlock.asset %}
+							{% set slideAsset = slideBlock.asset.one() %}
+						{% endif %}
+				{% endswitch %}
+			{% endfor %}
+		{% endif %}
+
+		{% set resolvedSlides = resolvedSlides|merge([{
+			id: slideEntry.id ?? loop.index,
+			text: slideText,
+			buttons: slideButtons,
+			asset: slideAsset,
+			assetMobile: null,
+			color: slideEntry.color is defined and slideEntry.color ? slideEntry.color.value : 'red'
+		}]) %}
+	{% endfor %}
+{% elseif legacyAsset or legacyText or legacyButtons|length %}
+	{% set resolvedSlides = resolvedSlides|merge([{
+		id: 'legacy-slide',
+		text: legacyText,
+		buttons: legacyButtons,
+		asset: legacyAsset,
+		assetMobile: null,
+		color: 'red'
+	}]) %}
+{% endif %}
+
+{% set hasMultipleSlides = resolvedSlides|length > 1 %}
+
+{% block content %}
+	<div class="banner-hero grid grid-cols-12 col-span-12 auto-rows-min h-full w-full">
+		{% if hasMultipleSlides %}
+			<div class="banner-hero__pagination-wrap col-span-12 row-start-1">
+				<div class="banner-hero__pagination" aria-label="Hero slides">
+					{% for slide in resolvedSlides %}
+						<button type="button" class="banner-hero__pagination-button{% if loop.first %} is-active{% endif %}" data-banner-dot data-banner-target="{{ loop.index0 }}">
+							<span class="banner-hero__pagination-pill">
+								<span class="banner-hero__pagination-progress" data-banner-dot-progress></span>
+							</span>
+							<span class="sr-only">Go to slide
+								{{ loop.index }}</span>
+						</button>
+					{% endfor %}
+				</div>
+			</div>
+		{% endif %}
+
+		<div class="banner-hero__content-stack col-span-12 row-start-2 h-full w-full">
+			{% for slide in resolvedSlides %}
+				<div class="banner-hero__content-item{% if loop.first %} is-active{% endif %}" data-banner-content="{{ loop.index0 }}">
+					{% if slide.text %}
+						<div class="banner-hero__text col-span-12 row-start-1 mt-8 lg:mt-12 mb-8 self-end grid grid-cols-12 auto-rows-min w-full">
+							{% include '_includes/_blocks/text' with {
+								text: slide.text,
+								figureClass: 'col-span-10 sm:col-span-8 md:col-span-6 lg:col-span-5 xl:col-span-4'
+							} only %}
+						</div>
+					{% endif %}
+
+					{% if slide.buttons|length %}
+						<div class="banner-hero__buttons col-span-12 row-start-2 flex max-sm:flex-wrap gap-3 lg:gap-6 w-full">
+							{% for button in slide.buttons %}
+								{% include '_includes/_blocks/button' with {
+									link: button.buttonLink,
+									label: button.buttonLabel
+								} %}
+							{% endfor %}
+						</div>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block background %}
+	{% if resolvedSlides|length %}
+		<div class="carousel banner-hero__media" data-slide-time="{{ slideTime }}" data-banner-carousel>
+			{% include '_includes/_blocks/gradient.twig' with {
+				zIndex: '4',
+				opacity: '40'
+			} %}
+			{% include '_includes/_blocks/gradientBlur' with {
+				height: '1/2',
+				gradientStop: '40',
+				blur: 'sm',
+				zIndex: '4'
+			} %}
+			{% for slide in resolvedSlides %}
+				<div class="carousel-item banner-hero__media-item absolute h-full w-full z-2 opacity-0 transition-opacity duration-700 ease-in-out bg-{{ slide.color }}{% if loop.first %} active{% endif %}" data-banner-media="{{ loop.index0 }}" aria-hidden="{{ loop.first ? 'false' : 'true' }}">
+					{% if slide.asset %}
+						{% include '_includes/_blocks/asset' with {
+							asset: slide.asset,
+							assetMobile: slide.assetMobile,
+							class: 'h-full w-full object-cover'
+						} %}
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+{% endblock %}

@@ -2,7 +2,7 @@
 {% set footerClass = '!mt-0' %}
 
 {% block content %}
-	{% if entry.asset|length %}
+	{% if (entry.heroSlides is defined and entry.heroSlides|length) or entry.asset|length %}
 		{% include '_includes/_blocks/bannerSlides' with {
             block: entry,
             backgroundClass: 'scale-up transform-all duration-100 mt-12',

@@ -27,7 +27,7 @@ fieldLayouts:
           -
             dateAdded: '2025-01-17T17:21:12+00:00'
             elementCondition: null
-            heading: 'Landing Section'
+            heading: 'Hero Slides'
             type: craft\fieldlayoutelements\Heading
             uid: 61039300-1d86-474d-9c5f-7a49daab81c5
             userCondition: null
@@ -60,53 +60,21 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            dateAdded: '2024-08-08T21:05:02+00:00'
+            dateAdded: '2026-03-18T20:25:00+00:00'
             editCondition: null
             elementCondition: null
             elementEditCondition: null
-            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            fieldUid: 0e6b323a-67f7-4ab5-bb66-d695ee1361af # Slides
             handle: null
-            instructions: null
-            label: null
+            instructions: 'Add slides here. Each slide contains its own text, buttons, and background asset.'
+            label: 'Hero Slides'
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: f0f656d0-b5be-4ed1-9e07-e1e0d9c6b76a
+            uid: 947f6df8-b1f6-486f-bcc0-45774dd588c4
             userCondition: null
             warning: null
             width: 100
-          -
-            dateAdded: '2024-09-05T17:52:19+00:00'
-            editCondition: null
-            elementCondition: null
-            elementEditCondition: null
-            fieldUid: ae97b4e4-7938-4735-b734-84f98ec34af2 # Banner Buttons
-            handle: null
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 84f1c582-142f-4c4c-b955-f28d412a3c7c
-            userCondition: null
-            warning: null
-            width: 50
-          -
-            dateAdded: '2024-11-26T00:49:55+00:00'
-            editCondition: null
-            elementCondition: null
-            elementEditCondition: null
-            fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
-            handle: null
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 17f13d88-c24b-45ec-a9a8-b72e351a64e0
-            userCondition: null
-            warning: null
-            width: 50
           -
             dateAdded: '2025-01-17T17:21:12+00:00'
             elementCondition: null

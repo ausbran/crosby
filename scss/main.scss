@@ -659,6 +659,142 @@ strong {
   }
 }
 
+.banner-hero {
+  width: 100%;
+  min-width: 100%;
+  justify-self: stretch;
+
+  &__pagination-wrap {
+    @apply pointer-events-auto;
+  }
+
+  &__pagination {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.55rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(17, 17, 17, 0.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  &__pagination-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 0.9rem;
+    height: 0.9rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    opacity: 0.85;
+    transition:
+      width 320ms ease,
+      opacity 220ms ease,
+      transform 220ms ease;
+
+    &:hover,
+    &:focus-visible {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    &.is-active {
+      width: 3.8rem;
+      opacity: 1;
+    }
+  }
+
+  &__pagination-pill {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.96);
+  }
+
+  &__pagination-progress {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: #eb2127;
+    transform: scaleX(0);
+    transform-origin: left center;
+    will-change: transform;
+  }
+
+  &__content-stack {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  &__content-item {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    width: 100%;
+    min-width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(1.5rem);
+    transition:
+      opacity 420ms ease,
+      transform 420ms ease,
+      visibility 420ms ease;
+
+    &.is-active {
+      max-height: none;
+      overflow: visible;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+  }
+
+  &__text {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  &__buttons {
+    pointer-events: auto;
+    min-width: 100%;
+  }
+
+  &__media-item {
+    transform: scale(1.035);
+    transition:
+      opacity 700ms ease,
+      transform 1400ms ease;
+
+    &.active {
+      transform: scale(1);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .banner-hero {
+    &__pagination {
+      gap: 0.6rem;
+      padding: 0.45rem 0.65rem;
+    }
+
+    &__pagination-button.is-active {
+      width: 3rem;
+    }
+
+  }
+}
+
 // nav
 #main-nav {
   &.scrolled {

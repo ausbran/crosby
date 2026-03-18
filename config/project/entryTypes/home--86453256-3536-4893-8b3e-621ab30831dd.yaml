@@ -13,55 +13,23 @@ fieldLayouts:
           -
             dateAdded: '2024-12-18T18:36:16+00:00'
             elementCondition: null
-            heading: 'Top Banner'
+            heading: 'Hero Slides'
             type: craft\fieldlayoutelements\Heading
             uid: c465d0b0-dff1-461e-8595-aabd66b99140
             userCondition: null
           -
-            dateAdded: '2024-08-21T23:09:01+00:00'
+            dateAdded: '2026-03-18T18:40:00+00:00'
             editCondition: null
             elementCondition: null
             elementEditCondition: null
-            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            fieldUid: 0e6b323a-67f7-4ab5-bb66-d695ee1361af # Slides
             handle: null
-            instructions: null
-            label: null
+            instructions: 'Add slides here. Each slide contains its own text, buttons, and background asset.'
+            label: 'Hero Slides'
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 1090b3af-4104-44b4-856d-6ae7a4414142
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2024-08-21T23:09:01+00:00'
-            editCondition: null
-            elementCondition: null
-            elementEditCondition: null
-            fieldUid: ae97b4e4-7938-4735-b734-84f98ec34af2 # Banner Buttons
-            handle: null
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: a882504e-b46a-4099-a490-7b739df7545e
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2024-11-22T04:41:45+00:00'
-            editCondition: null
-            elementCondition: null
-            elementEditCondition: null
-            fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
-            handle: null
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: bdf09a59-9eed-425d-9fbf-179f8006b17e
+            uid: 0ce70883-f638-4ef2-83b1-cc786d1b8d9c
             userCondition: null
             warning: null
             width: 100

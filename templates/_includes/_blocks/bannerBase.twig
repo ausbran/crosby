@@ -6,7 +6,7 @@
 
 <div class="banner {{ 'entry-type-' ~ entry.type }} {{ entry.slug }} {{ bannerClasses }} {{ bannerClass }} py-6 sm:py-8 md:py-12 lg:py-16 relative min-h-[600px] lg:min-h-[820px] max-md:max-h-[800px] max-lg:max-h-[1000px] h-svh w-screen overflow-hidden bg-white">
 	<div class="text page items-end flex h-full z-5 relative text-white">
-		<div class="grid grid-cols-12 fade-in">
+		<div class="grid grid-cols-12 fade-in w-full">
 			{% block content %}
 				{# Default content, can be overridden in child templates #}
 			{% endblock %}

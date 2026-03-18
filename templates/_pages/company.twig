@@ -2,8 +2,8 @@
 {% set bodyClass = entry.color ?? '' %}
 
 {% block content %}
-	{% if entry.asset|length %}
-		{% include '_includes/_blocks/bannerSlides' with {
+	{% if (entry.heroSlides is defined and entry.heroSlides|length) or entry.asset|length %}
+		{% include '_includes/_blocks/bannerHero' with {
             block: entry
         } %}
 	{% else %}

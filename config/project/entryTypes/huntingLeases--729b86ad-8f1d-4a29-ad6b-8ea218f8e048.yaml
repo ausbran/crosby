@@ -1,0 +1,168 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  c3159597-f513-4416-88d5-f91f27b0c329:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-05-07T23:04:01+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: f6c3037a-a389-45dc-a0cd-c448e9e6223e # Staff Contact
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 384f114e-c499-419a-83df-b183c1e08d34
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-05-07T23:04:01+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: b9f8efa7-c07a-4cf9-9a54-c529efbc29dd
+            userCondition: null
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-02-04T01:37:55+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 44bdcfbb-0876-4989-81a5-dab80ccc488a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-04T01:39:28+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a394fb03-7f2e-489e-9fb6-01a5f4fd9b48
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-05-08T18:24:10+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
+            handle: null
+            instructions: 'Choose an image to associate with this page for social media links and related entries links.'
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: da761aba-fcc8-4caa-981d-df052a9855d9
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-05-08T18:24:10+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 36644d02-9a50-4121-adad-cbf113790cbf
+            userCondition: null
+          -
+            dateAdded: '2025-05-08T17:02:09+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 4f214814-db96-4951-a3b1-03392ef7ef4d # Entries
+            handle: null
+            instructions: "Choose other pages on the site that you'd like to display below the listings."
+            label: 'Related Entries'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fd4f9086-2937-4366-91b3-216ac4220029
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-05-08T17:11:49+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            handle: entriesText
+            instructions: null
+            label: 'Related Entries Text'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 88d4dab9-a859-49eb-afd3-847ab466b589
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 622f7952-1c33-4b45-9278-d6a2845a1602
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-04T21:43:14+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 451ebed9-368d-4404-a7f4-1c565c0dfc4a # Color
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 58bb00a9-0d2d-490d-bd9e-005e5999da8d
+            userCondition: null
+            warning: null
+            width: 100
+        name: Settings
+        uid: 09787b0d-7bba-483d-b4fe-77bbf837bb3f
+        userCondition: null
+    thumbFieldKey: null
+handle: huntingLeases
+hasTitleField: true
+icon: null
+name: 'Hunting Leases'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

@@ -1,0 +1,59 @@
+{% set columnSpan = slide.columnSpan ?? 4 %}
+{% set color = slide.color ?? 'red' %}
+{% set assetRelation = slide.asset is defined ? slide.asset : null %}
+{% set asset = assetRelation ? assetRelation.one() : null %}
+{% set hasBackground = asset ? true : false %}
+{% set isWhiteWithoutAsset = color == 'white' and not hasBackground %}
+{% set slideTextClass = isWhiteWithoutAsset ? 'text-charcoal' : 'text-white' %}
+{% set widthPercent = ((columnSpan / 12) * 100)|number_format(6, '.', '') %}
+{% set buttonClass = (isWhiteWithoutAsset ? '!bg-white !text-red text-red' : '!bg-white !text-' ~ color ~ ' text-' ~ color) %}
+{% set buttonStyle = 'display:inline-flex;width:auto;height:auto;min-height:0;line-height:1.2;' ~ (isWhiteWithoutAsset ? 'border:1px solid #EB2127;' : '') %}
+{% set buttonIncludeProps = {
+    class: buttonClass,
+    attributes: {
+        style: buttonStyle
+    }
+} %}
+{% if isWhiteWithoutAsset %}
+    {% set buttonIncludeProps = buttonIncludeProps|merge({
+        firstArrow: 'red-arrow',
+        secondArrow: 'red-arrow'
+    }) %}
+{% endif %}
+
+<div class="max-lg:!max-w-[500px] max-lg:!w-[calc(100%-20px)] flex-none slide"
+    style="width: calc({{ widthPercent }}% - 1rem); max-width: calc({{ widthPercent }}% - 1rem);">
+    
+    <div class="rounded-xl overflow-hidden h-full relative bg-{{ color }}"{% if isWhiteWithoutAsset %} style="border: 1px solid #EB2127;"{% endif %}>
+        {% if asset %}
+            {% include '_includes/_blocks/gradient' with { 
+                height: '1/2', opacity: 40
+            } %}
+            {% include '_includes/_blocks/asset' with {
+                asset: asset
+            } %}
+        {% endif %}
+
+        <div class="w-full absolute z-2 space-y-4 p-8 bottom-0 {{ slideTextClass }}">
+            {% if slide.title|length %}
+                <h3 class="text-4xl">{{ slide.title }}</h3>
+            {% endif %}
+            {% if slide.text|length %}
+                {% include '_includes/_blocks/text' with {
+                    text: slide.text,
+                    h1Class: 'col-span-12 ' ~ slideTextClass,
+                    h2Class: 'col-span-12 ' ~ slideTextClass,
+                    h3Class: 'col-span-12 ' ~ slideTextClass,
+                    h4Class: 'col-span-12 ' ~ slideTextClass,
+                    pClass: 'col-span-12 text-base max-w-[275px] w-full ' ~ slideTextClass
+                } %}
+            {% endif %}
+            {% if slide.buttonLink|length %}
+                {% include '_includes/_blocks/button' with buttonIncludeProps|merge({
+                    link: slide.buttonLink,
+                    label: slide.buttonLabel
+                }) %}
+            {% endif %}
+        </div>
+    </div>
+</div>

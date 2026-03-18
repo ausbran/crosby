@@ -1,0 +1,129 @@
+{% set source = source ?? block ?? entry %}
+{% set historyBlocks = historyBlocks ?? (source.historyBlocks is defined ? source.historyBlocks.all() : []) %}
+{% set sizing = sizing ?? 'col-span-12 md:col-span-10' %}
+
+{% if historyBlocks|length %}
+	{% set firstBlock = historyBlocks|first %}
+	{% set firstBlockColor = firstBlock.color ?? 'red' %}
+
+	<div class="page mx-auto space-y-10 xl:space-y-20 grid grid-cols-12">
+		<div class="h-[200px] w-[300%] -left-[100%] absolute z-0 h-30 bg-{{ firstBlockColor }}"></div>
+		<div class="h-[200px] top-[199px] w-[300%] -left-[100%] !mt-0 absolute z-0 bg-gradient-to-b from-{{ firstBlockColor }} to-transparent pointer-events-none select-none"></div>
+
+		{% for block in historyBlocks %}
+			{% set color = block.color ?? 'red' %}
+			{% set bg %}
+			<div class="bg-{{ color == 'white' ? 'white' : color }} h-[calc(100%+200px)] w-[300%] -left-[100%] absolute -z-1 bg-texture"></div>
+			<div class="{% if color == 'white' %}bg-red{% else %}bg-white{% endif %} border-white w-[1px] h-[calc(100%+5rem)] col-span-1 top-0 absolute !mt-0 -left-[19%]"></div>
+			{% endset %}
+
+			<div class="grid grid-cols-subgrid {{ sizing }} col-start-1 md:col-start-3 {% if loop.first %}pt-20 {% endif %} {% if color == 'white' %} text-charcoal {% else %} text-white {% endif %}">
+				{% switch block.type.handle %}
+
+					{% case 'headerBlock' %}
+						{% set textLength = block.text|striptags|length %}
+						<div class="grid grid-cols-subgrid {{ sizing }} relative pt-10 xl:pt-20">
+							{{ bg|raw }}
+							<span class="z-4 static max-md:mb-4 md:absolute top-16 xl:top-32 -left-[20.6%] lg:-left-[20%] text-lg md:text-3xl font-medium fade-in flex gap-6" data-cascade>
+								<span class="hidden md:block {{ color == 'white' ? 'bg-white border-red' : 'bg-' ~ color ~ ' border-white' }} h-6 w-6 rounded-xl border-2"></span>
+								{{ block.year }}
+							</span>
+							<h1 class="{% if textLength > 700 %}lg:col-span-12{% else %}lg:col-span-5{% endif %} text-scale {{ sizing }} fade-in" data-cascade>
+								{{ block.title }}
+							</h1>
+							<div class="{% if textLength > 700 %}lg:row-start-2 lg:col-start-1 xl:col-span-6{% else %}lg:col-start-7 lg:col-span-4{% endif %} grid grid-cols-subgrid col-span-12 sm:col-span-10 md:col-span-8 fade-in content-start" data-cascade>
+								<h2 class="mb-6 col-span-8 md:col-span-6 lg:col-span-3 max-w-[300px] row-start-1 text-3xl mt-4">
+									{{ block.subHead }}
+								</h2>
+								<div class="text-base col-span-12 row-start-2">
+									{% include '_includes/_blocks/text' with {
+										text: block.text,
+										pClass: 'text-base col-span-12'
+									} %}
+								</div>
+							</div>
+						</div>
+
+					{% case 'sliderBlock' %}
+						<div class="relative grid grid-cols-subgrid {{ sizing }}">
+							{{ bg|raw }}
+							<!-- Slider Wrapper -->
+							{% set textColor = (color == 'white') ? 'charcoal' : 'white' %}
+							{# Define default sliderVars #}
+							{% set sliderVars = {
+								slides: block.slides.all(),
+								sliderWrapperClass: 'history grid grid-cols-subgrid ' ~ sizing,
+								sliderClass: 'max-md:w-screen ' ~ sizing,
+								fadeIn: true,
+								slideTemplate: '_includes/_blocks/slideMatrix',
+								slideClass: 'max-lg:!w-[calc(100%-20px)] max-lg:!max-w-[calc(100%-20px)]',
+								arrows: true,
+								gridSpan: 10,
+								textColor: textColor,
+								arrowsClass: 'absolute bottom-0 -top-[50px] mx-[30px] flex items-center w-full max-w-[1225px] justify-between'
+							} %}
+							{# Conditionally add arrow styles when color is white #}
+							{% if color == 'red' %}
+								{% set sliderVars = sliderVars|merge({
+									prevArrowClass: '!bg-white',
+									nextArrowClass: '!bg-white',
+									firstArrow: 'red-arrow',
+									secondArrow: 'red-arrow'
+								}) %}
+							{% endif %}
+							{% include '_includes/_blocks/slider' with sliderVars %}
+						</div>
+
+					{% case 'largeImageBlock' %}
+						{% set heightOption = block.height ?? 'medium' %}
+						{% set heightClassMap = {
+							'small': 'max-h-[400px] md:max-h-[500px] xl:max-h-[600px]',
+							'medium': 'max-h-[500px] md:max-h-[600px] xl:max-h-[700px]',
+							'large': 'max-h-[600px] md:max-h-[700px] xl:max-h-[800px]',
+							'original': 'h-unset'
+						} %}
+						{% set heightClass = heightClassMap[(heightOption ?? 'medium')|string] ?? heightClassMap['medium'] %}
+						<div class="grid grid-cols-subgrid {{ sizing }} relative {{ heightClass }}">
+							{{ bg|raw }}
+							<div class="{{ sizing }} rounded-xl overflow-hidden fade-in" data-cascade>
+								{% include '_includes/_blocks/asset' with {
+									asset: block.asset.one(),
+									ratio: '1:1'
+								} %}
+							</div>
+							<div class="mt-4 col-span-3 fade-in" data-cascade>
+								{% include '_includes/_blocks/text' with {
+									text: block.caption,
+									pClass: 'text-base col-span-12'
+								} %}
+							</div>
+						</div>
+
+					{% case 'pullQuoteBlock' %}
+						<blockquote class="grid grid-cols-subgrid {{ sizing }} relative {% if color == 'white' %} text-charcoal {% else %} text-white {% endif %}">
+							{{ bg|raw }}
+							<div class="fade-in grid grid-cols-subgrid {{ sizing }}">
+								{% include '_includes/_blocks/text' with {
+									text: block.text
+								} %}
+							</div>
+						</blockquote>
+
+					{% case 'masonryBlock' %}
+						<div class="grid grid-cols-subgrid {{ sizing }} !gap-y-6 relative">
+							{{ bg|raw }}
+							{% for key, asset in block.asset.all() %}
+								<div class="rounded-xl overflow-hidden fade-in {% if key == 0 %} col-span-3 row-span-1 one{% endif %}{% if key == 1 %} col-span-4 row-span-2 two {% endif %}{% if key == 2 %} col-span-3 row-span-1 three{% endif %}{% if key == 3 %} col-span-3 row-span-2 four{% endif %}{% if key == 4 %} col-span-4 row-span-1 five{% endif %}{% if key == 5 %} col-span-3 row-span-2 six{% endif %}" data-cascade>
+									{% include '_includes/_blocks/asset' with {
+										class: 'h-full object-cover'
+									} %}
+								</div>
+							{% endfor %}
+						</div>
+
+				{% endswitch %}
+			</div>
+
+		{% endfor %}
+	</div>
+{% endif %}

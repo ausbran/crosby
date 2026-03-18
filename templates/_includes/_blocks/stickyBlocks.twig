@@ -1,0 +1,26 @@
+{% set source = source ?? block ?? entry ?? null %}
+{% set stickyBlocksRelation = source and attribute(source, 'stickyBlocks') is defined ? source.stickyBlocks : null %}
+{% set stickyBlocksHeader = source and attribute(source, 'stickyBlocksHeader') is defined ? source.stickyBlocksHeader : null %}
+{% if stickyBlocks is not defined or stickyBlocks is null %}
+	{% set stickyBlocks = stickyBlocksRelation ? stickyBlocksRelation.all() : [] %}
+{% endif %}
+{% set textColor = textColor ?? 'text-white' %}
+{% set showNumber = showNumber is defined ? showNumber : true %}
+
+{% if stickyBlocksHeader %}
+	<div class="page max-lg:!m-0 max-lg:!mb-6 max-lg:!max-w-fit">
+		<div class="md:block lg:hidden xl:block static lg:absolute border border-white inline text-md font-medium tracking-tighter text-white p-2.5 px-4 md:p-3 lg:p-4 rounded-md mb-12">
+			{{ stickyBlocksHeader }}
+		</div>
+	</div>
+{% endif %}
+<div class="sticky-blocks page mx-auto grid grid-cols-12 relative">
+	{% for block in stickyBlocks %}
+		{% include '_includes/_blocks/stickyBlock' with {
+			block: block,
+			index: loop.index,
+			textColor: textColor,
+			showNumber: showNumber
+		} %}
+	{% endfor %}
+</div>

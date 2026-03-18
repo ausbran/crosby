@@ -1,0 +1,42 @@
+allowLineBreaksInTitles: false
+color: orange
+description: null
+fieldLayouts:
+  fb015538-9606-4dd6-babc-e18151ad252c:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2024-11-22T01:14:44+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: ae97b4e4-7938-4735-b734-84f98ec34af2 # Banner Buttons
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bef99f18-f8ea-4bd2-9746-af92c3e1ef35
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: c8f7b99d-7375-4dff-991d-9dc778fdf35d
+        userCondition: null
+    thumbFieldKey: null
+handle: buttons
+hasTitleField: false
+icon: circle-dot
+name: Buttons
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

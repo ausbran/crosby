@@ -1,0 +1,172 @@
+allowLineBreaksInTitles: false
+color: orange
+description: null
+fieldLayouts:
+  1df27aef-3e2f-41a2-88dc-f257d1215083:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-05-09T23:55:58+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: d6e5e01f-8256-400c-b615-acd01b77798a # Exclude From Team Page
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6840d3f1-4a50-4384-936b-30e0a7e80f20
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-05-10T00:44:05+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: d120a308-5e2d-4f00-bb5d-c52900dcedf5
+            userCondition: null
+          -
+            dateAdded: '2025-05-10T00:37:33+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 54f615f9-cbc5-4080-8210-ef8cbb1d474d # Staff Category
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f3088bbd-092b-4479-8172-3487323f438a
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2024-12-03T20:15:58+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 87bed415-dd42-4fd8-8671-4c9971c57da5
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-08-07T23:52:51+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: Name
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 467843e7-afda-4f9c-a548-664e67d1e2b1
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2024-08-07T23:52:51+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
+            handle: position
+            instructions: null
+            label: Position
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c598f3ba-76bf-402a-82bb-372733724888
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2024-12-04T00:01:10+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: be73bd2f-9a80-4f67-a33c-79c036493434 # Email
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bce8a78b-0220-4d83-bcfe-53fa0beb1bd4
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2024-12-04T00:01:10+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: a13e25fc-5eb6-46ae-a677-3b785baa9288 # Phone Number
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 123a45a4-3b8a-4a04-93b9-9da9cc635d84
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2024-08-07T23:52:51+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            handle: bio
+            instructions: null
+            label: Bio
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c2fbbc78-da61-4d4a-bde6-1c781101f1be
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 8fb86bb4-783f-488e-97b7-0b359457932a
+        userCondition: null
+    thumbFieldKey: null
+handle: staff
+hasTitleField: true
+icon: user
+name: Staff
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

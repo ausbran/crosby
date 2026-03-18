@@ -1,0 +1,45 @@
+{% set slideTemplate = slideTemplate ?? null %}
+{% set slideRelation = block is defined and block and attribute(block, 'slides') is defined ? block.slides : null %}
+{% if slides is not defined or slides is null %}
+	{% set slides = slideRelation ? slideRelation.all() : [] %}
+{% endif %}
+{% set header = (header is defined) ? header : (block.sliderHeader is defined ? block.sliderHeader : null) %}
+{% set showHeader = showHeader is defined ? showHeader : true %}
+{% set hasHeader = showHeader and header %}
+{% set sliderWrapperClass = sliderWrapperClass ?? null %}
+{% set sliderClass = sliderClass ?? null %}
+{% set arrows = arrows ?? true %}
+{% set arrowsClass = arrowsClass ?? 'hidden md:flex' %}
+{% set fadeIn = fadeIn is defined ? 'fade-in' : '' %}
+
+<div class="slider-wrapper {{ sliderWrapperClass }} {{ fadeIn }}" data-cascade>
+	{% if hasHeader %}
+		<div class="page col-span-12 flex justify-between items-center mb-4 md:mb-8">
+			<h2>{{ header }}</h2>
+			{% include '_includes/_icons/arrows' with {
+				arrowsClass: 'hidden md:flex'
+			} %}
+		</div>
+	{% endif %}
+	<div class="slider {{ sliderClass }}">
+		{% block slides %}
+			{% for slide in slides %}
+				{% if slideTemplate %}
+					{% include slideTemplate with { slide: slide } %}
+				{% else %}
+					{% switch slide.type.handle %}
+						{% case 'singleSlide' %}
+							{% include '_includes/_blocks/slideSingle' with { slide: slide } %}
+						{% case 'doubleSlide' %}
+							{% include '_includes/_blocks/slideDouble' with { slide: slide } %}
+					{% endswitch %}
+				{% endif %}
+			{% endfor %}
+		{% endblock %}
+	</div>
+	{% if arrows and not hasHeader %}
+		{% include '_includes/_icons/arrows' with {
+			arrowsClass: arrowsClass
+		} %}
+	{% endif %}
+</div>

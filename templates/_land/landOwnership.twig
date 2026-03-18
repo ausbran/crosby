@@ -1,0 +1,23 @@
+{% extends '_land/layout' %}
+
+{% block left %}
+	<!-- Blocks Section -->
+	<div class="z-1 col-span-6 grid grid-cols-6 space-y-6 mb-0 sm:!mb-6 max-md:mx-6">
+		{% for block in entry.landBlocks.all() %}
+			{% include '_land/_partials/fullBlock' with {
+				headerClass: '!max-w-40 text-5xl md:text-6xl leading-[.8em]',
+				textClass: '!max-w-64'
+			} %}
+		{% endfor %}
+	</div>
+	{% include '_land/_partials/relatedEntries' %}
+
+	<script>
+				// Define mapData globally
+		window.mapData = {
+		shapefiles: [{% for file in entry.shapeFile.all() %}"{{ file.url }}"{% if not loop.last %},{% endif %}{% endfor %}]
+		};
+	</script>
+
+
+{% endblock %}

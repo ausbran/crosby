@@ -1,0 +1,7 @@
+{% set bodyClass = 'bg-texture !overflow-hidden !max-w-screen' %}
+
+{% block content %}
+	{% include '_includes/_blocks/history' with {
+		source: entry
+	} %}
+{% endblock %}

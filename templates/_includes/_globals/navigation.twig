@@ -1,0 +1,80 @@
+{% set navigation = craft.entries().section('navigation').level(1).all() %}
+
+<nav id="main-nav" class="md:page top-0 md:top-8 grid grid-cols-12 fixed left-0 right-0 z-10 transition-transform duration-300 ease-in-out">
+    <div class="inner relative p-6 md:p-8 flex col-span-12 xl:col-span-8 justify-between items-center text-center text-base bg-red text-white md:rounded-xl z-[9999]">
+        <!-- Logo -->
+        <a href="{{ currentSite.baseUrl }}" class="transition-opacity duration-300 relative z-20 w-[80px] md:w-[100px] hover:opacity-60">
+            {% include '_includes/_svg/logo-horizontal.svg' %}
+        </a>
+
+        <!-- Desktop Navigation -->
+        <ul id="desktop-menu" class="hidden md:flex primary-links justify-evenly gap-10 lg:gap-12 highlight justify-between flex flex-row transition-all duration-300">
+            {% for primary in navigation %}
+                <li class="group font-medium z-10">
+                    <span class="relative z-3 tracking-tighter cursor-pointer transition-opacity duration-300 group-hover:opacity-60 group-focus-within:opacity-60">{{ primary.title }}</span>
+                    {% if primary.hasDescendants %}
+                        <ul class="secondary-links">
+                            <div class="z-2 p-16 pt-40 space-y-10">
+                                {% for secondary in primary.getDescendants().level(2) %}
+                                    <li class="tracking-tighter text-nav">
+                                        <a class="transition-opacity duration-300 hover:opacity-60" href="{{ secondary.linkUrl }}">{{ secondary.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </div>
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            <div class="nav-bg-overlay rounded-br-xl rounded-bl-xl absolute top-[83px] left-0 w-full transition-all duration-300 ease-in-out z-0" style="height: 0;"></div>
+        </ul>
+
+		<!-- Mobile Navigation -->
+		<div id="mobile-menu" class="flex md:hidden bg-red fixed top-16 left-0 w-full h-screen text-white -translate-x-full transition-transform duration-300 z-40">
+			<ul id="mobile-primary" class="p-6 pt-12 space-y-10">
+					{% for primary in navigation %}
+						<li class="text-left block primary-link flex gap-6 transition-all duration-200" data-secondary="#secondary-{{ loop.index }}">
+							{% include '_includes/_blocks/button' with {
+								link: '#',
+								label: primary.title,
+								class: '!p-0 !text-4xl !bg-transparent'
+							} %}
+						</li>
+						{% if primary.hasDescendants %}
+							<ul id="secondary-{{ loop.index }}" class="!mt-0 z-10 mobile-secondary text-left fixed top-0 left-0 w-full h-full bg-inherit p-6 pt-12 space-y-10 -translate-x-full transition-transform duration-300">
+								<button class="back-button text-2xl transition-all duration-300 hover:opacity-60">&larr; Back</button>
+								{% for secondary in primary.getDescendants().level(2) %}
+									<li>
+										<a href="{{ secondary.linkUrl }}" class="transition-all duration-300 hover:opacity-60 text-4xl">{{ secondary.title }}</a>
+									</li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+
+        <!-- Search Bar (Hidden Initially) -->
+        <form id="search-bar" action="{{ siteUrl('search') }}" method="get" class="bg-transparent rounded-xl opacity-0 invisible translate-y-[25px] absolute inset-0 flex items-center justify-center gap-4 p-6 md:p-8 transition-all duration-300">
+            <input id="nav-search-input" type="text" name="q" placeholder="Search" class="selection:bg-red-700 selection:text-white placeholder-white/80 focus:placeholder-white/50 tracking-tighter font-medium text-base bg-transparent text-white p-2 pl-4 rounded-md border border-white focus:border-white w-2/3 md:w-1/2 focus:outline-none">
+            <button type="submit" class="search-bar-submit text-white transition-opacity duration-300 hover:opacity-60 focus-visible:opacity-60">
+                {% include '_includes/_icons/magnify' %}
+            </button>
+        </form>
+
+        <!-- Icons -->
+        <div class="icons relative">
+            {% include '_includes/_icons/nav' with {
+				class: 'block md:hidden hover:opacity-60 transition-all duration-300'
+			} %}
+            <div class="hidden md:block overflow-hidden relative w-[22.5px] h-[23.32px]">
+                <button id="search-icon" class="!bg-transparent btn icon magnify {% if class is defined %}{{ class }}{% endif %} transition-opacity duration-300 hover:opacity-60 focus-visible:opacity-60">
+                    {% include "_includes/_svg/magnify.svg" %}
+                </button>
+                <button type="button" id="close-search" class="w-full h-full top-0 left-0 absolute translate-y-full transition-all duration-300 hover:opacity-60 focus-visible:opacity-60">
+                    {% include "_includes/_svg/close.svg" %}
+                </button>
+            </div>
+
+        </div>
+    </div>
+</nav>

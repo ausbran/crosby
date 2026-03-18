@@ -1,0 +1,6 @@
+{% extends "index" %}
+{% set bodyClass = (entry.color ?? '') ~ ' bg-texture' %}
+
+{% block content %}
+	{% include '_land/' ~ entry.type %}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% set profilesClass = profilesClass ?? null %}
+
+<div class="page grid grid-cols-12 {{ profilesClass }}">
+    {% set categories = craft.categories.group(parent).all() %}
+    {% for category in categories %}
+        {% set contacts = craft.entries()
+            .section('staff')
+            .relatedTo(category)
+            .excludeFromTeamPage(false)
+            .all() %}
+        <div class="col-span-12 grid grid-cols-subgrid fade-in slider-button-js">
+            <div class="col-span-12 grid grid-cols-subgrid mb-8 relative space-y-4 lg:space-y-6">
+                <h2 class="col-span-12">{{ category.title }}</h2>
+                {% include '_includes/_blocks/text' with {
+                    text: category.text,
+                    pClass: 'col-span-12 md:col-span-6 lg:col-span-5 xl:col-span-4'
+                } %}
+                {% if contacts|length > 2 %}
+                    {% include '_includes/_icons/arrows' with {
+                        arrowsClass: 'absolute right-0 bottom-0 !mb-0 hidden md:flex'
+                    } %}
+                {% endif %}
+            </div>
+            
+            {% include '_includes/_blocks/slider' with { 
+                slides: contacts,
+                slideTemplate: '_includes/_blocks/slideStaff',
+                sliderWrapperClass: 'mb-20 col-span-12',
+                sliderClass: 'overflow-y-hidden py-[2px]',
+                arrows: false
+            } %}
+
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+  window.contactData = window.contactData || [];
+  {% for category in categories %}
+    {% for contact in craft.entries().section(parent).relatedTo(category).all() %}
+      {% if contact.id is not null %}
+        window.contactData.push({
+          id: "{{ contact.id }}",
+          title: "{{ contact.title|e('js') }}",
+          bio: "{{ contact.bio|striptags }}",
+          asset: "{{ contact.asset.one() ? contact.asset.one().url : '' }}"
+        });
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</script>

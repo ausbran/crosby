@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<OgcCoordinateSystem xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>NAD83</Name>
+  <Parameters>+proj=longlat +ellps=GRS80 +datum=NAD83 +no_defs</Parameters>
+  <Srid>NAD83</Srid>
+</OgcCoordinateSystem>

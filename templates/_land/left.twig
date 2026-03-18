@@ -1,0 +1,88 @@
+<!-- Listings Section -->
+<h2 class="absolute lg:static max-lg:left-auto max-lg:right-6 -top-[4px] lg:top-unset text-white lg:text-charcoal text-xl lg:text-3xl col-span-12 lg:col-span-6 !mt-0 lg:!mt-16 pointer-events-none">{{ listings|length }} Listings</h2>
+
+<div class="z-1 col-span-12 lg:col-span-6 overflow-x-auto lg:overflow-visible inline-flex lg:grid grid-cols-12 lg:grid-cols-6 gap-x-6 !gap-y-6 px-6 lg:px-0 items-start justify-start max-lg:snap-x scroll-pl-6 lg:scroll-pl-none">
+    {% for listing in listings %}
+       <div class="max-w-[350px] lg:max-w-none w-[calc(100vw-80px)] lg:w-auto flex-none col-span-6 xl:col-span-3 relative bg-white rounded-lg lg:rounded-none max-lg:snap-start snap-always">
+            {% if listing.asset.one() %}
+                <div data-id="{{listing.id}}" class="image-button cursor-pointer outline-hover h-32 lg:h-60 object-cover rounded-b-none rounded-t-lg lg:!rounded-xl overflow-hidden w-full">
+                    {% include '_includes/_blocks/asset' with {
+                        asset: listing.asset.one(),
+                        class: "w-full h-full object-cover"
+                    } %}
+                </div>
+            {% else %}
+                <div data-id="{{listing.id}}" class="image-button cursor-pointer bg-placeholder bg-cover outline-hover h-32 lg:h-60 object-cover rounded-b-none rounded-t-lg lg:!rounded-xl overflow-hidden w-full">
+                </div>
+            {% endif %}
+            <div class="group p-4 lg:px-0">
+                <h3 class="text-2xl lg:text-3xl font-medium">
+                    {{ listing.title }}
+                </h3>
+                <div class="flex flex-wrap justify-between pr-4">
+                    <div class="group gap-4 lg:gap-6 mr-4 lg:mr-6 flex text-[14px] lg:text-base tracking-tight">
+                        {% if listing.address is defined %}
+                            {% set address = listing.address.one() %}
+                            {% if address %}
+                                <span class="font-normal">{{ address.locality }},
+                                    {{ address.administrativeArea }}</span>
+                            {% endif %}
+                        {% endif %}
+                        <span class="font-normal">
+                            {{ listing.acreage }}
+                            Acres
+                        </span>
+                    </div>
+                    {% include '_includes/_blocks/button' with {
+                        link: '#',
+                        label: 'View',
+                        class: 'btn-inline view-button',
+                        firstArrow: 'red-arrow',
+                        secondArrow: 'black-arrow',
+                        attributes: {
+                            'data-id': listing.id
+                        }
+                    } %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% include '_land/_partials/relatedEntries' %}
+</div>
+
+{% set companyPhone = '+1-504-274-2380' %}
+<script>
+  window.mapData = {
+    listings: [{% for listing in listings %}{
+      id: {{ (listing.id ~ '')|json_encode|raw }},
+      title: {{ listing.title|json_encode|raw }},
+      description: {{ listing.text|striptags|json_encode|raw }},
+      directions: {{ listing.directions|json_encode|raw }},
+      address: {
+        addressLine1: {{ (listing.address.one() ? listing.address.one().addressLine1 : '')|json_encode|raw }},
+        addressLine2: {{ (listing.address.one() ? listing.address.one().addressLine2 : '')|json_encode|raw }},
+        locality: {{ (listing.address.one() ? listing.address.one().locality : '')|json_encode|raw }},
+        administrativeArea: {{ (listing.address.one() ? listing.address.one().administrativeArea : '')|json_encode|raw }}
+      },
+      price: {{ listing.price|default('')|json_encode|raw }},
+      acreage: {{ listing.acreage|default('')|json_encode|raw }},
+      features: [{% for feature in listing.features.all() %}{
+        title: {{ feature.title|default('')|json_encode|raw }},
+        text: {{ feature.text|striptags|json_encode|raw }}
+      }{% if not loop.last %},{% endif %}{% endfor %}],
+      staffContact: {
+        phone: {{ ((listing.staffContact.one() ? listing.staffContact.one().phone : companyPhone) ~ '')|json_encode|raw }},
+        name: {{ (listing.staffContact.one() ? listing.staffContact.one().title : '')|json_encode|raw }},
+        position: {{ (listing.staffContact.one() ? listing.staffContact.one().position : '')|json_encode|raw }},
+        asset: {{ (listing.staffContact.one() and listing.staffContact.one().asset.one() ? listing.staffContact.one().asset.one().url : '')|json_encode|raw }}
+      },
+      images: [{% for image in listing.asset.all() %}
+        {{ include('_includes/_blocks/asset', {
+            asset: image,
+            class: "w-full" ~ (listing.asset.all()|length == 1 ? ' single' : '')
+        })|json_encode|raw }}{% if not loop.last %},{% endif %}{% endfor %}],
+      shapefile: [{% for file in listing.shapeFile.all() %}{{ file.url|json_encode|raw }}{% if not loop.last %},{% endif %}{% endfor %}]
+    }{% if not loop.last %},{% endif %}{% endfor %}]
+  };
+</script>

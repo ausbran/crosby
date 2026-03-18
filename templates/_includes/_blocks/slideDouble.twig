@@ -1,0 +1,66 @@
+{% set columnSpan = slide.columnSpan ?? 4 %}
+{% set color = slide.color ?? 'red' %}
+{% set widthPercent = ((columnSpan / 12) * 100)|number_format(6, '.', '') %}
+{% set buttonClass = '!bg-white !text-' ~ color ~ ' text-' ~ color %}
+{% set buttonStyle = 'display:inline-flex;width:auto;height:auto;min-height:0;line-height:1.2;' %}
+
+<div class="slide max-lg:!max-w-[1000px] max-lg:gap-x-4 max-lg:!w-[calc(200%-20px)] flex-none flex flex-row lg:flex-col gap-y-4 lg:gap-y-6" style="width: calc({{ widthPercent }}% - 1rem); max-width: calc({{ widthPercent }}% - 1rem);">
+
+	{% for i in [1, 2] %}
+		{% set titleKey = i == 1 ? 'title' : 'title2' %}
+		{% set textKey = i == 1 ? 'text' : 'text2' %}
+		{% set buttonLinkKey = i == 1 ? 'buttonLink' : 'buttonLink2' %}
+		{% set buttonLabelKey = i == 1 ? 'buttonLabel' : 'buttonLabel2' %}
+		{% set assetKey = i == 1 ? 'asset' : 'asset2' %}
+		{% set assetRelation = attribute(slide, assetKey) %}
+		{% set asset = assetRelation ? assetRelation.one() : null %}
+		{% set hasBackground = asset ? true : false %}
+		{% set isWhiteWithoutAsset = color == 'white' and not hasBackground %}
+		{% set slideTextClass = isWhiteWithoutAsset ? 'text-charcoal' : 'text-white' %}
+		{% set cardButtonClass = isWhiteWithoutAsset ? '!bg-white !text-red text-red' : buttonClass %}
+		{% set cardButtonStyle = buttonStyle ~ (isWhiteWithoutAsset ? 'border:1px solid #EB2127;' : '') %}
+		{% set buttonIncludeProps = {
+            class: cardButtonClass,
+            attributes: {
+                style: cardButtonStyle
+            }
+        } %}
+		{% if isWhiteWithoutAsset %}
+			{% set buttonIncludeProps = buttonIncludeProps|merge({
+                firstArrow: 'red-arrow',
+                secondArrow: 'red-arrow'
+            }) %}
+		{% endif %}
+
+		<div class="rounded-xl overflow-hidden relative max-lg:w-1/2 h-full lg:h-1/2 bg-{{ color }}" {% if isWhiteWithoutAsset %} style="border: 1px solid #EB2127;" {% endif %}>
+			{% if asset %}
+				{% include '_includes/_blocks/gradient' with { height: '1/2', opacity: 40 } %}
+				{% include '_includes/_blocks/asset' with { asset: asset } %}
+			{% endif %}
+
+			<div class="w-full absolute z-2 space-y-4 p-8 bottom-0 {{ slideTextClass }}">
+				{% if attribute(slide, titleKey)|length %}
+					<h3 class="text-4xl">{{ attribute(slide, titleKey) }}</h3>
+				{% endif %}
+
+				{% if attribute(slide, textKey)|length %}
+					{% include '_includes/_blocks/text' with {
+                        text: attribute(slide, textKey),
+                        h1Class: 'col-span-12 ' ~ slideTextClass,
+                        h2Class: 'col-span-12 ' ~ slideTextClass,
+                        h3Class: 'col-span-12 ' ~ slideTextClass,
+                        h4Class: 'col-span-12 ' ~ slideTextClass,
+                        pClass: 'col-span-12 text-base max-w-[275px] w-full ' ~ slideTextClass
+                    } %}
+				{% endif %}
+
+				{% if attribute(slide, buttonLinkKey)|length %}
+					{% include '_includes/_blocks/button' with buttonIncludeProps|merge({
+                        link: attribute(slide, buttonLinkKey),
+                        label: attribute(slide, buttonLabelKey)
+                    }) %}
+				{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+</div>

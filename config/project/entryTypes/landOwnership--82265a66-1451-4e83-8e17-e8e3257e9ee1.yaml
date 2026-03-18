@@ -1,0 +1,156 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  faff0ea2-040d-4c0b-9b81-c7a10612b50a:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-12-12T01:07:08+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 27f1f503-6a52-4b8d-a512-bbfbe9076074
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2024-12-12T01:08:34+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e886eec8-0e41-4835-b4be-e4b2fe6dd8b2
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2024-12-12T01:13:33+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 70bbc0c6-ce4a-41e4-9b5c-b8726b5e1079 # Land Blocks
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8dfa90f3-c465-47b6-b87f-6e09e7a02b64
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-12T01:13:33+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5036f92c-afaa-4201-8e10-c51c87c5d237 # Shape File
+            handle: null
+            instructions: "Upload a .shp file of Crosby's land ownership to populate the entire map."
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: be2241cb-f616-4b74-b2c3-d060f5826559
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-05-08T17:26:41+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
+            handle: null
+            instructions: 'Choose an image to associate with this page for social media links and related entries links.'
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c66778dd-24a1-47d5-b9c2-6e8925333034
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-05-08T17:26:41+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 7bcbff36-d031-4f96-9998-f224a5a7c2a2
+            userCondition: null
+          -
+            dateAdded: '2025-05-08T17:01:47+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 4f214814-db96-4951-a3b1-03392ef7ef4d # Entries
+            handle: null
+            instructions: "Choose other pages on the site that you'd like to display below the listings."
+            label: 'Related Entries'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8824bcfe-6be7-4489-a39c-662ca9360d9d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-05-08T17:12:46+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            handle: entriesText
+            instructions: null
+            label: 'Related Entries Text'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e15a489f-a7d1-4af5-863a-ff0d71cd8dba
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 73644867-4af6-42e8-a254-0eb87c8892e7
+        userCondition: null
+    thumbFieldKey: null
+handle: landOwnership
+hasTitleField: true
+icon: null
+name: 'Land Ownership'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

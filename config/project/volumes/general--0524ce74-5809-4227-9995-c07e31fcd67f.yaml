@@ -1,0 +1,64 @@
+altTranslationKeyFormat: null
+altTranslationMethod: none
+fieldLayouts:
+  950b8908-409a-4440-a43a-c709b91acfb0:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-11-22T01:14:44+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: c670e187-5b8f-4104-a774-20acad72e442
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            editCondition: null
+            elementCondition: null
+            fieldUid: 40c54676-e066-4929-8bb7-5fc4d400729b # Video Stream
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 901210e7-a9e8-405f-9b20-dec77f7533df
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 84daa1b8-8282-497c-bf8a-761987908f2d
+        userCondition: null
+    thumbFieldKey: null
+fs: uploads
+handle: general
+name: General
+sortOrder: 9
+subpath: general
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+transformFs: ''
+transformSubpath: transforms

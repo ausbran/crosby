@@ -1,0 +1,19 @@
+columnSuffix: null
+handle: columnSpan
+instructions: 'Define the number of columns the slide should span.'
+name: 'Column Span'
+searchable: false
+settings:
+  decimals: 0
+  defaultValue: 6
+  max: 12
+  min: 0
+  prefix: 'Column Span'
+  previewCurrency: null
+  previewFormat: decimal
+  size: null
+  step: 1
+  suffix: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number

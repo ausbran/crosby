@@ -1,0 +1,91 @@
+columnSuffix: null
+handle: contentBlocks
+instructions: null
+name: 'Content Blocks'
+searchable: false
+settings:
+  createButtonLabel: 'New block'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 84b49fbd-67b9-4021-9790-4d862971a1fb # Text
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - e6b912d1-5313-4b23-b098-f3ef208c3d70 # Asset
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - 781f432d-abd0-4efa-aa62-831ca28d2d13 # Banner
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - 2629a8b4-6fe5-4a13-b19f-a62b671e8f95 # Slider Block
+        -
+          - name
+          - Slider
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - af88040a-731e-477d-a5dd-08fe6bb71209 # Hero
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - 34eabfa9-2dfb-43ea-9fa1-466ad575a728 # iFrame
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - 3bf24d78-c1a3-4624-8a1e-72c045c6d425 # Pull Quote Block
+        -
+          - name
+          - 'Pull Quote'
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - 63e1ee5f-c534-4d68-b1ac-554acf74ae3b # Sticky Block
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

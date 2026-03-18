@@ -1,0 +1,5 @@
+{% macro margins(marginTop = null, marginBottom = null) %}
+    {% set marginTopClass = marginTop ?? 'margin-top' %}
+    {% set marginBottomClass = marginBottom ?? 'margin-bottom' %}
+    {{ marginTopClass ~ ' ' ~ marginBottomClass }}
+{% endmacro %}

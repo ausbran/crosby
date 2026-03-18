@@ -1,0 +1,66 @@
+{% set color = block.color ?? null %}
+{% set headerClass = headerClass ?? null %}
+{% set textClass = textClass ?? null %}
+{% set truncate = truncate ?? false %}
+{% set asset = block.asset is defined and block.asset.one() %}
+
+<div class="min-h-80 flex items-end col-span-6 relative color-hover {{ not asset ? 'no-change' }} rounded-xl overflow-hidden">
+    <div class="w-full z-3 p-8 bottom-0 text-white flex flex-col space-y-4">
+        <h3 class="{{ headerClass }} w-fit max-w-96">
+            {{ block.title }}
+        </h3>
+        {% if truncate %}
+            {% set paragraphsOnly %}
+                {{ block.text | raw | replace({
+                    '<h1': '<ignore',
+                    '<h2': '<ignore',
+                    '<h3': '<ignore',
+                    '<h4': '<ignore',
+                    '<ul': '<ignore',
+                    '<ol': '<ignore',
+                    '<li': '<ignore',
+                    '<blockquote': '<ignore',
+                    '<figure': '<ignore',
+                }) | raw }}
+            {% endset %}
+
+            {% set plainText = paragraphsOnly | striptags %}
+            {% set truncated = plainText[:115] ~ '…' %}
+
+            <div class="{{ textClass }} max-w-96">
+                <p class="col-span-12 text-base">{{ truncated }}</p>
+            </div>
+        {% else %}
+            <div class="{{ textClass }} max-w-96">
+                {% include '_includes/_blocks/text' with {
+                    text: block.text,
+                    pClass: "col-span-12 text-base"
+                } %}
+            </div>
+        {% endif %}
+        {% if block.url %}
+            {% set buttonClass = 'btn !bg-white' ~ (color and color != 'white' ? ' text-' ~ color : ' text-red') %}
+            {% include '_includes/_blocks/button' with {
+                link: block.url,
+                label: 'Explore',
+                firstArrow: 'red-arrow',
+                 class: buttonClass
+            } %}
+        {% endif %}
+    </div>
+    <div class="absolute top-0 object-cover h-full w-full -z-1">
+        <div class="z-2 absolute background bottom-0 transition-all duration-300  h-full w-full {% if color %}{{ 'bg-' ~ color }}{% else %}bg-red{% endif %} {% if not asset %}!bg-red{% endif %}"></div>
+        {% include '_includes/_blocks/gradient.twig' with {
+            height: '2/3',
+            opacity: 0,
+            zIndex: 1,
+            class: 'transition-all duration-300 bottom-0'
+        }%}
+        {% if block.asset.one() is defined %}
+            {% include '_includes/_blocks/asset' with {
+                asset: block.asset.one(),
+                class: "w-full h-full object-cover"
+            } %}
+        {% endif %}
+    </div>
+</div>

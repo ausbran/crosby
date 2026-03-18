@@ -1,0 +1,144 @@
+allowLineBreaksInTitles: false
+color: teal
+description: null
+fieldLayouts:
+  f2c160e2-627f-4717-81f9-eb7edb014053:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2024-08-19T23:09:56+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            handle: text
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cec89557-1f88-407d-8cd0-366f4e7391ca
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-19T23:09:56+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: ae97b4e4-7938-4735-b734-84f98ec34af2 # Banner Buttons
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 298d1de1-5c34-40f1-8af0-1af363989068
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-19T23:09:56+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: de8c9811-7819-4a1b-8039-30ab71fe3676
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 921fd89b-a1e2-4cd8-a4c3-894db4bb30ec
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2024-08-19T23:09:56+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: bda53640-24b3-44f4-8c8b-ee991f1addba
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ec88f8fe-1a7a-4f44-9f70-a4a91cfed24e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-19T23:09:56+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 4986ae78-9ffa-41e9-ab3b-91e866576fd5 # Max Width
+            handle: bannerMaxWidth
+            instructions: null
+            label: 'Max Width'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 64fc30a4-87d7-4054-94e8-21eb2bc54744
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-19T23:11:05+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: f4540b83-421e-4a47-b91d-c09c70b4e12a # Margin Top
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0f844fa0-95cb-4358-8272-fbda83a7655b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-19T23:11:05+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 4a61545b-26f4-4008-8c2f-eb15c898b03f # Margin Bottom
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9e9c8cc0-631c-461c-a235-94a92bcc7f64
+            userCondition: null
+            warning: null
+            width: 100
+        name: Settings
+        uid: 77299056-4b27-4125-b824-c2b8e09ff60c
+        userCondition: null
+    thumbFieldKey: null
+handle: hero
+hasTitleField: false
+icon: display
+name: Hero
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

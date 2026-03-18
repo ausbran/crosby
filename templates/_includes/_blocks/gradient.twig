@@ -1,0 +1,9 @@
+{% set direction = direction ?? 't' %}
+{% set opacity = opacity ?? '60' %}
+{% set height = height ?? '4/5' %}
+{% set zIndex = zIndex ?? 1 %}
+{% set class = class ?? null %}
+{% set fromColor = fromColor ?? 'black' %}
+{% set toColor = toColor ?? 'transparent' %}
+
+<div class="{{class}} gradient w-full absolute bottom-0 pointer-events-none bg-gradient-to-{{ direction }} from-{{ fromColor }}/{{ opacity }} to-{{ toColor }} h-{{ height }} z-{{ zIndex }}"></div>

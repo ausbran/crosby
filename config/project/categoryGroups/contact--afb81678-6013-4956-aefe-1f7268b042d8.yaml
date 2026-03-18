@@ -1,0 +1,66 @@
+defaultPlacement: end
+fieldLayouts:
+  3670fc74-19c2-4589-9b7f-5bb7c13688e6:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-12-03T20:04:07+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\TitleField
+            uid: df14ee5d-eaca-47de-b44d-147d7cd37dad
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-03T20:07:02+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            handle: null
+            instructions: null
+            label: Description
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fd47938d-7bea-45d8-99c0-c8eee37e910c
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: a9fdb100-e556-4ae2-9bdd-24df5de052d1
+        userCondition: null
+    thumbFieldKey: null
+handle: contact
+name: Contact
+siteSettings:
+  6974ec26-6de3-4cbe-87a2-c5363298442b: # Crosby Resource Management
+    hasUrls: false
+    template: null
+    uriFormat: null
+structure:
+  maxLevels: 1
+  uid: 2e912088-796e-471a-8386-c88283a07519

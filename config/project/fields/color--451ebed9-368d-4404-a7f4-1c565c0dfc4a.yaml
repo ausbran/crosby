@@ -1,0 +1,99 @@
+columnSuffix: null
+handle: color
+instructions: null
+name: Color
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'CRM Red'
+        -
+          - value
+          - red
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - 'CCD Yellow'
+        -
+          - value
+          - yellow
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'CLR Orange'
+        -
+          - value
+          - orange
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Light Green'
+        -
+          - value
+          - green-light
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Green
+        -
+          - value
+          - green
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Dark Green'
+        -
+          - value
+          - green-dark
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Charcoal
+        -
+          - value
+          - charcoal
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - White
+        -
+          - value
+          - white
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

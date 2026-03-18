@@ -1,0 +1,26 @@
+<div id="map-wrapper" class="lg:page flex flex-col-reverse lg:grid gap-x-6 grid-cols-12 !mt-0">
+	<div class="pt-0 lg:pt-[180px] relative z-5 lg:z-1 col-span-12 lg:col-span-6 flex-col flex lg:grid grid-cols-6 space-y-4 lg:space-y-6 content-start justify-center -mt-[265px] lg:mt-0">
+		<h2 class="text-white lg:text-charcoal max-lg:leading-none text-xl lg:text-6xl font-medium col-span-6 row-start-1 ml-6 lg:ml-0 pointer-events-none">{{ entry.title }}</h2>
+		<div class="hidden lg:block text-lg xl:col-span-5 col-span-6 row-start-2">{{ entry.text|raw }}</div>
+		<!-- left -->
+		{% block left %}{% endblock %}
+
+	</div>
+	<!-- map -->
+	{% include '_includes/_blocks/gradient.twig' with {
+		height: '1/3',
+		zIndex: 4,
+		class: 'block lg:hidden transition-all duration-300 pointer-events-none'
+	}%}
+	{% include '_includes/_blocks/gradientBlur' with {
+		height: '1/3',
+		gradientStop: '30',
+		blur: 'sm',
+		zIndex: '4',
+		class: 'block lg:hidden transition-all duration-300 pointer-events-none max-h-64'
+	} %}
+	<div id="map" class="relative lg:sticky top-0 h-screen w-screen lg:w-[calc(50vw-12px)] max-h-none rounded-none z-3 col-span-6 bg-gray-200 p-6"></div>
+</div>
+
+<!-- modal -->
+{% block modal %}{% endblock %}

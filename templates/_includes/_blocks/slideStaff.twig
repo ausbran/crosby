@@ -1,0 +1,64 @@
+{% set asset = slide.asset.one() %}
+
+<div
+	class="slide bg-red outline-hover xl:flex-span-4 lg:flex-span-6 md:flex-span-8 sm:flex-span-10 flex-span-12 rounded-xl overflow-hidden relative transition-all"
+	data-id="{{ slide.id }}">
+	<!-- Text Content -->
+	<div class="p-6 md:p-8 group absolute w-full h-full top-0 left-0 flex flex-col justify-end text-white z-2">
+		<div class="absolute items-baseline pr-4 flex flex-wrap gap-x-6 transition-all duration-300
+		{% if bioInfo or contactInfo %}
+			{% if slide.bio and slide.email and slide.phone %}
+				group-hover:-translate-y-16 md:group-hover:-translate-y-36 group-hover:-translate-y-16 md:group-hover:-translate-y-36 hover-full-info
+			{% else %}
+				group-hover:-translate-y-16 md:group-hover:-translate-y-20 hover-some-info
+			{% endif %}
+		{% endif %}">
+			<h3>{{ slide.title }}</h3>
+			<h4 class="font-normal">{{ slide.position }}</h4>
+		</div>
+		
+		<div class="w-full flex flex-wrap justify-start gap-2 opacity-0 group-hover:opacity-100 transition-all -translate-y-4 {% if bioInfo or contactInfo %}group-hover:-translate-y-0 button-translate button-fade{% endif %}">
+			{% if contactInfo %}
+					{% if slide.phone %}
+						{% include '_includes/_blocks/button' with {
+							link: slide.phone,
+							label: 'Call',
+							class: "!w-half flex-1 !text-center -bottom-4 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-6 justify-between button-fade " ~ (not asset ? 'border !border-solid border-white' : '')
+						} %}
+					{% endif %}
+					{% if slide.email %}
+						{% include '_includes/_blocks/button' with {
+							link: 'mailto:' ~ slide.email,
+							label: 'Email',
+							class: "!w-half flex-1 !text-center -bottom-4 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-6 justify-between button-fade " ~ (not asset ? 'border !border-solid border-white' : '')
+						} %}
+					{% endif %}
+			{% endif %}
+			{% if bioInfo and slide.bio %}
+				{% include '_includes/_blocks/button' with {
+					link: '',
+					label: 'Read More',
+					class: "bio-button flex-1 absolute !w-full !text-center -bottom-4 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-6 justify-between button-fade " ~ (not asset ? 'border !border-solid border-white' : ''),
+					attributes: {
+						'data-id': slide.id
+					}
+				} %}
+			{% endif %}
+		</div>
+	</div>
+	{% if asset %}
+		{% set gradientHeight = '1/3' %}
+
+		{% if slide.bio and slide.email and slide.phone %}
+			{% set gradientHeight = '2/3' %}
+		{% endif %}
+
+		{% include '_includes/_blocks/gradient.twig' with {
+			height: gradientHeight,
+			opacity: '50'
+		} %}
+		{% include '_includes/_blocks/asset' with {
+			ratio: '4:5'
+		} %}
+	{% endif %}
+</div>

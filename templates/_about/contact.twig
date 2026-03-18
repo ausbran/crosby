@@ -1,0 +1,16 @@
+{% block content %}
+	{# Optional banner block if needed #}
+	{% if entry.asset|length %}
+		{% include '_includes/_blocks/bannerSlides' with {
+			block: entry,
+			bannerClass: '!h-[60svh] !min-h-[400px] lg:!min-h-[600px]'
+		} %}
+	{% endif %}
+
+	{% include '_includes/_blocks/form' with {
+		formHandle: 'contactGeneral',
+		showDepartmentDropdown: true,
+		class: '!py-0 contact-form',
+		sidebarsClass: 'bg-red'
+	} %}
+{% endblock %}

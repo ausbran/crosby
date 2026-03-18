@@ -1,0 +1,71 @@
+{% set query = craft.app.request.getParam('q') %}
+{% set results = craft.entries()
+    .search(query ~ ' OR type:history OR type:team OR type:contact')
+    .section(['staff', 'landSales', 'company', 'home', 'huntingLeases', 'about', 'land', 'history', 
+    'recreation', 'landServices', 'landMinerals', 'contact'])
+    .orderBy('score')
+    .limit(10)
+    .all() %}
+
+{% extends "index" %}
+
+{% block content %}
+    <div class="page mt-32 md:mt-48">
+        <h2 class="mb-2">Search Results</h2>
+        <form action="{{ siteUrl('search') }}" method="get" class="mb-8 md:mb-10 flex flex-wrap items-center gap-3 md:gap-4">
+            <label for="search-results-input" class="tracking-tighter font-medium text-base">Search</label>
+            <input
+                id="search-results-input"
+                type="text"
+                name="q"
+                value="{{ query }}"
+                placeholder="Search"
+                class="tracking-tighter font-medium text-base bg-transparent border border-charcoal/20 rounded-md px-4 py-3 min-w-[280px] w-full md:w-[420px] focus:outline-none focus:border-charcoal"
+            >
+            <button type="submit" class="btn search-results-submit !px-5 !py-3" style="color: #fff; -webkit-text-fill-color: #fff;">Search</button>
+        </form>
+
+        {% if query %}
+            <p class="mb-10 text-lg">Results for: {{ query }}</p>
+
+            {% if results|length %}
+                <ul class="grid grid-cols-12 !gap-y-4 sm:!gap-y-6">
+                    {% for entry in results %}
+                        {% set parentUrl = 
+                            entry.section.handle == 'staff' ? '/about/our-team' :
+                            (entry.section.handle == 'landSales' ? '/land-minerals/land-sales' :
+                            (entry.section.handle == 'huntingLeases' ? '/recreation/hunting-leases' :
+                            entry.url)) 
+                        %}
+
+                        {# Fetch the image if available #}
+                        {% set asset = entry.asset.one() ?? entry.featuredImage.one() ?? null %}
+
+                        <li class="text-white col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 h-[400px] bg-red rounded-xl group relative overflow-hidden cursor-pointer">
+                            <a class="tracking-tight text-xl h-full w-full flex flex-col justify-end" href="{{ parentUrl }}">
+                                {% if asset %}
+                                    <div class="search-results-media absolute inset-0 z-1 w-full h-full">
+                                        {% include '_includes/_blocks/asset' with {
+                                            ratio: '4:5',
+                                            class: 'search-results-media absolute inset-0 z-1 w-full h-full object-cover transition-all duration-300 group-hover:brightness-[.75]'
+                                        } %}
+                                    </div>
+                                    {% include '_includes/_blocks/gradient.twig' with {
+                                        height: '1/3',
+                                        opacity: '50',
+                                        zIndex: 2
+                                    } %}
+                                {% endif %}
+                                <h5 class="tracking-tighter relative z-3 p-6 max-w-2/3">{{ entry.title }}</h5>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-base">No results found for "{{ query }}". Try a different search term.</p>
+            {% endif %}
+        {% else %}
+            <p class="text-base">Type something in the search bar to find content.</p>
+        {% endif %}
+    </div>
+{% endblock %}

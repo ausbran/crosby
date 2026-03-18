@@ -1,0 +1,14 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "tailwindCSS.includeLanguages": {
+    "twig": "html",
+    "jinja-html": "html"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["class\\s*=\\s*['\"`]([^'\"`]+)['\"`]", "[\"'`]([^\"'`\\s]+)[\"'`]"]
+  ]
+}

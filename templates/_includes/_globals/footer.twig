@@ -1,0 +1,30 @@
+{% set footerClass = footerClass ?? null %}
+
+<footer class="footer bg-texture bg-red mt-8 md:mt-20 pt-32 lg:pt-60 pb-16 lg:pb-20 {{ footerClass }}">
+	<div class="page grid grid-cols-12">
+		<div class="logo fade-in mb-8 relative lg:top-3 lg:mb-0 col-span-6 md:col-span-5 lg:col-span-3 cursor-pointer hover:opacity-60 transition-all duration-300">
+			<a href="{{ currentSite.baseUrl }}">
+				{% include '_includes/_svg/logo-horizontal.svg' %}</a>
+		</div>
+		<div class="col-span-12 lg:col-span-9 list-none flex flex-wrap items-end justify-start lg:justify-end max-lg:gap-y-4 gap-x-10">
+			{% set primaryLinks = footer.primaryLinks.all() %}
+			{% for link in primaryLinks %}
+				<a href="{{ link.getUrl() }}" class="fade-in text-base tracking-tighter text-white font-medium cursor-pointer hover:opacity-60 transition-all duration-300">
+					{{ link.title }}
+				</a>
+			{% endfor %}
+			{% if footer.socialLinks.all() %}
+				<div class="flex gap-6 h-[20px] relative bottom-[5px] max-lg:w-full max-lg:mt-2">
+					{% for block in footer.socialLinks.all() %}
+						{% set icon = block.socialPlatform %}
+						{% set href = block.linkUrl %}
+							<a class="fade-in social-link h-full cursor-pointer hover:opacity-60 transition-all duration-300" href="{{ href }}" target="_blank" rel="noopener noreferrer">
+								{% include '_includes/_svg/' ~ icon ~ '.svg' %}
+							</a>
+					{% endfor %}
+				</div>
+			{% endif %}
+			<p class="fade-in text-base tracking-tighter text-white font-medium max-lg:w-full max-lg:mt-6">&copy;{{ 'now' | date('Y') }} {{ siteName }}. All Rights Reserved.</p>
+		</div>
+	</div>
+</footer>

@@ -1,0 +1,8 @@
+{% set class = class ?? null %}
+{% set newTab = newTab ?? false %}
+{% set fadeIn = fadeIn is defined and fadeIn == true ? 'fade-in' : '' %}
+
+<a href="{{ link }}" class="btn {{ fadeIn }} {% if class is defined %}{{ class }}{% endif %}" {% if attributes is defined %} {% for key, value in attributes %} {{ key }}="{{ value }}" {% endfor %} {% endif %} {% if newTab == true %} target="_blank" {% endif %} {% if fadeIn == true %} data-cascade {% endif %}>
+	<span class="label">{{ label }}</span>
+	{% include "_includes/_icons/arrowBase" %}
+</a>

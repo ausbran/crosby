@@ -1,0 +1,7 @@
+{% block title %}
+    {% if entry.title is defined %}
+        {{ siteName }} | {{ entry.title }}
+    {% else %}
+        {{ siteName }}
+    {% endif %}
+{% endblock %}

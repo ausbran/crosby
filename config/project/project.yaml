@@ -1,0 +1,750 @@
+dateModified: 1773795637
+elementSources:
+  craft\elements\Asset:
+    -
+      key: 'volume:0df67807-28de-4196-83d0-7659095a96c0'
+      type: native
+    -
+      key: 'volume:489ad90c-f81e-41c8-a312-7e1b0b7cd6fd'
+      type: native
+    -
+      key: 'volume:3586fc06-c1c0-4c1e-b303-909b88cf3f84'
+      type: native
+    -
+      key: 'volume:37391c35-7f8d-4a6c-a7e6-a05b2cd60b2c'
+      type: native
+    -
+      key: 'volume:383a4b26-b5d4-4ff4-ba3f-591bb58a8b66'
+      type: native
+    -
+      key: 'volume:0524ce74-5809-4227-9995-c07e31fcd67f' # General
+      type: native
+    -
+      key: 'volume:0f5c1e47-cf4b-4344-9cb3-878096bd9dfa'
+      type: native
+    -
+      defaultSort:
+        - dateCreated
+        - desc
+      disabled: true
+      key: temp
+      tableAttributes:
+        - filename
+        - size
+        - dateModified
+        - uploader
+        - link
+      type: native
+  craft\elements\Entry:
+    -
+      defaultSort:
+        - postDate
+        - desc
+      defaultViewMode: ''
+      disabled: true
+      key: '*'
+      tableAttributes:
+        - status
+        - section
+        - postDate
+        - expiryDate
+        - link
+      type: native
+    -
+      defaultSort:
+        - title
+        - asc
+      defaultViewMode: ''
+      disabled: true
+      key: singles
+      tableAttributes:
+        - status
+        - link
+      type: native
+    -
+      heading: Global
+      key: 'heading:f9f6f832-2f6c-4d3a-9bd9-c0ed1d20c08f'
+      type: heading
+    -
+      defaultSort:
+        - structure
+        - asc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:cf50c102-65ae-48ac-aaf0-9b2db2d768cd' # Navigation
+      tableAttributes:
+        - status
+        - link
+      type: native
+    -
+      condition:
+        class: craft\elements\conditions\entries\EntryCondition
+        conditionRules:
+          -
+            class: craft\elements\conditions\entries\SectionConditionRule
+            operator: in
+            uid: 3d654510-6669-4c43-8b57-ee8719feeb4c
+            values:
+              - 52813dfd-9354-4a05-8131-1611ab549142 # Footer
+        elementType: craft\elements\Entry
+        fieldContext: global
+      defaultSort:
+        - id
+        - asc
+      defaultViewMode: ''
+      key: 'custom:f28d9eea-b233-442b-8a3c-d4dfcad51ac3'
+      label: Footer
+      tableAttributes: '-'
+      type: custom
+    -
+      heading: Content
+      key: 'heading:06f59c44-0da9-4343-8307-9ea8f549d451'
+      type: heading
+    -
+      defaultSort:
+        - structure
+        - asc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:68cbee1c-920f-40db-8ed7-12382fc9e585' # Staff
+      tableAttributes:
+        - status
+        - type
+      type: native
+    -
+      defaultSort:
+        - structure
+        - asc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:252af2fe-e999-4c7a-beb2-9e62353de467' # Land Sales
+      tableAttributes:
+        - status
+        - postDate
+        - expiryDate
+        - authors
+        - link
+      type: native
+    -
+      defaultSort:
+        - structure
+        - asc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:bfa64972-7662-4085-af34-bd1d5a310bbf' # Hunting Leases
+      tableAttributes:
+        - status
+        - postDate
+        - expiryDate
+        - authors
+        - link
+      type: native
+    -
+      heading: Pages
+      key: 'heading:a7248779-b87a-4640-92b3-d38407c09be2'
+      type: heading
+    -
+      condition:
+        class: craft\elements\conditions\entries\EntryCondition
+        conditionRules:
+          -
+            class: craft\elements\conditions\entries\TypeConditionRule
+            operator: in
+            uid: 4c9bece0-b23e-48b6-ae2a-e8c19b0eb140
+            values:
+              - 86453256-3536-4893-8b3e-621ab30831dd # Home
+        elementType: craft\elements\Entry
+        fieldContext: global
+      defaultSort:
+        - id
+        - asc
+      defaultViewMode: ''
+      key: 'custom:807ca5f8-b708-476e-9f68-33c01957acca'
+      label: Home
+      tableAttributes: '-'
+      type: custom
+    -
+      defaultSort:
+        - structure
+        - asc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:8d69b932-6760-468b-b554-88ef24907083' # Company
+      tableAttributes:
+        - status
+        - postDate
+        - expiryDate
+        - authors
+        - link
+      type: native
+    -
+      defaultSort:
+        - id
+        - asc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:81897eb5-4540-423b-a971-c39c6a8aecd3' # Land & Minerals
+      tableAttributes:
+        - status
+        - postDate
+        - expiryDate
+        - authors
+        - link
+      type: native
+    -
+      key: 'section:82498b52-f27e-474d-900e-28072783104b' # Recreation
+      type: native
+    -
+      defaultSort:
+        - structure
+        - asc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:25c2456b-7cec-4383-a0bb-18ad14a40dc1' # About
+      tableAttributes:
+        - status
+        - postDate
+        - expiryDate
+        - authors
+        - link
+      type: native
+    -
+      defaultSort:
+        - structure
+        - asc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:f80c270d-499c-47df-990c-8e0b690c6f00' # Pages
+      tableAttributes:
+        - status
+        - postDate
+        - expiryDate
+        - link
+      type: native
+    -
+      defaultSort:
+        - postDate
+        - desc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:eadae4dc-77ef-40d8-92ec-592dd259d2b6' # Instruction
+      tableAttributes:
+        - status
+        - postDate
+        - expiryDate
+        - authors
+        - link
+      type: native
+  verbb\formie\elements\Form:
+    -
+      key: '*'
+      type: native
+    -
+      heading: Templates
+      type: heading
+    -
+      defaultSort:
+        - id
+        - asc
+      defaultViewMode: ''
+      disabled: true
+      key: 'template:2'
+      tableAttributes:
+        - title
+        - handle
+        - template
+        - dateCreated
+        - dateUpdated
+      type: native
+    -
+      defaultSort:
+        - id
+        - asc
+      defaultViewMode: ''
+      disabled: true
+      key: 'template:1'
+      tableAttributes:
+        - title
+        - handle
+        - template
+        - dateCreated
+        - dateUpdated
+      type: native
+email:
+  fromEmail: Info@crosbyresource.com
+  fromName: 'Crosby Resource Management'
+  replyToEmail: Info@crosbyresource.com
+  template: ''
+  transportSettings:
+    host: smtp.office365.com
+    password: 7BtuPrQLqEHN_QXDH8pV.oQ9Qe-QzEyM
+    port: '587'
+    useAuthentication: '1'
+    username: Info@crosbyresource.com
+  transportType: craft\mail\transportadapters\Smtp
+fs:
+  uploads:
+    hasUrls: true
+    name: Uploads
+    settings:
+      bucket: $R2_BUCKET
+      endpoint: $R2_ENDPOINT
+      hasUrls: true
+      keyId: $R2_ACCESS_KEY_ID
+      region: $R2_REGION
+      secret: $R2_SECRET_ACCESS_KEY
+      subfolder: $R2_SUBFOLDER
+      usePathStyleEndpoint: true
+    type: modules\R2Fs
+    url: $R2_BASE_URL
+meta:
+  __names__:
+    0a3cb10d-1602-4ea7-9531-b28f3ed36991: 'Our Team' # Our Team
+    0a106393-df03-4723-ab37-3ce915c46f99: New # New
+    0e035fe3-0cf6-480e-82fe-d52cc928e650: Testimonial # Testimonial
+    0eaaec4b-bbda-4300-8453-30f0be806169: Old # Old
+    1afc4390-d938-49a4-b4a4-798e68a2bc9d: 'Instruction Blocks' # Instruction Blocks
+    2a474d4a-c4ce-4af9-8df0-20b69b317f1c: Button # Button
+    2bb0df43-098d-4091-a1e0-967b00fdcb6c: Slides # Slides
+    2e6345b3-c242-4919-be0a-11f0e6afc8c6: Company # Company
+    3bf24d78-c1a3-4624-8a1e-72c045c6d425: 'Pull Quote Block' # Pull Quote Block
+    4a008dd5-8e6c-4586-b246-d806c81021dd: Features # Features
+    4a61545b-26f4-4008-8c2f-eb15c898b03f: 'Margin Bottom' # Margin Bottom
+    4d1d0ace-6df5-4e05-91b0-1d1ce27d4f3b: 'Social Links' # Social Links
+    4f214814-db96-4951-a3b1-03392ef7ef4d: Entries # Entries
+    5e876e9e-c27f-47f3-ade9-0e2b65433348: Text # Text
+    6c300891-384b-4ff0-a695-4d08ebcda74c: delete # delete
+    7e4b4add-061e-4eab-92df-597242f18a90: 'Primary Links' # Primary Links
+    7fe80a9d-2822-4ed3-8d83-f89f27f75731: Asset # Asset
+    8b433bb6-cab9-45f3-bac0-0eecc02c1cd0: 'Navigation Link' # Navigation Link
+    8b656877-6f15-45aa-87d7-feb1d95ce5c2: 'Plain Text' # Plain Text
+    8c107cc9-2cb0-47b2-aa42-a82e26aadd14: 'CTA Buttons' # CTA Buttons
+    8d69b932-6760-468b-b554-88ef24907083: Company # Company
+    8eaea240-f35d-4b49-a8bf-c7b1ae70979a: 'Land Sales Listing' # Land Sales Listing
+    8f0d2001-1c75-4b9a-8e74-b7e48dbc58bf: 'Loop Video' # Loop Video
+    8fe7739e-242f-47ef-b231-4cc99361646c: Staff # Staff
+    21db7ac8-7f8f-4c6d-a93b-52418c34492c: Year # Year
+    022ea0cc-0378-4208-8aa9-5d66cc4e3e20: 'Content Blocks' # Content Blocks
+    25c2456b-7cec-4383-a0bb-18ad14a40dc1: About # About
+    26bea4ed-bac2-4732-9ac4-fb8cb523da52: Service # Service
+    26fa7b55-e9e5-4fbb-a5e1-0cc31f223c1e: 'Button Link' # Button Link
+    29cb3264-eccf-4606-a645-a6951efb3d58: 'Real Estate' # Real Estate
+    34eabfa9-2dfb-43ea-9fa1-466ad575a728: iFrame # iFrame
+    40c54676-e066-4929-8bb7-5fc4d400729b: 'Video Stream' # Video Stream
+    42d902fc-110b-469b-9510-c2d1cebc50cc: 'Public Schema' # Public Schema
+    48e5995c-750c-4886-986e-6d886dd4e850: Slide # Slide
+    48f6a218-2886-43f7-80cc-13633d3687a6: 'History Blocks' # History Blocks
+    51a4a281-be82-4754-a5cb-d65d99aa9bfc: 'Large Image Block' # Large Image Block
+    54f615f9-cbc5-4080-8210-ef8cbb1d474d: 'Staff Category' # Staff Category
+    62c3a695-96b4-43f5-ac43-eb27a6cfc3f9: Slides # Slides
+    63e1ee5f-c534-4d68-b1ac-554acf74ae3b: 'Sticky Block' # Sticky Block
+    65b7ac17-5b70-46b3-9aea-143443333ef1: 'Single Slide' # Single Slide
+    67e70fec-85ee-4243-b15c-4cd3d3915afd: Instruction # Instruction
+    68cbee1c-920f-40db-8ed7-12382fc9e585: Staff # Staff
+    70bbc0c6-ce4a-41e4-9b5c-b8726b5e1079: 'Land Blocks' # Land Blocks
+    84b49fbd-67b9-4021-9790-4d862971a1fb: Text # Text
+    092b44b6-4a5a-4487-af2a-9caa7dbff37d: 'Double Slide' # Double Slide
+    97a3b2ae-581c-4a96-bac9-554887f73578: Slide # Slide
+    252af2fe-e999-4c7a-beb2-9e62353de467: 'Land Sales' # Land Sales
+    287c975f-b8da-4431-b851-9fdd69430935: History # History
+    444ba8fd-50b7-4dca-806f-b8bf4c61b841: 'Instruction Block' # Instruction Block
+    451ebed9-368d-4404-a7f4-1c565c0dfc4a: Color # Color
+    0524ce74-5809-4227-9995-c07e31fcd67f: General # General
+    670d1ad6-74c9-4a63-9dd9-d855df46ac10: 'Contact Form' # Contact Form
+    715ee7ea-4843-403d-89ae-2933afef31f3: 'Land Sales' # Land Sales
+    729b86ad-8f1d-4a29-ad6b-8ea218f8e048: 'Hunting Leases' # Hunting Leases
+    776e3a6f-5f1d-4211-bfed-0be1880fbd45: Price # Price
+    781f432d-abd0-4efa-aa62-831ca28d2d13: Banner # Banner
+    919a4551-b041-4591-8dc5-541e8024def6: Feature # Feature
+    922da0f7-e1c5-45c4-8aa7-49850744589b: Crosby # Crosby
+    929dd815-3f39-4a7a-a039-6c7ac68799b5: Overlay # Overlay
+    2629a8b4-6fe5-4a13-b19f-a62b671e8f95: 'Slider Block' # Slider Block
+    4016b64a-ad4f-4c26-860a-d746e38c1c52: 'Social Link' # Social Link
+    4561fe05-31a8-4fcd-86a8-cb4e675e6bb8: 'Slide Time' # Slide Time
+    4986ae78-9ffa-41e9-ab3b-91e866576fd5: 'Max Width' # Max Width
+    5036f92c-afaa-4201-8e10-c51c87c5d237: 'Shape File' # Shape File
+    6974ec26-6de3-4cbe-87a2-c5363298442b: 'Crosby Resource Management' # Crosby Resource Management
+    7753dcba-0fa7-4ffe-970f-88ec5fb30d61: History # History
+    7902c53a-ac15-4749-9375-dc82e08df5a9: Home # Home
+    52813dfd-9354-4a05-8131-1611ab549142: Footer # Footer
+    57456d01-db4b-4e0a-aaa9-c5de657517b2: 'Career Form' # Career Form
+    67515a2b-d3ca-4888-a7d9-b28bf87d8c44: Address # Address
+    81897eb5-4540-423b-a971-c39c6a8aecd3: 'Land & Minerals' # Land & Minerals
+    82265a66-1451-4e83-8e17-e8e3257e9ee1: 'Land Ownership' # Land Ownership
+    82498b52-f27e-474d-900e-28072783104b: Recreation # Recreation
+    91106ad6-75bd-4491-b0ee-b0a60f514c1a: 'Column Span' # Column Span
+    6066368e-8c2a-4fe8-a305-75eeea82fe05: 'Masonry Grid Block' # Masonry Grid Block
+    08212732-97cb-4fe1-80d5-22da0da1d83a: Staff # Staff
+    86453256-3536-4893-8b3e-621ab30831dd: Home # Home
+    98531642-0cb8-4a38-a70c-ddd5f537d751: Buttons # Buttons
+    a3dbc985-d0e2-4565-b080-e97a80ed00f8: Videos # Videos
+    a8f5f4f5-00ed-4701-a12b-eda576eb0326: Date # Date
+    a13e25fc-5eb6-46ae-a677-3b785baa9288: 'Phone Number' # Phone Number
+    a29a748c-48f5-4036-80ab-2ac52e338956: Footer # Footer
+    a58c24ec-28f0-4f3c-a871-43df83c6185d: 'Header Block' # Header Block
+    a76ef161-fb46-4a93-b50b-110ab2cee1b9: 'Land Block' # Land Block
+    ad3690bb-2435-4add-aeea-6a20d04193ff: Testimonials # Testimonials
+    ae97b4e4-7938-4735-b734-84f98ec34af2: 'Banner Buttons' # Banner Buttons
+    af88040a-731e-477d-a5dd-08fe6bb71209: Hero # Hero
+    afb81678-6013-4956-aefe-1f7268b042d8: Contact # Contact
+    b7ffd7c2-cbba-4599-9727-6e5445ca0451: Instructions # Instructions
+    b7977904-1581-4bf1-a440-242e4c34840a: 'Button Label' # Button Label
+    be73bd2f-9a80-4f67-a33c-79c036493434: Email # Email
+    bf576820-9e89-40b9-a7c5-82be152e232e: Staff # Staff
+    bfa64972-7662-4085-af34-bd1d5a310bbf: 'Hunting Leases' # Hunting Leases
+    cb81f2a5-9202-4f24-98a8-cd3ae8f8a978: 'Hunting Lease Listing' # Hunting Lease Listing
+    ce613e9c-1de8-4996-8e78-1b5e2a4f4db4: 'Social Platform' # Social Platform
+    cf50c102-65ae-48ac-aaf0-9b2db2d768cd: Navigation # Navigation
+    d1d4eee9-782f-49a3-bd3a-5b3a375a21f7: Contact # Contact
+    d6dbc3f7-e7b6-4589-8039-673a7f8bfbe3: Link # Link
+    d6e5e01f-8256-400c-b615-acd01b77798a: 'Exclude From Team Page' # Exclude From Team Page
+    d2831d4a-7a65-4757-bbf6-66a076fe5e3a: 'Sticky Blocks' # Sticky Blocks
+    dce03ff5-5f57-481d-b25d-f0224620eb0d: Page # Page
+    de8eaa2e-a42a-4ec2-8e1c-8c7162ec8f4e: Services # Services
+    e6b912d1-5313-4b23-b098-f3ef208c3d70: Asset # Asset
+    eadae4dc-77ef-40d8-92ec-592dd259d2b6: Instruction # Instruction
+    ebc5822f-5362-4f1c-a6b8-37a17ea08cf0: 'Shape Files' # Shape Files
+    f0a5780c-9dd9-4a46-ad44-15d9c71ede25: 'Career Form' # Career Form
+    f6c3037a-a389-45dc-a0cd-c448e9e6223e: 'Staff Contact' # Staff Contact
+    f9c5fde4-c87c-45b1-8052-613600b09751: 'Land & Minerals' # Land & Minerals
+    f51bd3ce-5a3a-4094-b3b0-9304dfe18b7d: Caption # Caption
+    f80c270d-499c-47df-990c-8e0b690c6f00: Pages # Pages
+    f4540b83-421e-4a47-b91d-c09c70b4e12a: 'Margin Top' # Margin Top
+    f1650635-37ef-4b3f-8fbd-494ada630a65: 'Content Blocks' # Content Blocks
+    f6704256-c578-402a-ab33-5ac9687059bb: Height # Height
+plugins:
+  ckeditor:
+    edition: standard
+    enabled: true
+    schemaVersion: 5.0.0.1
+  cloudflare-stream:
+    edition: standard
+    enabled: true
+    licenseKey: LIX5SPK1CT7HVIQJ7J31BN0P
+    schemaVersion: 1.4.0
+    settings:
+      accountId: $CLOUDFLARE_ACCOUNT_ID
+      apiToken: $CLOUDFLARE_STREAM_API_TOKEN
+      autoUpload: '1'
+      useFormUpload: ''
+  dospaces:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+  field-manager:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  formie:
+    edition: standard
+    enabled: true
+    licenseKey: TT0LZ6QT9FAXUSH525AQ9EOE
+    schemaVersion: 3.4.12
+    settings:
+      ajaxTimeout: 10
+      alertEmails: null
+      captchas:
+        __assoc__:
+          -
+            - recaptcha
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Recaptcha
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - recaptcha
+                      -
+                        - type
+                        - v2_checkbox
+                      -
+                        - size
+                        - normal
+                      -
+                        - theme
+                        - light
+                      -
+                        - badge
+                        - bottomright
+                      -
+                        - language
+                        - en
+                      -
+                        - minScore
+                        - 0.5
+                      -
+                        - scriptLoadingMethod
+                        - asyncDefer
+                      -
+                        - enterpriseType
+                        - score
+          -
+            - hcaptcha
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Hcaptcha
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - hcaptcha
+                      -
+                        - size
+                        - normal
+                      -
+                        - theme
+                        - light
+                      -
+                        - language
+                        - en
+                      -
+                        - minScore
+                        - 0.5
+                      -
+                        - scriptLoadingMethod
+                        - asyncDefer
+          -
+            - friendlyCaptcha
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\FriendlyCaptcha
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - friendlyCaptcha
+                      -
+                        - language
+                        - en
+                      -
+                        - startMode
+                        - none
+          -
+            - turnstile
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Turnstile
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - turnstile
+                      -
+                        - scriptLoadingMethod
+                        - asyncDefer
+                      -
+                        - theme
+                        - auto
+                      -
+                        - size
+                        - normal
+                      -
+                        - appearance
+                        - always
+          -
+            - duplicate
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Duplicate
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - duplicate
+          -
+            - honeypot
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Honeypot
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - honeypot
+          -
+            - javascript
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Javascript
+                -
+                  - enabled
+                  - '1'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - javascript
+      defaultDateDisplayType: calendar
+      defaultDateTime: null
+      defaultDateValueOption: ''
+      defaultEmailTemplate: ''
+      defaultExportFolder: '@storage/formie-export'
+      defaultFileUploadVolume: ''
+      defaultFormTemplate: ''
+      defaultInstructionsPosition: verbb\formie\positions\AboveInput
+      defaultLabelPosition: verbb\formie\positions\AboveInput
+      defaultPage: submissions
+      emptyValuePlaceholder: 'No response.'
+      enableBackSubmission: true
+      enableCsrfValidationForGuests: true
+      enableLargeFieldStorage: false
+      enableUnloadWarning: true
+      filterIntegrationMapping: true
+      includeDraftElementUsage: false
+      includeRevisionElementUsage: false
+      maxIncompleteSubmissionAge: 30
+      maxSentNotificationsAge: 30
+      outputConsoleMessages: true
+      pdfPaperOrientation: portrait
+      pdfPaperSize: letter
+      pluginName: Formie
+      queuePriority: null
+      saveSpam: true
+      sendEmailAlerts: false
+      sentNotifications: true
+      setOnlyCurrentPagePayload: false
+      spamBehaviour: showSuccess
+      spamBehaviourMessage: ''
+      spamEmailNotifications: true
+      spamKeywords: ''
+      spamLimit: 500
+      submissionsBehaviour: all
+      useCssLayers: false
+      useQueueForIntegrations: true
+      useQueueForNotifications: true
+      validateCustomTemplates: true
+  image-toolbox:
+    edition: lite
+    enabled: true
+    schemaVersion: 1.0.0
+  retour:
+    edition: standard
+    enabled: false
+    licenseKey: DU2GJ5COK32HO0MLG6B0HN8P
+    schemaVersion: 3.0.12
+  seomatic:
+    edition: standard
+    enabled: true
+    licenseKey: 7J66CI6WQG2SY80BIDCA5DJO
+    schemaVersion: 3.0.13
+    settings:
+      addHrefLang: true
+      addPaginatedHreflang: true
+      addXDefaultHrefLang: true
+      alwaysIncludeCanonicalUrls: false
+      cpTitlePrefix: '⚙ '
+      cspNonce: ''
+      cspScriptSrcPolicies:
+        -
+          __assoc__:
+            -
+              - policy
+              - "'self'"
+      devModeCpTitlePrefix: '🚧⚙ '
+      devModeTitlePrefix: '🚧 '
+      displayAnalysisSidebar: true
+      displayPreviewSidebar: true
+      enableDebugToolbarPanel: true
+      enableJsonLdEndpoint: false
+      enableMetaContainerEndpoint: false
+      enableSeoFileLinkEndpoint: false
+      environment: live
+      excludeNonCanonicalUrls: false
+      generatorEnabled: true
+      headersEnabled: true
+      includeHomepageInBreadcrumbs: true
+      lowercaseCanonicalUrl: true
+      manuallySetEnvironment: false
+      maxDescriptionLength: 155
+      maxTitleLength: 70
+      metaCacheDuration: 0
+      pluginName: SEO
+      regenerateSitemapsAutomatically: true
+      renderEnabled: true
+      separatorChar: '|'
+      sidebarDisplayPreviewTypes:
+        - google
+        - facebook
+      siteGroupsSeparate: true
+      siteUrlOverride: ''
+      sitemapsEnabled: true
+      socialMediaPreviewTarget: true
+      submitSitemaps: true
+      truncateDescriptionTags: true
+      truncateTitleTags: true
+      xDefaultSite: 0
+system:
+  edition: pro
+  live: true
+  name: Crosby
+  retryDuration: null
+  schemaVersion: 5.9.0.8
+  timeZone: America/Denver

@@ -1,0 +1,28 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 0a3cb10d-1602-4ea7-9531-b28f3ed36991 # Our Team
+  -
+    uid: d1d4eee9-782f-49a3-bd3a-5b3a375a21f7 # Contact
+  -
+    uid: 7753dcba-0fa7-4ffe-970f-88ec5fb30d61 # History
+handle: about
+maxAuthors: 1
+name: About
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  6974ec26-6de3-4cbe-87a2-c5363298442b: # Crosby Resource Management
+    enabledByDefault: true
+    hasUrls: true
+    template: _about/_entry
+    uriFormat: 'about/{slug}'
+structure:
+  maxLevels: null
+  uid: 949ca9f6-ab9b-45ad-8fa7-fbfea7e7800b
+type: structure

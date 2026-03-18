@@ -1,0 +1,12 @@
+<div class="text-white max-md:pt-16 max-md:pb-6 form-inner col-start-1 sm:col-start-3 lg:col-start-4 xl:col-start-5 col-span-12 sm:col-span-8 lg:col-span-6 xl:col-span-4">
+	<h2>Get in touch</h2>
+    <p class="mb-8 mt-2 max-w-[270px] md:max-w-[400px]">Need some more information? Fill out this form and a team member will get back to you as soon as possible.</p>
+    {% set staffEmail = block.staffContact.one().email ?? 'CCrosby@crosbyresource.com' %}
+	{% set form = craft.formie.forms({ handle: formHandle }).one() %}
+	{% do craft.formie.populateFormValues(form, {
+        staffEmail: staffEmail
+    }) %}
+	{{ craft.formie.renderForm(form, {
+        class: 'p8'
+    }) }}
+</div>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<OgcCoordinateSystem xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>USA_Contiguous_Albers_Equal_Area_Conic</Name>
+  <Parameters>+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=37.5 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m</Parameters>
+  <Srid>USA_Contiguous_Albers_Equal_Area_Conic</Srid>
+</OgcCoordinateSystem>

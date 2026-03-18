@@ -1,0 +1,14 @@
+{% extends '_land/layout' %}
+
+{% set listings = craft.entries()
+                    .section('huntingLeases')
+                    .all() %}
+
+
+{% block left %}
+	{% include '_land/left' %}
+{% endblock %}
+
+{% block modal %}
+	{% include '_land/modal' %}
+{% endblock %}

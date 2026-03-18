@@ -1,0 +1,198 @@
+allowLineBreaksInTitles: false
+color: cyan
+description: null
+fieldLayouts:
+  792512a5-ca8b-4339-a4e1-2e6b26fe348c:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-12-06T04:38:10+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: bc8c4e4c-2d65-425f-afe5-09461979012d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-10T00:15:11+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: f6c3037a-a389-45dc-a0cd-c448e9e6223e # Staff Contact
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e7527778-a977-4984-8bf6-2ccbb508c901
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-06T04:48:12+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 67515a2b-d3ca-4888-a7d9-b28bf87d8c44 # Address
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d1e5017b-2e58-42c9-9eb2-81e19053697b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-06T04:48:12+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 776e3a6f-5f1d-4211-bfed-0be1880fbd45 # Price
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 599aea67-23c0-4160-b66a-299056df51b1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-06T04:48:12+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
+            handle: acreage
+            instructions: null
+            label: Acreage
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 20c831f6-11db-40d3-8cf1-b29e858a7ee5
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-06T04:48:12+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            handle: null
+            instructions: null
+            label: Description
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8217b770-4692-43ce-a037-1964af20c2aa
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-07-10T15:08:06+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            handle: directions
+            instructions: null
+            label: 'Driving Directions'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9ff87cdd-838f-45d9-bd44-1fb71aef7c4c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-06T04:48:12+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 4a008dd5-8e6c-4586-b246-d806c81021dd # Features
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 56f83f7b-6739-42c8-8037-37c7af58cf5d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-06T04:48:12+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
+            handle: null
+            instructions: null
+            label: Assets
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7a9c701e-6e74-4854-9dbb-919c1556750a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-06T04:48:12+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5036f92c-afaa-4201-8e10-c51c87c5d237 # Shape File
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: 'The CRS must use a geographic coordinate system (lat/long): eg. EPSG:4269 - NAD83. The CRS cannot use a projected coordinate system (degrees): eg. EPSG:26915 - NAD83 / UTM Zone 15N.'
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5e1a8425-76f0-4ab6-b746-0d7c4a96f380
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: d54a867c-022d-483a-8a63-71389ef9179e
+        userCondition: null
+    thumbFieldKey: null
+handle: landSalesListing
+hasTitleField: true
+icon: sign-hanging
+name: 'Land Sales Listing'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

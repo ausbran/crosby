@@ -1,0 +1,8 @@
+<div id="contact-modal" class="!mt-0 fixed translate-y-full inset-0 z-50 bg-red flex items-center justify-center transition-all duration-300">
+    <div class="page grid grid-cols-12">
+        {% include '_includes/_icons/close' with {
+            class: '!bg-white !absolute z-2 top-6 right-6 modal-close stroke-red'
+        } %}
+        <div id="modal-content" class="col-span-12 grid grid-cols-subgrid items-center"></div>
+    </div>
+</div>

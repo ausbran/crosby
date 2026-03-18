@@ -1,0 +1,40 @@
+{% set source = source ?? block ?? entry %}
+{% set testimonialCount = source.testimonials is defined ? source.testimonials|length : 0 %}
+{% set singleTestimonial = testimonialCount == 1 %}
+{% set multipleTestimonials = testimonialCount > 1 %}
+{% set color = source.color ?? '' %}
+
+<div class="sm-page fade-in">
+	<div class="bg-texture testimonials grid grid-cols-12 py-12 md:py-20 md:pb-32 {{ 'bg-' ~ color }} sm:rounded-xl">
+		<div class="testimonials-content self-center col-span-12 md:col-span-8 lg:col-span-5 xl:col-span-4 pl-4 sm:pl-0 col-start-1 sm:col-start-2 md:col-start-2 lg:col-start-2 xl:col-start-3 grid grid-cols-subgrid">
+			<h4 class="row-start-1 col-span-10 testimonials-subhead">We're trusted</h4>
+			<h2 class="row-start-2 col-span-10 mt-4 {% if multipleTestimonials %}mb-16 lg:mb-10{% endif %} pr-10 testimonials-head">Hear first hand from our partners &amp; clients</h2>
+			{% if multipleTestimonials %}
+				<div class="hidden lg:block row-start-3 col-span-1 progress-bar {{ 'bg-' ~ color ~ '-dark' }}">
+					<div class="progress !bg-white"></div>
+				</div>
+			{% endif %}
+		</div>
+		<div class="max-lg:snap-x carousel flex lg:block px-[1rem] sm:px-[8.333333%] lg:pl-0  mr-0 sm:-mr-[1.5rem] md:mr-0 gap-4 sm:gap-6 col-span-12 lg:col-span-5 xl:col-span-4 col-start-1 lg:col-start-7 overflow-scroll lg:overflow-visible" data-slide-time="{{ source.slideTime ?? 15 }}">
+			{% for testimonial in source.testimonials.all() %}
+				<div class="max-lg:max-w-[600px] max-lg:mb-6 max-lg:scroll-ml-[50px] max-lg:snap-start w-[calc(100%-3rem)] sm:w-full flex-none carousel-item testimonial-card relative text-white p-8 lg:p-10 xl:p-12">
+					<div class="relative z-5">
+						<blockquote class="text-3xl mb-20 lg:mb-28 relative z-2">
+							{{ testimonial.quote | striptags }}
+						</blockquote>
+						<span class="block testimonial-name text-2xl">
+							{{ testimonial.title }}
+						</span>
+						<span class="block testimonial-role text-2xl">
+							{{ testimonial.role }}
+						</span>
+					</div>
+					<div class="absolute {{ 'bg-' ~ color }} h-full w-full top-0 left-0 rounded-xl border border-white z-4"></div>
+					<div class="hidden lg:block absolute {{ 'bg-' ~ color }} h-full w-full top-0 left-2 rotate-[2deg] rounded-xl origin-bottom-left z-3 h-[95%] brightness-95"></div>
+					<div class="hidden lg:block absolute {{ 'bg-' ~ color }} h-full w-full top-0 left-4 rotate-[4deg] rounded-xl origin-bottom-left z-2 h-[90%] brightness-90"></div>
+					<div class="hidden xl:block absolute {{ 'bg-' ~ color }} h-full w-full top-0 left-6 rotate-[6deg] rounded-xl origin-bottom-left z-1 h-[85%] brightness-75"></div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,22 @@
+{% set class = class ?? null %}
+
+{% if entry.entries|length %}
+    <section class="{{ class }} related-content hidden lg:block lg:col-span-6 pt-20 border-t border-t-1 border-t-black">
+        {% if entry.entriesText|length %}
+            {% include '_includes/_blocks/text' with {
+                text: entry.entriesText,
+                h1Class: 'col-span-12 md:col-span-9',
+                h2Class: 'col-span-12 md:col-span-9',
+                h3Class: 'col-span-12 md:col-span-9',
+                pClass: 'col-span-12 md:col-span-9'
+            } %}
+        {% endif %}
+        <div class="grid grid-cols-1 md:grid-cols-3 !gap-6 mt-6">
+            {% for block in entry.entries %}
+                    {% include '_land/_partials/fullBlock' with {
+                    truncate: true
+                    } %}
+            {% endfor %}
+        </div>
+    </section>
+{% endif %}

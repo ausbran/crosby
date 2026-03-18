@@ -1,0 +1,90 @@
+{% set form = craft.formie.forms({ handle: formHandle }).one() %}
+{% set style = style ?? 'standard' %}
+{% set staff = block.staffContact.all() ?? [] %}
+{% set emails = staff | map(s => s.email) | filter(email => email) | join(',') %}
+{% set staffEmail = emails ?: 'CCrosby@crosbyresource.com' %}
+{% set class = class ?? '' %}
+{% set sidebarsClass = sidebarsClass ?? '' %}
+{% set formClass = formClass ?? '' %}
+
+{# Pre-fill Formie field #}
+{% do craft.formie.populateFormValues(form, {
+    staffEmail: staffEmail
+}) %}
+
+{% if style == 'standard' %}
+    {% set wrapperClass = 'form grid grid-cols-12 fade-in bg-white max-sm:px-4' %}
+    {% set innerClass = 'col-span-12 sm:col-span-8 lg:col-span-6 xl:col-span-4' %}
+    {% set sidebars = true %}
+{% elseif style == 'modal' %}
+    {% set wrapperClass = 'max-md:pt-20 max-md:pb-6 px-4 max-sm:px-0 col-start-1 sm:col-start-3 lg:col-start-4 xl:col-start-5 col-span-12 sm:col-span-8 lg:col-span-6 xl:col-span-4' %}
+    {% set innerClass = 'modal-form' %}
+    {% set sidebars = false %}
+{% endif %}
+
+<div id="form" class="{{ wrapperClass }} {{ class }}">
+    {% if sidebars %}
+        <div class="{{ sidebarsClass }} form-side bg-texture col-span-0 sm:col-span-2 lg:col-span-3 xl:col-span-4 rounded-tr-xl rounded-br-xl"></div>
+    {% endif %}
+
+    <div class="{{ innerClass }}">
+
+        {# Optional department dropdown for contact page #}
+        {% if showDepartmentDropdown ?? false %}
+            {% set deptEntries = craft.entries({
+                section: ['company', 'land', 'recreation'],
+                with: ['staffContact'],
+                limit: null
+            }).all() %}
+
+            <h3 for="department-choice" class="block mb-2 font-medium">Choose a department</h3>
+            <p class="mb-4">This helps us direct your inquiry to the right person.</p>
+            <select id="department-choice" class="form-select mb-12 p-2 pl-4 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red focus:border-transparent">
+                {% for entry in deptEntries %}
+                    {% set staff = entry.staffContact.all() %}
+                    {% set email = staff | map(s => s.email) | filter(email => email) | join(',') %}
+                    <option value="{{ entry.title }}" data-email="{{ email }}">{{ entry.title }}</option>
+                {% endfor %}
+            </select>
+        {% endif %}
+
+        {# Render the Formie form #}
+        {% set formClass = (formClass ?? '') %}
+        {{ craft.formie.renderForm(form, {
+            class: formClass
+        }) }}
+        {{ craft.formie.renderFormJs(form) }}
+        {{ craft.formie.renderFormCss(form) }}
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const departmentSelect = document.getElementById('department-choice');
+
+                if (departmentSelect) {
+                    const updateEmail = () => {
+                        const selected = departmentSelect.options[departmentSelect.selectedIndex];
+                        const email = selected.dataset.email || '';
+
+                        // ✅ Find the Formie-generated hidden input by name
+                        const staffEmailInput = document.querySelector('form input[name="fields[staffEmail]"]');
+
+                        if (staffEmailInput) {
+                            staffEmailInput.value = email;
+
+                            // ✅ Dispatch change/input events so Formie registers it
+                            staffEmailInput.dispatchEvent(new Event('input', { bubbles: true }));
+                            staffEmailInput.dispatchEvent(new Event('change', { bubbles: true }));
+                        }
+                    };
+
+                    departmentSelect.addEventListener('change', updateEmail);
+                    updateEmail(); // initialize on load
+                }
+            });
+        </script>
+    </div>
+
+    {% if sidebars %}
+        <div class="{{ sidebarsClass }} form-side bg-texture col-span-0 sm:col-span-2 lg:col-span-3 xl:col-span-4 rounded-tl-xl rounded-bl-xl"></div>
+    {% endif %}
+</div>

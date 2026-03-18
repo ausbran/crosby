@@ -1,0 +1,52 @@
+{% set link = null %}
+{% if slide.url is defined %}
+    {% set link = slide.url %}
+{% elseif slide.magazineFile is defined %}
+    {% set link = slide.magazineFile %}
+{% endif %}
+
+<div class="slide press">
+    <div class="image scale {% if height is defined %}{{ height }}{% endif %}">
+        {% if slide.pressAsset is defined and slide.pressAsset|length %}
+            {% set asset = slide.pressAsset.one() %}
+            {% if asset %}
+                {% if slide.magazineLogo is defined and slide.magazineLogo is not empty %}
+                    {% set logo = slide.magazineLogo.one() %}
+                    {% if logo %}
+                        <img class="magazine-logo" src="{{ logo.url }}" alt="">
+                    {% endif %}
+                {% endif %}
+                <a href="{{ link }}" class="{% if slide.type == 'magazine' %}magazine-file{% endif %} {% if slide.magazineLogo is defined and slide.magazineLogo is not empty %}darken{% endif %}">
+                    {% if asset.kind == 'video' %}
+                        {% include '_includes/_blocks/asset' with {
+                            ratio: '1:1',
+                            asset: asset
+                        } %}
+                    {% else %}
+                        {# Display the regular image asset #}
+                        {% include '_includes/_blocks/asset' with {
+                            ratio: '1:1',
+                            asset: asset
+                        } %}
+                    {% endif %}
+                </a>
+            {% endif %}
+        {% endif %}
+    </div>
+    <div class="text">
+        <div class="press-info">
+            <h4 class="name">{{ slide.title }}</h4>
+            {% set date = slide.date %}
+            {% if date %}
+                <h4>{{ date | date('Y') }}</h4>
+            {% endif %}
+        </div>
+        {% include '_includes/_blocks/button' with {
+            link: link,
+            label: 'View',
+            firstArrow: 'red-arrow',
+            secondArrow: 'black-arrow',
+            fadeIn: false
+        } %}
+    </div>
+</div>

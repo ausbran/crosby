@@ -1,0 +1,92 @@
+allowLineBreaksInTitles: false
+color: cyan
+description: null
+fieldLayouts:
+  bccc2625-684a-44f1-8069-6f2f46a11b2b:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-11-22T01:14:44+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 8bbce30c-2ec5-489f-8b46-1947ed34ab36
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-11-22T01:14:44+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
+            handle: iframe
+            instructions: 'Paste your iFrame code.'
+            label: iFrame
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 18c77283-c9cb-40b1-8dd5-b87f5dfaf324
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: a5efe924-45f3-4af7-941e-758c770d2b73
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2024-11-22T01:14:44+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 4986ae78-9ffa-41e9-ab3b-91e866576fd5 # Max Width
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2d384d14-faf5-4c8e-afa3-1758c28a87ce
+            userCondition: null
+            warning: null
+            width: 100
+        name: Settings
+        uid: f3129c59-b608-4318-b02a-8dc31c146951
+        userCondition: null
+    thumbFieldKey: null
+handle: iframe
+hasTitleField: false
+icon: crop
+name: iFrame
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" {% if class is defined %}class="{{ class }}"{% endif %} width="17.159" height="15.678" viewBox="0 0 17.159 15.678">
+  <g id="arrow" transform="translate(0 0.707)">
+    <path id="line" d="M317.429,1015.5h15.514" transform="translate(-317.429 -1008.368)" fill="none" stroke="#fff" stroke-width="2"/>
+    <path id="point" d="M328.554,1008.346l7.132,7.132-7.132,7.132" transform="translate(-319.941 -1008.346)" fill="none" stroke="#fff" stroke-width="2"/>
+  </g>
+</svg>

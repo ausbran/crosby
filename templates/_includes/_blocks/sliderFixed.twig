@@ -1,0 +1,33 @@
+	<div class="page grid grid-cols-12 fade-in slider-fixed slider-button-js" data-cascade>
+		<!-- Main Slide -->
+		<div class="main-slide slide col-span-6 lg:col-span-7 xl:col-span-8 relative overflow-hidden bg-cover rounded-xl z-2">
+			<div class="z-2 w-full h-full content absolute p-8 lg:p-10 text-white flex max-lg:flex-col justify-between items-start lg:items-end">
+				<h2>{{ block.sliderHeader }}</h2>
+				{% include '_includes/_icons/arrowNext'  with {
+					nextArrowClass: '!bg-white',
+                    firstArrow: 'black-arrow',
+					secondArrow: 'black-arrow'
+                }%}
+			</div>
+			{% if block.fixedSlideAsset|length %}
+				{% include '_includes/_blocks/gradient' %}
+
+				{% include '_includes/_blocks/asset' with {
+                    asset: block.fixedSlideAsset.one(),
+                    class: 'h-full w-full object-cover'
+                } %}
+			{% endif %}
+		</div>
+
+		<!-- Secondary Slides -->
+		<div class="col-span-12 lg:col-span-5 xl:col-span-4">
+			{% include '_includes/_blocks/slider' with { 
+				slides: block.slides.all(),
+				fadeIn: true,
+				slideTemplate: '_includes/_blocks/slideMatrix',
+				arrows: false,
+				slideClass: 'max-lg:!max-w-[500px] !w-[calc(100%-20px)] lg:!w-full lg:!max-w-full',
+				header: null
+			} %}
+		</div>
+	</div>

@@ -1,0 +1,6 @@
+<form action="{{ siteUrl('search') }}" method="get" class="search-form">
+    <input type="text" name="q" placeholder="Search..." value="{{ craft.app.request.getParam('q') }}">
+    <button type="submit">
+        {% include '_includes/_icons/magnify' %}
+    </button>
+</form>

@@ -1,0 +1,96 @@
+allowLineBreaksInTitles: false
+color: red
+description: null
+fieldLayouts:
+  6cc19a46-037a-44df-967e-05fdce31c625:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2024-12-04T02:06:14+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 60bd2228-3e30-4f2b-8a42-0c7bb2be3610
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-04T02:06:14+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            handle: caption
+            instructions: null
+            label: Caption
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ebcc3f78-ddc2-4556-9d54-531a1b99d364
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 453ccf07-fc7c-4f80-ba30-b07959213627
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2024-12-04T04:42:55+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 451ebed9-368d-4404-a7f4-1c565c0dfc4a # Color
+            handle: null
+            instructions: null
+            label: 'Background Color'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 091cf9f9-54e9-4727-a6e8-0e69007b897a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-05-07T00:24:41+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: f6704256-c578-402a-ab33-5ac9687059bb # Height
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9ac73f91-a3c8-492a-8856-460563c8750b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Settings
+        uid: 4400363c-637c-43fd-9837-e4d0ad933c91
+        userCondition: null
+    thumbFieldKey: null
+handle: largeImageBlock
+hasTitleField: false
+icon: image
+name: 'Large Image Block'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

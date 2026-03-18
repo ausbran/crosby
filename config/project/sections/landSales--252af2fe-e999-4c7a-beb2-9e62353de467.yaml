@@ -1,0 +1,24 @@
+defaultPlacement: beginning
+enableVersioning: true
+entryTypes:
+  -
+    uid: 8eaea240-f35d-4b49-a8bf-c7b1ae70979a # Land Sales Listing
+handle: landSales
+maxAuthors: 1
+name: 'Land Sales'
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: land-minerals/land-sales
+propagationMethod: all
+siteSettings:
+  6974ec26-6de3-4cbe-87a2-c5363298442b: # Crosby Resource Management
+    enabledByDefault: true
+    hasUrls: true
+    template: _land/landSales
+    uriFormat: 'land-minerals/land-sales/{slug}'
+structure:
+  maxLevels: 1
+  uid: b7c772fd-ed3e-43c6-b0e3-12362f16a555
+type: structure

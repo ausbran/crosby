@@ -1,0 +1,32 @@
+{% set h1Class = h1Class ?? 'col-span-12 lg:col-span-10 xl:col-span-12' %}
+{% set h2Class = h2Class ?? 'col-span-12 lg:col-span-8 xl:col-span-6' %}
+{% set h3Class = h3Class ?? 'col-span-12 lg:col-span-8 xl:col-span-6' %}
+{% set h4Class = h4Class ?? 'col-span-12 lg:col-span-8 xl:col-span-6' %}
+{% set pClass = pClass ?? 'col-span-12 lg:col-span-8 xl:col-span-6' %}
+{% set ulClass = ulClass ?? 'col-span-12 lg:col-span-8 xl:col-span-6 max-md:pl-[15px]' %}
+{% set figureClass = figureClass ?? 'col-span-10 sm:col-span-8 md:col-span-6 lg:col-span-5' %}
+
+{% set text = text ?? (block.text is defined ? block.text|raw : (entry.text is defined ? entry.text|raw : '')) %}
+
+{% set updatedText = text 
+    | replace({
+        '<h1>': '<div class="grid grid-cols-subgrid col-span-12 row-start-auto"><h1 class="' ~ h1Class ~ '">',
+        '</h1>': '</h1></div>',
+        '<h2>': '<div class="grid grid-cols-subgrid col-span-12 row-start-auto"><h2 class="' ~ h2Class ~ '">',
+        '</h2>': '</h2></div>',
+        '<h3>': '<div class="grid grid-cols-subgrid col-span-12 row-start-auto"><h3 class="' ~ h3Class ~ '">',
+        '</h3>': '</h3></div>',
+        '<h4>': '<div class="grid grid-cols-subgrid col-span-12 row-start-auto"><h4 class="' ~ h4Class ~ '">',
+        '</h4>': '</h4></div>',
+        '<p>': '<div class="grid grid-cols-subgrid col-span-12 row-start-auto"><p class="' ~ pClass ~ '">',
+        '</p>': '</p></div>',
+        '<ul>': '<ul class="grid grid-cols-subgrid col-span-12 row-start-auto ' ~ ulClass ~ '">',
+        '<li>': '<li class="col-span-12">',
+        '<figure': '<div class="grid grid-cols-subgrid col-span-12 row-start-auto"><figure class="' ~ figureClass ~ '"',
+        '</figure>': '</figure></div>',
+    }) 
+%}
+
+<div class="text-block-child grid grid-cols-subgrid col-span-12 {% if custom is defined %}!space-y-{{ custom }}{% else %} space-y-4 lg:space-y-6{% endif %}">
+	{{ updatedText|raw }}
+</div>

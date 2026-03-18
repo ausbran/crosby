@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<OgcCoordinateSystem xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>NAD83_UTM_zone_15N</Name>
+  <Parameters>+proj=utm +zone=15 +ellps=GRS80 +datum=NAD83 +units=m +no_defs</Parameters>
+  <Srid>NAD83_UTM_zone_15N</Srid>
+</OgcCoordinateSystem>

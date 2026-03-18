@@ -1,0 +1,80 @@
+allowLineBreaksInTitles: false
+color: green
+description: null
+fieldLayouts:
+  983d2206-13f2-409b-8dfa-667f00ee41a8:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-03-17T00:00:00+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
+            handle: sliderHeader
+            instructions: null
+            label: 'Slider Header'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1d350b68-1867-4707-9135-6bad8687c29f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-12-04T02:04:10+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 2bb0df43-098d-4091-a1e0-967b00fdcb6c # Slides
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e5b5158a-2b5d-41f1-8df7-51c0a7c450e8
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 6acc2a23-49e4-4137-8377-edaef0b425b7
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2024-12-04T04:42:36+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 451ebed9-368d-4404-a7f4-1c565c0dfc4a # Color
+            handle: null
+            instructions: null
+            label: 'Background Color'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: aad8a471-f154-4412-b1ba-4611203d4f55
+            userCondition: null
+            warning: null
+            width: 100
+        name: Settings
+        uid: 39c68fbd-394e-4c53-8d29-d68d5eeb4bbb
+        userCondition: null
+    thumbFieldKey: null
+handle: sliderBlock
+hasTitleField: false
+icon: rectangle-history
+name: 'Slider Block'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

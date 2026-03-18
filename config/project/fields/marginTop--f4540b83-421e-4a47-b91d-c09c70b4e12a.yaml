@@ -1,0 +1,77 @@
+columnSuffix: null
+handle: marginTop
+instructions: null
+name: 'Margin Top'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Extra Small'
+        -
+          - value
+          - margin-top-xs
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Small
+        -
+          - value
+          - margin-top-sm
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Medium
+        -
+          - value
+          - margin-top-md
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Default
+        -
+          - value
+          - margin-top
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - Large
+        -
+          - value
+          - margin-top-lg
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Extra Large'
+        -
+          - value
+          - margin-top-xl
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

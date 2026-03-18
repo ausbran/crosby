@@ -1,0 +1,24 @@
+defaultPlacement: beginning
+enableVersioning: true
+entryTypes:
+  -
+    uid: 08212732-97cb-4fe1-80d5-22da0da1d83a # Staff
+handle: staff
+maxAuthors: 1
+name: Staff
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  6974ec26-6de3-4cbe-87a2-c5363298442b: # Crosby Resource Management
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+structure:
+  maxLevels: 1
+  uid: 387bc4cc-0ee2-4341-8117-e3dcbf301d56
+type: structure

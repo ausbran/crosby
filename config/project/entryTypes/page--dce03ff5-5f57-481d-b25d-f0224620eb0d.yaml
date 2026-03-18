@@ -1,0 +1,70 @@
+allowLineBreaksInTitles: false
+color: purple
+description: null
+fieldLayouts:
+  5d95bd99-c43f-43d8-9318-e6a20adf6ac7:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-11-22T01:14:44+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: f6c4e4e4-6b58-4da5-9777-ac08feb5c4a8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-01-08T22:59:16+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 022ea0cc-0378-4208-8aa9-5d66cc4e3e20 # Content Blocks
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7520d175-ac58-4fdf-b6d7-c71ebf029439
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: e453496a-62da-4272-8066-8c64f38d6032
+        userCondition: null
+    thumbFieldKey: null
+handle: page
+hasTitleField: true
+icon: file
+name: Page
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

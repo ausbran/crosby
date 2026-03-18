@@ -1,0 +1,64 @@
+altTranslationKeyFormat: null
+altTranslationMethod: none
+fieldLayouts:
+  3192ba74-a4db-4db4-b9b8-df3da29661e6:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-11-22T04:34:58+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: 2dde2ca9-c3c9-415a-90a7-86e1a5cbb935
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            editCondition: null
+            elementCondition: null
+            fieldUid: 40c54676-e066-4929-8bb7-5fc4d400729b # Video Stream
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5bcf5215-64aa-413e-a946-9fcf05c28b66
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: c1c3ff60-b793-4644-892a-427184b9bd8f
+        userCondition: null
+    thumbFieldKey: null
+fs: uploads
+handle: realEstate
+name: 'Real Estate'
+sortOrder: 11
+subpath: real-estate
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+transformFs: ''
+transformSubpath: transforms

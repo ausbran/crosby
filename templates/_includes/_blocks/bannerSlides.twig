@@ -1,0 +1,61 @@
+{% extends '_includes/_blocks/bannerBase' %}
+
+{% set source = source ?? block ?? entry ?? null %}
+{% set sourceText = source and attribute(source, 'text') is defined ? source.text : null %}
+{% set assetRelation = source and attribute(source, 'asset') is defined ? source.asset : null %}
+{% set buttonRelation = source and attribute(source, 'buttons') is defined ? source.buttons : null %}
+{% set sourceSlideTime = source and attribute(source, 'slideTime') is defined ? source.slideTime : null %}
+
+{% set text = text ?? sourceText %}
+{% if assets is not defined or assets is null %}
+	{% set assets = assetRelation ? assetRelation.all() : [] %}
+{% endif %}
+{% if buttons is not defined or buttons is null %}
+	{% set buttons = buttonRelation ? buttonRelation.all() : [] %}
+{% endif %}
+{% set slideTime = slideTime ?? sourceSlideTime %}
+
+{% block content %}
+	{% if assets|length > 1 %}
+		<div class="progress-bar bg-white lg:col-span-1 md:col-span-2 col-span-3 row-start-1">
+			<div class="progress bg-red"></div>
+		</div>
+	{% endif %}
+	<div class="col-span-12 row-start-2 mt-8 lg:mt-12 mb-8 self-end grid grid-cols-subgrid auto-rows-min">
+		{% include '_includes/_blocks/text'  with {
+			figureClass: 'col-span-10 sm:col-span-8 md:col-span-6 lg:col-span-5 xl:col-span-4'
+		} %}
+	</div>
+	{% if buttons|length %}
+		<div class="buttons flex max-sm:flex-wrap gap-3 lg:gap-6 row-start-3">
+			{% for button in buttons %}
+				{% include '_includes/_blocks/button' with {
+                    link: button.buttonLink,
+                    label: button.buttonLabel
+                } %}
+			{% endfor %}
+		</div>
+	{% endif %}
+{% endblock %}
+
+{% block background %}
+	{% if assets|length %}
+		<div class="carousel" data-slide-time="{{ slideTime ?? 15 }}">
+			{% include '_includes/_blocks/gradient.twig' with {
+                zIndex: '4',
+				opacity: '40'
+            } %}
+			{% include '_includes/_blocks/gradientBlur' with {
+				height: '1/2',
+				gradientStop: '40',
+				blur: 'sm',
+				zIndex: '4'
+			} %}
+			{% for asset in assets %}
+				<div class="carousel-item absolute h-full w-full z-2 opacity-0 transition-opacity duration-300 ease-in-out">
+					{% include '_includes/_blocks/asset' %}
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+{% endblock %}

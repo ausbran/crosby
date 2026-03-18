@@ -1,0 +1,74 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  f0c930c8-caae-4d94-9a4d-ce8952a50952:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-05-07T23:32:43+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6f6a7e17-4d67-439f-9086-293da14e2b1c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-05-07T23:32:43+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: ae97b4e4-7938-4735-b734-84f98ec34af2 # Banner Buttons
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e9cfd57c-a513-4905-b711-4c851a615b7f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-05-07T23:32:43+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8476378f-3cbb-43d6-a8da-0f6a7827d029
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: e673e1d7-05a8-4eb2-bae4-bb60b18816e0
+        userCondition: null
+    thumbFieldKey: null
+handle: contact
+hasTitleField: false
+icon: null
+name: Contact
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: Contact
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

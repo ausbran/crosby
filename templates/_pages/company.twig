@@ -1,0 +1,23 @@
+{% extends "index" %}
+{% set bodyClass = entry.color ?? '' %}
+
+{% block content %}
+	{% if entry.asset|length %}
+		{% include '_includes/_blocks/bannerSlides' with {
+            block: entry
+        } %}
+	{% else %}
+		<p class="error-text">No images selected.</p>
+	{% endif %}
+
+	{% include '_includes/_blocks/services' %}
+
+	{% if entry.testimonials.all() %}
+		{% include '_includes/_blocks/testimonials' %}
+	{% endif %}
+
+	{% include '_includes/_blocks/form' with {
+        formHandle: 'contactGeneral',
+		block: entry
+    } %}
+{% endblock %}

@@ -1,0 +1,19 @@
+columnSuffix: null
+handle: slideTime
+instructions: 'Choose a length of seconds for each slide.'
+name: 'Slide Time'
+searchable: false
+settings:
+  decimals: 0
+  defaultValue: 15
+  max: 30
+  min: 0
+  prefix: null
+  previewCurrency: null
+  previewFormat: decimal
+  size: null
+  step: null
+  suffix: Seconds
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number

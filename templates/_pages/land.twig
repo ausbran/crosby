@@ -1,0 +1,22 @@
+{% extends "index" %}
+{% set bodyClass = (entry.color ?? '') ~ ' bg-texture' %}
+
+{% block content %}
+	{% if entry.asset|length %}
+		{% include '_includes/_blocks/landingImages' with {
+            block: entry,
+            maxWidth: entry.topMaxWidth
+        } %}
+	{% else %}
+		<p class="error-text">No images selected.</p>
+	{% endif %}
+
+	{% include '_includes/_blocks/stickyBlocks' with {
+        stickyBlocks: entry.stickyBlocks is defined and entry.stickyBlocks ? entry.stickyBlocks.all() : []
+    } %}
+
+	{% include '_includes/_blocks/form' with {
+        formHandle: 'contactCRM',
+        class: 'bg-white py-20'
+    } %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "index" %}
+{% set footerClass = '!mt-0' %}
+
+{% block content %}
+	<div class="banner pt-64 error bg-red bg-texture !mb-0 min-h-[calc(100vh-400px)] flex justify-center items-center text-center">
+	    <div class="w-full h-full">
+	        <div class="text px-4 md:px-8 text-white">
+		        <h1 class="mb-4">How'd you get here?</h1>
+		        <p class="mb-8">This page doesn't exist.</p>
+				{% include '_includes/_blocks/button' with {
+					link: '/',
+					label: 'Go Home',
+					class:'text-red !bg-white'
+				} %}
+	        </div>
+	    </div>
+	</div>
+{% endblock %}

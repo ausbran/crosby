@@ -1,0 +1,182 @@
+allowLineBreaksInTitles: false
+color: emerald
+description: null
+fieldLayouts:
+  5ed3f966-6535-4e95-b86d-ea586a042d55:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-02-04T01:29:21+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: a2a64b6d-d937-4a3e-86e3-c9c0073dd638
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-04T01:33:49+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: f6c3037a-a389-45dc-a0cd-c448e9e6223e # Staff Contact
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1b7d51c9-2e31-49e4-81c0-15c7ff0e4c1d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-04T01:33:49+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 67515a2b-d3ca-4888-a7d9-b28bf87d8c44 # Address
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5484a6de-1659-402f-8cd3-4cea8896936c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-04T01:33:49+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
+            handle: acreage
+            instructions: null
+            label: Acreage
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 739b2392-1a1d-46cc-999f-6fd295916f13
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-04T01:33:49+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            handle: null
+            instructions: null
+            label: Description
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 00e54fad-f051-45c4-b820-daffc28beacf
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-07-10T15:14:42+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            handle: directions
+            instructions: null
+            label: 'Driving Directions'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fc35ba80-3a0b-402f-a924-6cd400ca2718
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-04T01:33:49+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 4a008dd5-8e6c-4586-b246-d806c81021dd # Features
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d73ee3e9-3031-42a2-ade9-afb475715bb3
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-04T01:33:49+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
+            handle: null
+            instructions: null
+            label: Assets
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 161d8ecb-d9cc-44ba-b768-c530ef1f2b55
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-04T01:33:49+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 5036f92c-afaa-4201-8e10-c51c87c5d237 # Shape File
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: 'The CRS must use a geographic coordinate system (lat/long): eg. EPSG:4269 - NAD83. The CRS cannot use a projected coordinate system (degrees): eg. EPSG:26915 - NAD83 / UTM Zone 15N.'
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3ca57cac-733d-49dc-a2c8-5643c6a4eaac
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: b048eba4-1979-4e7e-a9ee-efcbe9b8eb04
+        userCondition: null
+    thumbFieldKey: null
+handle: huntingLeaseListing
+hasTitleField: true
+icon: map
+name: 'Hunting Lease Listing'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

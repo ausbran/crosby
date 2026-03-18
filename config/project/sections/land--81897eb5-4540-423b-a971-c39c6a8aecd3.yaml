@@ -1,0 +1,25 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: f9c5fde4-c87c-45b1-8052-613600b09751 # Land & Minerals
+  -
+    uid: 715ee7ea-4843-403d-89ae-2933afef31f3 # Land Sales
+  -
+    uid: 82265a66-1451-4e83-8e17-e8e3257e9ee1 # Land Ownership
+handle: land
+maxAuthors: 1
+name: 'Land & Minerals'
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  6974ec26-6de3-4cbe-87a2-c5363298442b: # Crosby Resource Management
+    enabledByDefault: true
+    hasUrls: true
+    template: _land/_entry
+    uriFormat: 'land-minerals/{slug}'
+type: channel

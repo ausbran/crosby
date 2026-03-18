@@ -1,6 +1,9 @@
+allowLineBreaksInTitles: false
 color: null
+description: null
 fieldLayouts:
   faff0ea2-040d-4c0b-9b81-c7a10612b50a:
+    cardThumbAlignment: end
     tabs:
       -
         elementCondition: null
@@ -37,6 +40,7 @@ fieldLayouts:
             dateAdded: '2024-12-12T01:08:34+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: null
             instructions: null
@@ -52,6 +56,7 @@ fieldLayouts:
             dateAdded: '2024-12-12T01:13:33+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 70bbc0c6-ce4a-41e4-9b5c-b8726b5e1079 # Land Blocks
             handle: null
             instructions: null
@@ -67,6 +72,7 @@ fieldLayouts:
             dateAdded: '2024-12-12T01:13:33+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 5036f92c-afaa-4201-8e10-c51c87c5d237 # Shape File
             handle: null
             instructions: "Upload a .shp file of Crosby's land ownership to populate the entire map."
@@ -82,6 +88,7 @@ fieldLayouts:
             dateAdded: '2025-05-08T17:26:41+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: null
             instructions: 'Choose an image to associate with this page for social media links and related entries links.'
@@ -103,6 +110,7 @@ fieldLayouts:
             dateAdded: '2025-05-08T17:01:47+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 4f214814-db96-4951-a3b1-03392ef7ef4d # Entries
             handle: null
             instructions: "Choose other pages on the site that you'd like to display below the listings."
@@ -118,6 +126,7 @@ fieldLayouts:
             dateAdded: '2025-05-08T17:12:46+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: entriesText
             instructions: null
@@ -132,6 +141,7 @@ fieldLayouts:
         name: Content
         uid: 73644867-4af6-42e8-a254-0eb87c8892e7
         userCondition: null
+    thumbFieldKey: null
 handle: landOwnership
 hasTitleField: true
 icon: null
@@ -143,3 +153,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

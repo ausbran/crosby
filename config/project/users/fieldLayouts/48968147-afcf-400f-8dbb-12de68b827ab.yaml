@@ -1,3 +1,4 @@
+cardThumbAlignment: end
 tabs:
   -
     elementCondition: null
@@ -104,3 +105,4 @@ tabs:
     name: Content
     uid: c7f3ad5b-e84d-4c1a-b354-064afdefed59
     userCondition: null
+thumbFieldKey: null

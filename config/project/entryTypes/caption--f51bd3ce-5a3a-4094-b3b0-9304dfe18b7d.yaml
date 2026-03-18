@@ -1,6 +1,9 @@
+allowLineBreaksInTitles: false
 color: sky
+description: null
 fieldLayouts:
   5d91571f-f290-4cf2-acd3-d9c626e8981e:
+    cardThumbAlignment: end
     cardView:
       - 'layoutElement:e6f92a30-6ae8-4059-94df-50060c4a661c'
     tabs:
@@ -9,7 +12,9 @@ fieldLayouts:
         elements:
           -
             dateAdded: '2024-12-19T19:24:19+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: caption
             instructions: null
@@ -24,6 +29,7 @@ fieldLayouts:
         name: Content
         uid: c464e790-572c-4369-b88d-dbaeb5750b74
         userCondition: null
+    thumbFieldKey: null
 handle: caption
 hasTitleField: false
 icon: subtitles
@@ -35,3 +41,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

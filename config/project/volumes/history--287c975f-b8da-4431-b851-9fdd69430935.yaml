@@ -2,6 +2,7 @@ altTranslationKeyFormat: null
 altTranslationMethod: none
 fieldLayouts:
   1f8547c8-7f19-4d4e-9cef-f772c7b66f3c:
+    cardThumbAlignment: end
     tabs:
       -
         elementCondition: null
@@ -34,9 +35,24 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 100
+          -
+            editCondition: null
+            elementCondition: null
+            fieldUid: 40c54676-e066-4929-8bb7-5fc4d400729b # Video Stream
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 114cff8e-b838-410e-aa19-0b1dde2950de
+            userCondition: null
+            warning: null
+            width: 100
         name: Content
         uid: 8e3d60e9-5e97-4fc4-acbc-9c1fa706957a
         userCondition: null
+    thumbFieldKey: null
 fs: uploads
 handle: history
 name: History

@@ -173,6 +173,119 @@ figure {
   overflow: hidden;
 }
 
+.lqip-blur {
+  filter: blur(18px);
+  transition: filter 600ms ease;
+  will-change: filter;
+}
+
+.lqip-ready {
+  filter: blur(0);
+}
+
+.stream-video-wrap {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.stream-video-wrap .stream-video {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stream-lqip {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 500ms ease, filter 600ms ease;
+  transform: scale(1.1) !important;
+}
+
+.stream-video-wrap.background,
+.background .stream-video-wrap,
+.image .stream-video-wrap,
+.carousel-item > .stream-video-wrap {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
+
+.stream-lqip.lqip-ready {
+  opacity: 0;
+}
+
+.stream-video-wrap--processing {
+  background: #111;
+}
+
+.stream-video-wrap--processing .stream-lqip {
+  opacity: 0.25;
+  filter: blur(10px);
+}
+
+.stream-video-loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.stream-video-loader {
+  width: 42px;
+  height: 42px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 999px;
+  animation: stream-spin 900ms linear infinite;
+}
+
+.stream-video-status {
+  padding: 6px 10px;
+  font-size: 12px;
+  line-height: 1;
+  color: #fff;
+  font-weight: 700;
+}
+
+.search-results-media.stream-video-wrap,
+.search-results-media .stream-video-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.search-results-media.stream-video-wrap .stream-video,
+.search-results-media .stream-video-wrap .stream-video,
+.search-results-media.stream-video-wrap .stream-lqip,
+.search-results-media .stream-video-wrap .stream-lqip {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes stream-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 strong {
   font-weight: 600;
 }
@@ -483,9 +596,6 @@ strong {
   @apply z-3 opacity-100;
 }
 
-#main-nav {
-  /* ✅ Fix: Smooth transition when switching menus */
-}
 #main-nav.scrolled {
   @apply -translate-y-[125px];
 }
@@ -504,6 +614,9 @@ strong {
 #main-nav #close-search * {
   @apply stroke-white;
   stroke-width: 1.5px;
+}
+#main-nav {
+  /* ✅ Fix: Smooth transition when switching menus */
 }
 #main-nav .secondary-links.fade-out {
   @apply -translate-y-[5px] pointer-events-none opacity-0 !important;
@@ -770,6 +883,27 @@ body.green-dark footer svg * {
 
 .btn .btn-arrow .black-arrow * {
   @apply stroke-black;
+}
+
+.search-results-submit {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.search-results-submit * {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+#search-bar .search-bar-submit,
+#search-bar .search-bar-submit svg,
+#search-bar .search-bar-submit svg * {
+  transition: opacity 300ms ease;
+}
+
+#search-bar .search-bar-submit:hover,
+#search-bar .search-bar-submit:focus-visible {
+  opacity: 0.6;
 }
 
 .outline-hover {
@@ -1091,4 +1225,69 @@ select {
   visibility: hidden;
 }
 
-/*# sourceMappingURL=styles.temp.css.map */
+.instruction-page__toc-column {
+  @apply lg:sticky lg:self-start;
+  top: 7.5rem;
+}
+.instruction-page__toc-card {
+  @apply border border-gray-300;
+  @apply max-h-none overflow-visible px-4 py-5;
+  background-color: rgba(249, 250, 251, 0.95);
+  border-radius: 1.25rem;
+}
+@screen sm {
+  .instruction-page__toc-card {
+    @apply px-5 py-6;
+  }
+}
+@screen lg {
+  .instruction-page__toc-card {
+    @apply overflow-y-auto px-6 py-7;
+    max-height: calc(100vh - 9rem);
+  }
+}
+.instruction-page__toc-heading {
+  @apply mb-5 text-sm font-medium uppercase text-gray-500;
+  letter-spacing: 0.18em;
+}
+.instruction-page__toc-list {
+  @apply space-y-3;
+}
+.instruction-page__toc-sublist {
+  @apply ml-4 mt-2 space-y-1.5 border-l border-gray-200 pl-4;
+}
+.instruction-page__toc-link {
+  @apply relative flex items-start gap-3 rounded-xl border border-transparent px-3 py-3 text-sm text-gray-700 transition-colors duration-200;
+}
+.instruction-page__toc-link:hover {
+  @apply border-gray-300 bg-white text-gray-900;
+}
+.instruction-page__toc-link.is-active {
+  @apply border-gray-300 bg-white text-gray-900;
+  box-shadow: 0 10px 25px rgba(51, 51, 51, 0.06);
+}
+.instruction-page__toc-link.is-active::before {
+  content: "";
+  @apply absolute bottom-3 left-0 top-3 w-1 rounded-full bg-red;
+}
+.instruction-page__toc-link.is-active-parent:not(.is-active) {
+  @apply text-gray-900;
+}
+.instruction-page__toc-index {
+  @apply inline-flex items-center justify-center rounded-full bg-white font-medium text-gray-500 transition-colors duration-200;
+  font-size: 0.7rem;
+  height: 2rem;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  min-width: 2rem;
+}
+.instruction-page__toc-link:hover .instruction-page__toc-index, .instruction-page__toc-link.is-active .instruction-page__toc-index {
+  @apply bg-gray-100 text-gray-900;
+}
+.instruction-page__toc-label {
+  @apply block leading-snug;
+}
+.instruction-page__toc-sublink {
+  @apply gap-0 px-3 py-2.5 text-gray-600;
+  font-size: 0.8125rem;
+}

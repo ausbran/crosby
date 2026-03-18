@@ -1,7 +1,7 @@
 {% if block.maxWidth %}
-    <div class="iframe-wrapper" style="max-width:{{ block.maxWidth }}px;">
-        {{ block.iframe | raw }}
-    </div>
+	<div class="iframe-wrapper" style="max-width:{{ block.maxWidth }}px;">
+		{{ block.iframe | raw }}
+	</div>
 {% else %}
-    {{ block.iframe | raw }}
+	{{ block.iframe | raw }}
 {% endif %}

@@ -1,6 +1,9 @@
+allowLineBreaksInTitles: false
 color: fuchsia
+description: null
 fieldLayouts:
   3bca9049-77d4-467f-8f5b-112c64121831:
+    cardThumbAlignment: end
     cardView:
       - 'layoutElement:5df28b39-bbb0-4570-afef-5054ff1fa042'
     tabs:
@@ -9,7 +12,9 @@ fieldLayouts:
         elements:
           -
             dateAdded: '2024-09-05T19:34:32+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: null
             instructions: null
@@ -23,7 +28,9 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-09-05T19:36:43+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: assetMobile
             instructions: 'Display a different asset on smaller screen sizes.'
@@ -43,7 +50,9 @@ fieldLayouts:
         elements:
           -
             dateAdded: '2024-09-05T19:34:32+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 929dd815-3f39-4a7a-a039-6c7ac68799b5 # Overlay
             handle: null
             instructions: null
@@ -57,7 +66,9 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-09-05T19:34:32+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 8f0d2001-1c75-4b9a-8e74-b7e48dbc58bf # Loop Video
             handle: null
             instructions: null
@@ -72,6 +83,7 @@ fieldLayouts:
         name: Settings
         uid: ee150f7e-4f7a-48b3-bece-7f757fbc426c
         userCondition: null
+    thumbFieldKey: null
 handle: asset
 hasTitleField: false
 icon: images
@@ -83,3 +95,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

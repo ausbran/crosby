@@ -6,8 +6,13 @@ searchable: false
 settings:
   createButtonLabel: 'New Testimonial'
   defaultIndexViewMode: cards
+  enableVersioning: false
   entryTypes:
-    - 0e035fe3-0cf6-480e-82fe-d52cc928e650 # Testimonial
+    -
+      __assoc__:
+        -
+          - uid
+          - 0e035fe3-0cf6-480e-82fe-d52cc928e650 # Testimonial
   includeTableView: false
   maxEntries: null
   minEntries: null
@@ -15,7 +20,7 @@ settings:
   propagationKeyFormat: null
   propagationMethod: all
   showCardsInGrid: true
-  viewMode: cards
+  viewMode: cards-grid
 translationKeyFormat: null
 translationMethod: site
 type: craft\fields\Matrix

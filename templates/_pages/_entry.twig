@@ -1,17 +1,141 @@
 {% extends "index" %}
 
 {% block content %}
-    {% set blocks = entry.contentBlocks %}
+	{% set blocks = entry.contentBlocks is defined and entry.contentBlocks ? entry.contentBlocks.all() : [] %}
+	{% set fullBleed = ['hero'] %}
+	{% set alreadyPaged = ['banner', 'stickyBlock', 'sliderFixed'] %}
+	{% set firstBlock = blocks|first %}
+	{% set hasHeroFirst = firstBlock and firstBlock.type.handle == 'hero' %}
+	{% set topPaddingClass = hasHeroFirst ? 'pt-0' : 'pt-32 lg:pt-[180px]' %}
+	{% set stickyGroup = [] %}
 
-    {% for block in blocks %}
-        {% include '_includes/_blocks/' ~ block.type with {
-            block: block
-        } %}
-    {% endfor %}
-    <div class="page pt-32 lg:pt-[180px]">
-        <h1 class="text-6xl mb-8">{{ entry.title }}</h1>
-        <div class="max-w-[700px]">
-            {{ entry.text }}
-        </div>
-    </div>
+	{% if blocks|length %}
+		<div class="{{ topPaddingClass }} space-y-10 lg:space-y-16 xl:space-y-20">
+
+			{% for block in blocks %}
+				{% if block.type.handle == 'stickyBlock' %}
+					{% set stickyGroup = stickyGroup|merge([block]) %}
+					{% if loop.last %}
+						{% include '_includes/_blocks/stickyBlocks' with {
+                        source: stickyGroup|first,
+                        stickyBlocks: stickyGroup,
+                        textColor: 'text-black',
+                        showNumber: false
+                    } %}
+					{% endif %}
+				{% else %}
+					{% if stickyGroup|length %}
+						{% include '_includes/_blocks/stickyBlocks' with {
+                        source: stickyGroup|first,
+                        stickyBlocks: stickyGroup,
+                        textColor: 'text-black',
+                        showNumber: false
+                    } %}
+						{% set stickyGroup = [] %}
+					{% endif %}
+
+					{% set usePage = not (block.type.handle in fullBleed or block.type.handle in alreadyPaged) %}
+					{% if usePage %}
+						<div class="page">
+						{% endif %}
+						{% switch block.type.handle %}
+							{% case 'text' %}
+								{% include '_includes/_blocks/text' with {
+                                    text: block.text
+                                } %}
+							{% case 'asset' %}
+								{% set asset = block.asset is defined and block.asset ? block.asset.one() : null %}
+								{% set assetMobile = block.assetMobile is defined and block.assetMobile ? block.assetMobile.one() : null %}
+								{% include '_includes/_blocks/asset' with {
+                                    asset: asset,
+                                    assetMobile: assetMobile,
+                                    class: 'rounded-xl overflow-hidden'
+                                } %}
+							{% case 'banner' %}
+								{% include '_includes/_blocks/bannerSlides' with {
+                            source: block,
+                            block: block,
+                            bannerBody: true
+                        } %}
+
+							{% case 'hero' %}
+								{% include '_includes/_blocks/bannerSlides' with {
+                            source: block,
+                            block: block
+                        } %}
+
+							{% case 'sliderFixed' %}
+								{% include '_includes/_blocks/sliderFixed' with {
+                                block: block
+                            } %}
+							{% case 'sliderBlock' %}
+								{% include '_includes/_blocks/slider' with {
+                                block: block,
+								slideTemplate: '_includes/_blocks/slideMatrix',
+                                arrowsClass: 'page justify-end mt-8'
+                            } %}
+							{% case 'form' %}
+								{% include '_includes/_blocks/form' with {
+                        block: block,
+                        formHandle: block.formHandle ?? null,
+                        class: block.formClass ?? null
+                    } %}
+							{% case 'iframe' %}
+								<div class="iframe-container rounded-xl overflow-hidden w-full">
+									<style>
+										.iframe-container iframe {
+											width: 100%;
+											height: 700px;
+										}
+
+										@media(max-width: 1300px) {
+											.iframe-container iframe {
+												height: 600px;
+											}
+										}
+
+										@media(max-width: 1024px) {
+											.iframe-container iframe {
+												height: 500px;
+											}
+										}
+
+										@media(max-width: 768px) {
+											.iframe-container iframe {
+												height: 300px;
+											}
+										}
+									</style>
+									{% include '_includes/_blocks/iframe' with {
+                                        block: block
+                                    } %}
+								</div>
+							{% case 'pullQuoteBlock' %}
+								<blockquote class="grid grid-cols-subgrid">
+									<div class="fade-in grid grid-cols-subgrid">
+										{% include '_includes/_blocks/text' with {
+                                            text: block.text
+                                        } %}
+									</div>
+								</blockquote>
+
+							{% default %}
+								{% include '_includes/_blocks/' ~ block.type.handle ignore missing with {
+                        block: block
+                    } %}
+						{% endswitch %}
+						{% if usePage %}
+						</div>
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+		</div>
+	{% else %}
+		<div class="page pt-32 lg:pt-[180px]">
+			<h1 class="text-6xl mb-8">{{ entry.title }}</h1>
+			<div class="max-w-[700px]">
+				{{ entry.text }}
+			</div>
+		</div>
+	{% endif %}
 {% endblock %}

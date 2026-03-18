@@ -4,9 +4,9 @@ instructions: null
 name: 'Button Link'
 searchable: false
 settings:
+  fullGraphqlData: false
   maxLength: 255
   showLabelField: false
-  showTargetField: false
   typeSettings:
     __assoc__:
       -

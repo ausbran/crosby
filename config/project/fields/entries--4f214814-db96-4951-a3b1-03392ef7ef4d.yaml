@@ -6,16 +6,19 @@ searchable: false
 settings:
   allowSelfRelations: false
   branchLimit: null
+  defaultPlacement: end
   maintainHierarchy: false
   maxRelations: 3
   minRelations: 0
   selectionLabel: null
-  showCardsInGrid: true
+  showSearchInput: true
   showSiteMenu: true
+  showUnpermittedEntries: true
+  showUnpermittedSections: true
   sources: '*'
   targetSiteId: null
   validateRelatedElements: false
-  viewMode: cards
+  viewMode: cards-grid
 translationKeyFormat: null
 translationMethod: none
 type: craft\fields\Entries

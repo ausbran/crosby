@@ -1,6 +1,9 @@
+allowLineBreaksInTitles: false
 color: red
+description: null
 fieldLayouts:
   6cc19a46-037a-44df-967e-05fdce31c625:
+    cardThumbAlignment: end
     tabs:
       -
         elementCondition: null
@@ -9,6 +12,7 @@ fieldLayouts:
             dateAdded: '2024-12-04T02:06:14+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: null
             instructions: null
@@ -24,6 +28,7 @@ fieldLayouts:
             dateAdded: '2024-12-04T02:06:14+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: caption
             instructions: null
@@ -45,6 +50,7 @@ fieldLayouts:
             dateAdded: '2024-12-04T04:42:55+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 451ebed9-368d-4404-a7f4-1c565c0dfc4a # Color
             handle: null
             instructions: null
@@ -60,6 +66,7 @@ fieldLayouts:
             dateAdded: '2025-05-07T00:24:41+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: f6704256-c578-402a-ab33-5ac9687059bb # Height
             handle: null
             instructions: null
@@ -74,6 +81,7 @@ fieldLayouts:
         name: Settings
         uid: 4400363c-637c-43fd-9837-e4d0ad933c91
         userCondition: null
+    thumbFieldKey: null
 handle: largeImageBlock
 hasTitleField: false
 icon: image
@@ -85,3 +93,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

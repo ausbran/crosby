@@ -1,6 +1,9 @@
+allowLineBreaksInTitles: false
 color: red
+description: null
 fieldLayouts:
   ded33f9f-8882-4b84-98af-1701cbee6b9f:
+    cardThumbAlignment: end
     cardView:
       - 'layoutElement:85d4a578-59be-415b-a829-ea433f53f009'
       - 'layoutElement:ac87debb-c122-44d8-b6e4-12d67323104e'
@@ -48,7 +51,9 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-12-16T20:02:22+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: null
             instructions: null
@@ -62,7 +67,9 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-12-16T20:02:22+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: null
             instructions: null
@@ -76,7 +83,9 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-12-16T20:26:56+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: b7977904-1581-4bf1-a440-242e4c34840a # Button Label
             handle: null
             instructions: null
@@ -90,7 +99,9 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-12-16T20:26:56+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 26fa7b55-e9e5-4fbb-a5e1-0cc31f223c1e # Button Link
             handle: null
             instructions: null
@@ -117,7 +128,9 @@ fieldLayouts:
             userCondition: null
           -
             dateAdded: '2024-12-16T20:35:27+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
             handle: title2
             instructions: null
@@ -131,7 +144,9 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-12-16T20:02:22+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: text2
             instructions: null
@@ -145,7 +160,9 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-12-16T20:02:22+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: asset2
             instructions: null
@@ -159,7 +176,9 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-12-16T20:26:56+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: b7977904-1581-4bf1-a440-242e4c34840a # Button Label
             handle: buttonLabel2
             instructions: null
@@ -173,7 +192,9 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-12-16T20:26:56+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 26fa7b55-e9e5-4fbb-a5e1-0cc31f223c1e # Button Link
             handle: buttonLink2
             instructions: null
@@ -193,7 +214,9 @@ fieldLayouts:
         elements:
           -
             dateAdded: '2024-12-16T20:02:47+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 91106ad6-75bd-4491-b0ee-b0a60f514c1a # Column Span
             handle: null
             instructions: null
@@ -207,7 +230,9 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-12-16T20:02:47+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 451ebed9-368d-4404-a7f4-1c565c0dfc4a # Color
             handle: null
             instructions: null
@@ -222,6 +247,7 @@ fieldLayouts:
         name: Settings
         uid: ff40aa0b-bfd3-4879-8c3f-0c40051c399b
         userCondition: null
+    thumbFieldKey: null
 handle: doubleSlide
 hasTitleField: true
 icon: rectangle-history
@@ -233,3 +259,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

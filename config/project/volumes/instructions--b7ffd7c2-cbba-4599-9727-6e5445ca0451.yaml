@@ -35,9 +35,24 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 100
+          -
+            editCondition: null
+            elementCondition: null
+            fieldUid: 40c54676-e066-4929-8bb7-5fc4d400729b # Video Stream
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ee06a720-56e1-433d-bcfc-55b235be8465
+            userCondition: null
+            warning: null
+            width: 100
         name: Content
         uid: ba3574e8-be4a-4708-8153-177e3ce05a81
         userCondition: null
+    thumbFieldKey: null
 fs: uploads
 handle: instructions
 name: Instructions

@@ -1,6 +1,9 @@
+allowLineBreaksInTitles: false
 color: null
+description: null
 fieldLayouts:
   c3159597-f513-4416-88d5-f91f27b0c329:
+    cardThumbAlignment: end
     tabs:
       -
         elementCondition: null
@@ -9,6 +12,7 @@ fieldLayouts:
             dateAdded: '2025-05-07T23:04:01+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: f6c3037a-a389-45dc-a0cd-c448e9e6223e # Staff Contact
             handle: null
             instructions: null
@@ -58,6 +62,7 @@ fieldLayouts:
             dateAdded: '2025-02-04T01:39:28+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: null
             instructions: null
@@ -73,6 +78,7 @@ fieldLayouts:
             dateAdded: '2025-05-08T18:24:10+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: null
             instructions: 'Choose an image to associate with this page for social media links and related entries links.'
@@ -94,6 +100,7 @@ fieldLayouts:
             dateAdded: '2025-05-08T17:02:09+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 4f214814-db96-4951-a3b1-03392ef7ef4d # Entries
             handle: null
             instructions: "Choose other pages on the site that you'd like to display below the listings."
@@ -109,6 +116,7 @@ fieldLayouts:
             dateAdded: '2025-05-08T17:11:49+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: entriesText
             instructions: null
@@ -130,6 +138,7 @@ fieldLayouts:
             dateAdded: '2025-02-04T21:43:14+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 451ebed9-368d-4404-a7f4-1c565c0dfc4a # Color
             handle: null
             instructions: null
@@ -144,6 +153,7 @@ fieldLayouts:
         name: Settings
         uid: 09787b0d-7bba-483d-b4fe-77bbf837bb3f
         userCondition: null
+    thumbFieldKey: null
 handle: huntingLeases
 hasTitleField: true
 icon: null
@@ -155,3 +165,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

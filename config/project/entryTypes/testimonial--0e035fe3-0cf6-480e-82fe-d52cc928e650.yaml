@@ -1,6 +1,9 @@
+allowLineBreaksInTitles: false
 color: null
+description: null
 fieldLayouts:
   c48e69ee-5b64-4628-93af-4c06138e874c:
+    cardThumbAlignment: end
     cardView:
       - 'layoutElement:ed470e98-c60c-4f41-871b-d31f384d72b3'
       - 'layoutElement:44c38f86-7bc4-4192-a9ba-a6a8379e61ee'
@@ -38,7 +41,9 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-11-26T19:05:37+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
             handle: role
             instructions: null
@@ -52,7 +57,9 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-11-26T19:05:37+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: quote
             instructions: null
@@ -67,6 +74,7 @@ fieldLayouts:
         name: Content
         uid: 54be050a-73c8-47ef-b265-add00b5b2a0c
         userCondition: null
+    thumbFieldKey: null
 handle: testimonial
 hasTitleField: true
 icon: null
@@ -78,3 +86,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

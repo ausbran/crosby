@@ -1,81 +1,169 @@
 {# Universal variables #}
 {% set asset = asset ?? null %}
 {% set assetMobile = assetMobile ?? null %}
+{% set class = class ?? null %}
 {% set format = format ?? 'webp' %}
 {% set quality = quality ?? 100 %}
 {% set mode = mode ?? 'crop' %}
 {% set overlay = overlay ?? null %}
-{% set class = class ?? null %}
+{% set isPortrait = asset and asset.height > asset.width %}
+{% set orientationClass = (isPortrait and (ratio is not defined or ratio == null)) ? 'portrait' : 'landscape' %}
 
 {# Aspect ratio variables #}
-{% set ratio = ratio ?? '16:9' %}
-{% if ratio == '16:9' %}
-	{% set width, height = 2560, 1440 %}
-	{% set tabletWidth, tabletHeight = 1920, 1080 %}
-	{% set mobileWidth, mobileHeight = 1280, 720 %}
-{% elseif ratio == '4:5' %}
-	{% set width, height = 1440, 1800 %}
-	{% set tabletWidth, tabletHeight = 1080, 1350 %}
-	{% set mobileWidth, mobileHeight = 640, 800 %}
-{% elseif ratio == '1:1' %}
-	{% set width, height = 1440, 1440 %}
-	{% set tabletWidth, tabletHeight = 1080, 1080 %}
-	{% set mobileWidth, mobileHeight = 800, 800 %}
+{% if isPortrait and (ratio is not defined or ratio == null) %}
+	{% set ratio = '9:16' %}
+	{% set width, height = 1440, 2560 %}
+	{% set tabletWidth, tabletHeight = 1080, 1920 %}
+	{% set mobileWidth, mobileHeight = 720, 1280 %}
+{% else %}
+	{% set ratio = ratio ?? '16:9' %}
+	{% if ratio == '16:9' %}
+		{% set width, height = 2560, 1440 %}
+		{% set tabletWidth, tabletHeight = 1920, 1080 %}
+		{% set mobileWidth, mobileHeight = 1280, 720 %}
+	{% elseif ratio == '4:5' %}
+		{% set width, height = 1440, 1800 %}
+		{% set tabletWidth, tabletHeight = 1080, 1350 %}
+		{% set mobileWidth, mobileHeight = 640, 800 %}
+	{% elseif ratio == '1:1' %}
+		{% set width, height = 1440, 1440 %}
+		{% set tabletWidth, tabletHeight = 1080, 1080 %}
+		{% set mobileWidth, mobileHeight = 800, 800 %}
+	{% endif %}
 {% endif %}
 
 {# Video variables #}
 {% set loopVideo = loopVideo ?? true %}
+{% set controls = controls ?? false %}
+{% set autoplay = autoplay ?? (controls ? false : true) %}
+{% set previewStart = previewStart ?? null %}
+{% set previewDuration = previewDuration ?? null %}
+{% set previewLoop = previewLoop ?? true %}
+{% set videoLqip = videoLqip ?? true %}
+{% set videoStreamField = craft.app.fields.getFieldByHandle('videoStream') %}
+{% set streamBandwidthHint = getenv('CLOUDFLARE_STREAM_BANDWIDTH_HINT') ?: null %}
 
 {% if asset %}
 	{% if asset.kind == 'video' %}
-		<video {% if class is defined %} class="{{ class }}" {% endif %} autoplay {{ loopVideo ? 'loop' }} muted preload="metadata" playsinline webkit-playsinline">
-			{% if assetMobile %}
-				<source src="{{ assetMobile.url }}" type="{{ assetMobile.mimeType }}" media="(max-width: 767px)">
+		{% set streamValue = videoStreamField ? asset.getFieldValue('videoStream') : null %}
+		{% set streamReady = streamValue and (streamValue.readyToStream ?? false) %}
+		{% set streamHls = streamReady and streamValue.playback is defined and streamValue.playback.hls ? streamValue.playback.hls : null %}
+		{% set streamMp4 = streamValue and streamValue.mp4Url is defined and streamValue.mp4Url ? streamValue.mp4Url : null %}
+		{% set streamPoster = streamValue and streamValue.thumbnail is defined and streamValue.thumbnail ? streamValue.thumbnail : null %}
+		{% set hlsUrl = streamHls %}
+		{% if hlsUrl and streamBandwidthHint %}
+			{% set hlsUrl = hlsUrl ~ ('?' in hlsUrl ? '&' : '?') ~ 'clientBandwidthHint=' ~ (streamBandwidthHint|url_encode) %}
+		{% endif %}
+		{% set hasStreamVideo = hlsUrl or streamMp4 %}
+		{% set streamAspectRatio = null %}
+		{% if asset.width is defined and asset.height is defined and asset.width and asset.height %}
+			{% set streamAspectRatio = asset.width ~ ' / ' ~ asset.height %}
+		{% elseif ratio == '16:9' %}
+			{% set streamAspectRatio = '16 / 9' %}
+		{% elseif ratio == '4:5' %}
+			{% set streamAspectRatio = '4 / 5' %}
+		{% elseif ratio == '1:1' %}
+			{% set streamAspectRatio = '1 / 1' %}
+		{% elseif ratio == '9:16' %}
+			{% set streamAspectRatio = '9 / 16' %}
+		{% endif %}
+
+		{% set wrapperClass = (orientationClass ~ ' ' ~ (class ?? '') ~ ' stream-video-wrap')|trim %}
+		{% set streamProcessing = streamValue ? (not streamReady) : true %}
+
+		{% if hasStreamVideo %}
+			<div class="{{ wrapperClass }}"{% if streamAspectRatio %} style="--stream-aspect-ratio: {{ streamAspectRatio }};"{% endif %}>
+				{% if streamPoster and videoLqip %}
+					<img class="stream-lqip lqip-blur" data-lqip-overlay="true" src="{{ streamPoster }}" alt="">
+				{% endif %}
+				<video
+					class="stream-video"
+					{% if loopVideo %}loop{% endif %}
+					{% if controls %}controls{% endif %}
+					muted
+					preload="none"
+					playsinline
+					webkit-playsinline
+					crossorigin="anonymous"
+					data-stream-video="true"
+					{% if hlsUrl %}data-hls-src="{{ hlsUrl }}"{% endif %}
+					{% if autoplay %}data-autoplay="true"{% endif %}
+					{% if previewStart is not null %}data-preview-start="{{ previewStart }}"{% endif %}
+					{% if previewDuration is not null %}data-preview-duration="{{ previewDuration }}"{% endif %}
+					{% if previewDuration is not null and previewLoop is not null %}data-preview-loop="{{ previewLoop ? 'true' : 'false' }}"{% endif %}
+					{% if streamPoster %}poster="{{ streamPoster }}"{% endif %}
+				>
+					{% if not hlsUrl and streamMp4 %}
+						<source src="{{ streamMp4 }}" type="video/mp4">
+					{% endif %}
+				</video>
+			</div>
+
+			<noscript>
+				<video {% if loopVideo %}loop{% endif %} {% if controls %}controls{% endif %} muted preload="metadata" playsinline webkit-playsinline crossorigin="anonymous"{% if streamPoster %} poster="{{ streamPoster }}"{% endif %}>
+					{% if streamMp4 %}
+						<source src="{{ streamMp4 }}" type="video/mp4">
+					{% endif %}
+				</video>
+			</noscript>
+		{% elseif streamProcessing %}
+			<div class="{{ (wrapperClass ~ ' stream-video-wrap--processing')|trim }}"{% if streamAspectRatio %} style="--stream-aspect-ratio: {{ streamAspectRatio }};"{% endif %}>
+				{% if streamPoster and videoLqip %}
+					<img class="stream-lqip lqip-blur" data-lqip="true" src="{{ streamPoster }}" alt="">
+				{% endif %}
+				<div class="stream-video-loading" aria-hidden="true">
+					<div class="stream-video-loader"></div>
+					<div class="stream-video-status">Processing video...</div>
+				</div>
+			</div>
+		{% elseif streamPoster %}
+			{% if videoLqip %}
+				<img class="{{ (orientationClass ~ ' ' ~ (class ?? '') ~ ' lqip-blur')|trim }}" data-lqip="true" src="{{ streamPoster }}" alt="">
+			{% else %}
+				<img class="{{ (orientationClass ~ ' ' ~ (class ?? ''))|trim }}" src="{{ streamPoster }}" alt="">
 			{% endif %}
-			<source src="{{ asset.url }}" type="{{ asset.mimeType }}">
-		</video>
+		{% else %}
+			<video {% if class is defined %} class="{{ class }}" {% endif %} {% if autoplay %}autoplay{% endif %} {{ loopVideo ? 'loop' }} muted preload="metadata" playsinline webkit-playsinline">
+				{% if assetMobile %}
+					<source src="{{ assetMobile.url }}" type="{{ assetMobile.mimeType }}" media="(max-width: 767px)">
+				{% endif %}
+				<source src="{{ asset.url }}" type="{{ asset.mimeType }}">
+			</video>
+		{% endif %}
 	{% elseif asset.kind == 'image' %}
 		{# Image rendering logic #}
-		{% set settings = [
-            {
-                asset: asset,
-                transform: {
-                    width: width,
-                    height: height,
-                    mode: mode,
-                    format: format
-                },
-                min: 1024
-            },
-            {
-                asset: asset,
-                transform: {
-                    width: tabletWidth,
-                    height: tabletHeight,
-                    mode: mode,
-                    format: format
-                },
-                max: 1023,
-                min: 768
-            },
-            {
-                asset: asset,
-                transform: {
-                    width: mobileWidth,
-                    height: mobileHeight,
-                    mode: mode,
-                    format: format
-                },
-                max: 767
-            }
-        ] %}
+		{% set desktopTransform = {
+			width: width,
+			height: height,
+			mode: mode,
+			format: format,
+			quality: quality
+		} %}
+		{% set tabletTransform = {
+			width: tabletWidth,
+			height: tabletHeight,
+			mode: mode,
+			format: format,
+			quality: quality
+		} %}
+		{% set mobileTransform = {
+			width: mobileWidth,
+			height: mobileHeight,
+			mode: mode,
+			format: format,
+			quality: quality
+		} %}
+		{% set desktopUrl = asset.getUrl(desktopTransform) ?: asset.url %}
+		{% set tabletUrl = asset.getUrl(tabletTransform) ?: desktopUrl %}
+		{% set mobileUrl = asset.getUrl(mobileTransform) ?: tabletUrl %}
+		{% set imageClass = (orientationClass ~ ' ' ~ (class ?? ''))|trim %}
+		{% set imageAlt = asset.title ?? '' %}
 
-		{% set commonTransformSettings = {
-            quality: quality,
-            class: class
-        } %}
-
-		{{ craft.images.pictureMultiple(settings, commonTransformSettings) }}
+		<picture>
+			<source media="(max-width: 767px)" srcset="{{ mobileUrl }}">
+			<source media="(max-width: 1023px)" srcset="{{ tabletUrl }}">
+			<img class="{{ imageClass }}" src="{{ desktopUrl }}" alt="{{ imageAlt }}" crossorigin="anonymous" loading="lazy">
+		</picture>
 	{% endif %}
 
 	{% if overlay %}

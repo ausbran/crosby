@@ -102,7 +102,7 @@ data:
                 label: Name
                 labelPosition: verbb\formie\positions\Hidden
                 matchField: null
-                nestedLayoutId: 2
+                nestedLayoutId: null
                 placeholder: 'Your name'
                 prePopulate: null
                 required: false
@@ -254,6 +254,7 @@ data:
           fields:
             -
               settings:
+                blockFreeDomains: false
                 conditions: null
                 containerAttributes: null
                 cssClasses: null
@@ -327,11 +328,63 @@ data:
                 label: Location
                 labelPosition: null
                 matchField: null
-                nestedLayoutId: 3
+                nestedLayoutId: null
                 placeholder: null
                 prePopulate: null
                 required: false
                 rows:
+                  -
+                    fields:
+                      -
+                        settings:
+                          conditions: null
+                          cssClasses: null
+                          defaultValue: null
+                          emailValue: null
+                          enableConditions: false
+                          enableContentEncryption: false
+                          enabled: true
+                          errorMessage: null
+                          handle: getInTouch
+                          headingSize: h2
+                          includeInEmail: false
+                          inputAttributes: null
+                          instructions: null
+                          instructionsPosition: null
+                          label: 'Get in touch'
+                          labelPosition: null
+                          matchField: null
+                          placeholder: null
+                          prePopulate: null
+                          required: false
+                          visibility: null
+                        type: verbb\formie\fields\Heading
+                  -
+                    fields:
+                      -
+                        settings:
+                          conditions: null
+                          cssClasses: null
+                          defaultValue: null
+                          emailValue: null
+                          enableConditions: false
+                          enableContentEncryption: false
+                          enabled: true
+                          errorMessage: null
+                          handle: wereHereToHelpWithAnyQuestionsOrInquiriesReachOutToUsAndAMemberO
+                          headingSize: h6
+                          includeInEmail: false
+                          inputAttributes: null
+                          instructions: null
+                          instructionsPosition: null
+                          label: 'We’re here to help with any questions or inquiries. Reach out to us, and a member of our team will respond promptly.'
+                          labelPosition: null
+                          matchField: null
+                          placeholder: null
+                          prePopulate: null
+                          required: false
+                          visibility: null
+                        type: verbb\formie\fields\Heading
                   -
                     fields:
                       -
@@ -353,7 +406,7 @@ data:
                           label: 'Your Name'
                           labelPosition: verbb\formie\positions\Hidden
                           matchField: null
-                          nestedLayoutId: 4
+                          nestedLayoutId: null
                           placeholder: 'Your name'
                           prePopulate: null
                           required: false
@@ -492,6 +545,7 @@ data:
                     fields:
                       -
                         settings:
+                          blockFreeDomains: false
                           conditions: null
                           cssClasses: null
                           defaultValue: null
@@ -518,7 +572,7 @@ data:
                         settings:
                           conditions: null
                           countryDefaultValue: null
-                          countryEnabled: true
+                          countryEnabled: false
                           countryLanguage: auto
                           cssClasses: null
                           defaultValue: null
@@ -581,14 +635,14 @@ data:
                           cookieName: null
                           cssClasses: null
                           defaultOption: custom
-                          defaultValue: null
+                          defaultValue: '{systemEmail}'
                           emailValue: null
                           enableConditions: false
                           enableContentEncryption: false
                           enabled: true
                           errorMessage: null
                           handle: staffEmail
-                          includeInEmail: true
+                          includeInEmail: false
                           instructions: null
                           instructionsPosition: null
                           label: 'Staff Email'
@@ -675,6 +729,7 @@ data:
                 label: 'Upload Files'
                 labelPosition: null
                 labelSource: title
+                layout: vertical
                 limitFiles: '5'
                 limitOptions: null
                 matchField: null
@@ -687,6 +742,7 @@ data:
                 sizeLimit: null
                 sizeMinLimit: null
                 source: null
+                sourceType: groups
                 sources: '*'
                 uploadLocationSource: 'volume:0f5c1e47-cf4b-4344-9cb3-878096bd9dfa'
                 uploadLocationSubpath: null
@@ -725,7 +781,10 @@ data:
     integrations:
       recaptcha:
         enabled: true
-    limitSubmissions: false
+    limitSubmissions: ''
+    limitSubmissionsIpAddressMessage: null
+    limitSubmissionsIpAddressNumber: null
+    limitSubmissionsIpAddressType: null
     limitSubmissionsMessage: '[{"type":"paragraph","attrs":{"textAlign":"start"}}]'
     limitSubmissionsNumber: null
     limitSubmissionsType: total
@@ -733,6 +792,7 @@ data:
     loadingIndicatorText: null
     pageRedirectUrl: null
     progressPosition: end
+    progressValuePosition: inside-center
     redirectUrl: null
     requireUser: false
     requireUserMessage: '[{"type":"paragraph","attrs":{"textAlign":"start"}}]'

@@ -1,12 +1,26 @@
+let scaleCleanup = null;
+
 export function initScale() {
-  let scaleUp = null;
-  let isActive = false;
+  if (typeof scaleCleanup === "function") {
+    scaleCleanup();
+  }
+
+  let scaleUp = document.querySelector(".scale-up");
+  if (!scaleUp) {
+    scaleCleanup = null;
+    return;
+  }
 
   const initialScale = 0.9;
   const maxScale = 1.2;
+  let resizeTimeout = null;
+  let rafId = null;
 
-  function onScroll() {
-    if (!scaleUp) return;
+  function applyScale() {
+    if (!scaleUp || !document.body.contains(scaleUp)) {
+      return;
+    }
+
     const blockRect = scaleUp.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
     const distanceFromTop = Math.max(0, viewportHeight - blockRect.top);
@@ -15,40 +29,45 @@ export function initScale() {
     scaleUp.style.transform = `scale(${scale})`;
   }
 
-  function enable() {
-    if (isActive) return;
-    scaleUp = document.querySelector(".scale-up");
-    if (!scaleUp) return;
+  function scheduleApplyScale() {
+    if (rafId) {
+      window.cancelAnimationFrame(rafId);
+    }
 
-    isActive = true;
-    window.addEventListener("scroll", onScroll);
-    onScroll(); // initialize
-  }
-
-  function disable() {
-    if (!isActive) return;
-    window.removeEventListener("scroll", onScroll);
-    if (scaleUp) scaleUp.style.transform = ""; // Reset transform
-    isActive = false;
-    scaleUp = null;
+    rafId = window.requestAnimationFrame(() => {
+      applyScale();
+    });
   }
 
   function handleResize() {
-    // if (window.innerWidth > 1023) {
-    //   enable();
-    // } else {
-    //   disable();
-    // }
-    enable();
+    scaleUp = document.querySelector(".scale-up");
+    scheduleApplyScale();
   }
 
-  // Debounce resize handler
-  let resizeTimeout;
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(handleResize, 150);
+  function onResize() {
+    window.clearTimeout(resizeTimeout);
+    resizeTimeout = window.setTimeout(handleResize, 150);
+  }
+
+  window.addEventListener("scroll", scheduleApplyScale);
+  window.addEventListener("resize", onResize);
+  window.addEventListener("load", scheduleApplyScale, { once: true });
+
+  scheduleApplyScale();
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(scheduleApplyScale);
   });
 
-  // Initial check
-  handleResize();
+  scaleCleanup = () => {
+    window.removeEventListener("scroll", scheduleApplyScale);
+    window.removeEventListener("resize", onResize);
+    window.clearTimeout(resizeTimeout);
+    if (rafId) {
+      window.cancelAnimationFrame(rafId);
+    }
+    if (scaleUp && document.body.contains(scaleUp)) {
+      scaleUp.style.transform = "";
+    }
+    scaleUp = null;
+  };
 }

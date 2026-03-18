@@ -8,16 +8,9 @@ maxAuthors: 1
 name: Footer
 previewTargets:
   -
-    __assoc__:
-      -
-        - label
-        - 'Primary entry page'
-      -
-        - urlFormat
-        - '{url}'
-      -
-        - refresh
-        - '1'
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
 propagationMethod: all
 siteSettings:
   6974ec26-6de3-4cbe-87a2-c5363298442b: # Crosby Resource Management

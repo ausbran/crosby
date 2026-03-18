@@ -1,0 +1,99 @@
+{% from "_includes/forms" import autosuggestField, lightswitchField %}
+
+{{ autosuggestField({
+    label: "Bucket"|t('app'),
+    instructions: "The R2 bucket name."|t('app'),
+    id: 'bucket',
+    class: 'ltr',
+    name: 'bucket',
+    suggestEnvVars: true,
+    value: volume.bucket ?? '',
+    required: true,
+    placeholder: "my-bucket"|t('app'),
+    errors: volume.getErrors('bucket'),
+    data: {'error-key': 'bucket'},
+    disabled: readOnly,
+}) }}
+
+{{ autosuggestField({
+    label: "Access Key ID"|t('app'),
+    instructions: "The R2 access key ID."|t('app'),
+    id: 'keyId',
+    class: 'ltr',
+    name: 'keyId',
+    suggestEnvVars: true,
+    value: volume.keyId ?? '',
+    required: true,
+    placeholder: "$R2_ACCESS_KEY_ID"|t('app'),
+    errors: volume.getErrors('keyId'),
+    data: {'error-key': 'keyId'},
+    disabled: readOnly,
+}) }}
+
+{{ autosuggestField({
+    label: "Secret Access Key"|t('app'),
+    instructions: "The R2 secret access key."|t('app'),
+    id: 'secret',
+    class: 'ltr',
+    name: 'secret',
+    suggestEnvVars: true,
+    value: volume.secret ?? '',
+    required: true,
+    placeholder: "$R2_SECRET_ACCESS_KEY"|t('app'),
+    errors: volume.getErrors('secret'),
+    data: {'error-key': 'secret'},
+    disabled: readOnly,
+}) }}
+
+{{ autosuggestField({
+    label: "Region"|t('app'),
+    instructions: "Use \"auto\" for Cloudflare R2."|t('app'),
+    id: 'region',
+    class: 'ltr',
+    name: 'region',
+    suggestEnvVars: true,
+    value: volume.region ?? 'auto',
+    required: true,
+    placeholder: "auto"|t('app'),
+    errors: volume.getErrors('region'),
+    data: {'error-key': 'region'},
+    disabled: readOnly,
+}) }}
+
+{{ autosuggestField({
+    label: "Endpoint"|t('app'),
+    instructions: "Your R2 endpoint URL."|t('app'),
+    id: 'endpoint',
+    class: 'ltr',
+    name: 'endpoint',
+    suggestEnvVars: true,
+    value: volume.endpoint ?? '',
+    required: true,
+    placeholder: "https://<accountid>.r2.cloudflarestorage.com"|t('app'),
+    errors: volume.getErrors('endpoint'),
+    data: {'error-key': 'endpoint'},
+    disabled: readOnly,
+}) }}
+
+{{ autosuggestField({
+    label: "Subfolder"|t('app'),
+    instructions: "Optional subfolder within the bucket."|t('app'),
+    id: 'subfolder',
+    class: 'ltr',
+    name: 'subfolder',
+    suggestEnvVars: true,
+    value: volume.subfolder ?? '',
+    placeholder: "uploads"|t('app'),
+    errors: volume.getErrors('subfolder'),
+    data: {'error-key': 'subfolder'},
+    disabled: readOnly,
+}) }}
+
+{{ lightswitchField({
+    label: "Use path-style endpoint"|t('app'),
+    instructions: "Required for Cloudflare R2."|t('app'),
+    id: 'usePathStyleEndpoint',
+    name: 'usePathStyleEndpoint',
+    on: volume.usePathStyleEndpoint ?? true,
+    disabled: readOnly,
+}) }}

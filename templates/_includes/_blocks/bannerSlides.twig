@@ -1,9 +1,19 @@
 {% extends '_includes/_blocks/bannerBase' %}
 
-{% set text = text ?? entry.text %}
-{% set assets = assets ?? entry.asset.all() %}
-{% set buttons = buttons ?? (entry is defined and attribute(entry, 'buttons') is defined and entry.buttons ? entry.buttons.all() : []) %}
-{% set slideTime = slideTime ?? entry.slideTime %}
+{% set source = source ?? block ?? entry ?? null %}
+{% set sourceText = source and attribute(source, 'text') is defined ? source.text : null %}
+{% set assetRelation = source and attribute(source, 'asset') is defined ? source.asset : null %}
+{% set buttonRelation = source and attribute(source, 'buttons') is defined ? source.buttons : null %}
+{% set sourceSlideTime = source and attribute(source, 'slideTime') is defined ? source.slideTime : null %}
+
+{% set text = text ?? sourceText %}
+{% if assets is not defined or assets is null %}
+	{% set assets = assetRelation ? assetRelation.all() : [] %}
+{% endif %}
+{% if buttons is not defined or buttons is null %}
+	{% set buttons = buttonRelation ? buttonRelation.all() : [] %}
+{% endif %}
+{% set slideTime = slideTime ?? sourceSlideTime %}
 
 {% block content %}
 	{% if assets|length > 1 %}

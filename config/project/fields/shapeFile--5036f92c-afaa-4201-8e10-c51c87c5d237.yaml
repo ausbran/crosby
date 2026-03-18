@@ -9,6 +9,7 @@ settings:
   allowUploads: true
   allowedKinds: null
   branchLimit: null
+  defaultPlacement: end
   defaultUploadLocationSource: 'volume:ebc5822f-5362-4f1c-a6b8-37a17ea08cf0' # Shape Files
   defaultUploadLocationSubpath: null
   maintainHierarchy: false
@@ -21,7 +22,7 @@ settings:
   restrictedLocationSource: 'volume:0524ce74-5809-4227-9995-c07e31fcd67f' # General
   restrictedLocationSubpath: null
   selectionLabel: 'Add files'
-  showCardsInGrid: true
+  showSearchInput: true
   showSiteMenu: true
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
@@ -29,7 +30,7 @@ settings:
     - 'volume:ebc5822f-5362-4f1c-a6b8-37a17ea08cf0' # Shape Files
   targetSiteId: null
   validateRelatedElements: false
-  viewMode: cards
+  viewMode: cards-grid
 translationKeyFormat: null
 translationMethod: none
 type: craft\fields\Assets

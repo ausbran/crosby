@@ -6,7 +6,7 @@
 {% set ulClass = ulClass ?? 'col-span-12 lg:col-span-8 xl:col-span-6 max-md:pl-[15px]' %}
 {% set figureClass = figureClass ?? 'col-span-10 sm:col-span-8 md:col-span-6 lg:col-span-5' %}
 
-{% set text = text ?? (entry.text is defined ? entry.text|raw : '') %}
+{% set text = text ?? (block.text is defined ? block.text|raw : (entry.text is defined ? entry.text|raw : '')) %}
 
 {% set updatedText = text 
     | replace({

@@ -6,8 +6,13 @@ searchable: true
 settings:
   createButtonLabel: 'New Slide'
   defaultIndexViewMode: cards
+  enableVersioning: false
   entryTypes:
-    - 48e5995c-750c-4886-986e-6d886dd4e850 # Slide
+    -
+      __assoc__:
+        -
+          - uid
+          - 48e5995c-750c-4886-986e-6d886dd4e850 # Slide
   includeTableView: false
   maxEntries: null
   minEntries: null
@@ -15,7 +20,7 @@ settings:
   propagationKeyFormat: null
   propagationMethod: all
   showCardsInGrid: true
-  viewMode: cards
+  viewMode: cards-grid
 translationKeyFormat: null
 translationMethod: site
 type: craft\fields\Matrix

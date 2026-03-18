@@ -1,9 +1,15 @@
-import { nav, navState, main, footer } from "./globals.js";
+import { navState } from "./globals.js";
 
-export function resetNav() {
+let navigationCleanup = null;
+
+export function resetNav(options = {}) {
+  const { immediate = false } = options;
+  const nav = document.querySelector("nav");
+  const main = document.querySelector("main");
+  const footer = document.querySelector("footer");
   const menuBg = document.querySelector('.nav-bg-overlay');
   const activePrimary = document.querySelector(".primary-links > li.active");
-  const activeSecondary = document.querySelector(".secondary-links");
+  const activeSecondary = document.querySelector(".secondary-links.visible, .secondary-links.opacity-100, .primary-links > li.active .secondary-links");
   const primaryNavLinks = document.querySelectorAll(".primary-links > li");
 
   if (main) {
@@ -23,21 +29,53 @@ export function resetNav() {
   });
 
   if (activeSecondary) {
-    activeSecondary.classList.add("fade-out");
-    activeSecondary.classList.remove(
-      "visible",
-      "opacity-100",
-      "pointer-events-auto"
-    );
+    if (immediate) {
+      activeSecondary.classList.remove("fade-out");
+      activeSecondary.classList.remove(
+        "visible",
+        "opacity-100",
+        "pointer-events-auto",
+        "translate-y-0"
+      );
+      activeSecondary.classList.add(
+        "invisible",
+        "opacity-0",
+        "pointer-events-none",
+      );
+    } else {
+      activeSecondary.classList.add("fade-out");
+      activeSecondary.classList.remove(
+        "visible",
+        "opacity-100",
+        "pointer-events-auto"
+      );
+    }
   }
 
   if (menuBg) {
-    menuBg.style.transition = "height 0.3s ease";
+    menuBg.style.transition = immediate ? "none" : "height 0.3s ease";
     menuBg.style.height = "0px";
+    if (immediate) {
+      window.requestAnimationFrame(() => {
+        menuBg.style.transition = "";
+      });
+    }
   }
 }
 
 export function initNavigation() {
+  if (typeof navigationCleanup === "function") {
+    navigationCleanup();
+  }
+
+  const nav = document.querySelector("nav");
+  if (!nav) {
+    navigationCleanup = null;
+    return;
+  }
+
+  const controller = new AbortController();
+  const { signal } = controller;
   let lastScrollY = window.scrollY;
   let activePrimary = null;
   let activeSecondary = null;
@@ -69,13 +107,15 @@ export function initNavigation() {
   // desktop
   function initDesktopMenu() {
     const menuBg = document.querySelector('.nav-bg-overlay');
+    const main = document.querySelector("main");
+    const footer = document.querySelector("footer");
 
     primaryNavLinks.forEach((primary) => {
       const secondaryMenu = primary.querySelector(".secondary-links");
 
       primary.addEventListener("mouseenter", () => {
-        main.classList.add("blur-md");
-        footer.classList.add("blur-md");
+        main?.classList.add("blur-md");
+        footer?.classList.add("blur-md");
 
         const submenu = primary.querySelector('.secondary-links');
         if (submenu) {
@@ -109,16 +149,16 @@ export function initNavigation() {
         }
 
         activePrimary = primary;
-      });
+      }, { signal });
     });
 
     // ✅ Only hide menus when leaving nav entirely
-    navContainer.addEventListener("mouseleave", resetNav);
+    navContainer?.addEventListener("mouseleave", resetNav, { signal });
 
     document.querySelectorAll(".secondary-links a").forEach(link => {
       link.addEventListener("click", () => {
         resetNav(); // fade out nav BEFORE Barba transition
-      });
+      }, { signal });
     });
   }
 
@@ -151,23 +191,26 @@ export function initNavigation() {
       primaryLinks.forEach((primary) => primary.classList.remove("hidden"));
     };
 
-    hamburger.addEventListener("click", () => {
+    hamburger?.addEventListener("click", () => {
       toggleMobileMenu();
-    });
+    }, { signal });
 
     if (closeButton) {
       closeButton.addEventListener("click", () => {
         resetMobileMenu();
-      });
+      }, { signal });
     }
 
     primaryLinks.forEach((button) => {
       const secondaryMenu = document.querySelector(button.dataset.secondary);
       button.addEventListener("click", () => {
+        if (!secondaryMenu) {
+          return;
+        }
         primaryLinks.forEach((primary) => primary.classList.add("opacity-0"));
         secondaryMenu.classList.add("translate-x-0");
         activeSecondary = secondaryMenu;
-      });
+      }, { signal });
     });
 
     backButtons.forEach((backButton) => {
@@ -178,7 +221,7 @@ export function initNavigation() {
           activeSecondary = null;
         }
         primaryLinks.forEach((primary) => primary.classList.remove("opacity-0"));
-      });
+      }, { signal });
     });
   }
 
@@ -189,8 +232,6 @@ export function initNavigation() {
     if (newMode === currentMode) return; // prevent duplicate init
 
     // Clean up
-    window.removeEventListener("scroll", handleScroll);
-
     // Init correct menu
     if (isDesktop) {
       initDesktopMenu();
@@ -202,8 +243,6 @@ export function initNavigation() {
     currentMode = newMode;
 
     // Re-attach scroll handler
-    window.addEventListener("scroll", handleScroll);
-
     if (hamburger.classList.contains("animate") || hamburger.classList.contains("animate-reverse")) {
       hamburger.classList.remove("animate", "animate-reverse");
       mobileMenu.classList.remove("translate-x-0");
@@ -219,8 +258,8 @@ export function initNavigation() {
       resizeTimer = setTimeout(() => {
           initializeMenu();
       }, 200); // Debounce resize to prevent performance issues
-  });
-  window.addEventListener("scroll", handleScroll);
+  }, { signal });
+  window.addEventListener("scroll", handleScroll, { signal });
 
   // search bar logic
   const searchIcon = document.querySelector(".icons #search-icon");
@@ -230,19 +269,24 @@ export function initNavigation() {
 
   if (searchIcon) {
     searchIcon.addEventListener("click", () => {
+        resetNav({ immediate: true });
         primaryNav.classList.add("opacity-0", "pointer-events-none", "-translate-y-full"); // Fade out navigation
         searchBar.classList.remove("invisible", "translate-y-[25px]", "opacity-0"); // Show search bar
         searchBar.classList.add("opacity-100", "pointer-events-auto");
         searchIcon.classList.add("-translate-y-full");
         closeSearch.classList.remove("translate-y-full");
-      });
+      }, { signal });
 
-      closeSearch.addEventListener("click", () => {
+      closeSearch?.addEventListener("click", () => {
         primaryNav.classList.remove("opacity-0", "pointer-events-none", "-translate-y-full"); // Restore navigation
         searchBar.classList.add("invisible", "translate-y-[25px]", "opacity-0"); // Hide search bar
         searchBar.classList.remove("opacity-100", "pointer-events-auto");
         searchIcon.classList.remove("-translate-y-full");
         closeSearch.classList.add("translate-y-full");
-      });
+      }, { signal });
   }
+
+  navigationCleanup = () => {
+    controller.abort();
+  };
 }

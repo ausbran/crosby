@@ -6,8 +6,13 @@ searchable: false
 settings:
   createButtonLabel: 'New feature'
   defaultIndexViewMode: cards
+  enableVersioning: false
   entryTypes:
-    - 919a4551-b041-4591-8dc5-541e8024def6 # Feature
+    -
+      __assoc__:
+        -
+          - uid
+          - 919a4551-b041-4591-8dc5-541e8024def6 # Feature
   includeTableView: false
   maxEntries: null
   minEntries: null
@@ -15,7 +20,7 @@ settings:
   propagationKeyFormat: null
   propagationMethod: all
   showCardsInGrid: true
-  viewMode: cards
+  viewMode: cards-grid
 translationKeyFormat: null
 translationMethod: site
 type: craft\fields\Matrix

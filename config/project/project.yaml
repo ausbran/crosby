@@ -1,4 +1,4 @@
-dateModified: 1773769548
+dateModified: 1773795637
 elementSources:
   craft\elements\Asset:
     -
@@ -287,9 +287,16 @@ fs:
     hasUrls: true
     name: Uploads
     settings:
-      path: '@webroot/uploads'
-    type: craft\fs\Local
-    url: $PRIMARY_SITE_URL/uploads/
+      bucket: $R2_BUCKET
+      endpoint: $R2_ENDPOINT
+      hasUrls: true
+      keyId: $R2_ACCESS_KEY_ID
+      region: $R2_REGION
+      secret: $R2_SECRET_ACCESS_KEY
+      subfolder: $R2_SUBFOLDER
+      usePathStyleEndpoint: true
+    type: modules\R2Fs
+    url: $R2_BASE_URL
 meta:
   __names__:
     0a3cb10d-1602-4ea7-9531-b28f3ed36991: 'Our Team' # Our Team
@@ -323,6 +330,7 @@ meta:
     26fa7b55-e9e5-4fbb-a5e1-0cc31f223c1e: 'Button Link' # Button Link
     29cb3264-eccf-4606-a645-a6951efb3d58: 'Real Estate' # Real Estate
     34eabfa9-2dfb-43ea-9fa1-466ad575a728: iFrame # iFrame
+    40c54676-e066-4929-8bb7-5fc4d400729b: 'Video Stream' # Video Stream
     42d902fc-110b-469b-9510-c2d1cebc50cc: 'Public Schema' # Public Schema
     48e5995c-750c-4886-986e-6d886dd4e850: Slide # Slide
     48f6a218-2886-43f7-80cc-13633d3687a6: 'History Blocks' # History Blocks
@@ -409,6 +417,16 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 5.0.0.1
+  cloudflare-stream:
+    edition: standard
+    enabled: true
+    licenseKey: LIX5SPK1CT7HVIQJ7J31BN0P
+    schemaVersion: 1.4.0
+    settings:
+      accountId: $CLOUDFLARE_ACCOUNT_ID
+      apiToken: $CLOUDFLARE_STREAM_API_TOKEN
+      autoUpload: '1'
+      useFormUpload: ''
   dospaces:
     edition: standard
     enabled: true

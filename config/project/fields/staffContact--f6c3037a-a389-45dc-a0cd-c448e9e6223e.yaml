@@ -11,7 +11,7 @@ settings:
   maxRelations: null
   minRelations: null
   selectionLabel: 'Add a Staff Contact'
-  showCardsInGrid: true
+  showSearchInput: true
   showSiteMenu: true
   showUnpermittedEntries: true
   showUnpermittedSections: true
@@ -19,7 +19,7 @@ settings:
     - 'section:68cbee1c-920f-40db-8ed7-12382fc9e585' # Staff
   targetSiteId: null
   validateRelatedElements: false
-  viewMode: cards
+  viewMode: cards-grid
 translationKeyFormat: null
 translationMethod: none
 type: craft\fields\Entries

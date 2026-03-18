@@ -24,10 +24,13 @@ use craft\helpers\App;
 
 return [
     'id' => App::env('CRAFT_APP_ID') ?: 'CraftCMS',
-    // 'modules' => [
-    //     'shapefile-converter' => [
-    //         'class' => \modules\ShapefileConverter::class,
-    //     ],
-    // ],
-    // 'bootstrap' => ['shapefile-converter'],
+    'modules' => [
+        'video-stream-module' => [
+            'class' => \modules\VideoStreamModule::class,
+        ],
+        // 'shapefile-converter' => [
+        //     'class' => \modules\ShapefileConverter::class,
+        // ],
+    ],
+    'bootstrap' => ['video-stream-module'],
 ];

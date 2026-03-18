@@ -1,3 +1,4 @@
+allowLineBreaksInTitles: false
 color: green
 description: 'Instructions for editors to know how to manage and edit content.'
 fieldLayouts:
@@ -39,6 +40,7 @@ fieldLayouts:
             dateAdded: '2026-01-09T19:39:17+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: null
             instructions: null
@@ -54,6 +56,7 @@ fieldLayouts:
             dateAdded: '2026-01-09T18:54:34+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 1afc4390-d938-49a4-b4a4-798e68a2bc9d # Instruction Blocks
             handle: null
             instructions: null
@@ -68,6 +71,7 @@ fieldLayouts:
         name: Content
         uid: 321a80b6-2156-45c1-8ac6-c0fc80817414
         userCondition: null
+    thumbFieldKey: null
 handle: instruction
 hasTitleField: true
 icon: list
@@ -79,3 +83,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

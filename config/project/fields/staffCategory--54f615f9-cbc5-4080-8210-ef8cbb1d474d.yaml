@@ -11,7 +11,7 @@ settings:
   maxRelations: null
   minRelations: null
   selectionLabel: null
-  showCardsInGrid: false
+  showSearchInput: true
   showSiteMenu: false
   source: 'group:bf576820-9e89-40b9-a7c5-82be152e232e' # Staff
   targetSiteId: null

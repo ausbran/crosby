@@ -11,7 +11,7 @@
 	{% endif %}
 
 	{% include '_includes/_blocks/stickyBlocks' with {
-        stickyBlocks: entry.stickyBlocks.all()
+        stickyBlocks: entry.stickyBlocks is defined and entry.stickyBlocks ? entry.stickyBlocks.all() : []
     } %}
 
 	{% include '_includes/_blocks/form' with {

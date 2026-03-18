@@ -1,13 +1,18 @@
+allowLineBreaksInTitles: false
 color: purple
+description: null
 fieldLayouts:
   ccae7631-f804-4a5c-a3cb-596ffd7f8978:
+    cardThumbAlignment: end
     tabs:
       -
         elementCondition: null
         elements:
           -
             dateAdded: '2024-12-04T02:07:19+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: null
             instructions: null
@@ -27,7 +32,9 @@ fieldLayouts:
         elements:
           -
             dateAdded: '2024-12-04T04:43:16+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 451ebed9-368d-4404-a7f4-1c565c0dfc4a # Color
             handle: null
             instructions: null
@@ -42,6 +49,7 @@ fieldLayouts:
         name: Settings
         uid: d6a21848-09fc-405b-9e91-1a861a7e9a8d
         userCondition: null
+    thumbFieldKey: null
 handle: pullQuoteBlock
 hasTitleField: false
 icon: quotes
@@ -53,3 +61,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

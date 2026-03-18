@@ -1,6 +1,10 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # Block spammy query strings like ?j=1234 (410 Gone)
+    RewriteCond %{QUERY_STRING} (^|&)j=[0-9]+(&|$) [NC]
+    RewriteRule ^ - [R=410,L]
+
     # Route 404s to index.php
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d

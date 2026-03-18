@@ -5,14 +5,43 @@ php_version: "8.2"
 webserver_type: nginx-fpm
 xdebug_enabled: false
 additional_hostnames: []
-additional_fqdns: []
+additional_fqdns:
+    - local.crosbyresource.com
 database:
     type: mysql
     version: "8.0"
 use_dns_when_possible: true
 composer_version: "2"
-web_environment: []
+web_environment:
+    - PRIMARY_SITE_URL=https://local.crosbyresource.com
 corepack_enable: false
+hooks:
+    post-start:
+        - exec-host: |
+              python3 - <<'PY'
+              from pathlib import Path
+
+              path = Path('.env')
+              if not path.exists():
+                  raise SystemExit('Missing .env file')
+
+              text = path.read_text()
+              lines = text.splitlines()
+              key = 'PRIMARY_SITE_URL='
+              value = 'PRIMARY_SITE_URL=\"https://local.crosbyresource.com\"'
+              found = False
+
+              for index, line in enumerate(lines):
+                  if line.startswith(key):
+                      lines[index] = value
+                      found = True
+                      break
+
+              if not found:
+                  lines.append(value)
+
+              path.write_text('\n'.join(lines) + '\n')
+              PY
 
 # Key features of DDEV's config.yaml:
 

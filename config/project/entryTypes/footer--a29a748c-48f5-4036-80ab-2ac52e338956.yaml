@@ -1,6 +1,9 @@
+allowLineBreaksInTitles: false
 color: cyan
+description: null
 fieldLayouts:
   8f8961ce-b8f9-44b2-8ade-61b7a791585f:
+    cardThumbAlignment: end
     tabs:
       -
         elementCondition: null
@@ -9,6 +12,7 @@ fieldLayouts:
             dateAdded: '2024-08-23T00:52:55+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 7e4b4add-061e-4eab-92df-597242f18a90 # Primary Links
             handle: null
             instructions: null
@@ -24,6 +28,7 @@ fieldLayouts:
             dateAdded: '2025-05-09T01:21:20+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 4d1d0ace-6df5-4e05-91b0-1d1ce27d4f3b # Social Links
             handle: null
             instructions: null
@@ -38,6 +43,7 @@ fieldLayouts:
         name: Content
         uid: cbdd056d-244a-4dc8-821c-06f875fcca10
         userCondition: null
+    thumbFieldKey: null
 handle: footer
 hasTitleField: false
 icon: compass
@@ -49,3 +55,4 @@ slugTranslationMethod: site
 titleFormat: Footer
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

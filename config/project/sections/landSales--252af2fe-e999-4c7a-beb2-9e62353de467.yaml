@@ -1,22 +1,16 @@
 defaultPlacement: beginning
 enableVersioning: true
 entryTypes:
-  - 8eaea240-f35d-4b49-a8bf-c7b1ae70979a # Land Sales Listing
+  -
+    uid: 8eaea240-f35d-4b49-a8bf-c7b1ae70979a # Land Sales Listing
 handle: landSales
 maxAuthors: 1
 name: 'Land Sales'
 previewTargets:
   -
-    __assoc__:
-      -
-        - label
-        - 'Primary entry page'
-      -
-        - urlFormat
-        - land-minerals/land-sales
-      -
-        - refresh
-        - '1'
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: land-minerals/land-sales
 propagationMethod: all
 siteSettings:
   6974ec26-6de3-4cbe-87a2-c5363298442b: # Crosby Resource Management

@@ -227,6 +227,7 @@ data:
           fields:
             -
               settings:
+                blockFreeDomains: false
                 conditions: null
                 containerAttributes: null
                 cssClasses: null
@@ -317,7 +318,10 @@ data:
     errorMessage: '[{"type":"paragraph","content":[{"type":"text","text":"Couldn’t save submission due to errors."}]}]'
     errorMessagePosition: top-form
     fileUploadsAction: null
-    limitSubmissions: false
+    limitSubmissions: ''
+    limitSubmissionsIpAddressMessage: null
+    limitSubmissionsIpAddressNumber: null
+    limitSubmissionsIpAddressType: null
     limitSubmissionsMessage: null
     limitSubmissionsNumber: null
     limitSubmissionsType: null
@@ -325,6 +329,7 @@ data:
     loadingIndicatorText: null
     pageRedirectUrl: null
     progressPosition: end
+    progressValuePosition: inside-center
     redirectUrl: null
     requireUser: false
     requireUserMessage: null

@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="{{ seomatic.meta.language ?? currentSite.language }}">
 	<head>
+		{{ head() }}
 		<meta charset="utf-8"/>
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
-		<link rel="apple-touch-icon" sizes="76x76" href="{{ craft.rebrand.getIcon().url }}">
-		<link rel="icon" type="image/png" sizes="32x32" href="{{ craft.rebrand.getIcon().url }}">
-		<link rel="icon" type="image/png" sizes="16x16" href="{{ craft.rebrand.getIcon().url }}">
+			{% set siteIcon = craft.rebrand.getIcon() %}
+			{% if siteIcon %}
+				<link rel="apple-touch-icon" sizes="76x76" href="{{ siteIcon.url }}">
+				<link rel="icon" type="image/png" sizes="32x32" href="{{ siteIcon.url }}">
+				<link rel="icon" type="image/png" sizes="16x16" href="{{ siteIcon.url }}">
+			{% endif %}
 		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffffff">
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="theme-color" content="#ffffff">
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-		{% css "/assets/css/styles.css" %}
-		{{ head() }}
+		{% set assetVersion = craft.app.cache.get('assetVersion') %}
+		{% if not assetVersion %}
+			{% set assetVersion = now|date('U') %}
+			{% do craft.app.cache.set('assetVersion', assetVersion) %}
+		{% endif %}
+		<link rel="stylesheet" href="/assets/vendor/leaflet/leaflet.css?v={{ assetVersion }}"/>
+		<link rel="stylesheet" href="/assets/css/styles.css?v={{ assetVersion }}">
 	</head>
 	<body data-barba="wrapper" class="overflow-x-hidden {{ bodyClass|default('')}}" data-page-class="{{ bodyClass|default('') }}">
-		{{ beginBody() }}
-		{% include '_includes/_globals/navigation' %}
-			<main class="transition-[filter] duration-800 space-y-10 lg:space-y-16 xl:space-y-20" data-barba="container" data-body-class="{{ bodyClass|default('') }}" {% if entry.type is defined %}data-barba-namespace="{{ entry.type }}"{% endif %}>
-				{% block content %}{% endblock %}
-			</main>
-			{% include '_includes/_globals/footer' with { footerClass: footerClass ?? null } %}
-			<script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
-			<script src="https://cdn.jsdelivr.net/npm/@barba/head"></script>
-			<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-			<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/shapefile@latest/dist/shapefile.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.15.0/proj4.min.js"></script>
-		<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-		{% js "/assets/js/main.min.js" %}
-		{{ endBody() }}
+{{ beginBody() }}
+{% include '_includes/_globals/navigation' %}
+<main class="transition-[filter] duration-800 space-y-10 lg:space-y-16 xl:space-y-20" data-barba="container" data-body-class="{{ bodyClass|default('') }}" {% if entry.type is defined %} data-barba-namespace="{{ entry.type }}" {% endif %}> {% block content %}{% endblock %}
+	</main>
+	{% include '_includes/_globals/footer' with { footerClass: footerClass ?? null } %}
+	<script src="/assets/js/main.min.js?v={{ assetVersion }}" defer></script>
+	{{ endBody() }}
 	</body>
 </html>

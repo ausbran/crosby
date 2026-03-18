@@ -1,81 +1,99 @@
 {% set columnSpan = slide.columnSpan ?? 4 %}
 {% set gridSpan = gridSpan ?? 12 %}
 {% set slideClass = slideClass ?? null %}
-{% set textColor = textColor ?? 'white' %} {# Default text color is white if not set #}
+{% set textColor = textColor ?? 'white' %}
+{% set color = slide.color ?? 'red' %}
 {% set hasBackground = false %}
+{% set widthPercent = ((columnSpan / gridSpan) * 100)|number_format(6, '.', '') %}
 
 {% for block in slide.slideMatrix %}
-    {% if block.type.handle == 'asset' and block.asset|length %}
-        {% set hasBackground = true %}
-    {% endif %}
+	{% if block.type.handle == 'asset' and block.asset|length %}
+		{% set hasBackground = true %}
+	{% endif %}
 {% endfor %}
 
-<div class="slide flex-none content-start text-{{ textColor }} grid grid-cols-{{ gridSpan }} {{ slideClass }} 
+{% set isWhiteWithoutAsset = color == 'white' and not hasBackground %}
+{% set slideTextClass = isWhiteWithoutAsset ? 'text-charcoal' : 'text-' ~ textColor %}
+{% set buttonClass = (isWhiteWithoutAsset ? '!bg-white !text-red text-red' : '!bg-white !text-' ~ color ~ ' text-' ~ color) %}
+{% set buttonStyle = 'display:inline-flex;width:auto;height:auto;min-height:0;line-height:1.2;' ~ (isWhiteWithoutAsset ? 'border:1px solid #EB2127;' : '') %}
+{% set buttonIncludeProps = {
+    class: buttonClass,
+    attributes: {
+        style: buttonStyle
+    }
+} %}
+{% if isWhiteWithoutAsset %}
+	{% set buttonIncludeProps = buttonIncludeProps|merge({
+        firstArrow: 'red-arrow',
+        secondArrow: 'red-arrow'
+    }) %}
+{% endif %}
+
+<div class="max-lg:!max-w-[500px] max-lg:!w-[calc(100%-20px)] flex-none slide {{ slideTextClass }} grid grid-cols-{{ gridSpan }} {{ slideClass }}
     md:grid-cols-{{ columnSpan }} sm:grid-cols-12"
-    style="
-        width: calc(100% * ({{ columnSpan }}/{{ gridSpan }}) - 1rem);
-        max-width: calc(100% * ({{ columnSpan }}/{{ gridSpan }}) - 1rem);
-    ">
+    style="width: calc({{ widthPercent }}% - 1rem); max-width: calc({{ widthPercent }}% - 1rem);">
 
-    <div class="{{ hasBackground ? 'max-h-[450px] md:max-h-[600px] h-[calc(100svh-100px)] lg:h-[600px]' : 'md:min-h-[600px] h-full' }}
-                min-h-[450px] col-span-12 md:col-span-{{ columnSpan }} 
-                rounded-xl overflow-hidden transition-transform transform bg-{{ slide.color }}">
+	<div class="min-h-[450px] md:min-h-[600px] h-full col-span-12 md:col-span-{{ columnSpan }} rounded-xl overflow-hidden h-full relative bg-{{ color }}"
+		{% if isWhiteWithoutAsset %}style="border: 1px solid #EB2127;"{% endif %}>
 
-        <!-- Text -->
-        <div class="{{ hasBackground ? 'absolute' : 'static' }}
-        grid content-between w-full h-full z-2 space-y-4 p-8 lg:p-10 bottom-0 text-{{ textColor }}">
-            {% for block in slide.slideMatrix %}
-                {% switch block.type.handle %}
-                    {% case 'text' %}
-                        {% include '_includes/_blocks/text' with {
+		<!-- Text -->
+		<div class="w-full absolute z-2 space-y-4 p-8 bottom-0 {{ slideTextClass }}">
+			{% for block in slide.slideMatrix %}
+				{% switch block.type.handle %}
+					{% case 'text' %}
+						{% include '_includes/_blocks/text' with {
                             text: block.text,
-                            h1Class: 'col-span-12',
-                            h2Class: 'col-span-12',
-                            h3Class: 'col-span-12',
-                            h4Class: 'col-span-12',
-                            pClass: '!text-md col-span-12',
+                            h1Class: 'col-span-12 ' ~ slideTextClass,
+                            h2Class: 'col-span-12 ' ~ slideTextClass,
+                            h3Class: 'col-span-12 ' ~ slideTextClass,
+                            h4Class: 'col-span-12 ' ~ slideTextClass,
+                            pClass: 'col-span-12 text-base max-w-[275px] w-full ' ~ slideTextClass,
                             figureClass: 'col-span-8'
                         } %}
-                    {% case 'buttons' %}
-                        {% for button in block.buttons.all() %}
-                            {% include '_includes/_blocks/button' with {
+					{% case 'buttons' %}
+						{% set buttonRelation = block.buttons is defined ? block.buttons : null %}
+						{% set slideButtons = buttonRelation ? buttonRelation.all() : [] %}
+						{% for button in slideButtons %}
+							{% include '_includes/_blocks/button' with buttonIncludeProps|merge({
                                 link: button.buttonLink,
-                                label: button.buttonLabel,
-                                class: 'col-span-12 !bg-white text-' ~ slide.color
-                            } %}
-                        {% endfor %}
-                {% endswitch %}
-            {% endfor %}
-        </div>
+                                label: button.buttonLabel
+                            }) %}
+						{% endfor %}
+				{% endswitch %}
+			{% endfor %}
+		</div>
 
-        <!-- Background -->
-        {% for block in slide.slideMatrix %}
-            {% switch block.type.handle %}
-                {% case 'asset' %}
-                    <div class="w-full h-full block">
-                        {% include '_includes/_blocks/gradient' with {
+		<!-- Background -->
+		{% for block in slide.slideMatrix %}
+			{% switch block.type.handle %}
+				{% case 'asset' %}
+					{% set asset = block.asset is defined and block.asset ? block.asset.one() : null %}
+					{% if asset %}
+					<div class="w-full h-full block">
+						{% include '_includes/_blocks/gradient' with {
                             height: '1/2',
                             opacity: 40
                         } %}
-                        {% include '_includes/_blocks/asset' with {
-                            asset: block.asset.one(),
-                            class: 'h-full object-cover'
+						{% include '_includes/_blocks/asset' with {
+                            asset: asset,
+                            class: 'h-full w-full object-cover'
                         } %}
-                    </div>
-            {% endswitch %}
-        {% endfor %}
-    </div>
+					</div>
+					{% endif %}
+			{% endswitch %}
+		{% endfor %}
+	</div>
 
-    {# caption #}
-    {% for block in slide.slideMatrix %}
-        {% switch block.type.handle %}
-            {% case 'caption' %}
-                <div class="mt-4 col-span-2 fade-in" data-cascade>
-                    {% include '_includes/_blocks/text' with {
+	{# caption #}
+	{% for block in slide.slideMatrix %}
+		{% switch block.type.handle %}
+			{% case 'caption' %}
+				<div class="mt-4 col-span-2 fade-in" data-cascade>
+					{% include '_includes/_blocks/text' with {
                         text: block.caption,
                         pClass: 'text-base col-span-12'
                     } %}
-                </div>
-        {% endswitch %}
-    {% endfor %}
+				</div>
+		{% endswitch %}
+	{% endfor %}
 </div>

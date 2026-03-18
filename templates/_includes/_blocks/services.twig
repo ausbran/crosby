@@ -1,24 +1,27 @@
-{% set hasServices = entry.services|length %}
+{% set source = source ?? block ?? entry %}
+{% set hasServices = source.services is defined and source.services|length %}
 {% set hasServiceSlides = false %}
-{% for service in entry.services.all() %}
-    {% if service.type == 'service' and service.slides|length %}
-        {% set hasServiceSlides = true %}
-    {% endif %}
-{% endfor %}
+{% if source.services is defined %}
+	{% for service in source.services.all() %}
+		{% if service.type == 'service' and service.slides|length %}
+			{% set hasServiceSlides = true %}
+		{% endif %}
+	{% endfor %}
+{% endif %}
 
 <div id="services" class="service-slider page grid grid-cols-12 fade-in">
 	<h3 class="row-start-1 col-span-12 text-2xl fade-in" data-cascade>
-		{{ entry.servicesSubHead }}
+		{{ source.servicesSubHead }}
 	</h3>
-	<h2 class="row-start-2 {% if entry.servicesSubHead %}mt-4{% endif %} mb-6 md:mb-10 col-span-12 md:col-span-9 lg:col-span-7 xl:col-span-5 fade-in" data-cascade>
+	<h2 class="row-start-2 {% if source.servicesSubHead %}mt-4{% endif %} mb-6 md:mb-10 col-span-12 md:col-span-9 lg:col-span-7 xl:col-span-5 fade-in" data-cascade>
 
-		{{ entry.servicesHead }}
+		{{ source.servicesHead }}
 	</h2>
 	<!-- Service Tabs with Right Overflow -->
 	{% if hasServices %}
 		<div class="slider-wrapper mb-8 md:mb-12 row-start-3 w-screen -ml-[calc((100%-1600px)/2))]">
 			<div class="slider !space-x-2 md:!space-x-4 flex whitespace-nowrap overflow-x-scroll">
-				{% for service in entry.services.all() %}
+				{% for service in source.services.all() %}
 					<button class="slide !h-auto tracking-tighter fade-in tab-btn whitespace-nowrap text-md sm:text-lg md:text-xl font-medium px-4 md:px-6 pt-2 md:pt-3.5 pb-1.5 md:pb-3 border text-gray-300 border-gray-300 rounded-md cursor-pointer transition duration-300 hover:text-gray-400 hover:border-gray-400 {% if loop.first %}active{% endif %}" data-service="{{ service.id }}" data-cascade>
 						{{ service.title }}
 					</button>
@@ -30,12 +33,12 @@
 	<!-- Service Slides -->
 	<div class="{% if hasServiceSlides %}min-h-[310px]{% endif %} row-start-4 service-slides grid grid-cols-subgrid col-span-12 slider-button-js">
 		<div class="col-span-12 fade-in
-		{% if hasServices %}
-			sm:col-span-6 md:col-span-4
-		{% else %}
-			sm:col-span-8 md:col-span-6
-		{% endif %}" data-cascade>
-			<h4>{{ entry.servicesBody }}</h4>
+											{% if hasServices %}
+												sm:col-span-6 md:col-span-4
+											{% else %}
+												sm:col-span-8 md:col-span-6
+											{% endif %}" data-cascade>
+			<h4>{{ source.servicesBody }}</h4>
 			{% if hasServiceSlides %}
 				{% include '_includes/_icons/arrows' with {
 					arrowsClass: 'ml-0 mt-6 hidden md:flex'
@@ -43,8 +46,8 @@
 			{% endif %}
 		</div>
 		<div class="slider-wrapper mt-8 md:mt-0 md:!ml-4 col-span-12 md:col-span-8 overflow-x-auto grid grid-cols-subgrid">
-			{% for service in entry.services.all() %}
-			{% set slideCount = service.slides|length %}
+			{% for service in source.services.all() %}
+				{% set slideCount = service.slides|length %}
 				<div class="{% if not loop.first %}!hidden{% endif %} slider max-md:w-screen md:!pl-0 pb-2 slides-container col-start-1 md:col-start-2 col-span-12 md:col-span-8 lg:col-span-9 flex" data-service="{{ service.id }}">
 					{% for slide in service.slides.all() %}
 						{# Render each slide based on its matrix field content #}

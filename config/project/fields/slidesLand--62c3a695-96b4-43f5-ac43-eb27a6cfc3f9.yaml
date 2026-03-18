@@ -6,9 +6,18 @@ searchable: true
 settings:
   createButtonLabel: 'New Slide'
   defaultIndexViewMode: cards
+  enableVersioning: false
   entryTypes:
-    - 65b7ac17-5b70-46b3-9aea-143443333ef1 # Single Slide
-    - 092b44b6-4a5a-4487-af2a-9caa7dbff37d # Double Slide
+    -
+      __assoc__:
+        -
+          - uid
+          - 65b7ac17-5b70-46b3-9aea-143443333ef1 # Single Slide
+    -
+      __assoc__:
+        -
+          - uid
+          - 092b44b6-4a5a-4487-af2a-9caa7dbff37d # Double Slide
   includeTableView: false
   maxEntries: null
   minEntries: null
@@ -16,7 +25,7 @@ settings:
   propagationKeyFormat: null
   propagationMethod: all
   showCardsInGrid: true
-  viewMode: cards
+  viewMode: cards-grid
 translationKeyFormat: null
 translationMethod: site
 type: craft\fields\Matrix

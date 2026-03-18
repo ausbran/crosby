@@ -1,3 +1,4 @@
+allowLineBreaksInTitles: false
 color: null
 description: null
 fieldLayouts:
@@ -42,6 +43,7 @@ fieldLayouts:
             dateAdded: '2026-01-09T18:52:50+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: null
             instructions: null
@@ -57,6 +59,7 @@ fieldLayouts:
             dateAdded: '2026-01-09T20:04:30+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: null
             instructions: null
@@ -72,6 +75,7 @@ fieldLayouts:
             dateAdded: '2026-01-09T20:01:13+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 1afc4390-d938-49a4-b4a4-798e68a2bc9d # Instruction Blocks
             handle: subBlocks
             instructions: 'Use these sub blocks to explain the inner processes.'
@@ -86,6 +90,7 @@ fieldLayouts:
         name: Content
         uid: 6518d6fc-008b-4708-9bdb-7c7ff4b2318b
         userCondition: null
+    thumbFieldKey: null
 handle: instructionBlock
 hasTitleField: true
 icon: null
@@ -97,3 +102,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

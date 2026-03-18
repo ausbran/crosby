@@ -1,5 +1,3 @@
-import { navHeight } from './globals.js';
-
 export function initAnchor() {
     const links = document.querySelectorAll('a[href^="#"]');
 
@@ -10,6 +8,8 @@ export function initAnchor() {
         const targetElement = document.querySelector(targetId);
 
         if (targetElement) {
+            const nav = document.querySelector("nav");
+            const navHeight = nav ? nav.offsetHeight : 0;
             const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
             const offsetPosition = targetPosition - navHeight - 30;
 

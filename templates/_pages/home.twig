@@ -1,5 +1,37 @@
 {% extends "index" %}
 
+{% set socialAsset = null %}
+{% if entry.asset|length %}
+	{% for heroAsset in entry.asset.all() %}
+		{% if not socialAsset and heroAsset.kind == 'image' %}
+			{% set socialAsset = heroAsset %}
+		{% endif %}
+	{% endfor %}
+{% endif %}
+{% if not socialAsset and entry.middleAsset|length %}
+	{% set socialAsset = entry.middleAsset.one() %}
+{% endif %}
+{% if socialAsset %}
+	{% if socialAsset.kind == 'image' %}
+		{% set socialImageUrl = socialAsset.getUrl({
+			width: 1200,
+			height: 630,
+			mode: 'crop',
+			format: 'jpg',
+			quality: 90
+		}) ?: socialAsset.url %}
+		{% do seomatic.meta.seoImage(socialImageUrl) %}
+		{% do seomatic.meta.seoImageWidth(1200) %}
+		{% do seomatic.meta.seoImageHeight(630) %}
+	{% elseif socialAsset.kind == 'video' %}
+		{% set videoStreamField = craft.app.fields.getFieldByHandle('videoStream') %}
+		{% set streamValue = videoStreamField ? socialAsset.getFieldValue('videoStream') : null %}
+		{% if streamValue and streamValue.thumbnail is defined and streamValue.thumbnail %}
+			{% do seomatic.meta.seoImage(streamValue.thumbnail) %}
+		{% endif %}
+	{% endif %}
+{% endif %}
+
 {% block content %}
 	{# first banner #}
 	{% if entry.asset|length %}
@@ -31,7 +63,7 @@
         } %}
 		{% include '_includes/_blocks/asset' with {
             asset: entry.middleAsset.one(),
-            class: 'w-full object-cover min-h-full'
+            class: 'w-full object-cover min-h-full z-0'
         } %}
 	</div>
 

@@ -20,6 +20,8 @@ return GeneralConfig::create()
     ->preloadSingles()
     // Prevent user enumeration attacks
     ->preventUserEnumeration()
+    // Ensure transforms are generated before HTML is sent (prevents cold-cache 404s on R2).
+    ->generateTransformsBeforePageLoad(true)
     // Set the @webroot alias so the clear-caches command knows where to find CP resources
     ->aliases([
         '@webroot' => dirname(__DIR__) . '/web',
@@ -27,4 +29,5 @@ return GeneralConfig::create()
     ->extraAllowedFileExtensions([
         'shp', 'shx', 'dbf', 'prj', 'prj4', 'ids', 'idx', 'geojson' // Adding shapefiles for maps
     ])
+    ->maxUploadFileSize(268435456)
 ;

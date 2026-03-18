@@ -1,6 +1,9 @@
+allowLineBreaksInTitles: false
 color: cyan
+description: null
 fieldLayouts:
   bccc2625-684a-44f1-8069-6f2f46a11b2b:
+    cardThumbAlignment: end
     tabs:
       -
         elementCondition: null
@@ -35,7 +38,9 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-11-22T01:14:44+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
             handle: iframe
             instructions: 'Paste your iFrame code.'
@@ -55,7 +60,9 @@ fieldLayouts:
         elements:
           -
             dateAdded: '2024-11-22T01:14:44+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 4986ae78-9ffa-41e9-ab3b-91e866576fd5 # Max Width
             handle: null
             instructions: null
@@ -70,6 +77,7 @@ fieldLayouts:
         name: Settings
         uid: f3129c59-b608-4318-b02a-8dc31c146951
         userCondition: null
+    thumbFieldKey: null
 handle: iframe
 hasTitleField: false
 icon: crop
@@ -81,3 +89,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

@@ -1,3 +1,5 @@
+import barba from "@barba/core";
+import { gsap } from "gsap";
 import { initNavigation, resetNav } from "./navigation.js";
 import { initSlider } from "./slider.js";
 import { initBanner } from "./banner.js";
@@ -9,6 +11,25 @@ import { initServices } from "./services.js";
 import { initAnchor } from "./anchor.js";
 import { initMap } from "./map.js";
 import { initSliderFixed } from "./sliderFixed.js";
+import { initInstructionToc } from "./instruction.js";
+import { initStreamingVideo } from "./streamingVideo.js";
+
+const HEAD_DYNAMIC_SELECTORS = [
+  'meta[name="generator"]',
+  'meta[name="keywords"]',
+  'meta[name="description"]',
+  'meta[name="referrer"]',
+  'meta[name="robots"]',
+  'meta[name^="twitter:"]',
+  "meta[property]",
+  'link[rel="canonical"]',
+  'link[rel="alternate"]',
+  'link[rel="prev"]',
+  'link[rel="next"]',
+  'link[rel="home"]',
+  'link[rel="author"]',
+];
+const STRUCTURED_DATA_SELECTOR = 'script[type="application/ld+json"]';
 
 function syncBodyClass(classList = "") {
   const body = document.body;
@@ -53,6 +74,54 @@ function pushVirtualPageView() {
   window.dataLayer.push(payload);
 }
 
+function syncStructuredData(html = "") {
+  if (!html || typeof DOMParser === "undefined") {
+    return;
+  }
+
+  const parsed = new DOMParser().parseFromString(html, "text/html");
+  const nextStructuredData = Array.from(
+    parsed.querySelectorAll(STRUCTURED_DATA_SELECTOR),
+  );
+
+  document.querySelectorAll(STRUCTURED_DATA_SELECTOR).forEach((script) => {
+    script.remove();
+  });
+
+  nextStructuredData.forEach((script) => {
+    const replacement = document.createElement("script");
+    replacement.type = "application/ld+json";
+    replacement.text = script.textContent || "";
+    document.body.appendChild(replacement);
+  });
+}
+
+function syncHeadMetadata(html = "") {
+  if (!html || typeof DOMParser === "undefined") {
+    return;
+  }
+
+  const parsed = new DOMParser().parseFromString(html, "text/html");
+  const selector = HEAD_DYNAMIC_SELECTORS.join(", ");
+  const nextHeadNodes = Array.from(parsed.head.querySelectorAll(selector));
+
+  if (parsed.title) {
+    document.title = parsed.title;
+  }
+
+  if (parsed.documentElement.lang) {
+    document.documentElement.lang = parsed.documentElement.lang;
+  }
+
+  document.head.querySelectorAll(selector).forEach((node) => {
+    node.remove();
+  });
+
+  nextHeadNodes.forEach((node) => {
+    document.head.appendChild(node.cloneNode(true));
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initNavigation();
   const mainEl = document.querySelector("main");
@@ -63,19 +132,12 @@ document.addEventListener("DOMContentLoaded", () => {
     "";
   syncBodyClass(pageClass);
   initializeComponents(document, namespace);
-
-  if (typeof barba === "undefined") {
-    pushVirtualPageView();
-  }
 });
 
 function initializeComponents(container, namespace) {
   initScroll();
-
-  const video = container.querySelector("video");
-  if (video) {
-    video.play();
-  }
+  initInstructionToc(container);
+  initStreamingVideo(container);
 
   switch (namespace) {
     case "home":
@@ -137,11 +199,9 @@ function initializeComponents(container, namespace) {
   }
 }
 
-if (typeof barba !== "undefined") {
-  if (typeof barbaHead !== "undefined") {
-    barba.use(barbaHead);
-  }
+pushVirtualPageView();
 
+if (document.querySelector('[data-barba="wrapper"]')) {
   barba.hooks.after(() => {
     pushVirtualPageView();
   });
@@ -170,7 +230,9 @@ if (typeof barba !== "undefined") {
         },
 
         afterEnter(data) {
+          syncHeadMetadata(data.next.html || "");
           syncBodyClass(data.next.container.dataset.bodyClass || "");
+          syncStructuredData(data.next.html || "");
           const namespace = data.next.container.dataset.barbaNamespace;
           initializeComponents(data.next.container, namespace);
           window.scrollTo(0, 0);
@@ -179,6 +241,4 @@ if (typeof barba !== "undefined") {
       },
     ],
   });
-} else {
-  console.warn("barba.js is not available; page transitions have been skipped.");
 }

@@ -1,6 +1,9 @@
+allowLineBreaksInTitles: false
 color: blue
+description: null
 fieldLayouts:
   7b9c1555-c58e-40a8-9db5-27785ba1e2c4:
+    cardThumbAlignment: end
     cardView:
       - 'layoutElement:e66a1ce8-b8b9-4995-b7cf-456a8e43eff9'
       - 'layoutElement:40fdf764-e36c-467b-a7a9-4dc2ffd5a4df'
@@ -10,7 +13,9 @@ fieldLayouts:
         elements:
           -
             dateAdded: '2024-12-05T03:41:07+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 21db7ac8-7f8f-4c6d-a93b-52418c34492c # Year
             handle: null
             instructions: null
@@ -52,7 +57,9 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-12-04T02:01:34+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
             handle: subHead
             instructions: null
@@ -66,7 +73,9 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-12-04T02:01:34+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
             handle: null
             instructions: null
@@ -86,7 +95,9 @@ fieldLayouts:
         elements:
           -
             dateAdded: '2024-12-04T04:42:14+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 451ebed9-368d-4404-a7f4-1c565c0dfc4a # Color
             handle: null
             instructions: null
@@ -101,6 +112,7 @@ fieldLayouts:
         name: Settings
         uid: 22ae623b-97b7-4e30-833e-956160a84f69
         userCondition: null
+    thumbFieldKey: null
 handle: headerBlock
 hasTitleField: true
 icon: heading
@@ -112,3 +124,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

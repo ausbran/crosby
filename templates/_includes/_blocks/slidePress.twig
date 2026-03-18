@@ -18,12 +18,10 @@
                 {% endif %}
                 <a href="{{ link }}" class="{% if slide.type == 'magazine' %}magazine-file{% endif %} {% if slide.magazineLogo is defined and slide.magazineLogo is not empty %}darken{% endif %}">
                     {% if asset.kind == 'video' %}
-                        {# Construct and display the preview video path #}
-                        {% set previewPath = asset.url | replace(asset.filename, 'previews/preview-' ~ asset.filename) %}
-                        <video loop autoplay muted autoplay preload="metadata" playsinline webkit-playsinline>
-                            <source src="{{ previewPath }}" type="{{ asset.mimeType }}">
-                            Your browser does not support the video tag.
-                        </video>
+                        {% include '_includes/_blocks/asset' with {
+                            ratio: '1:1',
+                            asset: asset
+                        } %}
                     {% else %}
                         {# Display the regular image asset #}
                         {% include '_includes/_blocks/asset' with {

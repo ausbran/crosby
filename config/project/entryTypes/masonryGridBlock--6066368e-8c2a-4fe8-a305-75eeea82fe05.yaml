@@ -1,13 +1,18 @@
+allowLineBreaksInTitles: false
 color: pink
+description: null
 fieldLayouts:
   7f6e1801-acd0-4fff-aa9a-86faaf218a59:
+    cardThumbAlignment: end
     tabs:
       -
         elementCondition: null
         elements:
           -
             dateAdded: '2024-12-04T02:08:33+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
             handle: null
             instructions: null
@@ -27,7 +32,9 @@ fieldLayouts:
         elements:
           -
             dateAdded: '2024-12-04T04:43:51+00:00'
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 451ebed9-368d-4404-a7f4-1c565c0dfc4a # Color
             handle: null
             instructions: null
@@ -42,6 +49,7 @@ fieldLayouts:
         name: Settings
         uid: 1ebcb25d-4069-442b-84c9-b8c38d9f7193
         userCondition: null
+    thumbFieldKey: null
 handle: masonryGridBlock
 hasTitleField: false
 icon: objects-column
@@ -53,3 +61,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

@@ -11,7 +11,7 @@
         <ul id="desktop-menu" class="hidden md:flex primary-links justify-evenly gap-10 lg:gap-12 highlight justify-between flex flex-row transition-all duration-300">
             {% for primary in navigation %}
                 <li class="group font-medium z-10">
-                    <span class="relative z-3 tracking-tighter cursor-pointer">{{ primary.title }}</span>
+                    <span class="relative z-3 tracking-tighter cursor-pointer transition-opacity duration-300 group-hover:opacity-60 group-focus-within:opacity-60">{{ primary.title }}</span>
                     {% if primary.hasDescendants %}
                         <ul class="secondary-links">
                             <div class="z-2 p-16 pt-40 space-y-10">
@@ -55,8 +55,8 @@
 
         <!-- Search Bar (Hidden Initially) -->
         <form id="search-bar" action="{{ siteUrl('search') }}" method="get" class="bg-transparent rounded-xl opacity-0 invisible translate-y-[25px] absolute inset-0 flex items-center justify-center gap-4 p-6 md:p-8 transition-all duration-300">
-            <input type="text" name="q" placeholder="Search..." class="selection:bg-red-700 selection:text-white placeholder-white focus:placeholder-gray-300 dark:placeholder-gray-600 text-lg bg-transparent text-white p-2 pl-4 rounded-md w-2/3 md:w-1/2 focus:outline-none">
-            <button type="submit" class="text-white">
+            <input id="nav-search-input" type="text" name="q" placeholder="Search" class="selection:bg-red-700 selection:text-white placeholder-white/80 focus:placeholder-white/50 tracking-tighter font-medium text-base bg-transparent text-white p-2 pl-4 rounded-md border border-white focus:border-white w-2/3 md:w-1/2 focus:outline-none">
+            <button type="submit" class="search-bar-submit text-white transition-opacity duration-300 hover:opacity-60 focus-visible:opacity-60">
                 {% include '_includes/_icons/magnify' %}
             </button>
         </form>
@@ -67,10 +67,10 @@
 				class: 'block md:hidden hover:opacity-60 transition-all duration-300'
 			} %}
             <div class="hidden md:block overflow-hidden relative w-[22.5px] h-[23.32px]">
-                <button id="search-icon" class="!bg-transparent btn icon magnify {% if class is defined %}{{ class }}{% endif %} transition-all duration-300">
+                <button id="search-icon" class="!bg-transparent btn icon magnify {% if class is defined %}{{ class }}{% endif %} transition-opacity duration-300 hover:opacity-60 focus-visible:opacity-60">
                     {% include "_includes/_svg/magnify.svg" %}
                 </button>
-                <button type="button" id="close-search" class="w-full h-full top-0 left-0 absolute translate-y-full transition-all duration-300">
+                <button type="button" id="close-search" class="w-full h-full top-0 left-0 absolute translate-y-full transition-all duration-300 hover:opacity-60 focus-visible:opacity-60">
                     {% include "_includes/_svg/close.svg" %}
                 </button>
             </div>

@@ -21,6 +21,8 @@
     "media:sync": "./scripts/sync-r2-media.sh",
     "deploy:staging": "./scripts/deploy-staging.sh",
     "deploy:prod": "./scripts/deploy-production.sh",
+    "pull:staging": "./scripts/pull-staging.sh",
+    "pull:prod": "./scripts/pull-production.sh",
     "postinstall": "npm run assets:vendor"
   },
   "keywords": [],

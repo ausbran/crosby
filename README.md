@@ -113,6 +113,22 @@ PROD_TMP_PATH="tmp"
 ./scripts/deploy-production.sh "Message for production deploy"
 ```
 
+### Pull from Staging
+```
+npm run pull:staging
+```
+
+### Pull from Production
+```
+npm run pull:prod
+```
+
+Optional force flag if you want to overwrite tracked local changes:
+```
+npm run pull:staging -- --force
+npm run pull:prod -- --force
+```
+
 ### Media Sync to R2
 ```
 ./scripts/sync-r2-media.sh
@@ -136,6 +152,17 @@ Optional flags:
 - `php craft project-config/apply`
 - `php craft clear-caches/all`
 - optionally purge Cloudflare cache if both `CLOUDFLARE_CACHE_API_TOKEN` and `CF_ZONE_ID` are set
+
+### What the pull scripts do
+- start DDEV locally
+- `rsync` remote code/assets down into the local workspace
+- keep `.env`, `.ddev`, `storage/`, `vendor/`, `node_modules/`, `web/uploads/`, and `web/cpresources/` local-only
+- dump the remote database and import it into local DDEV
+- run `ddev composer install`
+- run `npm install`
+- run `ddev craft migrate/all`
+- run `ddev craft project-config/apply`
+- run `ddev craft clear-caches/all`
 
 ### What the media sync script does
 - syncs local `web/uploads/` into your R2 bucket

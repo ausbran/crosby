@@ -1,19 +1,8 @@
-import L from "leaflet";
-import * as shapefile from "shapefile";
-import { navState } from "./globals.js";
+import { body, nav, navState, mapWrapper } from "./globals.js";
 import { initSlider } from "./slider.js";
 
 export function initMap() {
-  const body = document.body;
-  const nav = document.querySelector("nav");
-  const mapWrapper = document.getElementById("map-wrapper");
-  const mapElement = document.getElementById("map");
-
-  if (!mapElement) {
-    return;
-  }
-
-  const map = L.map(mapElement).setView([30.8461, -93.2893], 13);
+  const map = L.map("map").setView([30.8461, -93.2893], 13);
   const mapDuration = 0.65;
 
   // Add customized zoom controls

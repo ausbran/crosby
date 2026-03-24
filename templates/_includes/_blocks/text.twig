@@ -7,6 +7,7 @@
 {% set figureClass = figureClass ?? 'col-span-10 sm:col-span-8 md:col-span-6 lg:col-span-5' %}
 
 {% set text = text ?? (block.text is defined ? block.text|raw : (entry.text is defined ? entry.text|raw : '')) %}
+{% set figureWrapperOpen = '<div class="grid grid-cols-subgrid col-span-12 row-start-auto"><figure' %}
 
 {% set updatedText = text 
     | replace({
@@ -22,9 +23,28 @@
         '</p>': '</p></div>',
         '<ul>': '<ul class="grid grid-cols-subgrid col-span-12 row-start-auto ' ~ ulClass ~ '">',
         '<li>': '<li class="col-span-12">',
-        '<figure': '<div class="grid grid-cols-subgrid col-span-12 row-start-auto"><figure class="' ~ figureClass ~ '"',
+        '<figure': figureWrapperOpen,
         '</figure>': '</figure></div>',
     }) 
+%}
+
+{% set updatedText = updatedText
+    | replace({
+        (figureWrapperOpen ~ ' class="image editor-image-default"'): (figureWrapperOpen ~ ' class="image editor-image-default ' ~ figureClass ~ '"'),
+        (figureWrapperOpen ~ ' class="editor-image-default image"'): (figureWrapperOpen ~ ' class="editor-image-default image ' ~ figureClass ~ '"'),
+        (figureWrapperOpen ~ ' class="editor-image-default"'): (figureWrapperOpen ~ ' class="editor-image-default ' ~ figureClass ~ '"'),
+        (figureWrapperOpen ~ ' class="image editor-logo-sm"'): (figureWrapperOpen ~ ' class="image editor-logo-sm col-span-5 sm:col-span-4 lg:col-span-3"'),
+        (figureWrapperOpen ~ ' class="editor-logo-sm image"'): (figureWrapperOpen ~ ' class="editor-logo-sm image col-span-5 sm:col-span-4 lg:col-span-3"'),
+        (figureWrapperOpen ~ ' class="editor-logo-sm"'): (figureWrapperOpen ~ ' class="editor-logo-sm col-span-5 sm:col-span-4 lg:col-span-3"'),
+        (figureWrapperOpen ~ ' class="image editor-logo-md"'): (figureWrapperOpen ~ ' class="image editor-logo-md col-span-7 sm:col-span-5 lg:col-span-4"'),
+        (figureWrapperOpen ~ ' class="editor-logo-md image"'): (figureWrapperOpen ~ ' class="editor-logo-md image col-span-7 sm:col-span-5 lg:col-span-4"'),
+        (figureWrapperOpen ~ ' class="editor-logo-md"'): (figureWrapperOpen ~ ' class="editor-logo-md col-span-7 sm:col-span-5 lg:col-span-4"'),
+        (figureWrapperOpen ~ ' class="image editor-logo-lg"'): (figureWrapperOpen ~ ' class="image editor-logo-lg col-span-9 sm:col-span-7 lg:col-span-5"'),
+        (figureWrapperOpen ~ ' class="editor-logo-lg image"'): (figureWrapperOpen ~ ' class="editor-logo-lg image col-span-9 sm:col-span-7 lg:col-span-5"'),
+        (figureWrapperOpen ~ ' class="editor-logo-lg"'): (figureWrapperOpen ~ ' class="editor-logo-lg col-span-9 sm:col-span-7 lg:col-span-5"'),
+        (figureWrapperOpen ~ ' class="image"'): (figureWrapperOpen ~ ' class="image ' ~ figureClass ~ '"'),
+        (figureWrapperOpen ~ '>'): (figureWrapperOpen ~ ' class="' ~ figureClass ~ '">'),
+    })
 %}
 
 <div class="text-block-child grid grid-cols-subgrid col-span-12 {% if custom is defined %}!space-y-{{ custom }}{% else %} space-y-4 lg:space-y-6{% endif %}">

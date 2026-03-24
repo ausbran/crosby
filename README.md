@@ -123,7 +123,19 @@ npm run pull:staging
 npm run pull:prod
 ```
 
-Optional force flag if you want to overwrite tracked local changes:
+### Pull Content Only from Staging
+```
+npm run pull:staging:content
+```
+
+### Pull Content Only from Production
+```
+npm run pull:prod:content
+```
+
+`pull:staging:content` and `pull:prod:content` pull the remote DB plus `config/project`. Use those when editors have changed entries, assets, relationships, SEO fields, or applied project-config updates in the control panel and you want those backend changes locally without pulling all code.
+
+Optional force flag if you want a full pull to overwrite tracked local changes:
 ```
 npm run pull:staging -- --force
 npm run pull:prod -- --force
@@ -152,6 +164,19 @@ Optional flags:
 - `php craft project-config/apply`
 - `php craft clear-caches/all`
 - optionally purge Cloudflare cache if both `CLOUDFLARE_CACHE_API_TOKEN` and `CF_ZONE_ID` are set
+
+### Pull Modes
+- `npm run pull:staging` / `npm run pull:prod`
+  - full sync
+  - pulls remote code + frontend assets
+  - pulls remote DB
+  - runs `ddev composer install`, `npm install`, `ddev craft migrate/all`, `ddev craft project-config/apply --force`, and cache clear
+- `npm run pull:staging:content` / `npm run pull:prod:content`
+  - content-only sync
+  - pulls remote DB plus `config/project`
+  - does not overwrite templates, JS, SCSS, scripts, or build files
+  - runs `ddev craft project-config/apply --force`
+  - clears local Craft caches after import
 
 ### What the pull scripts do
 - start DDEV locally

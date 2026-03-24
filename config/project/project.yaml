@@ -1,4 +1,4 @@
-dateModified: 1773864567
+dateModified: 1774304621
 elementSources:
   craft\elements\Asset:
     -
@@ -358,7 +358,7 @@ fields:
           __assoc__:
             -
               - uid
-              - 48e5995c-750c-4886-986e-6d886dd4e850 # Slide
+              - 48e5995c-750c-4886-986e-6d886dd4e850 # LFF
       includeTableView: false
       maxEntries: null
       minEntries: null
@@ -645,6 +645,167 @@ fields:
                         -
                           - name
                           - 'Column Span 1'
+                    -
+                      __assoc__:
+                        -
+                          - classes
+                          -
+                            - editor-logo-sm
+                        -
+                          - element
+                          - img
+                        -
+                          - name
+                          - 'Logo Small'
+                    -
+                      __assoc__:
+                        -
+                          - classes
+                          -
+                            - editor-logo-md
+                        -
+                          - element
+                          - img
+                        -
+                          - name
+                          - 'Logo Medium'
+                    -
+                      __assoc__:
+                        -
+                          - classes
+                          -
+                            - editor-logo-lg
+                        -
+                          - element
+                          - img
+                        -
+                          - name
+                          - 'Logo Large'
+          -
+            - image
+            -
+              __assoc__:
+                -
+                  - styles
+                  -
+                    __assoc__:
+                      -
+                        - options
+                        -
+                          -
+                            __assoc__:
+                              -
+                                - name
+                                - imageDefault
+                              -
+                                - title
+                                - 'Default Image'
+                              -
+                                - icon
+                                - right
+                              -
+                                - className
+                                - editor-image-default
+                              -
+                                - modelElements
+                                -
+                                  - imageBlock
+                                  - imageInline
+                          -
+                            __assoc__:
+                              -
+                                - name
+                                - logoSmall
+                              -
+                                - title
+                                - 'Logo Small'
+                              -
+                                - icon
+                                - left
+                              -
+                                - className
+                                - editor-logo-sm
+                              -
+                                - modelElements
+                                -
+                                  - imageBlock
+                                  - imageInline
+                          -
+                            __assoc__:
+                              -
+                                - name
+                                - logoMedium
+                              -
+                                - title
+                                - 'Logo Medium'
+                              -
+                                - icon
+                                - center
+                              -
+                                - className
+                                - editor-logo-md
+                              -
+                                - modelElements
+                                -
+                                  - imageBlock
+                                  - imageInline
+                          -
+                            __assoc__:
+                              -
+                                - name
+                                - logoLarge
+                              -
+                                - title
+                                - 'Logo Large'
+                              -
+                                - icon
+                                - full
+                              -
+                                - className
+                                - editor-logo-lg
+                              -
+                                - modelElements
+                                -
+                                  - imageBlock
+                                  - imageInline
+                -
+                  - toolbar
+                  -
+                    -
+                      __assoc__:
+                        -
+                          - name
+                          - 'imageStyle:defaultImages'
+                        -
+                          - title
+                          - 'Image Style'
+                        -
+                          - items
+                          -
+                            - 'imageStyle:imageDefault'
+                        -
+                          - defaultItem
+                          - 'imageStyle:imageDefault'
+                    -
+                      __assoc__:
+                        -
+                          - name
+                          - 'imageStyle:logoSizes'
+                        -
+                          - title
+                          - 'Logo Size'
+                        -
+                          - items
+                          -
+                            - 'imageStyle:logoSmall'
+                            - 'imageStyle:logoMedium'
+                            - 'imageStyle:logoLarge'
+                        -
+                          - defaultItem
+                          - 'imageStyle:logoMedium'
+                    - '|'
+                    - toggleImageCaption
+                    - imageTextAlternative
       parseEmbeds: false
       purifierConfig: null
       purifyHtml: true
@@ -1259,6 +1420,52 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Number
+  1385fe00-7137-4640-ab51-b07d6f7a6bf1: # Hero Size
+    columnSuffix: null
+    handle: heroSize
+    instructions: null
+    name: 'Hero Size'
+    searchable: false
+    settings:
+      customOptions: false
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'Full Screen'
+            -
+              - value
+              - full
+            -
+              - icon
+              - ''
+            -
+              - color
+              - ''
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Compact
+            -
+              - value
+              - compact
+            -
+              - icon
+              - ''
+            -
+              - color
+              - ''
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
   4561fe05-31a8-4fcd-86a8-cb4e675e6bb8: # Slide Time
     columnSuffix: null
     handle: slideTime
@@ -1943,7 +2150,7 @@ meta:
     34eabfa9-2dfb-43ea-9fa1-466ad575a728: iFrame # iFrame
     40c54676-e066-4929-8bb7-5fc4d400729b: 'Video Stream' # Video Stream
     42d902fc-110b-469b-9510-c2d1cebc50cc: 'Public Schema' # Public Schema
-    48e5995c-750c-4886-986e-6d886dd4e850: Slide # Slide
+    48e5995c-750c-4886-986e-6d886dd4e850: LFF # LFF
     48f6a218-2886-43f7-80cc-13633d3687a6: 'History Blocks' # History Blocks
     51a4a281-be82-4754-a5cb-d65d99aa9bfc: 'Large Image Block' # Large Image Block
     54f615f9-cbc5-4080-8210-ef8cbb1d474d: 'Staff Category' # Staff Category
@@ -1970,6 +2177,7 @@ meta:
     919a4551-b041-4591-8dc5-541e8024def6: Feature # Feature
     922da0f7-e1c5-45c4-8aa7-49850744589b: Crosby # Crosby
     929dd815-3f39-4a7a-a039-6c7ac68799b5: Overlay # Overlay
+    1385fe00-7137-4640-ab51-b07d6f7a6bf1: 'Hero Size' # Hero Size
     2629a8b4-6fe5-4a13-b19f-a62b671e8f95: 'Slider Block' # Slider Block
     4016b64a-ad4f-4c26-860a-d746e38c1c52: 'Social Link' # Social Link
     4561fe05-31a8-4fcd-86a8-cb4e675e6bb8: 'Slide Time' # Slide Time

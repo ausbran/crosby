@@ -29,57 +29,8 @@ fieldLayouts:
         userCondition: null
       -
         elementCondition: null
-        elements:
-          -
-            dateAdded: '2024-08-19T23:09:56+00:00'
-            editCondition: null
-            elementCondition: null
-            elementEditCondition: null
-            fieldUid: 4986ae78-9ffa-41e9-ab3b-91e866576fd5 # Max Width
-            handle: bannerMaxWidth
-            instructions: null
-            label: 'Max Width'
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: a569af7d-86b0-4bf9-b486-7dccab644a29
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2024-08-19T23:11:05+00:00'
-            editCondition: null
-            elementCondition: null
-            elementEditCondition: null
-            fieldUid: f4540b83-421e-4a47-b91d-c09c70b4e12a # Margin Top
-            handle: null
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: bdb99648-d34f-40f9-8bed-8561c6808b90
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2024-08-19T23:11:05+00:00'
-            editCondition: null
-            elementCondition: null
-            elementEditCondition: null
-            fieldUid: 4a61545b-26f4-4008-8c2f-eb15c898b03f # Margin Bottom
-            handle: null
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 8045baa7-3655-46ad-a507-543b89cee6bd
-            userCondition: null
-            warning: null
-            width: 100
         name: Settings
-        uid: 77748fc0-4bd8-4a5b-956e-0ce0d7263cc5
+        uid: 38fd1dd6-c510-4210-a730-973b98132489
         userCondition: null
     thumbFieldKey: null
 handle: banner

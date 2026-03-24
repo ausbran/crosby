@@ -5,13 +5,7 @@ module.exports = {
   entry: './js/main.js',
   output: {
     filename: 'main.min.js',
-    chunkFilename: '[name].main.min.js',
     path: path.resolve(__dirname, 'web/assets/js'),
-    clean: true,
-  },
-  optimization: {
-    splitChunks: false,
-    runtimeChunk: false,
   },
   module: {
     rules: [

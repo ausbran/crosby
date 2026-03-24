@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ $# -lt 2 ]]; then
-  echo "Usage: $0 <environment-label> <env-prefix> [--force]" >&2
+if [[ $# -lt 3 ]]; then
+  echo "Usage: $0 <environment-label> <env-prefix> <mode:full|content> [--force]" >&2
   exit 1
 fi
 
 ENV_LABEL="$1"
 ENV_PREFIX="$2"
-FORCE="${3-}"
+MODE="$3"
+FORCE="${4-}"
 
 if [[ -f ".env" ]]; then
   set -a
@@ -37,6 +38,14 @@ remote_path_from_app_root() {
 
 require_clean_git() {
   if [[ "$FORCE" == "--force" ]]; then
+    return
+  fi
+
+  if [[ "$MODE" == "content" ]]; then
+    if ! git diff --quiet -- config/project || ! git diff --cached --quiet -- config/project; then
+      echo "Tracked local changes in config/project detected. Commit/stash them first, or rerun with --force." >&2
+      exit 1
+    fi
     return
   fi
 
@@ -108,6 +117,11 @@ require_command rsync
 require_command ssh
 require_command ddev
 
+if [[ "$MODE" != "full" && "$MODE" != "content" ]]; then
+  echo "Invalid mode: $MODE. Use 'full' or 'content'." >&2
+  exit 1
+fi
+
 require_clean_git
 
 SSH_TARGET="${!SSH_VAR}"
@@ -123,30 +137,35 @@ REMOTE_TMP_PATH="$(remote_path_from_app_root "$APP_PATH" "$TMP_PATH")"
 echo "Starting DDEV..."
 ddev start
 
-echo "Syncing ${ENV_LABEL} code to local..."
-sync_remote_dir "templates" "./templates"
-sync_remote_dir "modules" "./modules"
-sync_remote_dir "config" "./config"
-sync_remote_dir "scripts" "./scripts"
-sync_remote_dir "js" "./js"
-sync_remote_dir "scss" "./scss"
-sync_remote_dir "web/assets" "./web/assets"
+if [[ "$MODE" == "full" ]]; then
+  echo "Syncing ${ENV_LABEL} code to local..."
+  sync_remote_dir "templates" "./templates"
+  sync_remote_dir "modules" "./modules"
+  sync_remote_dir "config" "./config"
+  sync_remote_dir "scripts" "./scripts"
+  sync_remote_dir "js" "./js"
+  sync_remote_dir "scss" "./scss"
+  sync_remote_dir "web/assets" "./web/assets"
 
-sync_remote_file "web/.htaccess" "./web/"
-sync_remote_file "web/robots.txt" "./web/"
-sync_remote_file "bootstrap.php" "./"
-sync_remote_file "composer.json" "./"
-sync_remote_file "composer.lock" "./"
-sync_remote_file "craft" "./"
-sync_remote_file "index.php" "./"
-sync_remote_file "package.json" "./"
-sync_remote_file "package-lock.json" "./"
-sync_remote_file "postcss.config.js" "./"
-sync_remote_file "prettier.config.cjs" "./"
-sync_remote_file "tailwind.config.js" "./"
-sync_remote_file "webpack.config.js" "./"
-sync_remote_file "README.md" "./"
-sync_remote_file ".gitignore" "./"
+  sync_remote_file "web/.htaccess" "./web/"
+  sync_remote_file "web/robots.txt" "./web/"
+  sync_remote_file "bootstrap.php" "./"
+  sync_remote_file "composer.json" "./"
+  sync_remote_file "composer.lock" "./"
+  sync_remote_file "craft" "./"
+  sync_remote_file "index.php" "./"
+  sync_remote_file "package.json" "./"
+  sync_remote_file "package-lock.json" "./"
+  sync_remote_file "postcss.config.js" "./"
+  sync_remote_file "prettier.config.cjs" "./"
+  sync_remote_file "tailwind.config.js" "./"
+  sync_remote_file "webpack.config.js" "./"
+  sync_remote_file "README.md" "./"
+  sync_remote_file ".gitignore" "./"
+else
+  echo "Syncing ${ENV_LABEL} project config to local..."
+  sync_remote_dir "config/project" "./config/project"
+fi
 
 BACKUP_DIR="storage/backups"
 mkdir -p "$BACKUP_DIR"
@@ -163,13 +182,19 @@ ssh "$SSH_TARGET" "rm -f \"$REMOTE_BACKUP\""
 echo "Importing ${ENV_LABEL} DB into local DDEV..."
 ddev import-db --file "$LOCAL_BACKUP"
 
-echo "Installing local dependencies..."
-ddev composer install
-npm install
+if [[ "$MODE" == "full" ]]; then
+  echo "Installing local dependencies..."
+  ddev composer install
+  npm install
 
-echo "Applying local Craft state..."
-ddev craft migrate/all --interactive=0
-ddev craft project-config/apply --force
+  echo "Applying local Craft state..."
+  ddev craft migrate/all --interactive=0
+  ddev craft project-config/apply --force
+else
+  echo "Applying local Craft project config after ${ENV_LABEL} content pull..."
+  ddev craft project-config/apply --force
+fi
+
 ddev craft clear-caches/all
 
-echo "Pull from ${ENV_LABEL} complete."
+echo "Pull from ${ENV_LABEL} (${MODE}) complete."

@@ -3,7 +3,7 @@
 	{% if (entry.heroSlides is defined and entry.heroSlides|length) or entry.asset|length %}
 		{% include '_includes/_blocks/bannerHero' with {
 			block: entry,
-			bannerClass: '!h-[60svh] !min-h-[400px] lg:!min-h-[600px]'
+			heroSize: 'compact'
 		} %}
 	{% endif %}
 

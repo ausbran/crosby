@@ -4,37 +4,34 @@
 {% set textColor = textColor ?? 'white' %}
 {% set color = slide.color ?? 'red' %}
 {% set hasBackground = false %}
+{% set hasInlineTextImage = false %}
 {% set widthPercent = ((columnSpan / gridSpan) * 100)|number_format(6, '.', '') %}
 
 {% for block in slide.slideMatrix %}
 	{% if block.type.handle == 'asset' and block.asset|length %}
 		{% set hasBackground = true %}
+	{% elseif block.type.handle == 'text' and block.text is defined and '<img' in block.text %}
+		{% set hasInlineTextImage = true %}
 	{% endif %}
 {% endfor %}
 
-{% set isWhiteWithoutAsset = color == 'white' and not hasBackground %}
+{% set isWhiteCard = color == 'white' %}
+{% set isWhiteWithoutAsset = isWhiteCard and not hasBackground %}
 {% set slideTextClass = isWhiteWithoutAsset ? 'text-charcoal' : 'text-' ~ textColor %}
-{% set buttonClass = (isWhiteWithoutAsset ? '!bg-white !text-red text-red' : '!bg-white !text-' ~ color ~ ' text-' ~ color) %}
-{% set buttonStyle = 'display:inline-flex;width:auto;height:auto;min-height:0;line-height:1.2;' ~ (isWhiteWithoutAsset ? 'border:1px solid #EB2127;' : '') %}
+{% set buttonClass = isWhiteCard ? '!bg-red !text-white text-white' : '!bg-white !text-' ~ color ~ ' text-' ~ color %}
+{% set buttonStyle = 'display:inline-flex;width:auto;height:auto;min-height:0;line-height:1.2;' %}
 {% set buttonIncludeProps = {
     class: buttonClass,
     attributes: {
         style: buttonStyle
     }
 } %}
-{% if isWhiteWithoutAsset %}
-	{% set buttonIncludeProps = buttonIncludeProps|merge({
-        firstArrow: 'red-arrow',
-        secondArrow: 'red-arrow'
-    }) %}
-{% endif %}
 
 <div class="max-lg:!max-w-[500px] max-lg:!w-[calc(100%-20px)] flex-none slide {{ slideTextClass }} grid grid-cols-{{ gridSpan }} {{ slideClass }}
-    md:grid-cols-{{ columnSpan }} sm:grid-cols-12"
-    style="width: calc({{ widthPercent }}% - 1rem); max-width: calc({{ widthPercent }}% - 1rem);">
+	    md:grid-cols-{{ columnSpan }} sm:grid-cols-12" style="width: calc({{ widthPercent }}% - 1rem); max-width: calc({{ widthPercent }}% - 1rem);">
 
-	<div class="min-h-[450px] md:min-h-[600px] h-full col-span-12 md:col-span-{{ columnSpan }} rounded-xl overflow-hidden h-full relative bg-{{ color }}"
-		{% if isWhiteWithoutAsset %}style="border: 1px solid #EB2127;"{% endif %}>
+	<div
+		class="min-h-[450px] md:min-h-[600px] h-full col-span-12 md:col-span-{{ columnSpan }} rounded-xl overflow-hidden h-full relative bg-{{ color }}{% if isWhiteCard %} border border-gray-300{% endif %}">
 
 		<!-- Text -->
 		<div class="w-full absolute z-2 space-y-4 p-8 bottom-0 {{ slideTextClass }}">
@@ -47,7 +44,7 @@
                             h2Class: 'col-span-12 ' ~ slideTextClass,
                             h3Class: 'col-span-12 ' ~ slideTextClass,
                             h4Class: 'col-span-12 ' ~ slideTextClass,
-                            pClass: 'col-span-12 text-base max-w-[275px] w-full ' ~ slideTextClass,
+                            pClass: 'col-span-12 text-base max-w-[350px] w-full ' ~ slideTextClass,
                             figureClass: 'col-span-8'
                         } %}
 					{% case 'buttons' %}
@@ -68,17 +65,17 @@
 			{% switch block.type.handle %}
 				{% case 'asset' %}
 					{% set asset = block.asset is defined and block.asset ? block.asset.one() : null %}
-					{% if asset %}
-					<div class="w-full h-full block">
-						{% include '_includes/_blocks/gradient' with {
+					{% if asset and not hasInlineTextImage %}
+						<div class="w-full h-full block">
+							{% include '_includes/_blocks/gradient' with {
                             height: '1/2',
                             opacity: 40
                         } %}
-						{% include '_includes/_blocks/asset' with {
+							{% include '_includes/_blocks/asset' with {
                             asset: asset,
                             class: 'h-full w-full object-cover'
                         } %}
-					</div>
+						</div>
 					{% endif %}
 			{% endswitch %}
 		{% endfor %}

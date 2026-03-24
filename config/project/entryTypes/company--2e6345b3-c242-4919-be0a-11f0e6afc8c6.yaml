@@ -9,29 +9,6 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
-            dateAdded: '2025-05-07T18:33:11+00:00'
-            editCondition: null
-            elementCondition: null
-            elementEditCondition: null
-            fieldUid: f6c3037a-a389-45dc-a0cd-c448e9e6223e # Staff Contact
-            handle: null
-            instructions: 'Choose a Staff member to be the main point of contact.'
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: dd4f7df3-552f-43bd-a6f3-d1e253077a73
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2025-01-17T17:21:12+00:00'
-            elementCondition: null
-            heading: 'Hero Slides'
-            type: craft\fieldlayoutelements\Heading
-            uid: 61039300-1d86-474d-9c5f-7a49daab81c5
-            userCondition: null
-          -
             autocapitalize: true
             autocomplete: false
             autocorrect: true
@@ -59,6 +36,34 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 50
+          -
+            dateAdded: '2026-03-23T22:23:08+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: c3444894-3716-4142-8821-7a9460bcb16b
+            userCondition: null
+          -
+            dateAdded: '2025-05-07T18:33:11+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: f6c3037a-a389-45dc-a0cd-c448e9e6223e # Staff Contact
+            handle: null
+            instructions: 'Choose a Staff member to be the main point of contact.'
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: dd4f7df3-552f-43bd-a6f3-d1e253077a73
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-23T22:23:41+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 043d0646-d357-4201-8710-f29cccc915d7
+            userCondition: null
           -
             dateAdded: '2026-03-18T20:25:00+00:00'
             editCondition: null
@@ -175,54 +180,6 @@ fieldLayouts:
       -
         elementCondition: null
         elements:
-          -
-            dateAdded: '2024-08-19T23:36:53+00:00'
-            editCondition: null
-            elementCondition: null
-            elementEditCondition: null
-            fieldUid: 4a61545b-26f4-4008-8c2f-eb15c898b03f # Margin Bottom
-            handle: null
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: bf56f9d8-677b-438b-9955-f2c1c1fb35f0
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2024-08-19T23:36:53+00:00'
-            editCondition: null
-            elementCondition: null
-            elementEditCondition: null
-            fieldUid: f4540b83-421e-4a47-b91d-c09c70b4e12a # Margin Top
-            handle: null
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 248d9bff-c9f9-4050-93ab-d7ed29dc3cb2
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2024-08-20T05:50:06+00:00'
-            editCondition: null
-            elementCondition: null
-            elementEditCondition: null
-            fieldUid: 4986ae78-9ffa-41e9-ab3b-91e866576fd5 # Max Width
-            handle: null
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 9295d136-9561-4f9f-95b8-369f5b5073cd
-            userCondition: null
-            warning: null
-            width: 100
           -
             dateAdded: '2024-11-26T05:30:03+00:00'
             editCondition: null

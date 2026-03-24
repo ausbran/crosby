@@ -29,11 +29,11 @@
 							{% set entryAssetRelation = relatedEntry.asset is defined ? relatedEntry.asset : null %}
 							{% set teaserAsset = entryAssetRelation ? entryAssetRelation.one() : null %}
 						{% endif %}
-					{% set teaserText = relatedEntry.text is defined and relatedEntry.text ? relatedEntry.text|striptags|trim : '' %}
-					{% set teaserExcerpt = teaserText ? teaserText|slice(0, 145) ~ (teaserText|length > 145 ? '…' : '') : '' %}
-					{% set buttonColor = relatedEntry.color ?? 'red' %}
-					{% set buttonClass = 'btn !bg-white inline-flex text-' ~ buttonColor %}
-					{% set arrowClass = buttonColor ~ '-arrow' %}
+						{% set teaserText = relatedEntry.text is defined and relatedEntry.text ? relatedEntry.text|striptags|trim : '' %}
+						{% set teaserExcerpt = teaserText ? teaserText|slice(0, 145) ~ (teaserText|length > 145 ? '…' : '') : '' %}
+						{% set buttonColor = relatedEntry.color ?? 'red' %}
+						{% set buttonClass = 'btn !bg-white inline-flex text-' ~ buttonColor %}
+						{% set arrowClass = buttonColor ~ '-arrow' %}
 
 						<a href="{{ relatedEntry.url }}" class="group col-span-12 md:col-span-3 lg:col-span-4 xl:col-span-6 relative min-h-[360px] md:min-h-[420px] rounded-xl overflow-hidden bg-red text-white">
 							{% if teaserAsset %}
@@ -52,13 +52,13 @@
 
 							<div class="absolute inset-0 z-3 flex flex-col justify-end p-6 md:p-8 lg:p-10">
 								<div class="max-w-[30rem]">
-									<h3 class="text-3xl md:text-4xl lg:text-5xl">{{ relatedEntry.title }}</h3>
+									<h3>{{ relatedEntry.title }}</h3>
 									{# {% if teaserExcerpt %}
-																												<p class="mt-4 max-w-[28rem] text-white/90">{{ teaserExcerpt }}</p>
-																											{% endif %} #}
+																																					<p class="mt-4 max-w-[28rem] text-white/90">{{ teaserExcerpt }}</p>
+																																				{% endif %} #}
 								</div>
 
-								<div class="mt-8">
+								<div class="mt-4">
 									<span class="{{ buttonClass }}">
 										<span class="label">Explore</span>
 										{% include "_includes/_icons/arrowBase" with {

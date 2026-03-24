@@ -2,10 +2,6 @@ node_modules/
 vendor/
 dist/
 storage/
-storage/backups/
-web/cpresources/
-.vscode/
-* 2.*
 *.log
 .DS_Store
 .env

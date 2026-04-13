@@ -134,6 +134,25 @@ DB_PORT="${!DB_PORT_VAR}"
 TMP_PATH="${!TMP_PATH_VAR}"
 REMOTE_TMP_PATH="$(remote_path_from_app_root "$APP_PATH" "$TMP_PATH")"
 
+# Prefer the live app's DB settings from its remote .env when available.
+# This avoids pulling from a stale database if local deploy env vars drift.
+REMOTE_ENV_DB_VARS="$(ssh "$SSH_TARGET" "cd \"$APP_PATH\" && if [[ -f .env ]]; then grep -E '^(CRAFT_DB_SERVER|CRAFT_DB_DATABASE|CRAFT_DB_USER|CRAFT_DB_PASSWORD|CRAFT_DB_PORT)=' .env || true; fi")"
+
+if [[ -n "$REMOTE_ENV_DB_VARS" ]]; then
+  while IFS='=' read -r key value; do
+    value="${value%\"}"
+    value="${value#\"}"
+
+    case "$key" in
+      CRAFT_DB_SERVER) DB_HOST="$value" ;;
+      CRAFT_DB_DATABASE) DB_NAME="$value" ;;
+      CRAFT_DB_USER) DB_USER="$value" ;;
+      CRAFT_DB_PASSWORD) DB_PASS="$value" ;;
+      CRAFT_DB_PORT) DB_PORT="$value" ;;
+    esac
+  done <<< "$REMOTE_ENV_DB_VARS"
+fi
+
 echo "Starting DDEV..."
 ddev start
 

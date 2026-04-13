@@ -87,7 +87,7 @@
 			{% for slide in resolvedSlides %}
 				<div class="banner-hero__content-item{% if loop.first %} is-active{% endif %}" data-banner-content="{{ loop.index0 }}">
 					{% if slide.text %}
-						<div class="banner-hero__text col-span-12 row-start-1 mt-8 lg:mt-12 mb-8 self-end grid grid-cols-12 auto-rows-min w-full">
+						<div class="banner-hero__text col-span-12 row-start-1 mt-8 lg:mt-12 {% if slide.buttons|length %}mb-8{% endif %} self-end grid grid-cols-12 auto-rows-min w-full">
 							{% include '_includes/_blocks/text' with {
 								text: slide.text,
 								figureClass: 'col-span-10 sm:col-span-8 md:col-span-6 lg:col-span-5 xl:col-span-4'

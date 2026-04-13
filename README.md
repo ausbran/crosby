@@ -113,6 +113,11 @@ PROD_TMP_PATH="tmp"
 ./scripts/deploy-production.sh "Message for production deploy"
 ```
 
+Preserve live production submissions/content:
+```
+./scripts/deploy-production.sh "Message for production deploy" --skip-db
+```
+
 ### Pull from Staging
 ```
 npm run pull:staging
@@ -164,6 +169,8 @@ Optional flags:
 - `php craft project-config/apply`
 - `php craft clear-caches/all`
 - optionally purge Cloudflare cache if both `CLOUDFLARE_CACHE_API_TOKEN` and `CF_ZONE_ID` are set
+
+For production deploys where live content or Formie submissions must be preserved, use `--skip-db`. That deploys code/assets and applies migrations/project config against the existing production database instead of importing your local DB.
 
 ### Pull Modes
 - `npm run pull:staging` / `npm run pull:prod`

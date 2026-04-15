@@ -1,5 +1,6 @@
 import { body, nav, navState, mapWrapper } from "./globals.js";
 import { initSlider } from "./slider.js";
+import * as shapefile from "shapefile";
 
 export function initMap() {
   const map = L.map("map").setView([30.8461, -93.2893], 13);
@@ -37,15 +38,52 @@ export function initMap() {
 }).addTo(map);
 
   const allBounds = L.featureGroup();
+  const hasValidBounds = () =>
+    allBounds.getLayers().length > 0 && allBounds.getBounds().isValid();
 
   const photoModal = document.getElementById("photo-modal");
   const photoModalPrev = document.getElementById("photo-modal-prev");
   const photoModalNext = document.getElementById("photo-modal-next");
+  const photoModalCounter = document.getElementById("photo-modal-counter");
   let photoModalImageContainer = photoModal
     ? document.getElementById("photo-modal-image-container")
     : null;
   let activePhotoSlides = [];
   let activePhotoIndex = 0;
+  let modalThumbAutoplayId = null;
+  let modalThumbPaginationButtons = [];
+  let modalThumbProgressEls = [];
+  const modalThumbSlideTime = 5500;
+
+  const animateThumbProgress = (progressEl, duration) => {
+    if (!progressEl) {
+      return;
+    }
+
+    progressEl.style.transition = "none";
+    progressEl.style.transform = "scaleX(0)";
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        progressEl.style.transition = `transform ${duration}ms linear`;
+        progressEl.style.transform = "scaleX(1)";
+      });
+    });
+  };
+
+  const resetThumbProgress = () => {
+    modalThumbProgressEls.forEach((progressEl) => {
+      progressEl.style.transition = "none";
+      progressEl.style.transform = "scaleX(0)";
+    });
+  };
+
+  const stopModalThumbAutoplay = () => {
+    if (modalThumbAutoplayId) {
+      window.clearInterval(modalThumbAutoplayId);
+      modalThumbAutoplayId = null;
+    }
+  };
 
   const syncPhotoModalControls = () => {
     const hasMultiple = activePhotoSlides.length > 1;
@@ -56,6 +94,11 @@ export function initMap() {
     if (photoModalNext) {
       photoModalNext.style.display = hasMultiple ? "" : "none";
       photoModalNext.disabled = !hasMultiple;
+    }
+    if (photoModalCounter) {
+      photoModalCounter.textContent = activePhotoSlides.length
+        ? `${activePhotoIndex + 1}/${activePhotoSlides.length}`
+        : "";
     }
   };
 
@@ -244,39 +287,109 @@ export function initMap() {
 
     const modalImageContainer = document.getElementById("modal-image-container");
     const modalImageContainerWrapper = document.getElementById("modal-image-container-wrapper");
-    const modalThumbPrev = document.getElementById("modal-thumb-prev");
-    const modalThumbNext = document.getElementById("modal-thumb-next");
+    const modalThumbPagination = document.getElementById("modal-thumb-pagination");
 
     modalImageContainer.innerHTML = "";
+    stopModalThumbAutoplay();
 
     const images = listing.images || [];
     let currentThumbIndex = 0;
+    let modalThumbRenderToken = 0;
 
-    const setArrowVisibility = () => {
-      const hasMultiple = images.length > 1;
-      if (modalThumbPrev) {
-        modalThumbPrev.style.display = hasMultiple ? "" : "none";
+    const syncThumbPagination = () => {
+      if (!modalThumbPaginationButtons.length) {
+        return;
       }
-      if (modalThumbNext) {
-        modalThumbNext.style.display = hasMultiple ? "" : "none";
+
+      modalThumbPaginationButtons.forEach((button, index) => {
+        button.classList.toggle("is-active", index === currentThumbIndex);
+      });
+
+      resetThumbProgress();
+      animateThumbProgress(modalThumbProgressEls[currentThumbIndex], modalThumbSlideTime);
+    };
+
+    const startModalThumbAutoplay = () => {
+      stopModalThumbAutoplay();
+
+      if (images.length <= 1) {
+        return;
       }
+
+      modalThumbAutoplayId = window.setInterval(() => {
+        currentThumbIndex = (currentThumbIndex + 1) % images.length;
+        renderThumbnail();
+      }, modalThumbSlideTime);
+    };
+
+    const buildThumbPagination = () => {
+      if (!modalThumbPagination) {
+        return;
+      }
+
+      modalThumbPagination.innerHTML = "";
+      modalThumbPaginationButtons = [];
+      modalThumbProgressEls = [];
+
+      if (images.length <= 1) {
+        modalThumbPagination.classList.add("hidden");
+        return;
+      }
+
+      modalThumbPagination.classList.remove("hidden");
+
+      const paginationEl = document.createElement("div");
+      paginationEl.className = "banner-hero__pagination modal-thumb-pagination__inner";
+
+      images.forEach((_, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "banner-hero__pagination-button";
+        button.setAttribute("aria-label", `Go to image ${index + 1}`);
+
+        const pill = document.createElement("span");
+        pill.className = "banner-hero__pagination-pill";
+
+        const progress = document.createElement("span");
+        progress.className = "banner-hero__pagination-progress";
+
+        pill.appendChild(progress);
+        button.appendChild(pill);
+        button.addEventListener("click", (event) => {
+          event.preventDefault();
+          currentThumbIndex = index;
+          renderThumbnail();
+          startModalThumbAutoplay();
+        });
+
+        modalThumbPaginationButtons.push(button);
+        modalThumbProgressEls.push(progress);
+        paginationEl.appendChild(button);
+      });
+
+      modalThumbPagination.appendChild(paginationEl);
     };
 
     const renderThumbnail = () => {
-      modalImageContainer.innerHTML = "";
-
       if (!images.length) {
+        modalImageContainer.innerHTML = "";
         modalImageContainerWrapper.classList.add("single");
+        if (modalThumbPagination) {
+          modalThumbPagination.innerHTML = "";
+          modalThumbPagination.classList.add("hidden");
+        }
         return;
       }
 
       const clampedIndex = ((currentThumbIndex % images.length) + images.length) % images.length;
       currentThumbIndex = clampedIndex;
+      const renderToken = ++modalThumbRenderToken;
 
       const imageHtml = images[clampedIndex];
       const imageDiv = document.createElement("div");
       imageDiv.classList.add(
         "modal-thumb-image",
+        "opacity-0",
         "w-full",
         "h-full",
         "flex",
@@ -288,7 +401,9 @@ export function initMap() {
       );
       imageDiv.innerHTML = imageHtml;
       imageDiv.addEventListener("click", () => openPhotoModal(listing, clampedIndex));
-      modalImageContainer.appendChild(imageDiv);
+      const existingThumbs = Array.from(
+        modalImageContainer.querySelectorAll(".modal-thumb-image")
+      );
 
       if (images.length === 1) {
         modalImageContainerWrapper.classList.add("single");
@@ -296,28 +411,63 @@ export function initMap() {
         modalImageContainerWrapper.classList.remove("single");
       }
 
-      setArrowVisibility();
+      const commitThumbnail = () => {
+        if (renderToken !== modalThumbRenderToken) {
+          imageDiv.remove();
+          return;
+        }
+
+        imageDiv.classList.add("is-active");
+        imageDiv.classList.remove("opacity-0");
+
+        existingThumbs.forEach((thumb) => {
+          thumb.classList.remove("is-active");
+          thumb.classList.add("is-exiting");
+          window.setTimeout(() => {
+            if (thumb.parentNode === modalImageContainer) {
+              thumb.remove();
+            }
+          }, 220);
+        });
+
+        syncThumbPagination();
+      };
+
+      const imageEl = imageDiv.querySelector("img");
+
+      if (imageEl) {
+        imageEl.loading = "eager";
+      }
+
+      modalImageContainer.appendChild(imageDiv);
+
+      if (!imageEl) {
+        commitThumbnail();
+        return;
+      }
+
+      const finalize = () => {
+        if (typeof imageEl.decode === "function") {
+          imageEl
+            .decode()
+            .catch(() => {})
+            .finally(commitThumbnail);
+        } else {
+          commitThumbnail();
+        }
+      };
+
+      if (imageEl.complete) {
+        finalize();
+      } else {
+        imageEl.addEventListener("load", finalize, { once: true });
+        imageEl.addEventListener("error", commitThumbnail, { once: true });
+      }
     };
 
-    if (modalThumbPrev) {
-      modalThumbPrev.onclick = (event) => {
-        event.preventDefault();
-        if (!images.length) return;
-        currentThumbIndex = (currentThumbIndex - 1 + images.length) % images.length;
-        renderThumbnail();
-      };
-    }
-
-    if (modalThumbNext) {
-      modalThumbNext.onclick = (event) => {
-        event.preventDefault();
-        if (!images.length) return;
-        currentThumbIndex = (currentThumbIndex + 1) % images.length;
-        renderThumbnail();
-      };
-    }
-
+    buildThumbPagination();
     renderThumbnail();
+    startModalThumbAutoplay();
 
     // staff contact info
     const staffContainer = document.getElementById("modal-staff");
@@ -376,6 +526,7 @@ export function initMap() {
       return;
     }
 
+    stopModalThumbAutoplay();
     photoModalImageContainer.innerHTML = ""; // Clear existing images
     activePhotoSlides = [];
     activePhotoIndex = 0;
@@ -423,6 +574,7 @@ export function initMap() {
 
     body.classList.remove("no-scroll");
     nav.classList.remove("scrolled");
+    stopModalThumbAutoplay();
 
     currentOpenListingId = null;
     updatePopupButtons();
@@ -461,18 +613,20 @@ export function initMap() {
     }, 500);
 
     if (shouldResetMap) {
-      // Reset the map view to show all shapes
-      map.flyToBounds(allBounds.getBounds(), {
-        padding: [50, 50],
-        duration: mapDuration,
-      });
+      if (hasValidBounds()) {
+        map.flyToBounds(allBounds.getBounds(), {
+          padding: [50, 50],
+          duration: mapDuration,
+        });
+      }
     }
   };
 
   // Initialize shapes on the maps for Land Sale and Land Ownership
   const initializeMapShapes = () => {
+    const shapefileJobs = [];
+
     if (mapData.listings && mapData.listings.length > 0) {
-      // Land Sales Page Logic
       mapData.listings.forEach((listing) => {
         if (!listing.shapefile || listing.shapefile.length === 0) {
           console.warn(
@@ -482,23 +636,31 @@ export function initMap() {
         }
 
         listing.shapefile.forEach((shapefileUrl) => {
-          processShapefile(shapefileUrl, listing.id);
+          shapefileJobs.push(processShapefile(shapefileUrl, listing.id));
         });
       });
     } else if (mapData.shapefiles && mapData.shapefiles.length > 0) {
-      // Land Ownership Page Logic
       mapData.shapefiles.forEach((shapefileUrl) => {
-        processShapefile(shapefileUrl);
+        shapefileJobs.push(processShapefile(shapefileUrl));
       });
     } else {
       console.warn("No shapefiles or listings found in mapData.");
+      return;
     }
+
+    Promise.allSettled(shapefileJobs).then(() => {
+      if (hasValidBounds()) {
+        adjustInitialView();
+      } else {
+        console.warn("No valid shapefile bounds were loaded for this map.");
+      }
+    });
   };
 
   const mapLayers = {}; // Store layers for each listing by ID
 
 const processShapefile = (shapefileUrl, listingId = null) => {
-  fetch(shapefileUrl)
+  return fetch(shapefileUrl)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -507,115 +669,115 @@ const processShapefile = (shapefileUrl, listingId = null) => {
     })
     .then((arrayBuffer) => {
       return shapefile.open(arrayBuffer).then((source) => {
-        source.read().then(function log(result) {
-          if (result.done) {
-            return;
-          }
+        const readNext = () =>
+          source.read().then((result) => {
+            if (result.done) {
+              return;
+            }
 
-          const geojson = result.value;
+            const geojson = result.value;
 
-          const layer = L.geoJSON(geojson, {
-            style: {
-              color: "red", // Default color
-              weight: 2,
-              fillOpacity: 0.2,
-            },
-            onEachFeature: (feature, layer) => {
-              const listing = listingId
-                ? mapData.listings.find((l) => l.id === listingId)
-                : null;
+            const layer = L.geoJSON(geojson, {
+              style: {
+                color: "red",
+                weight: 2,
+                fillOpacity: 0.2,
+              },
+              onEachFeature: (feature, layer) => {
+                const listing = listingId
+                  ? mapData.listings.find((l) => l.id === listingId)
+                  : null;
 
-              if (listing && listing.title) {
-                const popupContent = getPopupContent(listing, listingId);
+                if (listing && listing.title) {
+                  const popupContent = getPopupContent(listing, listingId);
 
-                layer.bindPopup(popupContent, {
-                  className: "custom-popup",
-                  closeButton: false,
-                  offset: [0, -20],
-                });
-
-                // **Desktop Hover Behavior - Keep Popup Open on Hover**
-                layer.on("mouseover", () => {
-                  layer.setStyle({
-                    color: "red",
-                    weight: 3,
-                    fillOpacity: 0.4,
+                  layer.bindPopup(popupContent, {
+                    className: "custom-popup",
+                    closeButton: false,
+                    offset: [0, -20],
                   });
-                  if (window.matchMedia("(min-width: 1024px)").matches) {
-                    layer.setPopupContent(getPopupContent(listing, listingId));
-                    layer.openPopup();
 
-                    // **Ensure popup stays open when hovered**
-                    setTimeout(() => {
-                      const popup = document.querySelector(".custom-popup");
-                      if (popup) {
-                        popup.addEventListener("mouseenter", () => {
-                          layer.openPopup();
-                        });
-
-                        popup.addEventListener("mouseleave", () => {
-                          layer.closePopup();
-                        });
-                      }
-                      updatePopupButtons();
-                    }, 300);
-                  }
-                });
-
-                layer.on("mouseout", () => {
-                  layer.setStyle({
-                    color: "red",
-                    weight: 2,
-                    fillOpacity: 0.2,
-                  });
-                });
-
-                // **Handle Click Behavior**
-                layer.on("click", () => {
-                  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-
-                  if (listingId) {
-                    if (isDesktop) {
-                      openModal(listingId); // Desktop opens modal immediately
-                    } else {
+                  layer.on("mouseover", () => {
+                    layer.setStyle({
+                      color: "red",
+                      weight: 3,
+                      fillOpacity: 0.4,
+                    });
+                    if (window.matchMedia("(min-width: 1024px)").matches) {
                       layer.setPopupContent(getPopupContent(listing, listingId));
-                      layer.openPopup(); // Mobile opens popup first
-                      updatePopupButtons();
-                      // Attach event listener to "Read More" after popup is opened
+                      layer.openPopup();
+
                       setTimeout(() => {
-                        document.querySelectorAll(".read-more").forEach((btn) => {
-                          btn.addEventListener("click", (e) => {
-                            e.preventDefault();
-                            const id = btn.getAttribute("data-id");
-                            if (id) {
-                              openModal(id);
-                              layer.closePopup(); // Close popup when modal opens
-                            }
+                        const popup = document.querySelector(".custom-popup");
+                        if (popup) {
+                          popup.addEventListener("mouseenter", () => {
+                            layer.openPopup();
                           });
-                        });
+
+                          popup.addEventListener("mouseleave", () => {
+                            layer.closePopup();
+                          });
+                        }
+                        updatePopupButtons();
                       }, 300);
                     }
-                  }
-
-                  // Zoom to shape
-                  const bounds = layer.getBounds();
-                  map.flyToBounds(bounds, {
-                    paddingTopLeft: [150, 0],  
-                    paddingBottomRight: [150, 50],
-                    duration: mapDuration,
                   });
-                });
-              }
-            },
-          }).addTo(map);
 
-          if (listingId) {
-            mapLayers[listingId] = layer;
-          }
+                  layer.on("mouseout", () => {
+                    layer.setStyle({
+                      color: "red",
+                      weight: 2,
+                      fillOpacity: 0.2,
+                    });
+                  });
 
-          allBounds.addLayer(layer);
-          source.read().then(log);
-        });
+                  layer.on("click", () => {
+                    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+
+                    if (listingId) {
+                      if (isDesktop) {
+                        openModal(listingId);
+                      } else {
+                        layer.setPopupContent(getPopupContent(listing, listingId));
+                        layer.openPopup();
+                        updatePopupButtons();
+                        setTimeout(() => {
+                          document.querySelectorAll(".read-more").forEach((btn) => {
+                            btn.addEventListener("click", (e) => {
+                              e.preventDefault();
+                              const id = btn.getAttribute("data-id");
+                              if (id) {
+                                openModal(id);
+                                layer.closePopup();
+                              }
+                            });
+                          });
+                        }, 300);
+                      }
+                    }
+
+                    const bounds = layer.getBounds();
+                    if (bounds.isValid()) {
+                      map.flyToBounds(bounds, {
+                        paddingTopLeft: [150, 0],
+                        paddingBottomRight: [150, 50],
+                        duration: mapDuration,
+                      });
+                    }
+                  });
+                }
+              },
+            }).addTo(map);
+
+            if (listingId) {
+              mapLayers[listingId] = layer;
+            }
+
+            allBounds.addLayer(layer);
+            return readNext();
+          });
+
+        return readNext();
       });
     })
     .catch((error) => {
@@ -624,10 +786,12 @@ const processShapefile = (shapefileUrl, listingId = null) => {
 };
   
   
-// ✅ Adjust initial zoom based on screen size AFTER all shapes have loaded
 const adjustInitialView = () => {
+    if (!hasValidBounds()) {
+        return;
+    }
+
     if (window.innerWidth < 768) {  
-      // Below md breakpoint
         map.fitBounds(allBounds.getBounds(), {
             paddingTopLeft: [0, 30],  // Slightly push down
             paddingBottomRight: [0, 200],  // Give more space for listings
@@ -635,23 +799,18 @@ const adjustInitialView = () => {
             duration: mapDuration,
         });
     } else if (window.innerWidth < 1024) {
-        // Mobile: Offset the map upwards to show shapes in the top two-thirds
         map.fitBounds(allBounds.getBounds(), {
             paddingTopLeft: [0, 80], // Push map down by 1/3 of screen height
             paddingBottomRight: [0, 200], 
             duration: mapDuration,
         });
     } else {
-        // Desktop: Default centered view
         map.fitBounds(allBounds.getBounds(), {
             padding: [5, 5], 
             duration: mapDuration,
         });
     }
 };
-
-// ✅ Run after all shapefiles are loaded
-setTimeout(adjustInitialView, 500);
 
 function adjustScrollForMap() {
     if (!mapWrapper) return;
@@ -684,7 +843,10 @@ const attachButtonListeners = (selector, callback) => {
             const bounds = layer.getBounds();
             const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
-            if (isDesktop) {
+            if (!bounds.isValid()) {
+              console.warn(`Invalid bounds for listing ID ${listingId}`);
+              callback(listingId);
+            } else if (isDesktop) {
               // **Desktop: Zoom to shape and open modal**
               map.flyToBounds(bounds, {
                 padding: [70, 70],
@@ -758,6 +920,23 @@ const attachButtonListeners = (selector, callback) => {
     );
   }
 
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") {
+      return;
+    }
+
+    const photoModalEl = document.getElementById("photo-modal");
+    if (photoModalEl && photoModalEl.classList.contains("show")) {
+      closeModal(photoModalEl);
+      return;
+    }
+
+    const listingModalEl = document.getElementById("modal");
+    if (listingModalEl && listingModalEl.classList.contains("show")) {
+      closeModal(listingModalEl, true);
+    }
+  });
+
   // Open contact modal for a specific listing
   const openContactModal = (listingId) => {
     const contactModal = document.getElementById(`contact-modal-${listingId}`);
@@ -816,11 +995,15 @@ const attachButtonListeners = (selector, callback) => {
 
         if (layer) {
           const bounds = layer.getBounds();
-          map.flyToBounds(bounds, {
-            paddingTopLeft: [150, 0],
-            paddingBottomRight: [150, 50],
-            duration: mapDuration,
-          });
+          if (bounds.isValid()) {
+            map.flyToBounds(bounds, {
+              paddingTopLeft: [150, 0],
+              paddingBottomRight: [150, 50],
+              duration: mapDuration,
+            });
+          } else {
+            console.warn(`Invalid bounds for read-more listing ID ${listingId}`);
+          }
         }
 
         if (typeof map.closePopup === 'function') map.closePopup();

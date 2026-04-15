@@ -1,4 +1,4 @@
-{% set bodyClass = (entry.color ?? '') ~ ' bg-texture overflow-hidden max-w-screen' %}
+{% set bodyClass = (entry.color is defined and entry.color ? entry.color.value : '') ~ ' bg-texture overflow-hidden max-w-screen' %}
 {% set footerClass = '!mt-0' %}
 
 {% block content %}

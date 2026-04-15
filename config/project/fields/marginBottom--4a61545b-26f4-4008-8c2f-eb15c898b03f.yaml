@@ -1,0 +1,77 @@
+columnSuffix: null
+handle: marginBottom
+instructions: null
+name: 'Margin Bottom'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Extra Small'
+        -
+          - value
+          - margin-bottom-xs
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Small
+        -
+          - value
+          - margin-bottom-sm
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Medium
+        -
+          - value
+          - margin-bottom-md
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Default
+        -
+          - value
+          - margin-bottom
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - Large
+        -
+          - value
+          - margin-bottom-lg
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Extra Large'
+        -
+          - value
+          - margin-bottom-xl
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

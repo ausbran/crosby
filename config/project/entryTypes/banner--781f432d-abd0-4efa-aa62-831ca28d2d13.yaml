@@ -9,18 +9,50 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
-            dateAdded: '2026-03-18T20:25:00+00:00'
+            dateAdded: '2026-04-15T17:45:00+00:00'
             editCondition: null
             elementCondition: null
             elementEditCondition: null
-            fieldUid: 0e6b323a-67f7-4ab5-bb66-d695ee1361af # Slides
-            handle: null
-            instructions: 'Add slides here. Each slide contains its own text, buttons, and background asset.'
-            label: 'Banner Slides'
+            fieldUid: 5e876e9e-c27f-47f3-ade9-0e2b65433348 # Text
+            handle: text
+            instructions: null
+            label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 9a84f7cc-6c36-482a-aca5-aa1d4833eddd
+            uid: 10f843c8-a55f-4d27-a332-20f7bf4276db
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-04-15T17:45:00+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8c107cc9-2cb0-47b2-aa42-a82e26aadd14 # CTA Buttons
+            handle: buttons
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5cb52a6f-f1d4-474c-9989-4d4c6dbd5f23
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-04-15T17:45:00+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
+            handle: asset
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d76fef71-e6a9-46d5-a5d8-c510086c89aa
             userCondition: null
             warning: null
             width: 100
@@ -29,6 +61,23 @@ fieldLayouts:
         userCondition: null
       -
         elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-04-15T17:45:00+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 4561fe05-31a8-4fcd-86a8-cb4e675e6bb8 # Slide Time
+            handle: slideTime
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 36d74cc3-6da0-4cea-85ca-acd83e5a95de
+            userCondition: null
+            warning: null
+            width: 100
         name: Settings
         uid: 38fd1dd6-c510-4210-a730-973b98132489
         userCondition: null

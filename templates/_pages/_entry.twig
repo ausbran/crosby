@@ -3,7 +3,7 @@
 {% block content %}
 	{% set blocks = entry.contentBlocks is defined and entry.contentBlocks ? entry.contentBlocks.all() : [] %}
 	{% set fullBleed = ['hero'] %}
-	{% set alreadyPaged = ['banner', 'stickyBlock', 'sliderFixed'] %}
+	{% set alreadyPaged = ['banner', 'bannerSlides', 'stickyBlock', 'sliderFixed', 'mediaSection', 'landSlider'] %}
 	{% set firstBlock = blocks|first %}
 	{% set hasHeroFirst = firstBlock and firstBlock.type.handle == 'hero' %}
 	{% set topPaddingClass = hasHeroFirst ? 'pt-0' : 'pt-32 lg:pt-[180px]' %}
@@ -52,7 +52,7 @@
                                     class: 'rounded-xl overflow-hidden'
                                 } %}
 							{% case 'banner' %}
-								{% include '_includes/_blocks/bannerHero' with {
+								{% include '_includes/_blocks/bannerSlides' with {
                             source: block,
                             block: block,
                             bannerBody: true
@@ -68,11 +68,37 @@
 								{% include '_includes/_blocks/sliderFixed' with {
                                 block: block
                             } %}
+							{% case 'mediaSection' %}
+								{% include '_includes/_blocks/mediaSection' with {
+                                block: block
+                            } %}
+							{% case 'landSlider' %}
+								{% include '_includes/_blocks/landSlider' with {
+                                block: block
+                            } %}
 							{% case 'sliderBlock' %}
+								{% set sliderSlides = block.slides is defined and block.slides ? block.slides.all() : [] %}
+								{% set usesPropertySlides = false %}
+								{% for slide in sliderSlides %}
+									{% if slide.type.handle in ['singleSlide', 'doubleSlide'] %}
+										{% set usesPropertySlides = true %}
+									{% endif %}
+								{% endfor %}
 								{% include '_includes/_blocks/slider' with {
                                 block: block,
-								slideTemplate: '_includes/_blocks/slideMatrix',
-                                arrowsClass: 'page justify-end mt-8'
+                                slides: sliderSlides,
+								slideTemplate: usesPropertySlides ? null : '_includes/_blocks/slideMatrix',
+                                sliderWrapperClass: usesPropertySlides ? 'slider-wrapper--safari-fix col-span-12' : null,
+                                sliderClass: usesPropertySlides ? 'h-[400px] md:h-[500px] lg:h-[600px] max-md:w-screen' : null,
+                                widthSubtract: usesPropertySlides ? 'var(--slider-gap, 1rem)' : null,
+                                arrows: usesPropertySlides ? false : true,
+                                arrowsClass: usesPropertySlides ? '!m-0' : 'page justify-end mt-8'
+                            } %}
+							{% case 'bannerSlides' %}
+								{% include '_includes/_blocks/bannerSlides' with {
+                                source: block,
+                                block: block,
+                                bannerBody: true
                             } %}
 							{% case 'form' %}
 								{% include '_includes/_blocks/form' with {

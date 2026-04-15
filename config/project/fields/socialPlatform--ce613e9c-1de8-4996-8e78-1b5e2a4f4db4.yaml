@@ -1,0 +1,113 @@
+columnSuffix: null
+handle: socialPlatform
+instructions: null
+name: 'Social Platform'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Linkedin
+        -
+          - value
+          - linkedin
+        -
+          - icon
+          - linkedin
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Instagram
+        -
+          - value
+          - instagram
+        -
+          - icon
+          - instagram
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Facebook
+        -
+          - value
+          - facebook
+        -
+          - icon
+          - facebook
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Youtube
+        -
+          - value
+          - youtube
+        -
+          - icon
+          - youtube
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - X
+        -
+          - value
+          - x
+        -
+          - icon
+          - x-twitter
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Spotify
+        -
+          - value
+          - spotify
+        -
+          - icon
+          - spotify
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

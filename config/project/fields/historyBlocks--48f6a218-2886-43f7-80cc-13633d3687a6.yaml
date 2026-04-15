@@ -1,0 +1,46 @@
+columnSuffix: null
+handle: historyBlocks
+instructions: null
+name: 'History Blocks'
+searchable: true
+settings:
+  createButtonLabel: 'Add a Block'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - a58c24ec-28f0-4f3c-a871-43df83c6185d # Header Block
+    -
+      __assoc__:
+        -
+          - uid
+          - 2629a8b4-6fe5-4a13-b19f-a62b671e8f95 # Slider Block
+    -
+      __assoc__:
+        -
+          - uid
+          - 51a4a281-be82-4754-a5cb-d65d99aa9bfc # Large Image Block
+    -
+      __assoc__:
+        -
+          - uid
+          - 3bf24d78-c1a3-4624-8a1e-72c045c6d425 # Pull Quote Block
+    -
+      __assoc__:
+        -
+          - uid
+          - 6066368e-8c2a-4fe8-a305-75eeea82fe05 # Masonry Grid Block
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards-grid
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

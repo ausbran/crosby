@@ -26,6 +26,15 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2024-12-04T02:04:10+00:00'
+            dismissible: false
+            elementCondition: null
+            style: tip
+            tip: 'Use standard slides for editorial/image cards, or single/double slides for the home-page property slider layout.'
+            type: craft\fieldlayoutelements\Tip
+            uid: e8207d9d-50c1-4f36-8e4d-a779145b4834
+            userCondition: null
+          -
+            dateAdded: '2024-12-04T02:04:10+00:00'
             editCondition: null
             elementCondition: null
             elementEditCondition: null

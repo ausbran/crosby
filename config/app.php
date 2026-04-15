@@ -24,6 +24,9 @@ use craft\helpers\App;
 
 return [
     'id' => App::env('CRAFT_APP_ID') ?: 'CraftCMS',
+    'aliases' => [
+        '@modules' => dirname(__DIR__) . '/modules',
+    ],
     'modules' => [
         'video-stream-module' => [
             'class' => \modules\VideoStreamModule::class,

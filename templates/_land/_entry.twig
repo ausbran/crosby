@@ -1,8 +1,13 @@
 {% extends "index" %}
-{% set bodyClass = (entry.color ?? '') ~ ' bg-texture' %}
+{% set bodyClass = (entry.color is defined and entry.color ? entry.color.value : '') ~ ' bg-texture' %}
+{% set landTemplate = {
+	'huntingLeaseListing': 'huntingLeases',
+	'landOwnership': 'landOwnership',
+	'landServices': 'landServices'
+}[entry.type.handle] ?? entry.type.handle %}
 
 {% block content %}
-	{% include '_land/' ~ entry.type %}
+	{% include '_land/' ~ landTemplate %}
 	{% if entry.type.handle == 'landServices' %}
 		{% include '_land/_partials/otherLandPages' %}
 	{% endif %}

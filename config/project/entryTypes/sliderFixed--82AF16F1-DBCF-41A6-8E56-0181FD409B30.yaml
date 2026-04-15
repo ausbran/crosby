@@ -1,0 +1,74 @@
+allowLineBreaksInTitles: false
+color: green
+description: null
+fieldLayouts:
+  b240a223-e8a4-4b83-84b0-243641360882:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-04-13T23:55:00+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
+            handle: sliderHeader
+            instructions: null
+            label: 'Slider Header'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ce5d90dd-5fe2-4dc4-8ea6-fa33d1a47812
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-04-13T23:55:00+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
+            handle: fixedSlideAsset
+            instructions: null
+            label: __blank__
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ef8de908-56d1-4954-8ef5-6df3fb0de9ed
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-04-13T23:55:00+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 2bb0df43-098d-4091-a1e0-967b00fdcb6c # Slides
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1dcc7d48-ee1e-4ae1-86ef-d021d294a03e
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 37fa1c37-084e-42d8-8421-80564f6cc0bd
+        userCondition: null
+    thumbFieldKey: null
+handle: sliderFixed
+hasTitleField: false
+icon: rectangle-history
+name: 'Slider Fixed'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

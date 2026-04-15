@@ -7,71 +7,8 @@
 	.limit(null)
 	.all() %}
 
-{% if relatedLandPages|length %}
-	<div class="w-screen bg-white !mt-0">
-		<section class="page pb-12 md:pb-16 lg:pb-20">
-			<div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12 gap-6 lg:gap-8">
-				<div class="col-span-12 lg:col-span-8">
-					<h2 class="text-4xl md:text-5xl lg:text-6xl">Explore more</h2>
-					<p class="mt-4 max-w-[42rem]">Browse the other land services pages to learn more about Crosby’s energy and development opportunities.</p>
-				</div>
-
-				<div class="col-span-12 grid grid-cols-subgrid gap-6 lg:gap-8">
-					{% for relatedEntry in relatedLandPages %}
-						{% set teaserAsset = null %}
-						{% set heroSlidesRelation = relatedEntry.heroSlides is defined ? relatedEntry.heroSlides : null %}
-						{% set firstHeroSlide = heroSlidesRelation ? heroSlidesRelation.one() : null %}
-						{% if firstHeroSlide %}
-							{% set heroAssetRelation = firstHeroSlide.asset is defined ? firstHeroSlide.asset : null %}
-							{% set teaserAsset = heroAssetRelation ? heroAssetRelation.one() : null %}
-						{% endif %}
-						{% if not teaserAsset %}
-							{% set entryAssetRelation = relatedEntry.asset is defined ? relatedEntry.asset : null %}
-							{% set teaserAsset = entryAssetRelation ? entryAssetRelation.one() : null %}
-						{% endif %}
-						{% set teaserText = relatedEntry.text is defined and relatedEntry.text ? relatedEntry.text|striptags|trim : '' %}
-						{% set teaserExcerpt = teaserText ? teaserText|slice(0, 145) ~ (teaserText|length > 145 ? '…' : '') : '' %}
-						{% set buttonColor = relatedEntry.color ?? 'red' %}
-						{% set buttonClass = 'btn !bg-white inline-flex text-' ~ buttonColor %}
-						{% set arrowClass = buttonColor ~ '-arrow' %}
-
-						<a href="{{ relatedEntry.url }}" class="group col-span-12 md:col-span-3 lg:col-span-4 xl:col-span-6 relative min-h-[360px] md:min-h-[420px] rounded-xl overflow-hidden bg-red text-white">
-							{% if teaserAsset %}
-								{% include '_includes/_blocks/asset' with {
-								asset: teaserAsset,
-								class: 'absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]'
-							} %}
-								{% include '_includes/_blocks/gradient.twig' with {
-								height: '3/4',
-								opacity: '80',
-								zIndex: '2'
-							} %}
-							{% else %}
-								<div class="absolute inset-0 bg-red bg-texture"></div>
-							{% endif %}
-
-							<div class="absolute inset-0 z-3 flex flex-col justify-end p-6 md:p-8 lg:p-10">
-								<div class="max-w-[30rem]">
-									<h3>{{ relatedEntry.title }}</h3>
-									{# {% if teaserExcerpt %}
-																																					<p class="mt-4 max-w-[28rem] text-white/90">{{ teaserExcerpt }}</p>
-																																				{% endif %} #}
-								</div>
-
-								<div class="mt-4">
-									<span class="{{ buttonClass }}">
-										<span class="label">Explore</span>
-										{% include "_includes/_icons/arrowBase" with {
-										firstArrow: arrowClass,
-										secondArrow: arrowClass
-									} %}
-									</span>
-								</div>
-							</div>
-						</a>
-					{% endfor %}
-				</div>
-			</div>
-		</section>
-	</div>
-{% endif %}
+{% include '_includes/_partials/relatedPages' with {
+	relatedEntries: relatedLandPages,
+	heading: 'Explore more',
+	intro: 'Browse the other land services pages to learn more about Crosby’s energy and development opportunities.'
+} only %}

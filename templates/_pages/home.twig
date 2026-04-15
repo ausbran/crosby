@@ -75,8 +75,9 @@
 		{% include '_includes/_blocks/slider' with { 
 			slides: entry.slidesLand.all(),
 			header: entry.sliderHeader2,
-			sliderWrapperClass: 'col-span-12 grid grid-cols-subgrid',
-			sliderClass: 'col-span-12 h-[400px] md:h-[500px] lg:h-[600px] max-md:w-screen',
+			sliderWrapperClass: 'slider-wrapper--safari-fix col-span-12',
+			sliderClass: 'h-[400px] md:h-[500px] lg:h-[600px] max-md:w-screen',
+			widthSubtract: 'var(--slider-gap, 1rem)',
 			arrows: false,
 			arrowsClass: '!m-0'
 		} %}

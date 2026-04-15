@@ -338,6 +338,7 @@ data:
                       -
                         settings:
                           conditions: null
+                          containerAttributes: null
                           cssClasses: null
                           defaultValue: null
                           emailValue: null
@@ -364,6 +365,7 @@ data:
                       -
                         settings:
                           conditions: null
+                          containerAttributes: null
                           cssClasses: null
                           defaultValue: null
                           emailValue: null
@@ -390,6 +392,7 @@ data:
                       -
                         settings:
                           conditions: null
+                          containerAttributes: null
                           contentTable: null
                           cssClasses: null
                           defaultValue: null
@@ -449,6 +452,7 @@ data:
                                 -
                                   settings:
                                     conditions: null
+                                    containerAttributes: null
                                     cssClasses: null
                                     defaultValue: null
                                     emailValue: null
@@ -510,6 +514,7 @@ data:
                                 -
                                   settings:
                                     conditions: null
+                                    containerAttributes: null
                                     cssClasses: null
                                     defaultValue: null
                                     emailValue: null
@@ -547,6 +552,7 @@ data:
                         settings:
                           blockFreeDomains: false
                           conditions: null
+                          containerAttributes: null
                           cssClasses: null
                           defaultValue: null
                           emailValue: null
@@ -556,6 +562,7 @@ data:
                           errorMessage: null
                           handle: emailAddress
                           includeInEmail: true
+                          inputAttributes: null
                           instructions: null
                           instructionsPosition: null
                           label: 'Email Address'
@@ -571,6 +578,7 @@ data:
                       -
                         settings:
                           conditions: null
+                          containerAttributes: null
                           countryDefaultValue: null
                           countryEnabled: false
                           countryLanguage: auto
@@ -583,6 +591,7 @@ data:
                           errorMessage: null
                           handle: phoneNumber
                           includeInEmail: true
+                          inputAttributes: null
                           instructions: null
                           instructionsPosition: null
                           label: 'Phone Number'
@@ -598,6 +607,7 @@ data:
                       -
                         settings:
                           conditions: null
+                          containerAttributes: null
                           cssClasses: null
                           defaultValue: null
                           emailValue: null
@@ -607,6 +617,7 @@ data:
                           errorMessage: null
                           handle: message
                           includeInEmail: true
+                          inputAttributes: null
                           instructions: null
                           instructionsPosition: null
                           label: Message
@@ -618,6 +629,7 @@ data:
                           min: null
                           minType: characters
                           placeholder: 'What do you need?'
+                          plainTextPaste: false
                           prePopulate: null
                           required: true
                           richTextButtons:
@@ -632,6 +644,7 @@ data:
                       -
                         settings:
                           conditions: null
+                          containerAttributes: null
                           cookieName: null
                           cssClasses: null
                           defaultOption: custom
@@ -643,6 +656,7 @@ data:
                           errorMessage: null
                           handle: staffEmail
                           includeInEmail: false
+                          inputAttributes: null
                           instructions: null
                           instructionsPosition: null
                           label: 'Staff Email'
@@ -684,6 +698,7 @@ data:
                 min: null
                 minType: characters
                 placeholder: ' Share any other details.'
+                plainTextPaste: false
                 prePopulate: null
                 required: false
                 richTextButtons:
@@ -781,7 +796,7 @@ data:
     integrations:
       recaptcha:
         enabled: true
-    limitSubmissions: ''
+    limitSubmissions: null
     limitSubmissionsIpAddressMessage: null
     limitSubmissionsIpAddressNumber: null
     limitSubmissionsIpAddressType: null

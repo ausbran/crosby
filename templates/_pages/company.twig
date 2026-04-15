@@ -1,5 +1,5 @@
 {% extends "index" %}
-{% set bodyClass = entry.color ?? '' %}
+{% set bodyClass = entry.color is defined and entry.color ? entry.color.value : '' %}
 
 {% block content %}
 	{% if (entry.heroSlides is defined and entry.heroSlides|length) or entry.asset|length %}
@@ -18,6 +18,22 @@
 
 	{% include '_includes/_blocks/form' with {
         formHandle: 'contactGeneral',
-		block: entry
+		block: entry,
+		class: 'py-8 md:py-12 lg:py-16 xl:py-20'
     } %}
+
+	{% set relatedCompanyPages = craft.entries()
+		.section('company')
+		.type('company')
+		.site(currentSite)
+		.status(null)
+		.id(['not', entry.id])
+		.limit(null)
+		.all() %}
+
+	{% include '_includes/_partials/relatedPages' with {
+		relatedEntries: relatedCompanyPages,
+		heading: 'Explore more',
+		intro: 'Browse the other company pages to learn more about Crosby’s services, capabilities, and project expertise.'
+	} only %}
 {% endblock %}

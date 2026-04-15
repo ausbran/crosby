@@ -1,6 +1,130 @@
 <!DOCTYPE html>
 <html lang="{{ seomatic.meta.language ?? currentSite.language }}">
 	<head>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			window.CROSBY_CONSENT_KEY = 'crosby-cookie-consent-v1';
+			window.CROSBY_CONSENT_DEFAULTS = {
+				analytics: false,
+				marketing: false
+			};
+			window.__crosbyBlockedTrackingScripts = window.__crosbyBlockedTrackingScripts || [];
+			window.__crosbyTrackingAllowed = false;
+			window.__crosbyMapConsent = function(preferences) {
+				const analyticsGranted = !!(preferences && preferences.analytics);
+				const marketingGranted = !!(preferences && preferences.marketing);
+
+				return {
+					analytics_storage: analyticsGranted ? 'granted' : 'denied',
+					ad_storage: marketingGranted ? 'granted' : 'denied',
+					ad_user_data: marketingGranted ? 'granted' : 'denied',
+					ad_personalization: marketingGranted ? 'granted' : 'denied',
+					functionality_storage: 'granted',
+					security_storage: 'granted',
+					personalization_storage: marketingGranted ? 'granted' : 'denied'
+				};
+			};
+			window.__crosbyUpdateConsent = function(preferences) {
+				gtag('consent', 'update', window.__crosbyMapConsent(preferences));
+			};
+			window.__crosbyIsTrackingScript = function(src) {
+				return /googletagmanager\.com\/(gtm\.js|gtag\/js)|google-analytics\.com|analytics\.google\.com/i.test(src || '');
+			};
+			window.__crosbyShouldBlockTrackingNode = function(node) {
+				if (!node || window.__crosbyTrackingAllowed || node.tagName !== 'SCRIPT') {
+					return false;
+				}
+
+				const src = node.src || node.getAttribute('src') || '';
+
+				if (!window.__crosbyIsTrackingScript(src)) {
+					return false;
+				}
+
+				window.__crosbyBlockedTrackingScripts.push({
+					src: src,
+					async: node.async,
+					defer: node.defer,
+					type: node.type || ''
+				});
+
+				return true;
+			};
+			window.__crosbyEnableTracking = function() {
+				window.__crosbyTrackingAllowed = true;
+
+				window.__crosbyBlockedTrackingScripts.forEach(function(scriptConfig) {
+					if (!scriptConfig.src || document.querySelector('script[src="' + scriptConfig.src + '"]')) {
+						return;
+					}
+
+					const script = document.createElement('script');
+					script.src = scriptConfig.src;
+					script.async = !!scriptConfig.async;
+					script.defer = !!scriptConfig.defer;
+
+					if (scriptConfig.type) {
+						script.type = scriptConfig.type;
+					}
+
+					document.head.appendChild(script);
+				});
+
+				window.__crosbyBlockedTrackingScripts = [];
+			};
+
+			if (!window.__crosbyTrackingGuardPatched && window.Node && window.Node.prototype) {
+				const originalInsertBefore = window.Node.prototype.insertBefore;
+				const originalAppendChild = window.Node.prototype.appendChild;
+
+				window.Node.prototype.insertBefore = function(newNode, referenceNode) {
+					if (window.__crosbyShouldBlockTrackingNode(newNode)) {
+						return newNode;
+					}
+
+					return originalInsertBefore.call(this, newNode, referenceNode);
+				};
+
+				window.Node.prototype.appendChild = function(newNode) {
+					if (window.__crosbyShouldBlockTrackingNode(newNode)) {
+						return newNode;
+					}
+
+					return originalAppendChild.call(this, newNode);
+				};
+
+				window.__crosbyTrackingGuardPatched = true;
+			}
+
+			gtag('consent', 'default', {
+				analytics_storage: 'denied',
+				ad_storage: 'denied',
+				ad_user_data: 'denied',
+				ad_personalization: 'denied',
+				functionality_storage: 'granted',
+				security_storage: 'granted',
+				personalization_storage: 'denied',
+				wait_for_update: 500
+			});
+
+			try {
+				const savedConsent = window.localStorage.getItem(window.CROSBY_CONSENT_KEY);
+
+				if (savedConsent) {
+					const preferences = JSON.parse(savedConsent);
+					window.__crosbyUpdateConsent(preferences);
+
+					if (preferences.analytics || preferences.marketing) {
+						window.__crosbyEnableTracking();
+					}
+				}
+			} catch (error) {
+				console.warn('Unable to restore cookie consent preferences.', error);
+			}
+		</script>
 		{{ head() }}
 		<meta charset="utf-8"/>
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -13,20 +137,34 @@
 		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffffff">
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="theme-color" content="#ffffff">
-		{% set assetVersion = craft.app.cache.get('assetVersion') %}
-		{% if not assetVersion %}
+		{% if craft.app.config.general.devMode %}
 			{% set assetVersion = now|date('U') %}
-			{% do craft.app.cache.set('assetVersion', assetVersion) %}
+		{% else %}
+			{% set assetVersion = craft.app.cache.get('assetVersion') %}
+			{% if not assetVersion %}
+				{% set assetVersion = now|date('U') %}
+				{% do craft.app.cache.set('assetVersion', assetVersion) %}
+			{% endif %}
 		{% endif %}
-		<link rel="stylesheet" href="/assets/vendor/leaflet/leaflet.css?v={{ assetVersion }}"/>
+		{% set needsLeaflet = entry.type is defined and entry.type.handle in ['landSales', 'huntingLeases', 'landOwnership'] %}
+		{% if needsLeaflet %}
+			<link rel="stylesheet" href="/assets/vendor/leaflet/leaflet.css?v={{ assetVersion }}"/>
+		{% endif %}
 		<link rel="stylesheet" href="/assets/css/styles.css?v={{ assetVersion }}">
 	</head>
 	<body data-barba="wrapper" class="overflow-x-hidden {{ bodyClass|default('')}}" data-page-class="{{ bodyClass|default('') }}">
 {{ beginBody() }}
 {% include '_includes/_globals/navigation' %}
-<main class="transition-[filter] duration-800 space-y-10 lg:space-y-16 xl:space-y-20" data-barba="container" data-body-class="{{ bodyClass|default('') }}" {% if entry.type is defined %} data-barba-namespace="{{ entry.type }}" {% endif %}> {% block content %}{% endblock %}
+	<main class="transition-[filter] duration-800 space-y-10 lg:space-y-16 xl:space-y-20" data-barba="container" data-body-class="{{ bodyClass|default('') }}" {% if entry.type is defined %} data-barba-namespace="{{ entry.type }}" {% endif %}> {% block content %}{% endblock %}
 	</main>
 	{% include '_includes/_globals/footer' with { footerClass: footerClass ?? null } %}
+	{% include '_includes/_globals/consent' %}
+	<script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@barba/head"></script>
+	<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+	{% if needsLeaflet %}
+		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+	{% endif %}
 	<script src="/assets/js/main.min.js?v={{ assetVersion }}" defer></script>
 	{{ endBody() }}
 	</body>

@@ -1,0 +1,13 @@
+columnSuffix: null
+handle: displayWidth
+instructions: 'Toggle on to let this media section break out to the full viewport width.'
+name: 'Full Width'
+searchable: false
+settings:
+  default: false
+  offLabel: Contained
+  onLabel: 'Full Width'
+  showLabelsInCards: false
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

@@ -1,0 +1,79 @@
+<div id="cookie-consent-banner" class="fixed bottom-4 right-4 z-[9999] hidden w-[calc(100vw-32px)] max-w-[500px]" aria-hidden="true">
+	<div class="rounded-2xl border border-charcoal/10 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.2)]">
+		<div id="cookie-consent-shell" class="overflow-hidden transition-[height] duration-200 ease-out">
+			<div id="cookie-consent-summary" class="space-y-4 p-5 transition-[opacity,transform] duration-300 ease-out" aria-hidden="false">
+				<div>
+					<h3 class="text-xl text-charcoal">Privacy & Cookies</h3>
+					<p class="mt-2 max-w-[28rem] text-sm leading-6 md:text-[15px] text-charcoal/75">
+						We use essential site storage to make the site work. We also use Google Tag Manager and Google Analytics for measurement after consent.
+					</p>
+				</div>
+				<div class="space-y-3">
+					<div class="grid grid-cols-2 gap-3">
+						<button type="button" data-consent-action="reject" class="btn !w-full !px-4 !py-3 !text-[.82rem] md:!text-base !bg-transparent !text-charcoal border border-[#d4d4d4] !border-solid justify-center transition-opacity duration-300 hover:opacity-70">Reject Non-Essential</button>
+						<button type="button" data-consent-action="accept" class="btn !w-full !px-4 !py-3 !text-[.82rem] md:!text-base !bg-red !text-white justify-center transition-opacity duration-300 hover:opacity-85">Accept All</button>
+					</div>
+					<button type="button" data-consent-action="open-preferences" class="text-sm md:text-base font-medium text-charcoal underline underline-offset-4 transition-opacity duration-300 hover:opacity-70">
+						Cookie Settings
+					</button>
+				</div>
+			</div>
+
+			<div id="cookie-consent-preferences" class="hidden space-y-6 p-5 opacity-0 translate-y-2 pointer-events-none transition-[opacity,transform] duration-300 ease-out md:p-6" aria-hidden="true">
+				<div class="flex items-start justify-between gap-4">
+					<div>
+						<h3 class="text-xl text-charcoal">Cookie Settings</h3>
+						<p class="mt-2 max-w-[24rem] text-sm leading-6 md:text-[15px] text-charcoal/75">
+							Choose which non-essential technologies can run on this site.
+						</p>
+					</div>
+					<button type="button" data-consent-action="close-preferences" class="text-sm md:text-base font-medium text-charcoal underline underline-offset-4 transition-opacity duration-300 hover:opacity-70">
+						Close
+					</button>
+				</div>
+
+				<div class="space-y-4">
+					<div class="rounded-xl border border-charcoal/10 p-4">
+						<div class="flex items-start justify-between gap-4">
+							<div>
+								<p class="text-2xl text-charcoal">Essential</p>
+								<p class="mt-2 text-sm leading-6 md:text-[15px] text-charcoal/75">
+									Required for core site functions, security, and form handling.
+								</p>
+							</div>
+							<span class="rounded-full bg-charcoal/10 px-3 py-1 text-sm font-medium text-charcoal whitespace-nowrap">Always Active</span>
+						</div>
+					</div>
+
+					<label class="flex items-start justify-between gap-4 rounded-xl border border-charcoal/10 p-4">
+						<div>
+							<p class="text-2xl text-charcoal">Analytics</p>
+							<p class="mt-2 text-sm leading-6 md:text-[15px] text-charcoal/75">
+								Allows Google Tag Manager and Google Analytics measurement to understand site usage and page performance.
+							</p>
+						</div>
+						<input id="cookie-consent-analytics" type="checkbox" class="mt-1 h-5 w-5 accent-red">
+					</label>
+
+					<label class="flex items-start justify-between gap-4 rounded-xl border border-charcoal/10 p-4">
+						<div>
+							<p class="text-2xl text-charcoal">Advertising</p>
+							<p class="mt-2 text-sm leading-6 md:text-[15px] text-charcoal/75">
+								Allows advertising-related Google consent signals for remarketing or audience features if those tags are added in GTM.
+							</p>
+						</div>
+						<input id="cookie-consent-marketing" type="checkbox" class="mt-1 h-5 w-5 accent-red">
+					</label>
+				</div>
+
+				<div class="space-y-3">
+					<div class="grid grid-cols-2 gap-3">
+						<button type="button" data-consent-action="save-preferences" class="btn !w-full !px-4 !py-3 !text-[.82rem] md:!text-base !bg-charcoal !text-white justify-center transition-opacity duration-300 hover:opacity-85">Save Preferences</button>
+						<button type="button" data-consent-action="accept" class="btn !w-full !px-4 !py-3 !text-[.82rem] md:!text-base !bg-red !text-white justify-center transition-opacity duration-300 hover:opacity-85">Accept All</button>
+					</div>
+					<button type="button" data-consent-action="reject" class="mx-auto text-sm md:text-base font-medium text-charcoal underline underline-offset-4 transition-opacity duration-300 hover:opacity-70">Reject Non-Essential</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

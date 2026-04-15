@@ -10,6 +10,7 @@ import { initAnchor } from "./anchor.js";
 import { initMap } from "./map.js";
 import { initSliderFixed } from "./sliderFixed.js";
 import { initStreamingVideo } from "./streamingVideo.js";
+import { initConsent } from "./consent.js";
 
 function syncBodyClass(classList = "") {
   const body = document.body;
@@ -55,6 +56,7 @@ function pushVirtualPageView() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  initConsent();
   initNavigation();
   const mainEl = document.querySelector("main");
   const namespace = mainEl ? mainEl.dataset.barbaNamespace : undefined;
@@ -101,6 +103,7 @@ function initializeComponents(container, namespace) {
     case "landServices":
       initScale();
       initBanner(".banner .carousel", ".banner .progress-bar .progress", ".banner .background");
+      break;
     case "company":
       initAnchor();
       initServices();

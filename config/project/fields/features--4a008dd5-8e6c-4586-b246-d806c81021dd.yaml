@@ -1,0 +1,26 @@
+columnSuffix: null
+handle: features
+instructions: "Add as many features as you'd like to the listing (Timber type, Soil type, Access, etc)"
+name: Features
+searchable: false
+settings:
+  createButtonLabel: 'New feature'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 919a4551-b041-4591-8dc5-541e8024def6 # Feature
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards-grid
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

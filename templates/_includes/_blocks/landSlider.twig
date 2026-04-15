@@ -1,0 +1,11 @@
+<div class="page grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12 fade-in" data-cascade>
+	{% include '_includes/_blocks/slider' with {
+		slides: block.slidesLand.all(),
+		header: block.sliderHeader,
+		sliderWrapperClass: 'slider-wrapper--safari-fix col-span-12',
+		sliderClass: 'h-[400px] md:h-[500px] lg:h-[600px] max-md:w-screen',
+		widthSubtract: 'var(--slider-gap, 1rem)',
+		arrows: false,
+		arrowsClass: '!m-0'
+	} %}
+</div>

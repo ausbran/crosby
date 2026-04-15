@@ -1,4 +1,34 @@
 export function initSlider() {
+  const syncHistoryBreakout = () => {
+    const viewportWidth = document.documentElement.clientWidth;
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+
+    document
+      .querySelectorAll(".slider-wrapper--history-breakout")
+      .forEach((wrapper) => {
+        if (!isDesktop) {
+          wrapper.style.width = "";
+          wrapper.style.maxWidth = "";
+          wrapper.style.minWidth = "";
+          return;
+        }
+
+        const { left } = wrapper.getBoundingClientRect();
+        const targetWidth = Math.max(viewportWidth - left, 0);
+
+        wrapper.style.width = `${targetWidth}px`;
+        wrapper.style.maxWidth = `${targetWidth}px`;
+        wrapper.style.minWidth = `${targetWidth}px`;
+      });
+  };
+
+  syncHistoryBreakout();
+
+  if (!window.__crosbyHistoryBreakoutBound) {
+    window.addEventListener("resize", syncHistoryBreakout, { passive: true });
+    window.__crosbyHistoryBreakoutBound = true;
+  }
+
   const sliders = document.querySelectorAll(".slider");
 
   sliders.forEach((slider) => {

@@ -1,11 +1,12 @@
 {% set columnSpan = slide.columnSpan ?? 4 %}
 {% set color = slide.color ?? 'red' %}
 {% set widthPercent = ((columnSpan / 12) * 100)|number_format(6, '.', '') %}
+{% set widthSubtract = widthSubtract ?? '1rem' %}
 {% set isWhiteCard = color == 'white' %}
 {% set buttonClass = isWhiteCard ? '!bg-red !text-white text-white' : '!bg-white !text-' ~ color ~ ' text-' ~ color %}
 {% set buttonStyle = 'display:inline-flex;width:auto;height:auto;min-height:0;line-height:1.2;' %}
 
-<div class="slide max-lg:!max-w-[1000px] max-lg:gap-x-4 max-lg:!w-[calc(200%-20px)] flex-none flex flex-row lg:flex-col gap-y-4 lg:gap-y-6" style="width: calc({{ widthPercent }}% - 1rem); max-width: calc({{ widthPercent }}% - 1rem);">
+<div class="slide max-lg:!max-w-[1000px] max-lg:gap-x-4 max-lg:!w-[calc(200%_-_20px)] flex-none flex flex-row lg:flex-col gap-y-4 lg:gap-y-6" style="width: calc({{ widthPercent }}% - {{ widthSubtract }}); max-width: calc({{ widthPercent }}% - {{ widthSubtract }});">
 
 	{% for i in [1, 2] %}
 		{% set titleKey = i == 1 ? 'title' : 'title2' %}

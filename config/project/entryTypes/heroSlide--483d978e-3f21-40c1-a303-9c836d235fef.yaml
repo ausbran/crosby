@@ -4,6 +4,9 @@ description: null
 fieldLayouts:
   bec3281c-e0b6-439b-8e66-efd4a59d56f4:
     cardThumbAlignment: end
+    cardView:
+      - 'layoutElement:9148b7f3-25e6-4d34-9292-7133658e1eed'
+      - 'layoutElement:0437d47d-57e9-4bab-a8d3-ad35285240f7'
     tabs:
       -
         elementCondition: null
@@ -62,22 +65,6 @@ fieldLayouts:
       -
         elementCondition: null
         elements:
-          -
-            dateAdded: '2026-03-18T21:10:00+00:00'
-            editCondition: null
-            elementCondition: null
-            elementEditCondition: null
-            fieldUid: bda53640-24b3-44f4-8c8b-ee991f1addba
-            handle: null
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: b5b25eff-3946-4f3b-8f5b-411becb7651e
-            userCondition: null
-            warning: null
-            width: 100
           -
             dateAdded: '2026-03-18T21:10:00+00:00'
             editCondition: null

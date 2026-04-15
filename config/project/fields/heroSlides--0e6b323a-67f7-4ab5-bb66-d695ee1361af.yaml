@@ -1,0 +1,29 @@
+columnSuffix: null
+handle: heroSlides
+instructions: null
+name: Slides
+searchable: true
+settings:
+  createButtonLabel: 'New Hero Slide'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 483d978e-3f21-40c1-a303-9c836d235fef # Hero Slide
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards-grid
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

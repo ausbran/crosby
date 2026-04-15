@@ -36,8 +36,10 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: null
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 40c54676-e066-4929-8bb7-5fc4d400729b # Video Stream
             handle: null
             instructions: null

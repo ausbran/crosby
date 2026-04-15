@@ -1,0 +1,8 @@
+columnSuffix: null
+handle: videoStream
+instructions: null
+name: 'Video Stream'
+searchable: false
+translationKeyFormat: null
+translationMethod: none
+type: deuxhuithuit\cfstream\fields\CloudflareVideoStreamField

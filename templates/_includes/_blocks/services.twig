@@ -19,7 +19,7 @@
 	</h2>
 	<!-- Service Tabs with Right Overflow -->
 	{% if hasServices %}
-		<div class="slider-wrapper mb-8 md:mb-12 row-start-3 w-screen -ml-[calc((100%-1600px)/2))]">
+		<div class="slider-wrapper slider-wrapper--services-tabs mb-8 md:mb-12 row-start-3 col-span-12">
 			<div class="slider !space-x-2 md:!space-x-4 flex whitespace-nowrap overflow-x-scroll">
 				{% for service in source.services.all() %}
 					<button class="slide !h-auto tracking-tighter fade-in tab-btn whitespace-nowrap text-md sm:text-lg md:text-xl font-medium px-4 md:px-6 pt-2 md:pt-3.5 pb-1.5 md:pb-3 border text-gray-300 border-gray-300 rounded-md cursor-pointer transition duration-300 hover:text-gray-400 hover:border-gray-400 {% if loop.first %}active{% endif %}" data-service="{{ service.id }}" data-cascade>
@@ -45,10 +45,10 @@
 				} %}
 			{% endif %}
 		</div>
-		<div class="slider-wrapper mt-8 md:mt-0 md:!ml-4 col-span-12 md:col-span-8 overflow-x-auto grid grid-cols-subgrid">
+		<div class="slider-wrapper slider-wrapper--services-breakout service-panels-track mt-8 md:mt-0 md:!ml-4 col-span-12 md:col-span-8">
 			{% for service in source.services.all() %}
 				{% set slideCount = service.slides|length %}
-				<div class="{% if not loop.first %}!hidden{% endif %} slider max-md:w-screen md:!pl-0 pb-2 slides-container col-start-1 md:col-start-2 col-span-12 md:col-span-8 lg:col-span-9 flex" data-service="{{ service.id }}">
+				<div class="slider max-md:w-screen md:!pl-0 pb-2 slides-container service-panel flex {% if loop.first %}is-active{% endif %}" data-service="{{ service.id }}" aria-hidden="{{ loop.first ? 'false' : 'true' }}">
 					{% for slide in service.slides.all() %}
 						{# Render each slide based on its matrix field content #}
 						<div class="slide md:!scroll-ml-0 !h-auto min-w-[240px] {% if slideCount > 1 %}max-w-[240px]{% endif %} space-y-4">

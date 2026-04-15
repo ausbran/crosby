@@ -1,0 +1,13 @@
+columnSuffix: null
+handle: loopVideo
+instructions: null
+name: 'Loop Video'
+searchable: false
+settings:
+  default: true
+  offLabel: 'No Loop'
+  onLabel: Loop
+  showLabelsInCards: false
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

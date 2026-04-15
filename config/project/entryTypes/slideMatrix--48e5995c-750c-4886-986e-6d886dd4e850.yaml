@@ -6,6 +6,7 @@ fieldLayouts:
     cardThumbAlignment: end
     cardView:
       - type
+      - 'layoutElement:85ee3a3c-6eba-4a01-a5a6-f23bf2862f29'
     tabs:
       -
         elementCondition: null
@@ -71,7 +72,7 @@ fieldLayouts:
 handle: slideMatrix
 hasTitleField: false
 icon: null
-name: LFF
+name: Slide
 showSlugField: true
 showStatusField: true
 slugTranslationKeyFormat: null

@@ -1,0 +1,306 @@
+columnSuffix: null
+handle: text
+instructions: null
+name: Text
+searchable: true
+settings:
+  availableTransforms: ''
+  availableVolumes: '*'
+  characterLimit: null
+  css: ".ck.ck-content .h1 {\r\n    font-size: 6.25rem;\r\n}\r\n.ck.ck-content .h2 {\r\n    font-size: 2.5rem;\r\n}\r\n.ck.ck-content .h3 {\r\n    font-size: 1.875rem;\r\n}\r\n.ck.ck-content .h4 {\r\n    font-size: 1.375rem;\r\n}"
+  cssFile: null
+  defaultTransform: null
+  defaultUploadLocationSubpath: null
+  defaultUploadLocationVolume: null
+  fullGraphqlData: false
+  headingLevels:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+  imageEntryTypeUid: null
+  imageFieldUid: null
+  imageMode: img
+  js: null
+  jsFile: null
+  options:
+    __assoc__:
+      -
+        - alignment
+        -
+          __assoc__:
+            -
+              - options
+              -
+                - left
+                - center
+                - right
+      -
+        - style
+        -
+          __assoc__:
+            -
+              - definitions
+              -
+                -
+                  __assoc__:
+                    -
+                      - classes
+                      -
+                        - h1
+                    -
+                      - element
+                      - h1
+                    -
+                      - name
+                      - h1
+                -
+                  __assoc__:
+                    -
+                      - classes
+                      -
+                        - h2
+                    -
+                      - element
+                      - h1
+                    -
+                      - name
+                      - h2
+                -
+                  __assoc__:
+                    -
+                      - classes
+                      -
+                        - h3
+                    -
+                      - element
+                      - h1
+                    -
+                      - name
+                      - h3
+                -
+                  __assoc__:
+                    -
+                      - classes
+                      -
+                        - h4
+                    -
+                      - element
+                      - h1
+                    -
+                      - name
+                      - h4
+                -
+                  __assoc__:
+                    -
+                      - attributes
+                      -
+                        __assoc__:
+                          -
+                            - class
+                            - col-span-1
+                    -
+                      - element
+                      -
+                        - p
+                        - h1
+                        - h2
+                        - h3
+                        - h4
+                        - h5
+                        - h6
+                        - a
+                        - img
+                        - figure
+                    -
+                      - name
+                      - 'Column Span 1'
+                -
+                  __assoc__:
+                    -
+                      - classes
+                      -
+                        - editor-logo-sm
+                    -
+                      - element
+                      - img
+                    -
+                      - name
+                      - 'Logo Small'
+                -
+                  __assoc__:
+                    -
+                      - classes
+                      -
+                        - editor-logo-md
+                    -
+                      - element
+                      - img
+                    -
+                      - name
+                      - 'Logo Medium'
+                -
+                  __assoc__:
+                    -
+                      - classes
+                      -
+                        - editor-logo-lg
+                    -
+                      - element
+                      - img
+                    -
+                      - name
+                      - 'Logo Large'
+      -
+        - image
+        -
+          __assoc__:
+            -
+              - styles
+              -
+                __assoc__:
+                  -
+                    - options
+                    -
+                      -
+                        __assoc__:
+                          -
+                            - name
+                            - imageDefault
+                          -
+                            - title
+                            - 'Default Image'
+                          -
+                            - icon
+                            - right
+                          -
+                            - className
+                            - editor-image-default
+                          -
+                            - modelElements
+                            -
+                              - imageBlock
+                              - imageInline
+                      -
+                        __assoc__:
+                          -
+                            - name
+                            - logoSmall
+                          -
+                            - title
+                            - 'Logo Small'
+                          -
+                            - icon
+                            - left
+                          -
+                            - className
+                            - editor-logo-sm
+                          -
+                            - modelElements
+                            -
+                              - imageBlock
+                              - imageInline
+                      -
+                        __assoc__:
+                          -
+                            - name
+                            - logoMedium
+                          -
+                            - title
+                            - 'Logo Medium'
+                          -
+                            - icon
+                            - center
+                          -
+                            - className
+                            - editor-logo-md
+                          -
+                            - modelElements
+                            -
+                              - imageBlock
+                              - imageInline
+                      -
+                        __assoc__:
+                          -
+                            - name
+                            - logoLarge
+                          -
+                            - title
+                            - 'Logo Large'
+                          -
+                            - icon
+                            - full
+                          -
+                            - className
+                            - editor-logo-lg
+                          -
+                            - modelElements
+                            -
+                              - imageBlock
+                              - imageInline
+            -
+              - toolbar
+              -
+                -
+                  __assoc__:
+                    -
+                      - name
+                      - 'imageStyle:defaultImages'
+                    -
+                      - title
+                      - 'Image Style'
+                    -
+                      - items
+                      -
+                        - 'imageStyle:imageDefault'
+                    -
+                      - defaultItem
+                      - 'imageStyle:imageDefault'
+                -
+                  __assoc__:
+                    -
+                      - name
+                      - 'imageStyle:logoSizes'
+                    -
+                      - title
+                      - 'Logo Size'
+                    -
+                      - items
+                      -
+                        - 'imageStyle:logoSmall'
+                        - 'imageStyle:logoMedium'
+                        - 'imageStyle:logoLarge'
+                    -
+                      - defaultItem
+                      - 'imageStyle:logoMedium'
+                - '|'
+                - toggleImageCaption
+                - imageTextAlternative
+  parseEmbeds: false
+  purifierConfig: null
+  purifyHtml: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  showWordCount: false
+  sourceEditingGroups:
+    - __ADMINS__
+  toolbar:
+    - heading
+    - '|'
+    - alignment
+    - bold
+    - underline
+    - italic
+    - fontColor
+    - link
+    - insertImage
+    - mediaEmbed
+    - bulletedList
+    - numberedList
+    - style
+  wordLimit: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\ckeditor\Field

@@ -13,6 +13,9 @@
 					{{ link.title }}
 				</a>
 			{% endfor %}
+			<button type="button" id="open-cookie-preferences" class="fade-in text-base tracking-tighter text-white font-medium cursor-pointer hover:opacity-60 transition-all duration-300">
+				Cookie Settings
+			</button>
 			{% if footer.socialLinks.all() %}
 				<div class="flex gap-6 h-[20px] relative bottom-[5px] max-lg:w-full max-lg:mt-2">
 					{% for block in footer.socialLinks.all() %}

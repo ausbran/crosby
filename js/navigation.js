@@ -5,6 +5,11 @@ export function resetNav() {
   const activePrimary = document.querySelector(".primary-links > li.active");
   const activeSecondary = document.querySelector(".secondary-links");
   const primaryNavLinks = document.querySelectorAll(".primary-links > li");
+  const primaryMenu = document.getElementById("mobile-primary");
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const secondaryMenus = document.querySelectorAll(".mobile-secondary");
+  const primaryLinks = document.querySelectorAll(".primary-link");
 
   if (main) {
     main.classList.remove("blur-md");
@@ -35,9 +40,39 @@ export function resetNav() {
     menuBg.style.transition = "height 0.3s ease";
     menuBg.style.height = "0px";
   }
+
+  if (mobileMenu) {
+    mobileMenu.classList.add("translate-x-full");
+    mobileMenu.classList.remove("translate-x-0");
+  }
+
+  if (hamburger) {
+    hamburger.classList.remove("animate");
+    hamburger.classList.add("animate-reverse");
+  }
+
+  if (primaryMenu) {
+    primaryMenu.classList.remove("translate-x-full");
+  }
+
+  secondaryMenus.forEach((menu) => {
+    menu.classList.add("hidden", "-translate-x-full");
+    menu.classList.remove("translate-x-0");
+  });
+
+  primaryLinks.forEach((primary) => {
+    primary.classList.remove("hidden", "opacity-0");
+  });
 }
 
 export function initNavigation() {
+  if (nav.dataset.navigationInitialized === "true") {
+    resetNav();
+    return;
+  }
+
+  nav.dataset.navigationInitialized = "true";
+
   let lastScrollY = window.scrollY;
   let activePrimary = null;
   let activeSecondary = null;
@@ -165,6 +200,7 @@ export function initNavigation() {
       const secondaryMenu = document.querySelector(button.dataset.secondary);
       button.addEventListener("click", () => {
         primaryLinks.forEach((primary) => primary.classList.add("opacity-0"));
+        secondaryMenu.classList.remove("hidden", "-translate-x-full");
         secondaryMenu.classList.add("translate-x-0");
         activeSecondary = secondaryMenu;
       });
@@ -173,11 +209,18 @@ export function initNavigation() {
     backButtons.forEach((backButton) => {
       backButton.addEventListener("click", () => {
         if (activeSecondary) {
+          activeSecondary.classList.add("hidden", "-translate-x-full");
           activeSecondary.classList.remove("translate-x-0");
           primaryMenu.classList.remove("translate-x-full");
           activeSecondary = null;
         }
         primaryLinks.forEach((primary) => primary.classList.remove("opacity-0"));
+      });
+    });
+
+    mobileMenu.querySelectorAll('a[href]:not([href="#"])').forEach((link) => {
+      link.addEventListener("click", () => {
+        resetMobileMenu();
       });
     });
   }

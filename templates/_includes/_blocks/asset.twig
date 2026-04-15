@@ -93,8 +93,10 @@
 					{% if previewDuration is not null and previewLoop is not null %}data-preview-loop="{{ previewLoop ? 'true' : 'false' }}"{% endif %}
 					{% if streamPoster %}poster="{{ streamPoster }}"{% endif %}
 				>
-					{% if not hlsUrl and streamMp4 %}
+					{% if streamMp4 %}
 						<source src="{{ streamMp4 }}" type="video/mp4">
+					{% elseif asset.url is defined and asset.url %}
+						<source src="{{ asset.url }}" type="{{ asset.mimeType ?? 'video/mp4' }}">
 					{% endif %}
 				</video>
 			</div>

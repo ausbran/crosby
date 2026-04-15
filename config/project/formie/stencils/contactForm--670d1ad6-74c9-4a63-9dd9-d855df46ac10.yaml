@@ -279,6 +279,7 @@ data:
                 min: null
                 minType: characters
                 placeholder: 'e.g. The reason for my enquiry is...'
+                plainTextPaste: false
                 prePopulate: null
                 required: true
                 richTextButtons:
@@ -318,7 +319,7 @@ data:
     errorMessage: '[{"type":"paragraph","content":[{"type":"text","text":"Couldn’t save submission due to errors."}]}]'
     errorMessagePosition: top-form
     fileUploadsAction: null
-    limitSubmissions: ''
+    limitSubmissions: null
     limitSubmissionsIpAddressMessage: null
     limitSubmissionsIpAddressNumber: null
     limitSubmissionsIpAddressType: null

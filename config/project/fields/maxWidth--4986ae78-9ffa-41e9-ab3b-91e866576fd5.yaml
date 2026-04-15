@@ -1,0 +1,19 @@
+columnSuffix: null
+handle: maxWidth
+instructions: 'Define the maximum width for content.'
+name: 'Max Width'
+searchable: false
+settings:
+  decimals: 0
+  defaultValue: null
+  max: null
+  min: 0
+  prefix: null
+  previewCurrency: null
+  previewFormat: decimal
+  size: null
+  step: null
+  suffix: px
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number

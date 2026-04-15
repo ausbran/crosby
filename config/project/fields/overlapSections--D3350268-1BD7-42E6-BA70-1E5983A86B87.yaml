@@ -1,0 +1,13 @@
+columnSuffix: null
+handle: overlapSections
+instructions: 'Extend this media section visually beneath the sections above and below it, with top and bottom gradients.'
+name: 'Overlap Sections'
+searchable: false
+settings:
+  default: false
+  offLabel: Standard
+  onLabel: Overlap
+  showLabelsInCards: false
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

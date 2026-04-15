@@ -2,7 +2,7 @@
 {% set testimonialCount = source.testimonials is defined ? source.testimonials|length : 0 %}
 {% set singleTestimonial = testimonialCount == 1 %}
 {% set multipleTestimonials = testimonialCount > 1 %}
-{% set color = source.color ?? '' %}
+{% set color = source.color is defined and source.color ? source.color.value : '' %}
 
 <div class="sm-page fade-in">
 	<div class="bg-texture testimonials grid grid-cols-12 py-12 md:py-20 md:pb-32 {{ 'bg-' ~ color }} sm:rounded-xl">
@@ -17,7 +17,7 @@
 		</div>
 		<div class="max-lg:snap-x carousel flex lg:block px-[1rem] sm:px-[8.333333%] lg:pl-0  mr-0 sm:-mr-[1.5rem] md:mr-0 gap-4 sm:gap-6 col-span-12 lg:col-span-5 xl:col-span-4 col-start-1 lg:col-start-7 overflow-scroll lg:overflow-visible" data-slide-time="{{ source.slideTime ?? 15 }}">
 			{% for testimonial in source.testimonials.all() %}
-				<div class="max-lg:max-w-[600px] max-lg:mb-6 max-lg:scroll-ml-[50px] max-lg:snap-start w-[calc(100%-3rem)] sm:w-full flex-none carousel-item testimonial-card relative text-white p-8 lg:p-10 xl:p-12">
+				<div class="max-lg:max-w-[600px] max-lg:mb-6 max-lg:scroll-ml-[50px] max-lg:snap-start w-[calc(100%_-_3rem)] sm:w-full flex-none carousel-item testimonial-card relative text-white p-8 lg:p-10 xl:p-12">
 					<div class="relative z-5">
 						<blockquote class="text-3xl mb-20 lg:mb-28 relative z-2">
 							{{ testimonial.quote | striptags }}

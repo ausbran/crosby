@@ -1,5 +1,5 @@
 {% extends "index" %}
-{% set bodyClass = (entry.color ?? '') ~ ' bg-texture' %}
+{% set bodyClass = (entry.color is defined and entry.color ? entry.color.value : '') ~ ' bg-texture' %}
 
 {% block content %}
 	{% if entry.asset|length %}

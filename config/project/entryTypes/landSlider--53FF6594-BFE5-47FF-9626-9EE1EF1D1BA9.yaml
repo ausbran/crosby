@@ -1,0 +1,67 @@
+allowLineBreaksInTitles: false
+color: green
+description: null
+fieldLayouts:
+  0c8382b9-4f11-424c-bf32-24e2c042a95b:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-04-13T23:55:00+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8b656877-6f15-45aa-87d7-feb1d95ce5c2 # Plain Text
+            handle: sliderHeader
+            instructions: null
+            label: 'Slider Header'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d7f7be2c-d4a7-4fc9-8c7e-2830dc01f98b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-04-13T23:55:00+00:00'
+            dismissible: false
+            elementCondition: null
+            style: tip
+            tip: 'Add a double slide to have two blocks stack on top of one another. Add a single slide for full height.'
+            type: craft\fieldlayoutelements\Tip
+            uid: 8c0df5fd-4808-43fd-b898-0ee286f6a413
+            userCondition: null
+          -
+            dateAdded: '2026-04-13T23:55:00+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 62c3a695-96b4-43f5-ac43-eb27a6cfc3f9 # Slides
+            handle: slidesLand
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 61abcccb-93e2-4bbe-b06f-71c66b9fb15d
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: d97ce92a-83af-425e-88bc-f4a0d665c677
+        userCondition: null
+    thumbFieldKey: null
+handle: landSlider
+hasTitleField: false
+icon: rectangle-history
+name: 'Property Slider'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

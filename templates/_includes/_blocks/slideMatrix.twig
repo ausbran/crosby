@@ -6,6 +6,7 @@
 {% set hasBackground = false %}
 {% set hasInlineTextImage = false %}
 {% set widthPercent = ((columnSpan / gridSpan) * 100)|number_format(6, '.', '') %}
+{% set widthSubtract = widthSubtract ?? '1rem' %}
 
 {% for block in slide.slideMatrix %}
 	{% if block.type.handle == 'asset' and block.asset|length %}
@@ -18,6 +19,7 @@
 {% set isWhiteCard = color == 'white' %}
 {% set isWhiteWithoutAsset = isWhiteCard and not hasBackground %}
 {% set slideTextClass = isWhiteWithoutAsset ? 'text-charcoal' : 'text-' ~ textColor %}
+{% set historyMode = historyMode ?? false %}
 {% set buttonClass = isWhiteCard ? '!bg-red !text-white text-white' : '!bg-white !text-' ~ color ~ ' text-' ~ color %}
 {% set buttonStyle = 'display:inline-flex;width:auto;height:auto;min-height:0;line-height:1.2;' %}
 {% set buttonIncludeProps = {
@@ -27,8 +29,8 @@
     }
 } %}
 
-<div class="max-lg:!max-w-[500px] max-lg:!w-[calc(100%-20px)] flex-none slide {{ slideTextClass }} grid grid-cols-{{ gridSpan }} {{ slideClass }}
-	    md:grid-cols-{{ columnSpan }} sm:grid-cols-12" style="width: calc({{ widthPercent }}% - 1rem); max-width: calc({{ widthPercent }}% - 1rem);">
+<div class="max-lg:!max-w-[500px] max-lg:!w-[calc(100%_-_20px)] flex-none slide {{ slideTextClass }} grid grid-cols-{{ gridSpan }} {{ slideClass }}
+	    md:grid-cols-{{ columnSpan }} sm:grid-cols-12" style="width: calc({{ widthPercent }}% - {{ widthSubtract }}); max-width: calc({{ widthPercent }}% - {{ widthSubtract }});">
 
 	<div
 		class="min-h-[450px] md:min-h-[600px] h-full col-span-12 md:col-span-{{ columnSpan }} rounded-xl overflow-hidden h-full relative bg-{{ color }}{% if isWhiteCard %} border border-gray-300{% endif %}">
@@ -82,10 +84,12 @@
 	</div>
 
 	{# caption #}
+	{% set hasCaption = false %}
 	{% for block in slide.slideMatrix %}
 		{% switch block.type.handle %}
 			{% case 'caption' %}
-				<div class="mt-4 col-span-2 fade-in" data-cascade>
+				{% set hasCaption = true %}
+				<div class="slide-caption mt-4 col-span-2 fade-in" data-cascade>
 					{% include '_includes/_blocks/text' with {
                         text: block.caption,
                         pClass: 'text-base col-span-12'
@@ -93,4 +97,7 @@
 				</div>
 		{% endswitch %}
 	{% endfor %}
+	{% if historyMode and not hasCaption %}
+		<div class="slide-caption slide-caption--empty mt-4 col-span-2" aria-hidden="true"></div>
+	{% endif %}
 </div>

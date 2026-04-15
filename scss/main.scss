@@ -325,6 +325,7 @@ strong {
     // slider
     .slider {
       @apply flex space-x-4 lg:space-x-6 overflow-x-auto overflow-y-hidden;
+      --slider-gap: 1rem;
       scroll-behavior: smooth;
       scroll-snap-type: x mandatory;
       padding-left: theme("spacing.p-default");
@@ -336,6 +337,7 @@ strong {
       }
 
       @screen lg {
+        --slider-gap: 1.5rem;
         padding-left: theme("spacing.p-lg");
         padding-right: theme("spacing.p-lg");
       }
@@ -377,7 +379,67 @@ strong {
           @apply md:scroll-ml-0;
         }
       }
+
+      .slide {
+        grid-template-rows: 450px 96px;
+      }
+
+      .slide > div:first-child {
+        height: 100%;
+        min-height: 0;
+      }
+
+      @screen md {
+        .slide {
+          grid-template-rows: 600px 120px;
+        }
+
+        .slide > div:first-child {
+          height: 100%;
+          min-height: 0;
+        }
+      }
+
+      .slide-caption {
+        min-height: 96px;
+      }
+
+      @screen md {
+        .slide-caption {
+          min-height: 120px;
+        }
+      }
+
+      .slide-caption--empty {
+        visibility: hidden;
+      }
     }
+
+    &.slider-wrapper--safari-fix {
+      width: 100vw;
+      min-width: 100vw;
+      max-width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+
+      .slider {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+    }
+
+    &.slider-wrapper--history-breakout {
+      max-width: none;
+      min-width: 0;
+
+      .slider {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+      }
+    }
+
   }
 }
 .slider-shadow {
@@ -395,6 +457,12 @@ strong {
   // }
 }
 
+.history-shell {
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+
 @media (max-width: 1024px) {
   .slider-shadow {
     &:after,
@@ -406,7 +474,7 @@ strong {
 
 .slider .main-slide {
   // dynamic styles added for sliderFixed script that moves slide in and out of container
-    @apply flex-none max-lg:max-w-[500px] w-[calc(100%-20px)] max-w-[calc(100%-20px)] !important;
+    @apply flex-none max-lg:max-w-[500px] w-[calc(100%_-_20px)] max-w-[calc(100%_-_20px)] !important;
 }
 
 .grid {
@@ -929,12 +997,41 @@ body.green-dark {
 .stream-video-wrap,
 .stream-video-wrap--processing {
   @apply relative block overflow-hidden;
+  aspect-ratio: var(--stream-aspect-ratio, 16 / 9);
+  width: 100%;
 }
 
 .stream-video-wrap .stream-video,
 .stream-video-wrap .stream-lqip,
 .stream-video-wrap--processing .stream-lqip {
   @apply absolute inset-0 h-full w-full object-cover;
+}
+
+.stream-video-wrap .stream-video {
+  z-index: 1;
+}
+
+.stream-video-wrap .stream-lqip,
+.stream-video-wrap--processing .stream-lqip {
+  z-index: 2;
+  pointer-events: none;
+  opacity: 1;
+  transform: scale(1.04);
+  filter: blur(16px);
+  transition:
+    opacity 500ms ease,
+    filter 500ms ease,
+    transform 500ms ease,
+    visibility 500ms ease;
+  visibility: visible;
+}
+
+.stream-video-wrap .stream-lqip.lqip-ready,
+.stream-video-wrap--processing .stream-lqip.lqip-ready {
+  opacity: 0;
+  filter: blur(0);
+  transform: scale(1);
+  visibility: hidden;
 }
 
 .stream-video-loading {
@@ -1120,10 +1217,29 @@ body.green-dark {
 }
 
 #modal-image-container {
-  @apply w-full h-full;
+  @apply relative w-full h-full overflow-hidden rounded-xl bg-gray-100;
+  aspect-ratio: 3 / 2;
+
+  @screen lg {
+    aspect-ratio: 3 / 2;
+  }
 
   .modal-thumb-image {
-    @apply w-full h-full;
+    @apply absolute inset-0 w-full h-full transition-opacity duration-200 ease-out cursor-zoom-in;
+    z-index: 1;
+
+    &.is-active {
+      @apply opacity-100;
+      z-index: 2;
+
+      &:hover {
+        opacity: 0.84;
+      }
+    }
+
+    &.is-exiting {
+      @apply opacity-0 pointer-events-none;
+    }
 
     picture,
     picture img,
@@ -1131,6 +1247,21 @@ body.green-dark {
       @apply w-full h-full object-cover;
     }
   }
+}
+
+#modal-image-container-wrapper {
+  @apply rounded-xl overflow-hidden;
+}
+
+.photo-thumb-controls {
+  @apply pointer-events-auto;
+}
+
+.modal-thumb-pagination__inner {
+  background: rgba(17, 17, 17, 0.24);
+  box-shadow: 0 10px 35px rgba(17, 17, 17, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 #modal-image-container-wrapper.single {
@@ -1397,17 +1528,83 @@ select {
 }
 
 .slides-container {
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s step-end;
+}
 
-  &.fade-in {
-    opacity: 1;
-    visibility: visible;
-  }
+.slider-wrapper--services-tabs {
+  width: 100vw;
+  min-width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 
-  &.fade-out {
-    opacity: 0;
-    visibility: hidden;
+  .slider {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
   }
+}
+
+.slider-wrapper--services-breakout {
+  position: relative;
+  max-width: none;
+  min-width: 0;
+
+  .slider {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+}
+
+.service-panels-track {
+  position: relative;
+  transition: height 0.35s ease;
+}
+
+.service-panel {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+
+.service-panel.is-active,
+.service-panel.is-entering,
+.service-panel.is-leaving {
+  display: flex !important;
+}
+
+.service-panel.is-active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    visibility 0s linear;
+}
+
+.service-panel.is-entering {
+  position: absolute;
+  opacity: 0;
+  visibility: visible;
+  transform: translateY(10px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    visibility 0s linear;
+}
+
+.service-panel.is-leaving {
+  position: absolute;
+  opacity: 0;
+  visibility: visible;
+  transform: translateY(-8px);
 }
 
 .instruction-page {

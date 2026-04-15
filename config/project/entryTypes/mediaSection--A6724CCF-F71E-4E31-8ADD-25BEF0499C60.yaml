@@ -1,0 +1,112 @@
+allowLineBreaksInTitles: false
+color: fuchsia
+description: null
+fieldLayouts:
+  db2688f0-7df4-4f75-8f68-50db7e98307f:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-04-13T23:55:00+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4eca126e-eaac-49cf-a070-650882bc3b23
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-04-13T23:55:00+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7fe80a9d-2822-4ed3-8d83-f89f27f75731 # Asset
+            handle: assetMobile
+            instructions: 'Display a different asset on smaller screen sizes.'
+            label: 'Mobile Asset'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d6de3c5e-6c72-46b7-be4c-4eacd30f878c
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: aa056ad5-33e9-4399-ad55-015429012f14
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-04-13T23:55:00+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 359F3484-95B1-4D6F-8C2F-B10A204A75F2 # Full Width
+            handle: null
+            instructions: null
+            label: 'Full Width'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e89e8fa4-1cfb-4cc0-b5a9-114d9bbe808a
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-04-13T23:55:00+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: D3350268-1BD7-42E6-BA70-1E5983A86B87 # Overlap Sections
+            handle: null
+            instructions: null
+            label: 'Overlap Sections'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7552d969-2cd7-40fb-9905-ba2028650746
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-04-13T23:55:00+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8f0d2001-1c75-4b9a-8e74-b7e48dbc58bf # Loop Video
+            handle: null
+            instructions: null
+            label: 'Loop Video'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1a36af48-141c-48a9-b97d-fae4e406c357
+            userCondition: null
+            warning: null
+            width: 50
+        name: Settings
+        uid: 2eb83d56-2eb8-4d28-9641-e12d5643871c
+        userCondition: null
+    thumbFieldKey: null
+handle: mediaSection
+hasTitleField: false
+icon: film
+name: 'Media Section'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

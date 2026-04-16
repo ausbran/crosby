@@ -70,7 +70,7 @@ rsync -az --delete --no-times --omit-dir-times --no-perms \
   "$PROD_SSH:$PROD_APP_PATH/"
 
 rsync -az --delete --no-times --omit-dir-times --no-perms \
-  ./web/assets ./web/.htaccess ./web/robots.txt \
+  ./web/assets ./web/.htaccess ./web/robots.txt ./web/.user.ini \
   "$PROD_SSH:$PROD_APP_PATH/web/"
 
 if [[ "$SKIP_DB_IMPORT" == "true" ]]; then

@@ -62,7 +62,7 @@ rsync -az --delete --no-times --omit-dir-times --no-perms \
   "$STAGING_SSH:$STAGING_APP_PATH/"
 
 rsync -az --delete --no-times --omit-dir-times --no-perms \
-  ./web/assets ./web/.htaccess ./web/robots.txt \
+  ./web/assets ./web/.htaccess ./web/robots.txt ./web/.user.ini \
   "$STAGING_SSH:$STAGING_APP_PATH/web/"
 
 BACKUP_DIR="storage/backups"

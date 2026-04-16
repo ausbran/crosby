@@ -1,42 +1,62 @@
 <!-- Content Modal -->
 <div id="modal" class="page overflow-y-scroll z-10 lg:z-2 bg-white grid grid-cols-12 fixed inset-0 flex items-center justify-center !mt-0 pt-14 pb-14" style="padding-top:50px;">
-    <div class="bg-white grid grid-cols-subgrid relative col-span-12 lg:col-span-12 lg:col-span-6">
-        {% include '_includes/_icons/close' with {
-            class: 'content-modal-close !absolute z-2 -top-4 right-0 modal-close'
-        } %}
-        {# title, address, acreage, description, etc #}
-        <h2 id="modal-title" class="col-span-9 lg:col-span-5 mb-4"></h2>
-        <div class="flex flex-wrap gap-y-2 gap-x-4 lg:gap-x-10 col-span-12 lg:col-span-6 mb-6 lg:mb-8">
-            <p id="modal-price" class="text-2xl"></p>
-            <p id="modal-address" class="text-2xl"></p>
-            <p id="modal-parish" class="text-2xl"></p>
-            <p id="modal-acreage" class="text-2xl">
-                <span class="modal-text"></span>
-                <span id="modal-price-per-acre" class="text-2xl font-normal ml-1"></span>
-            </p>
-        </div>
-        <div id="modal-description" class="col-span-12 lg:col-span-5 mb-6 lg:mb-8">
-            <span class="font-medium text-2xl block mb-2">Description</span>
-            <span class="description-text"></span>
-        </div>
-        <div id="modal-directions" class="col-span-12 lg:col-span-5 mb-6 lg:mb-8">
-            <span class="font-medium text-2xl block mb-2">Driving Directions</span>
-            <span class="directions-text"></span>
-        </div>
-        <div id="modal-features" class="mb-6 lg:mb-4 col-span-12 lg:col-span-6 grid grid-cols-subgrid text-[14px] xl:text-base">
-            <ul class="list-none !gap-y-4 col-span-12 lg:col-span-6 grid grid-cols-subgrid flex"></ul>
-        </div>
-        <div id="modal-staff" class="col-span-12 lg:col-span-6 flex flex-col gap-y-4 p-8 bg-[#f5f5f5] rounded-lg">
-            <div class="flex gap-x-4 gap-y-2 items-center">
-                <div class="staff-image w-16 h-16 rounded-full overflow-hidden flex-shrink-0"></div>
-                <div class="flex gap-x-4 gap-y-2 flex-wrap">
-                    <div class="staff-name text-2xl"></div>
-                    <div class="staff-position text-2xl"></div>
-                </div>
-            </div>
-            {# buttons #}
-            <div class="col-span-12 lg:col-span-6 flex flex-wrap gap-y-2 gap-x-4 md:gap-x-6">
-                {% include '_includes/_blocks/button' with {
+	<div class="bg-white grid grid-cols-subgrid relative col-span-12 lg:col-span-6 pt-16">
+		<div class="modal-listing-toolbar fixed top-0 inset-x-0 z-40 border-b border-gray-200 bg-white/95 backdrop-blur-md">
+			<div class="page lg:grid lg:grid-cols-12">
+				<div class="flex items-center justify-between py-5 lg:col-span-6">
+					<button type="button" class="modal-bar-button modal-bar-close inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium tracking-tight text-charcoal transition-colors duration-300 hover:border-charcoal">
+						<span aria-hidden="true" class="inline-flex h-[12px] w-[12px] items-center justify-center overflow-hidden">
+							<span class="inline-flex rotate-180">
+								{% include "_includes/_svg/arrow.svg" with { class: 'black-arrow w-[12px]' } %}
+							</span>
+						</span>
+						<span>Back to all listings</span>
+					</button>
+					<button type="button" class="lg:mr-[.8em] modal-bar-button modal-bar-contact inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium tracking-tight text-charcoal transition-colors duration-300 hover:border-charcoal">
+						<span>Contact</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		{# thumbnail images #}
+		<div id="modal-image-container-wrapper" class="slider-shadow relative order-first lg:order-none mb-6 lg:mb-8 mt-2 lg:mt-0 grid grid-cols-subgrid col-span-12 lg:col-span-6 max-lg:w-screen max-lg:max-w-none max-lg:left-1/2 max-lg:-translate-x-1/2">
+			<div id="modal-image-container" class="col-span-12 flex items-center justify-center max-lg:rounded-none lg:rounded-xl overflow-hidden bg-gray-100 min-h-[340px] md:min-h-[420px]"></div>
+			<div id="modal-thumb-pagination" class="photo-thumb-controls col-span-12 flex items-center justify-center absolute bottom-5 left-1/2 -translate-x-1/2 z-10"></div>
+		</div>
+
+		{# title, address, acreage, description, etc #}
+		<h2 id="modal-title" class="col-span-9 lg:col-span-5 mb-4"></h2>
+		<div class="flex flex-wrap gap-y-2 gap-x-4 lg:gap-x-10 col-span-12 lg:col-span-6 mb-6 lg:mb-8">
+			<p id="modal-price" class="text-2xl"></p>
+			<p id="modal-address" class="text-2xl"></p>
+			<p id="modal-parish" class="text-2xl"></p>
+			<p id="modal-acreage" class="text-2xl">
+				<span class="modal-text"></span>
+				<span id="modal-price-per-acre" class="text-2xl font-normal ml-1"></span>
+			</p>
+		</div>
+		<div id="modal-description" class="col-span-12 lg:col-span-5 mb-6 lg:mb-8">
+			<span class="font-medium text-2xl block mb-2">Description</span>
+			<span class="description-text"></span>
+		</div>
+		<div id="modal-directions" class="col-span-12 lg:col-span-5 mb-6 lg:mb-8">
+			<span class="font-medium text-2xl block mb-2">Driving Directions</span>
+			<span class="directions-text"></span>
+		</div>
+		<div id="modal-features" class="mb-6 lg:mb-4 col-span-12 lg:col-span-6 grid grid-cols-subgrid text-[14px] xl:text-base">
+			<ul class="list-none !gap-y-4 col-span-12 lg:col-span-6 grid grid-cols-subgrid flex"></ul>
+		</div>
+		<div id="modal-staff" class="col-span-12 lg:col-span-6 flex flex-col gap-y-4 sm:p-4 md:p-6 p-8 bg-[#f5f5f5] rounded-lg">
+			<div class="flex gap-x-4 gap-y-2 items-center">
+				<div class="staff-image w-16 h-16 rounded-full overflow-hidden flex-shrink-0"></div>
+				<div class="flex gap-x-4 gap-y-2 flex-wrap">
+					<div class="staff-name text-2xl"></div>
+					<div class="staff-position text-2xl"></div>
+				</div>
+			</div>
+			{# buttons #}
+			<div class="col-span-12 lg:col-span-6 flex flex-wrap gap-y-2 gap-x-4 md:gap-x-6">
+				{% include '_includes/_blocks/button' with {
                     link: '#',
                     label: 'Get in touch',
                     class: 'email-button text-white w-full lg:w-auto',
@@ -44,70 +64,53 @@
                         'data-id': ''
                     }
                 } %}
-                {% include '_includes/_blocks/button' with {
+				{% include '_includes/_blocks/button' with {
                     link: '#',
                     label: 'Call',
                     class: 'call-button text-white w-full lg:w-auto'
                 } %}
-            </div>
-        </div>
-
-        {# thumbnail images #}
-        <div id="modal-image-container-wrapper" class="slider-shadow relative mt-4 lg:mt-5 grid grid-cols-subgrid col-span-12 lg:col-span-6">
-            <div
-                id="modal-image-container"
-                class="col-span-12 flex items-center justify-center rounded-xl overflow-hidden bg-gray-100 min-h-[340px] md:min-h-[420px]">
-            </div>
-            <div
-                id="modal-thumb-pagination"
-                class="photo-thumb-controls col-span-12 flex items-center justify-center absolute bottom-5 left-1/2 -translate-x-1/2 z-10">
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- Photo Modal with larger images -->
 <div id="photo-modal" class="grid grid-cols-12 !mt-0 z-50 bg-white fixed inset-0 flex items-center justify-center opacity-0 pointer-events-none transition-opacity">
-    <div class="relative col-span-12 grid grid-cols-subgrid h-full items-center justify-center">
-        <div
-            id="photo-modal-image-container"
-            class="col-span-12 grid grid-cols-subgrid h-full items-center justify-center">
-            <!-- Images will be populated here dynamically -->
-        </div>
-        <div class="col-span-12 flex flex-col items-center gap-3 absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-            <div class="flex items-center justify-center gap-4">
-                {% include '_includes/_icons/arrowPrev' with {
+	<div class="relative col-span-12 grid grid-cols-subgrid h-full items-center justify-center">
+		<div
+			id="photo-modal-image-container" class="col-span-12 grid grid-cols-subgrid h-full items-center justify-center"><!-- Images will be populated here dynamically -->
+		</div>
+		<div class="col-span-12 flex flex-col items-center gap-3 absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+			<div class="flex items-center justify-center gap-4">
+				{% include '_includes/_icons/arrowPrev' with {
                     prevArrowClass: '',
                     prevArrowId: 'photo-modal-prev'
                 } %}
-                {% include '_includes/_icons/close' with {
+				{% include '_includes/_icons/close' with {
                     class: 'photo-modal-close z-2 modal-close'
                 } %}
-                {% include '_includes/_icons/arrowNext' with {
+				{% include '_includes/_icons/arrowNext' with {
                     nextArrowClass: '',
                     nextArrowId: 'photo-modal-next'
                 } %}
-            </div>
-            <div
-                id="photo-modal-counter"
-                class="rounded-full bg-black/70 px-3 py-1 text-[12px] font-medium tracking-[0.08em] text-white/90 backdrop-blur-md">
-            </div>
-        </div>
-    </div>
+			</div>
+			<div id="photo-modal-counter" class="rounded-full bg-black/70 px-3 py-1 text-[12px] font-medium tracking-[0.08em] text-white/90 backdrop-blur-md"></div>
+		</div>
+	</div>
 </div>
 
 <!-- Contact Modal -->
 {% for listing in listings %}
-    <div id="contact-modal-{{ listing.id }}" class="contact-modal !mt-0 overflow-scroll fixed translate-y-full inset-0 z-50 bg-red flex md:items-center md:justify-center pointer-events-none transition-all duration-300">
-        <div class="page grid grid-cols-12">
-            {% include '_includes/_icons/close' with {
+	<div id="contact-modal-{{ listing.id }}" class="contact-modal !mt-0 overflow-scroll fixed translate-y-full inset-0 z-50 bg-red flex md:items-center md:justify-center pointer-events-none transition-all duration-300">
+		<div class="page grid grid-cols-12">
+			{% include '_includes/_icons/close' with {
                 class: 'contact-modal-close !bg-white !fixed md:!absolute z-2 top-6 right-4 md:right-6 modal-close'
             } %}
-            {% include '_includes/_blocks/form' with {
+			{% include '_includes/_blocks/form' with {
                 block: listing,
                 formHandle: 'contactLandSales',
                 style: 'modal'
             } %}
-        </div>
-    </div>
+		</div>
+	</div>
 {% endfor %}

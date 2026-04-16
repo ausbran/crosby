@@ -128,16 +128,16 @@ function initializeComponents(container, namespace) {
     default: {
       const carousel = container.querySelector(".carousel");
       const slider = container.querySelector(".slider");
-      const sliderFixed = container.querySelector(".fixed-slider");
+      const sliderFixed = container.querySelector(".slider-fixed");
 
       if (carousel) {
         initBanner(".carousel", ".progress-bar .progress");
       }
-      if (slider) {
-        initSlider();
-      }
       if (sliderFixed) {
         initSliderFixed();
+      }
+      if (slider) {
+        initSlider();
       }
       break;
     }

@@ -1,5 +1,6 @@
 export function initSliderFixed() {
     const sliderSections = document.querySelectorAll(".slider-fixed");
+    const desktopMediaQuery = window.matchMedia("(min-width: 1024px)");
 
     function moveMainSlides() {
         sliderSections.forEach((section) => {
@@ -9,16 +10,21 @@ export function initSliderFixed() {
 
             if (!mainSlide || !sliderWrapper || !slider) return; // Skip if elements are missing
 
-            if (window.innerWidth < 1024) {
+            if (!desktopMediaQuery.matches) {
                 if (!sliderWrapper.contains(mainSlide)) {
                     slider.prepend(mainSlide);
                     mainSlide.classList.remove("lg:block", "hidden"); // Make visible in slider
                 }
+
+                // Always start the converted fixed slider at the first card on load/resize.
+                slider.scrollLeft = 0;
             } else {
                 if (sliderWrapper.contains(mainSlide)) {
                     section.prepend(mainSlide);
                     mainSlide.classList.add("lg:block", "hidden"); // Restore desktop visibility
                 }
+
+                slider.scrollLeft = 0;
             }
         });
     }

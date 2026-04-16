@@ -396,8 +396,7 @@ export function initMap() {
         "items-center",
         "justify-center",
         "cursor-pointer",
-        "transition-opacity",
-        "hover:opacity-70"
+        "transition-opacity"
       );
       imageDiv.innerHTML = imageHtml;
       imageDiv.addEventListener("click", () => openPhotoModal(listing, clampedIndex));
@@ -911,6 +910,41 @@ const attachButtonListeners = (selector, callback) => {
     closeButton.addEventListener("click", () =>
       closeModal(document.getElementById("modal"), true)
     );
+  }
+
+  const modalBarClose = document.querySelector(".modal-bar-close");
+  if (modalBarClose) {
+    modalBarClose.addEventListener("click", () =>
+      closeModal(document.getElementById("modal"), true)
+    );
+  }
+
+  const modalBarContact = document.querySelector(".modal-bar-contact");
+  if (modalBarContact) {
+    modalBarContact.addEventListener("click", () => {
+      const modalEl = document.getElementById("modal");
+      const staffContainer = document.getElementById("modal-staff");
+
+      if (!modalEl || !staffContainer) {
+        return;
+      }
+
+      staffContainer.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+
+      window.clearTimeout(staffContainer._flashTimer);
+      staffContainer.classList.remove("modal-staff--flash");
+
+      staffContainer._flashTimer = window.setTimeout(() => {
+        staffContainer.classList.add("modal-staff--flash");
+
+        window.setTimeout(() => {
+          staffContainer.classList.remove("modal-staff--flash");
+        }, 1200);
+      }, 450);
+    });
   }
 
   const photoModalClose = document.querySelector(".photo-modal-close");

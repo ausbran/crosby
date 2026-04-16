@@ -10,7 +10,7 @@
     "nystudio107/craft-seomatic": "^5.1.21",
     "vaersaagod/dospaces": "3.2.1",
     "verbb/field-manager": "4.0.3",
-    "verbb/formie": "^3.1.20",
+    "verbb/formie": "^3.1.21",
     "vlucas/phpdotenv": "^5.6.3"
   },
   "require-dev": {

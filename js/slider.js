@@ -37,9 +37,9 @@ export function initSlider() {
     const parentContainer =
       sliderWrapper.closest(".slider-button-js") || sliderWrapper;
 
-    // Safely find the arrows
-    const nextButton = parentContainer.querySelector(".arrow-next");
-    const prevButton = parentContainer.querySelector(".arrow-prev");
+    // Safely find any arrow sets attached to the same slider container
+    const nextButtons = Array.from(parentContainer.querySelectorAll(".arrow-next"));
+    const prevButtons = Array.from(parentContainer.querySelectorAll(".arrow-prev"));
 
     if (!slides.length) return; // Skip if no slides
 
@@ -86,18 +86,24 @@ export function initSlider() {
     };
 
     // Add event listeners for the arrows
-    if (nextButton) {
+    nextButtons.forEach((nextButton) => {
+      if (nextButton.dataset.sliderBound === "true") return;
+
       nextButton.addEventListener("click", (event) => {
         event.preventDefault();
         scrollToSlide("next");
       });
-    }
+      nextButton.dataset.sliderBound = "true";
+    });
 
-    if (prevButton) {
+    prevButtons.forEach((prevButton) => {
+      if (prevButton.dataset.sliderBound === "true") return;
+
       prevButton.addEventListener("click", (event) => {
         event.preventDefault();
         scrollToSlide("prev");
       });
-    }
+      prevButton.dataset.sliderBound = "true";
+    });
   });
 }

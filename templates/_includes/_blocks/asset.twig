@@ -108,6 +108,26 @@
 					{% endif %}
 				</video>
 			</noscript>
+		{% elseif streamProcessing and asset.url is defined and asset.url %}
+			<div class="{{ wrapperClass }}"{% if streamAspectRatio %} style="--stream-aspect-ratio: {{ streamAspectRatio }};"{% endif %}>
+				{% if streamPoster and videoLqip %}
+					<img class="stream-lqip lqip-blur" data-lqip-overlay="true" src="{{ streamPoster }}" alt="">
+				{% endif %}
+				<video
+					class="stream-video"
+					{% if autoplay %}autoplay{% endif %}
+					{% if loopVideo %}loop{% endif %}
+					{% if controls %}controls{% endif %}
+					muted
+					preload="metadata"
+					playsinline
+					webkit-playsinline
+					crossorigin="anonymous"
+					{% if streamPoster %}poster="{{ streamPoster }}"{% endif %}
+				>
+					<source src="{{ asset.url }}" type="{{ asset.mimeType ?? 'video/mp4' }}">
+				</video>
+			</div>
 		{% elseif streamProcessing %}
 			<div class="{{ (wrapperClass ~ ' stream-video-wrap--processing')|trim }}"{% if streamAspectRatio %} style="--stream-aspect-ratio: {{ streamAspectRatio }};"{% endif %}>
 				{% if streamPoster and videoLqip %}

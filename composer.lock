@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "096ffae0b1bae9e85d8bdabbd31f1f03",
+    "content-hash": "0e6f87c8697ea98e45d4e473dc9f2946",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -9449,11 +9449,11 @@
         },
         {
             "name": "verbb/formie",
-            "version": "3.1.20",
+            "version": "3.1.21",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verbb/formie/zipball/ac7f68cd72642449925ac135dfbf8a479898a3d2",
-                "reference": "ac7f68cd72642449925ac135dfbf8a479898a3d2",
+                "url": "https://api.github.com/repos/verbb/formie/zipball/4ae8d7417f029f14b419447455229a3b07230587",
+                "reference": "4ae8d7417f029f14b419447455229a3b07230587",
                 "shasum": ""
             },
             "require": {
@@ -9510,7 +9510,7 @@
                 "docs": "https://github.com/verbb/formie",
                 "rss": "https://github.com/verbb/formie/commits/v2.atom"
             },
-            "time": "2026-04-11T04:26:38+00:00"
+            "time": "2026-04-16T01:57:09+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

@@ -33,52 +33,52 @@
 				{% set usePage = not (block.type.handle in fullBleed or block.type.handle in alreadyPaged) %}
 				{% if usePage %}
 					<div class="page">
-				{% endif %}
-				{% switch block.type.handle %}
-					{% case 'text' %}
-						{% include '_includes/_blocks/text' with {
+					{% endif %}
+					{% switch block.type.handle %}
+						{% case 'text' %}
+							{% include '_includes/_blocks/text' with {
 							text: block.text
 						} %}
-					{% case 'asset' %}
-						{% set asset = block.asset is defined and block.asset ? block.asset.one() : null %}
-						{% set assetMobile = block.assetMobile is defined and block.assetMobile ? block.assetMobile.one() : null %}
-						{% include '_includes/_blocks/asset' with {
+						{% case 'asset' %}
+							{% set asset = block.asset is defined and block.asset ? block.asset.one() : null %}
+							{% set assetMobile = block.assetMobile is defined and block.assetMobile ? block.assetMobile.one() : null %}
+							{% include '_includes/_blocks/asset' with {
 							asset: asset,
 							assetMobile: assetMobile,
 							class: 'rounded-xl overflow-hidden'
 						} %}
-					{% case 'banner' %}
-						{% include '_includes/_blocks/bannerSlides' with {
+						{% case 'banner' %}
+							{% include '_includes/_blocks/bannerSlides' with {
 							source: block,
 							block: block,
 							bannerBody: true
 						} %}
-					{% case 'hero' %}
-						{% include '_includes/_blocks/bannerHero' with {
+						{% case 'hero' %}
+							{% include '_includes/_blocks/bannerHero' with {
 							source: block,
 							block: block
 						} %}
-					{% case 'sliderFixed' %}
-						{% include '_includes/_blocks/sliderFixed' with {
+						{% case 'sliderFixed' %}
+							{% include '_includes/_blocks/sliderFixed' with {
 							block: block
 						} %}
-					{% case 'mediaSection' %}
-						{% include '_includes/_blocks/mediaSection' with {
+						{% case 'mediaSection' %}
+							{% include '_includes/_blocks/mediaSection' with {
 							block: block
 						} %}
-					{% case 'landSlider' %}
-						{% include '_includes/_blocks/landSlider' with {
+						{% case 'landSlider' %}
+							{% include '_includes/_blocks/landSlider' with {
 							block: block
 						} %}
-					{% case 'sliderBlock' %}
-						{% set sliderSlides = block.slides is defined and block.slides ? block.slides.all() : [] %}
-						{% set usesPropertySlides = false %}
-						{% for slide in sliderSlides %}
-							{% if slide.type.handle in ['singleSlide', 'doubleSlide'] %}
-								{% set usesPropertySlides = true %}
-							{% endif %}
-						{% endfor %}
-						{% include '_includes/_blocks/slider' with {
+						{% case 'sliderBlock' %}
+							{% set sliderSlides = block.slides is defined and block.slides ? block.slides.all() : [] %}
+							{% set usesPropertySlides = false %}
+							{% for slide in sliderSlides %}
+								{% if slide.type.handle in ['singleSlide', 'doubleSlide'] %}
+									{% set usesPropertySlides = true %}
+								{% endif %}
+							{% endfor %}
+							{% include '_includes/_blocks/slider' with {
 							block: block,
 							slides: sliderSlides,
 							slideTemplate: usesPropertySlides ? null : '_includes/_blocks/slideMatrix',
@@ -88,62 +88,62 @@
 							arrows: usesPropertySlides ? false : true,
 							arrowsClass: usesPropertySlides ? '!m-0' : 'page justify-end mt-8'
 						} %}
-					{% case 'bannerSlides' %}
-						{% include '_includes/_blocks/bannerSlides' with {
+						{% case 'bannerSlides' %}
+							{% include '_includes/_blocks/bannerSlides' with {
 							source: block,
 							block: block,
 							bannerBody: true
 						} %}
-					{% case 'form' %}
-						{% include '_includes/_blocks/form' with {
+						{% case 'form' %}
+							{% include '_includes/_blocks/form' with {
 							block: block,
 							formHandle: block.formHandle ?? null,
 							class: block.formClass ?? null
 						} %}
-					{% case 'iframe' %}
-						<div class="iframe-container rounded-xl overflow-hidden w-full">
-							<style>
-								.iframe-container iframe {
-									width: 100%;
-									height: 700px;
-								}
-
-								@media(max-width: 1300px) {
+						{% case 'iframe' %}
+							<div class="iframe-container rounded-xl overflow-hidden w-full">
+								<style>
 									.iframe-container iframe {
-										height: 600px;
+										width: 100%;
+										height: 700px;
 									}
-								}
 
-								@media(max-width: 1024px) {
-									.iframe-container iframe {
-										height: 500px;
+									@media(max-width: 1300px) {
+										.iframe-container iframe {
+											height: 600px;
+										}
 									}
-								}
 
-								@media(max-width: 768px) {
-									.iframe-container iframe {
-										height: 300px;
+									@media(max-width: 1024px) {
+										.iframe-container iframe {
+											height: 500px;
+										}
 									}
-								}
-							</style>
-							{% include '_includes/_blocks/iframe' with {
+
+									@media(max-width: 768px) {
+										.iframe-container iframe {
+											height: 300px;
+										}
+									}
+								</style>
+								{% include '_includes/_blocks/iframe' with {
 								block: block
 							} %}
-						</div>
-					{% case 'pullQuoteBlock' %}
-						<blockquote class="grid grid-cols-subgrid">
-							<div class="fade-in grid grid-cols-subgrid">
-								{% include '_includes/_blocks/text' with {
+							</div>
+						{% case 'pullQuoteBlock' %}
+							<blockquote class="grid grid-cols-subgrid">
+								<div class="fade-in grid grid-cols-subgrid">
+									{% include '_includes/_blocks/text' with {
 									text: block.text
 								} %}
-							</div>
-						</blockquote>
-					{% default %}
-						{% include '_includes/_blocks/' ~ block.type.handle ignore missing with {
+								</div>
+							</blockquote>
+						{% default %}
+							{% include '_includes/_blocks/' ~ block.type.handle ignore missing with {
 							block: block
 						} %}
-				{% endswitch %}
-				{% if usePage %}
+					{% endswitch %}
+					{% if usePage %}
 					</div>
 				{% endif %}
 			{% endif %}

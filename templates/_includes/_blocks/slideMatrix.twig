@@ -21,22 +21,25 @@
 {% set slideTextClass = isWhiteWithoutAsset ? 'text-charcoal' : 'text-' ~ textColor %}
 {% set historyMode = historyMode ?? false %}
 {% set buttonClass = isWhiteCard ? '!bg-red !text-white text-white' : '!bg-white !text-' ~ color ~ ' text-' ~ color %}
-{% set buttonStyle = 'display:inline-flex;width:auto;height:auto;min-height:0;line-height:1.2;' %}
 {% set buttonIncludeProps = {
-    class: buttonClass,
-    attributes: {
-        style: buttonStyle
-    }
+    class: (buttonClass ~ ' col-span-12')|trim,
+    fadeIn: true
 } %}
+{% set outerSlideClass = historyMode ? '' : 'content-start' %}
+{% set cardClass = historyMode
+	? 'min-h-[450px] md:min-h-[600px] h-full col-span-12 md:col-span-' ~ columnSpan ~ ' rounded-xl overflow-hidden h-full relative bg-' ~ color ~ (isWhiteCard ? ' border border-gray-300' : '')
+	: 'md:min-h-[600px] h-full min-h-[450px] col-span-12 md:col-span-' ~ columnSpan ~ ' rounded-xl overflow-hidden transition-transform transform bg-' ~ color ~ (isWhiteCard ? ' border border-gray-300' : '') %}
+{% set textWrapClass = historyMode
+	? 'w-full absolute z-2 space-y-4 p-8 bottom-0 ' ~ slideTextClass
+	: 'static grid justify-start items-start content-between w-full h-full z-2 space-y-4 p-8 lg:p-10 ' ~ slideTextClass %}
 
-<div class="max-lg:!max-w-[500px] max-lg:!w-[calc(100%_-_20px)] flex-none slide {{ slideTextClass }} grid grid-cols-{{ gridSpan }} {{ slideClass }}
+<div class="max-lg:!max-w-[500px] max-lg:!w-[calc(100%_-_20px)] flex-none slide {{ outerSlideClass }} {{ slideTextClass }} grid grid-cols-{{ gridSpan }} {{ slideClass }}
 	    md:grid-cols-{{ columnSpan }} sm:grid-cols-12" style="width: calc({{ widthPercent }}% - {{ widthSubtract }}); max-width: calc({{ widthPercent }}% - {{ widthSubtract }});">
 
-	<div
-		class="min-h-[450px] md:min-h-[600px] h-full col-span-12 md:col-span-{{ columnSpan }} rounded-xl overflow-hidden h-full relative bg-{{ color }}{% if isWhiteCard %} border border-gray-300{% endif %}">
+	<div class="{{ cardClass }}">
 
 		<!-- Text -->
-		<div class="w-full absolute z-2 space-y-4 p-8 bottom-0 {{ slideTextClass }}">
+		<div class="{{ textWrapClass }}">
 			{% for block in slide.slideMatrix %}
 				{% switch block.type.handle %}
 					{% case 'text' %}
@@ -46,7 +49,7 @@
                             h2Class: 'col-span-12 ' ~ slideTextClass,
                             h3Class: 'col-span-12 ' ~ slideTextClass,
                             h4Class: 'col-span-12 ' ~ slideTextClass,
-                            pClass: 'col-span-12 text-base max-w-[350px] w-full ' ~ slideTextClass,
+                            pClass: '!text-md col-span-12 ' ~ slideTextClass,
                             figureClass: 'col-span-8'
                         } %}
 					{% case 'buttons' %}

@@ -29,5 +29,5 @@ return GeneralConfig::create()
     ->extraAllowedFileExtensions([
         'shp', 'shx', 'dbf', 'prj', 'prj4', 'ids', 'idx', 'geojson' // Adding shapefiles for maps
     ])
-    ->maxUploadFileSize(268435456)
+    ->maxUploadFileSize(524288000)
 ;

@@ -622,6 +622,70 @@ strong {
   }
 }
 
+.gradient-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.gradient-overlay::before,
+.gradient-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.gradient-overlay::before {
+  background:
+    radial-gradient(
+      ellipse var(--gradient-width, 75vw) var(--gradient-height, 75%) at var(--gradient-focus-x, 10%) var(--gradient-focus-y, 100%),
+      rgb(var(--gradient-color-rgb, 0 0 0) / var(--gradient-blur-opacity, 0.1)) 0%,
+      rgb(var(--gradient-color-rgb, 0 0 0) / calc(var(--gradient-blur-opacity, 0.1) * 0.92)) calc(var(--gradient-stop, 36) * 1%),
+      rgb(var(--gradient-color-rgb, 0 0 0) / calc(var(--gradient-blur-opacity, 0.1) * 0.72)) calc((var(--gradient-stop, 36) + 18) * 1%),
+      rgb(var(--gradient-color-rgb, 0 0 0) / calc(var(--gradient-blur-opacity, 0.1) * 0.38)) calc((var(--gradient-stop, 36) + 36) * 1%),
+      rgb(var(--gradient-color-rgb, 0 0 0) / calc(var(--gradient-blur-opacity, 0.1) * 0.12)) calc((var(--gradient-stop, 36) + 52) * 1%),
+      rgb(var(--gradient-color-rgb, 0 0 0) / 0) 100%
+    );
+  backdrop-filter: blur(var(--gradient-blur, 22px));
+  -webkit-backdrop-filter: blur(var(--gradient-blur, 22px));
+  mask-image:
+    radial-gradient(
+      ellipse var(--gradient-width, 75vw) var(--gradient-height, 75%) at var(--gradient-focus-x, 10%) var(--gradient-focus-y, 100%),
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.96) calc(var(--gradient-stop, 36) * 1%),
+      rgba(0, 0, 0, 0.84) calc((var(--gradient-stop, 36) + 18) * 1%),
+      rgba(0, 0, 0, 0.52) calc((var(--gradient-stop, 36) + 36) * 1%),
+      rgba(0, 0, 0, 0.16) calc((var(--gradient-stop, 36) + 52) * 1%),
+      rgba(0, 0, 0, 0) 100%
+    );
+  -webkit-mask-image:
+    radial-gradient(
+      ellipse var(--gradient-width, 75vw) var(--gradient-height, 75%) at var(--gradient-focus-x, 10%) var(--gradient-focus-y, 100%),
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.96) calc(var(--gradient-stop, 36) * 1%),
+      rgba(0, 0, 0, 0.84) calc((var(--gradient-stop, 36) + 18) * 1%),
+      rgba(0, 0, 0, 0.52) calc((var(--gradient-stop, 36) + 36) * 1%),
+      rgba(0, 0, 0, 0.16) calc((var(--gradient-stop, 36) + 52) * 1%),
+      rgba(0, 0, 0, 0) 100%
+    );
+}
+
+.gradient-overlay::after {
+  background:
+    radial-gradient(
+      ellipse var(--gradient-width, 75vw) var(--gradient-height, 75%) at var(--gradient-focus-x, 10%) var(--gradient-focus-y, 100%),
+      rgb(var(--gradient-color-rgb, 0 0 0) / var(--gradient-color-opacity, 0.5)) 0%,
+      rgb(var(--gradient-color-rgb, 0 0 0) / calc(var(--gradient-color-opacity, 0.5) * 0.92)) calc(var(--gradient-stop, 36) * 1%),
+      rgb(var(--gradient-color-rgb, 0 0 0) / calc(var(--gradient-color-opacity, 0.5) * 0.72)) calc((var(--gradient-stop, 36) + 18) * 1%),
+      rgb(var(--gradient-color-rgb, 0 0 0) / calc(var(--gradient-color-opacity, 0.5) * 0.36)) calc((var(--gradient-stop, 36) + 36) * 1%),
+      rgb(var(--gradient-color-rgb, 0 0 0) / calc(var(--gradient-color-opacity, 0.5) * 0.10)) calc((var(--gradient-stop, 36) + 52) * 1%),
+      rgb(var(--gradient-color-rgb, 0 0 0) / 0) 100%
+    );
+}
+
 .banner-hero {
   width: 100%;
 
@@ -683,9 +747,15 @@ strong {
     inset: 0;
     border-radius: inherit;
     background: #eb2127;
+    opacity: 0;
     transform: scaleX(0);
     transform-origin: left center;
     will-change: transform;
+    transition: opacity 180ms ease;
+  }
+
+  &__pagination-button.is-active &__pagination-progress {
+    opacity: 1;
   }
 
   &__content-stack {
@@ -1617,33 +1687,43 @@ select {
     @apply border border-gray-300;
     @apply max-h-none overflow-visible px-4 py-5;
     background-color: rgba(249, 250, 251, 0.95);
-    border-radius: 1.25rem;
+    border-radius: 1rem;
 
     @screen sm {
-      @apply px-5 py-6;
+      @apply px-5 py-5;
     }
 
     @screen lg {
-      @apply overflow-y-auto px-6 py-7;
+      @apply overflow-y-auto px-5 py-6;
       max-height: calc(100vh - 9rem);
     }
   }
 
   &__toc-heading {
-    @apply mb-5 text-sm font-medium uppercase text-gray-500;
-    letter-spacing: 0.18em;
+    @apply mb-4 text-2xl font-medium text-gray-700;
   }
 
   &__toc-list {
-    @apply space-y-3;
+    @apply space-y-1.5;
+  }
+
+  &__toc-item {
+    @apply rounded-xl transition-colors duration-200;
   }
 
   &__toc-sublist {
-    @apply ml-4 mt-2 space-y-1.5 border-l border-gray-200 pl-4;
+    @apply ml-3 mt-1.5 space-y-0.5 border-l border-gray-200 pl-3;
+    display: none;
+  }
+
+  &__toc-item.is-open &__toc-sublist {
+    display: block;
   }
 
   &__toc-link {
-    @apply relative flex items-start gap-3 rounded-xl border border-transparent px-3 py-3 text-sm text-gray-700 transition-colors duration-200;
+    @apply relative grid items-center rounded-xl border border-transparent px-3 py-2 text-sm text-gray-700 transition-colors duration-200;
+    grid-template-columns: 2rem minmax(0, 1fr) auto;
+    column-gap: 0.75rem;
 
     &:hover {
       @apply border-gray-300 bg-white text-gray-900;
@@ -1665,25 +1745,51 @@ select {
   }
 
   &__toc-index {
-    @apply inline-flex items-center justify-center rounded-full bg-white font-medium text-gray-500 transition-colors duration-200;
-    font-size: 0.7rem;
-    height: 2rem;
+    @apply inline-flex items-center justify-start font-medium text-gray-400 transition-colors duration-200;
+    font-size: 0.82rem;
     line-height: 1;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.04em;
     min-width: 2rem;
   }
 
   &__toc-link:hover &__toc-index,
   &__toc-link.is-active &__toc-index {
-    @apply bg-gray-100 text-gray-900;
+    @apply text-gray-900;
   }
 
   &__toc-label {
-    @apply block leading-snug;
+    @apply block min-w-0 leading-snug;
+    font-size: 0.98rem;
+    font-weight: 500;
+  }
+
+  &__toc-caret {
+    @apply block h-2.5 w-2.5 border-b-2 border-r-2 border-gray-400 transition-transform duration-200;
+    transform: rotate(-45deg);
+    margin-right: 0.125rem;
+  }
+
+  &__toc-item.is-open &__toc-caret {
+    transform: rotate(45deg);
   }
 
   &__toc-sublink {
-    @apply gap-0 px-3 py-2.5 text-gray-600;
-    font-size: 0.8125rem;
+    @apply gap-0 border-transparent bg-transparent px-3 py-1.5 text-gray-600;
+    grid-template-columns: 1fr;
+    font-size: 0.875rem;
+  }
+
+  &__toc-sublink .instruction-page__toc-label {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  &__toc-sublink.is-active {
+    @apply bg-transparent text-gray-900;
+    box-shadow: none;
+  }
+
+  &__toc-sublink.is-active::before {
+    @apply bottom-1 left-0 top-1;
   }
 }

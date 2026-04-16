@@ -42,13 +42,14 @@
 	{% if assets|length %}
 		<div class="carousel" data-slide-time="{{ slideTime ?? 15 }}">
 			{% include '_includes/_blocks/gradient.twig' with {
-                zIndex: '4',
-				opacity: '40'
-            } %}
-			{% include '_includes/_blocks/gradientBlur' with {
-				height: '1/2',
-				gradientStop: '40',
-				blur: 'sm',
+				width: '90%',
+				height: '60%',
+				focusX: '10%',
+				focusY: '100%',
+				blur: '36px',
+				blurOpacity: '0.08',
+				gradientStop: '34',
+				colorOpacity: '40',
 				zIndex: '4'
 			} %}
 			{% for asset in assets %}

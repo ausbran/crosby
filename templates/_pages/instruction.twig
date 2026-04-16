@@ -3,6 +3,18 @@
 
 {% block content %}
 	{% set steps = entry.instructionBlocks is defined and entry.instructionBlocks ? entry.instructionBlocks.all() : [] %}
+	{% macro instructionAsset(asset, className) %}
+		{% if asset %}
+			{% set localInstructionAsset = asset.url and '/uploads/instructions/' in asset.url %}
+			{% set assetUrl = localInstructionAsset ? '/uploads/instructions/' ~ asset.filename : asset.url %}
+			<img
+				src="{{ assetUrl }}"
+				alt="{{ asset.title ?? '' }}"
+				class="{{ className }}"
+				loading="lazy">
+		{% endif %}
+	{% endmacro %}
+	{% import _self as instructionMacros %}
 
 	<div class="page instruction-page pt-32 lg:pt-[180px]" data-instruction-page>
 		<div class="grid grid-cols-12 gap-y-10 lg:gap-x-10">
@@ -15,13 +27,16 @@
 							{% set label = step.title ?? ('Step ' ~ loop.index) %}
 							{% set anchor = 'step-' ~ loop.index ~ '-' ~ (label|kebab) %}
 							{% set subBlocks = step.subBlocks is defined and step.subBlocks ? step.subBlocks.all() : [] %}
-							<li>
+							<li class="instruction-page__toc-item{% if subBlocks|length %} has-children{% endif %}" data-instruction-toc-item="{{ anchor }}">
 								<a href="#{{ anchor }}" class="instruction-page__toc-link" data-instruction-toc-link="{{ anchor }}">
 									<span class="instruction-page__toc-index">{{ loop.index < 10 ? '0' ~ loop.index : loop.index }}</span>
 									<span class="instruction-page__toc-label">{{ label }}</span>
+									{% if subBlocks|length %}
+										<span class="instruction-page__toc-caret" aria-hidden="true"></span>
+									{% endif %}
 								</a>
 								{% if subBlocks|length %}
-									<ul class="instruction-page__toc-sublist">
+									<ul class="instruction-page__toc-sublist" data-instruction-toc-sublist>
 										{% for subBlock in subBlocks %}
 											{% set subLabel = subBlock.title ?? ('subBlock ' ~ loop.index) %}
 											{% set subAnchor = anchor ~ '--' ~ loop.index ~ '-' ~ (subLabel|kebab) %}
@@ -66,11 +81,9 @@
 							} %}
 						{% endif %}
 						{% if step.asset is defined and step.asset|length %}
-							{% include '_includes/_blocks/asset' with {
-								asset: step.asset.one(),
-								class: 'rounded-xl overflow-hidden w-full border border-gray-300 bg-white mt-4',
-								mode: 'fit'
-							} %}
+							<div class="rounded-xl overflow-hidden w-full border border-gray-300 bg-white mt-4">
+								{{ instructionMacros.instructionAsset(step.asset.one(), 'block h-auto w-full') }}
+							</div>
 						{% endif %}
 						{% if subBlocks|length %}
 							<div class="mt-4 space-y-4">
@@ -83,11 +96,9 @@
 										</div>
 										{% if subBlock.asset is defined and subBlock.asset|length %}
 											<div class="block">
-												{% include '_includes/_blocks/asset' with {
-												asset: subBlock.asset.one(),
-												class: 'rounded-lg overflow-hidden w-full border border-gray-300 bg-gray-50',
-												mode: 'fit'
-											} %}
+												<div class="rounded-lg overflow-hidden w-full border border-gray-300 bg-gray-50">
+													{{ instructionMacros.instructionAsset(subBlock.asset.one(), 'block h-auto w-full') }}
+												</div>
 											</div>
 										{% endif %}
 

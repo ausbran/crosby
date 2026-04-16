@@ -32,7 +32,9 @@
 
 		<div class="rounded-xl overflow-hidden relative max-lg:w-1/2 h-full lg:h-1/2 bg-{{ color }}{% if isWhiteCard %} border border-gray-300{% endif %}">
 			{% if asset and not hasInlineTextImage %}
-				{% include '_includes/_blocks/gradient' with { height: '1/2', opacity: 40 } %}
+				{% if textValue|length %}
+					{% include '_includes/_blocks/gradient' with { height: '1/2', colorOpacity: 40 } %}
+				{% endif %}
 				{% include '_includes/_blocks/asset' with { asset: asset } %}
 			{% endif %}
 

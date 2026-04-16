@@ -11,6 +11,7 @@ import { initMap } from "./map.js";
 import { initSliderFixed } from "./sliderFixed.js";
 import { initStreamingVideo } from "./streamingVideo.js";
 import { initConsent } from "./consent.js";
+import { initInstructionToc } from "./instruction.js";
 
 function syncBodyClass(classList = "") {
   const body = document.body;
@@ -75,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function initializeComponents(container, namespace) {
   initScroll();
   initStreamingVideo(container);
+  initInstructionToc(container);
 
   const video = container.querySelector("video");
   if (video) {

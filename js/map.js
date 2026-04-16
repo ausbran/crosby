@@ -921,12 +921,26 @@ const attachButtonListeners = (selector, callback) => {
   }
 
   document.addEventListener("keydown", (event) => {
+    const photoModalEl = document.getElementById("photo-modal");
+    const isPhotoModalOpen = photoModalEl && photoModalEl.classList.contains("show");
+
+    if (isPhotoModalOpen && event.key === "ArrowLeft") {
+      event.preventDefault();
+      stepPhotoModal(-1);
+      return;
+    }
+
+    if (isPhotoModalOpen && event.key === "ArrowRight") {
+      event.preventDefault();
+      stepPhotoModal(1);
+      return;
+    }
+
     if (event.key !== "Escape") {
       return;
     }
 
-    const photoModalEl = document.getElementById("photo-modal");
-    if (photoModalEl && photoModalEl.classList.contains("show")) {
+    if (isPhotoModalOpen) {
       closeModal(photoModalEl);
       return;
     }

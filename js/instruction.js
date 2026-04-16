@@ -17,6 +17,7 @@ export function initInstructionToc(container = document) {
 
   const toc = page.querySelector("[data-instruction-toc]");
   const links = Array.from(page.querySelectorAll("[data-instruction-toc-link]"));
+  const items = Array.from(page.querySelectorAll("[data-instruction-toc-item]"));
   const sections = Array.from(
     page.querySelectorAll("[data-instruction-section][id]"),
   );
@@ -30,8 +31,21 @@ export function initInstructionToc(container = document) {
   const linkMap = new Map(
     links.map((link) => [link.dataset.instructionTocLink, link]),
   );
+  const itemMap = new Map(
+    items.map((item) => [item.dataset.instructionTocItem, item]),
+  );
   let activeId = "";
   let ticking = false;
+
+  const setOpenGroup = (id) => {
+    const parentId = id.includes("--") ? id.split("--")[0] : id;
+
+    items.forEach((item) => {
+      const itemId = item.dataset.instructionTocItem;
+      item.classList.toggle("is-open", itemId === parentId);
+      item.classList.toggle("is-current", itemId === id || itemId === parentId);
+    });
+  };
 
   const setActiveLink = (id) => {
     if (!id || activeId === id) {
@@ -40,6 +54,7 @@ export function initInstructionToc(container = document) {
 
     activeId = id;
     const parentId = id.includes("--") ? id.split("--")[0] : "";
+    setOpenGroup(id);
 
     links.forEach((link) => {
       const linkId = link.dataset.instructionTocLink;
@@ -57,8 +72,14 @@ export function initInstructionToc(container = document) {
     });
 
     const currentLink = linkMap.get(id);
+    const currentItem = itemMap.get(parentId || id);
     if (currentLink) {
       currentLink.scrollIntoView({
+        block: "nearest",
+        inline: "nearest",
+      });
+    } else if (currentItem) {
+      currentItem.scrollIntoView({
         block: "nearest",
         inline: "nearest",
       });

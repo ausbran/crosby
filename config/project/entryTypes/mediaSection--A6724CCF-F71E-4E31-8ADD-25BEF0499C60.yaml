@@ -51,7 +51,7 @@ fieldLayouts:
             editCondition: null
             elementCondition: null
             elementEditCondition: null
-            fieldUid: 359F3484-95B1-4D6F-8C2F-B10A204A75F2 # Full Width
+            fieldUid: 359F3484-95B1-4D6F-8C2F-B10A204A75F2 # Display Width
             handle: null
             instructions: null
             label: 'Full Width'

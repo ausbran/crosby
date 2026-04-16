@@ -23,7 +23,12 @@
 	<div class="rounded-xl overflow-hidden h-full relative bg-{{ color }}{% if isWhiteCard %} border border-gray-300{% endif %}">
 		{% if asset and not hasInlineTextImage %}
 			{% include '_includes/_blocks/gradient' with { 
-                height: '1/2', opacity: 40
+                height: '50%',
+                colorOpacity: '10',
+                width: '50%',
+                focusX: '10%',
+                focusY: '100%',
+                blur: '20px',
             } %}
 			{% include '_includes/_blocks/asset' with {
                 asset: asset

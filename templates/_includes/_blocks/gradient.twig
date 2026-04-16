@@ -1,9 +1,58 @@
+{% set variant = variant ?? 'spotlight' %}
 {% set direction = direction ?? 't' %}
-{% set opacity = opacity ?? '60' %}
+{% set colorOpacity = colorOpacity ?? opacity ?? '60' %}
 {% set height = height ?? '4/5' %}
 {% set zIndex = zIndex ?? 1 %}
 {% set class = class ?? null %}
 {% set fromColor = fromColor ?? 'black' %}
 {% set toColor = toColor ?? 'transparent' %}
+{% set width = width ?? '75vw' %}
+{% set spotlightHeight = spotlightHeight ?? height ?? '75%' %}
+{% set focusX = focusX ?? '10%' %}
+{% set focusY = focusY ?? '100%' %}
+{% set blur = blur ?? null %}
+{% set gradientStop = gradientStop ?? '36' %}
+{% set fractionMap = {
+	'1/4': '25%',
+	'1/3': '33.333%',
+	'2/5': '40%',
+	'1/2': '50%',
+	'3/5': '60%',
+	'2/3': '66.667%',
+	'3/4': '75%',
+	'4/5': '80%',
+	'5/6': '83.333%',
+	'9/10': '90%',
+	'1/1': '100%'
+} %}
+{% set spotlightWidth = fractionMap[width] ?? width %}
+{% set spotlightHeightValue = fractionMap[spotlightHeight] ?? spotlightHeight %}
+{% set colorMap = {
+	black: '0 0 0',
+	white: '255 255 255',
+	red: '237 49 39',
+	charcoal: '37 37 37'
+} %}
+{% set colorRgb = colorMap[fromColor] ?? colorMap.black %}
+{% set blurMap = {
+	sm: '14px',
+	md: '22px',
+	lg: '30px',
+	xl: '40px'
+} %}
+{% set blurValue = blurMap[blur] ?? blur %}
 
-<div class="{{class}} gradient w-full absolute bottom-0 pointer-events-none bg-gradient-to-{{ direction }} from-{{ fromColor }}/{{ opacity }} to-{{ toColor }} h-{{ height }} z-{{ zIndex }}"></div>
+{% if variant == 'band' %}
+	<div class="{{ class }} gradient w-full absolute bottom-0 pointer-events-none bg-gradient-to-{{ direction }} from-{{ fromColor }}/{{ colorOpacity }} to-{{ toColor }} h-{{ height }} z-{{ zIndex }}"></div>
+{% else %}
+	<div class="{{ class }} gradient-overlay absolute inset-0 overflow-hidden pointer-events-none z-{{ zIndex }}" style="
+					--gradient-width: {{ spotlightWidth }};
+					--gradient-height: {{ spotlightHeightValue }};
+					--gradient-focus-x: {{ focusX }};
+					--gradient-focus-y: {{ focusY }};
+					--gradient-color-rgb: {{ colorRgb }};
+					--gradient-color-opacity: {{ (colorOpacity / 100)|number_format(3, '.', '') }};
+					--gradient-stop: {{ gradientStop }};
+					--gradient-blur: {{ blurValue ?: '0px' }};
+				"></div>
+{% endif %}
